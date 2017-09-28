@@ -8,7 +8,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 
-namespace ORA_DAL.DAL
+namespace ORA_Data.DAL
 {
     class LoginDAL
     {

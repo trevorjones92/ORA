@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ORA_DAL.DAL
+namespace ORA_Data.DAL
 {
     class AccountDAL
     {

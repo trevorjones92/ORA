@@ -42,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\AccountDAL.cs" />
+    <Compile Include="DAL\AddressDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
+    <Compile Include="DAL\LoginDAL.cs" />
+    <Compile Include="Model\AddressDM.cs" />
     <Compile Include="Model\AssessmentDM.cs" />
     <Compile Include="Model\AssignmentDM.cs" />
     <Compile Include="Model\ClientsDM.cs" />

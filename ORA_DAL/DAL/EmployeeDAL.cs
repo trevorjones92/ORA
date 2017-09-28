@@ -8,7 +8,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 
-namespace ORA.Data.Data
+namespace ORA_Data.Data
 {
     public class UserData
     {
@@ -164,62 +164,6 @@ namespace ORA.Data.Data
                 {
                     command.Parameters["Employee_ID"].Value = employeeID;
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Connection.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-        }
-
-        public void Login(string email, string password)
-        {
-            try
-            {
-                bool login = false;
-                using (SqlCommand command = new SqlCommand("", Connection))
-                {
-                    command.Parameters["Email"].Value = email;
-                    command.CommandType = CommandType.StoredProcedure;
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                if ((string)reader["Email"] == email)
-                                {
-                                    if ((string)reader["Password"] == password)
-                                    {
-                                        login = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    command.Connection.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-        }
-
-        public void Register(string email, string password, string salt)
-        {
-            try
-            {
-                using (SqlCommand command = new SqlCommand("", Connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        command.Parameters["Email"].Value = email;
-                        command.Parameters["Password"].Value = password;
-                        command.Parameters["Salt"].Value = salt;
-                    }
                     command.Connection.Close();
                 }
             }
