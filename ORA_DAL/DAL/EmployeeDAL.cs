@@ -8,7 +8,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 
-namespace ORA_DAL.Data
+namespace ORA.Data.Data
 {
     public class UserData
     {
