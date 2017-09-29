@@ -43,8 +43,19 @@
   <ItemGroup>
     <Compile Include="DAL\AccountDAL.cs" />
     <Compile Include="DAL\AddressDAL.cs" />
+    <Compile Include="DAL\AssessmentDAL.cs" />
+    <Compile Include="DAL\AssignmentDAL.cs" />
+    <Compile Include="DAL\ClientsDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
+    <Compile Include="DAL\KPI_DAL.cs" />
     <Compile Include="DAL\LoginDAL.cs" />
+    <Compile Include="DAL\PositionsDAL.cs" />
+    <Compile Include="DAL\ProjectDAL.cs" />
+    <Compile Include="DAL\RolesDAL.cs" />
+    <Compile Include="DAL\SprintDAL.cs" />
+    <Compile Include="DAL\StoryDAL.cs" />
+    <Compile Include="DAL\TeamsDAL.cs" />
+    <Compile Include="DAL\Work_StatusDAL.cs" />
     <Compile Include="Model\AddressDM.cs" />
     <Compile Include="Model\AssessmentDM.cs" />
     <Compile Include="Model\AssignmentDM.cs" />

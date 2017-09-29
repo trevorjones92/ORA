@@ -9,16 +9,12 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 
-namespace ORA_Data
+namespace ORA_DAL.DAL
 {
-    class AddressDAL
+    class AssignmentDAL
     {
-        /// <summary>
-        /// Basic CRUD methods for address information. AddressDM is the model being used here.
-        /// </summary>
-        
-        #region ADDRESS DAL METHODS
-        public void CreateAddress(AddressDM _address)
+        #region ASSIGNMENT DAL Methods
+        public void CreateAssignment(AssignmentDM _assignment)
         {
             try
             {
@@ -28,13 +24,13 @@ namespace ORA_Data
                     using (SqlCommand cmd = new SqlCommand("CREATE_ADDRESS", Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Address", _address.Address);
-                        cmd.Parameters.AddWithValue("@City", _address.City);
-                        cmd.Parameters.AddWithValue("@State", _address.State);
-                        cmd.Parameters.AddWithValue("@Zip_Code", _address.Zip_Code);
-                        cmd.Parameters.AddWithValue("@Country", _address.Country);
-                        cmd.Parameters.AddWithValue("@Phone", _address.Phone);
-                        cmd.Parameters.AddWithValue("@Email", _address.Email);
+                        cmd.Parameters.AddWithValue("@Start_Date", _assignment.StartDate);
+                        cmd.Parameters.AddWithValue("@End_Date", _assignment.EndDate);
+                        cmd.Parameters.AddWithValue("@Client_Id", _assignment.ClientId);
+                        cmd.Parameters.AddWithValue("@Employee_Id", _assignment.EmployeeId);
+                        cmd.Parameters.AddWithValue("@Position_Id", _assignment.PositionId);
+                        cmd.Parameters.AddWithValue("@Role_Id", _assignment.RoleId);
+                        cmd.Parameters.AddWithValue("@Team_Id", _assignment.TeamId);
                         Connection.Open();
                         cmd.ExecuteNonQuery();
                         Connection.Close();
@@ -48,15 +44,15 @@ namespace ORA_Data
             }
         }
 
-        public List<AddressDM> ReadAddress()
+        public List<AssignmentDM> ReadAddress()
         {
-            List<AddressDM> customerList = new List<AddressDM>();
+            List<AssignmentDM> _assignmentList = new List<AssignmentDM>();
             try
             {
                 using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
                 {
                     Connection.Open();
-                    using (SqlCommand cmd = new SqlCommand("READ_ADDRESS", Connection))
+                    using (SqlCommand cmd = new SqlCommand("READ_ASSIGNMENT", Connection))
                     {
                         cmd.Connection = Connection;
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -66,21 +62,21 @@ namespace ORA_Data
                             {
                                 while (reader.Read())
                                 {
-                                    var _address = new AddressDM();
-                                    _address.Address = (string)reader["Address"];
-                                    _address.City = (string)reader["City"];
-                                    _address.State = (string)reader["State"];
-                                    _address.Zip_Code = (int)reader["Zip_Code"];
-                                    _address.Country = (string)reader["Country"];
-                                    _address.Phone = (string)reader["Phone"];
-                                    _address.Email = (string)reader["Email"];
-                                    customerList.Add(_address);
+                                    var _assignment = new AssignmentDM();
+                                    _assignment.StartDate = (DateTime)reader["Start_Date"];
+                                    _assignment.EndDate = (DateTime)reader["End_Date"];
+                                    _assignment.ClientId = (int)reader["Client_ID"];
+                                    _assignment.EmployeeId = (int)reader["Employee_ID"];
+                                    _assignment.PositionId = (int)reader["Position_ID"];
+                                    _assignment.RoleId = (int)reader["Role_ID"];
+                                    _assignment.TeamId = (int)reader["Team_ID"];
+                                    _assignmentList.Add(_assignment);
                                 }
                             }
                         }
                     }
                 }
-                return (customerList);
+                return (_assignmentList);
             }
             catch (Exception e)
             {
@@ -88,24 +84,24 @@ namespace ORA_Data
             }
         }
 
-        public void UpdateAddress(AddressDM _address)
+        public void UpdateAssignment(AssignmentDM _assignment)
         {
             try
             {
                 using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
                 {
-                    using (SqlCommand cmd = new SqlCommand("UPDATE_ADDRESS", Connection))
+                    using (SqlCommand cmd = new SqlCommand("UPDATE_ASSIGNMENT", Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Address_ID", _address.Address_ID);
-                        cmd.Parameters.AddWithValue("@Address", _address.Address);
-                        cmd.Parameters.AddWithValue("@FirstName", _address.City);
-                        cmd.Parameters.AddWithValue("@LastName", _address.State);
-                        cmd.Parameters.AddWithValue("@DoB", _address.Zip_Code);
-                        cmd.Parameters.AddWithValue("@PhoneNumber", _address.Country);
-                        cmd.Parameters.AddWithValue("@UserName", _address.Phone);
-                        cmd.Parameters.AddWithValue("@Password", _address.Email);
+                        cmd.Parameters.AddWithValue("@Assignment_ID", _assignment.AssignmentId);
+                        cmd.Parameters.AddWithValue("@Start_Date", _assignment.StartDate);
+                        cmd.Parameters.AddWithValue("@End_Date", _assignment.EndDate);
+                        cmd.Parameters.AddWithValue("@Client_ID", _assignment.ClientId);
+                        cmd.Parameters.AddWithValue("@Employee_ID", _assignment.EmployeeId);
+                        cmd.Parameters.AddWithValue("@Position_ID", _assignment.PositionId);
+                        cmd.Parameters.AddWithValue("@Role_ID", _assignment.RoleId);
+                        cmd.Parameters.AddWithValue("@Team_ID", _assignment.TeamId);
                         Connection.Open();
                         cmd.ExecuteNonQuery();
                     }
@@ -117,7 +113,7 @@ namespace ORA_Data
             }
         }
 
-        public void DeleteAddress(AddressDM _address)
+        public void DeleteAssignment(AssignmentDM _assignment)
         {
             try
             {
@@ -127,7 +123,7 @@ namespace ORA_Data
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Address_ID", _address.Address_ID);
+                        cmd.Parameters.AddWithValue("@Assignment_ID", _assignment.AssignmentId);
                         Connection.Open();
                         cmd.ExecuteNonQuery();
                     }
@@ -135,9 +131,10 @@ namespace ORA_Data
             }
             catch (Exception e)
             {
-                //Write to error log
+                throw (e);
             }
         }
+
         #endregion
     }
 }
