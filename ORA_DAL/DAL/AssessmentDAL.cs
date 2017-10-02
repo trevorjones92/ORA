@@ -13,6 +13,11 @@ namespace ORA_DAL.DAL
 {
     class AssessmentDAL
     {
+        /// <summary>
+        /// Basic CRUD methods for Assessment information. AssessmentDM is the model being used here.
+        /// </summary>
+        /// 
+
         #region Assessment DAL Methods
         public void CreateAssessment(AssessmentDM _assessment)
         {

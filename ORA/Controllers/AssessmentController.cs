@@ -11,6 +11,7 @@ namespace ORA.Controllers
         // GET: Assessment
         public ActionResult Index()
         {
+
             return View();
         }
     }

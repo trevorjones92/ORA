@@ -13,6 +13,11 @@ namespace ORA_DAL.DAL
 {
     class AssignmentDAL
     {
+        /// <summary>
+        /// Basic CRUD methods for Assignment information. AssignmentDM is the model being used here.
+        /// </summary>
+        /// 
+
         #region ASSIGNMENT DAL Methods
         public void CreateAssignment(AssignmentDM _assignment)
         {

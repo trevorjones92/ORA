@@ -50,7 +50,7 @@ namespace ORA_Data
 
         public List<AddressDM> ReadAddress()
         {
-            List<AddressDM> customerList = new List<AddressDM>();
+            List<AddressDM> addressList = new List<AddressDM>();
             try
             {
                 using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
@@ -74,13 +74,13 @@ namespace ORA_Data
                                     _address.Country = (string)reader["Country"];
                                     _address.Phone = (string)reader["Phone"];
                                     _address.Email = (string)reader["Email"];
-                                    customerList.Add(_address);
+                                    addressList.Add(_address);
                                 }
                             }
                         }
                     }
                 }
-                return (customerList);
+                return (addressList);
             }
             catch (Exception e)
             {
