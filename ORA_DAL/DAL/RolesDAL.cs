@@ -29,7 +29,6 @@ namespace ORA_DAL.DAL
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Role_Name", _role.RoleName);
                         cmd.Parameters.AddWithValue("@Role_Description", _role.RoleDescription);
-                        cmd.Parameters.AddWithValue("@Role_ID", _role.RoleId);
                         Connection.Open();
                         cmd.ExecuteNonQuery();
                         Connection.Close();
@@ -112,7 +111,7 @@ namespace ORA_DAL.DAL
                     using (SqlCommand cmd = new SqlCommand("DELETE_ROLE", Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Project_ID", _role.RoleId);
+                        cmd.Parameters.AddWithValue("@Role_ID", _role.RoleId);
                         Connection.Open();
                         cmd.ExecuteNonQuery();
                     }

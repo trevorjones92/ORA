@@ -28,7 +28,6 @@ namespace ORA_DAL.DAL
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Team_Name", _team.TeamName);
-                        cmd.Parameters.AddWithValue("@Team_ID", _team.TeamId);
                         cmd.Parameters.AddWithValue("@Client_ID", _team.ClientId);
                         Connection.Open();
                         cmd.ExecuteNonQuery();

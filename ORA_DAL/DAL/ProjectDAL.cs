@@ -64,6 +64,7 @@ namespace ORA_DAL.DAL
                                 while (reader.Read())
                                 {
                                     var _project = new ProjectDM();
+                                    _project.ProjectId = (int)reader["Project_ID"];
                                     _project.ProjectName = (string)reader["Project_Name"];
                                     _project.ProjectNumber = (int)reader["Project_Number"];
                                     _project.StartDate = (DateTime)reader["Project_Start_Date"];
@@ -93,6 +94,7 @@ namespace ORA_DAL.DAL
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Project_ID", _project.ProjectId);
                         cmd.Parameters.AddWithValue("@Project_Name", _project.ProjectName);
                         cmd.Parameters.AddWithValue("@Project_Number", _project.ProjectNumber);
                         cmd.Parameters.AddWithValue("@Project_Start_Date", _project.StartDate);

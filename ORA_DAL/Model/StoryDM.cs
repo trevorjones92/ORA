@@ -20,5 +20,7 @@ namespace ORA.Models
         public DateTime Created { get; set; }
 
         public DateTime Modified { get; set; }
+
+        public int ClientId { get; set; }
     }
 }
