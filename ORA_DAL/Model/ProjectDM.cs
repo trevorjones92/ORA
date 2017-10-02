@@ -13,9 +13,9 @@ namespace ORA.Models
 
         public int ProjectNumber { get; set; }
 
-        public int StartDate { get; set; }
+        public DateTime StartDate { get; set; }
 
-        public int EndDate { get; set; }
+        public DateTime EndDate { get; set; }
 
         public int ClientId { get; set; }
 

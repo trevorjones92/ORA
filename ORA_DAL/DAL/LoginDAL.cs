@@ -21,7 +21,7 @@ namespace ORA_Data.DAL
 
         SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
 
-        public void Login(string email, string password)
+        public bool Login(string email, string password)
         {
             try
             {
@@ -48,6 +48,7 @@ namespace ORA_Data.DAL
                     }
                     command.Connection.Close();
                 }
+                return login;
             }
             catch (Exception ex)
             {
