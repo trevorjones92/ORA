@@ -82,9 +82,9 @@ namespace ORA_Data
                 }
                 return (customerList);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return null;
+                throw ex;
             }
         }
 
@@ -133,9 +133,10 @@ namespace ORA_Data
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 //Write to error log
+                throw ex;
             }
         }
         #endregion
