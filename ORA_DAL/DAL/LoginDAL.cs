@@ -12,6 +12,13 @@ namespace ORA_Data.DAL
 {
     class LoginDAL
     {
+        /// <summary>
+        /// Basic methods for Logging in and Registering information.
+        /// </summary>
+        /// 
+
+        #region LOGIN DAL METHODS
+
         SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
 
         public bool Login(string email, string password)
@@ -70,5 +77,7 @@ namespace ORA_Data.DAL
                 throw (ex);
             }
         }
+
+        #endregion
     }
 }
