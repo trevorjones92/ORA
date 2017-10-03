@@ -26,7 +26,7 @@ namespace ORA_Data.DAL
             try
             {
                 bool loggedIN = false;
-                using (SqlCommand command = new SqlCommand("", Connection))
+                using (SqlCommand command = new SqlCommand("READ_LOGIN_BY_EMAIL", Connection))
                 {
                     command.Parameters["Email"].Value = login.Email;
                     command.CommandType = CommandType.StoredProcedure;
@@ -60,7 +60,7 @@ namespace ORA_Data.DAL
         {
             try
             {
-                using (SqlCommand command = new SqlCommand("", Connection))
+                using (SqlCommand command = new SqlCommand("CREATE_LOGIN", Connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -70,6 +70,57 @@ namespace ORA_Data.DAL
                         command.Parameters["Salt"].Value = login.Salt;
                     }
                     command.Connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
+
+        public List<LoginDM> ViewLoginEmails(List<LoginDM> logins)
+        {
+            try
+            {
+                using (SqlCommand command = new SqlCommand("READ_LOGINS", Connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                LoginDM login = new LoginDM { Email = (string)reader["Email"] };
+                                logins.Add(login);
+                            }
+                        }
+                    }
+                    command.Connection.Close();
+                }
+                return logins;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
+        public void DeleteLogin(LoginDM login)
+        {
+            try
+            {
+                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
+                {
+                    using (SqlCommand cmd = new SqlCommand("DELETE_LOGIN", Connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Email", login.Email);
+                        Connection.Open();
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
             catch (Exception ex)
