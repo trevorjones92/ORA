@@ -45,6 +45,10 @@ namespace ORA_DAL.DAL
                         cmd.Parameters.AddWithValue("@Test_Hrs_Actual", _kpi.TestHrsActual);
                         cmd.Parameters.AddWithValue("@Bugs_Found_Production", _kpi.BugsFoundProduction);
                         cmd.Parameters.AddWithValue("@Total_Hrs_Fixing_Bugs", _kpi.TotalHrsFixingBugs);
+                        cmd.Parameters.AddWithValue("@Assignment_ID", _kpi.AssignmentId);
+                        cmd.Parameters.AddWithValue("@Project_ID", _kpi.ProjectId);
+                        cmd.Parameters.AddWithValue("@Sprint_ID", _kpi.SprintId);
+                        cmd.Parameters.AddWithValue("@Story_ID", _kpi.StoryId);
 
                         Connection.Open();
                         cmd.ExecuteNonQuery();
@@ -93,6 +97,12 @@ namespace ORA_DAL.DAL
                                     _kpi.CriticalDefects = (int)reader["Critical_Defects"];
                                     _kpi.TestHrsPlanned = (decimal)reader["Test_Hrs_Planned"];
                                     _kpi.TestHrsActual = (decimal)reader["Test_Hrs_Actual"];
+                                    _kpi.BugsFoundProduction = (int)reader["Bugs_Found_Production"];
+                                    _kpi.TotalHrsFixingBugs = (decimal)reader["Total_Hrs_Fixing_Bugs"];
+                                    _kpi.AssignmentId = (int)reader["Assignment_ID"];
+                                    _kpi.ProjectId = (int)reader["Project_ID"];
+                                    _kpi.SprintId = (int)reader["Sprint_ID"];
+                                    _kpi.StoryId = (int)reader["Story_ID"];
 
                                     _kpiList.Add(_kpi);
                                 }
@@ -114,7 +124,7 @@ namespace ORA_DAL.DAL
             {
                 using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
                 {
-                    using (SqlCommand cmd = new SqlCommand("UPDATE_ADDRESS", Connection))
+                    using (SqlCommand cmd = new SqlCommand("UPDATE_KPI", Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@KPI_ID", _kpi.KPIID);
