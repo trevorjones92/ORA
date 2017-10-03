@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ORA_Data.Model
+namespace ORA.Models
 {
-    public class StatusDM
+    public class StatusVM
     {
         public int StatusId { get; set; }
 

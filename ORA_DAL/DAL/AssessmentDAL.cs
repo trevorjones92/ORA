@@ -130,9 +130,9 @@ namespace ORA_DAL.DAL
                 }
                 return (assessmentList);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return null;
+                throw ex;
             }
         }
 

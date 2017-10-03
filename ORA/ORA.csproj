@@ -158,6 +158,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddressVM.cs" />
     <Compile Include="Models\AssessmentVM.cs" />
     <Compile Include="Models\AssignmentVM.cs" />
     <Compile Include="Models\ClientsVM.cs" />
@@ -165,8 +166,10 @@
     <Compile Include="Models\KPIVM.cs" />
     <Compile Include="Models\PositionsVM.cs" />
     <Compile Include="Models\ProjectVM.cs" />
+    <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\RolesVM.cs" />
     <Compile Include="Models\SprintVM.cs" />
+    <Compile Include="Models\StatusVM.cs" />
     <Compile Include="Models\StoryVM.cs" />
     <Compile Include="Models\TeamsVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
