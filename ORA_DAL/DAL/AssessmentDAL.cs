@@ -54,6 +54,7 @@ namespace ORA_DAL.DAL
                         cmd.Parameters.AddWithValue("@MI_Personal_Growth", _assessment.MIPersonalGrowth);
                         cmd.Parameters.AddWithValue("@MI_Potential_Advancement", _assessment.MIPotentialAdvancement);
                         cmd.Parameters.AddWithValue("@MI_Comments", _assessment.MIComments);
+                        cmd.Parameters.AddWithValue("@Assignment_ID", _assessment.AssignmentID);
                         cmd.Parameters.AddWithValue("@Created", _assessment.Created);
                         cmd.Parameters.AddWithValue("@Created_By", _assessment.CreatedBy);
                         cmd.Parameters.AddWithValue("@Modified", _assessment.Modified);
@@ -117,6 +118,7 @@ namespace ORA_DAL.DAL
                                     _assessment.MIPersonalGrowth = (int)reader["MI_Personal_Growth"];
                                     _assessment.MIPotentialAdvancement = (int)reader["MI_Potential_Advancement"];
                                     _assessment.MIComments = (string)reader["MI_Comments"];
+                                    _assessment.AssignmentID = (int)reader["Assignment_ID"];
                                     _assessment.Created = (DateTime)reader["Created"];
                                     _assessment.CreatedBy = (string)reader["Created_By"];
                                     _assessment.Modified = (DateTime)reader["Modified"];

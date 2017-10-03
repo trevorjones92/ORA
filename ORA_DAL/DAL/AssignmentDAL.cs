@@ -49,7 +49,7 @@ namespace ORA_DAL.DAL
             }
         }
 
-        public List<AssignmentDM> ReadAddress()
+        public List<AssignmentDM> ReadAssignment()
         {
             List<AssignmentDM> _assignmentList = new List<AssignmentDM>();
             try
