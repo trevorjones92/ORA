@@ -64,6 +64,7 @@ namespace ORA_DAL.DAL
                                 while (reader.Read())
                                 {
                                     var _story = new StoryDM();
+                                    _story.StoryId = (int)reader["Story_ID"];
                                     _story.StoryName = (string)reader["Story_Name"];
                                     _story.StoryNumber = (int)reader["Story_Number"];
                                     _story.StartDate = (DateTime)reader["Story_Start_Date"];
@@ -93,6 +94,7 @@ namespace ORA_DAL.DAL
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Story_ID", _story.StoryId);
                         cmd.Parameters.AddWithValue("@Story_Name", _story.StoryName);
                         cmd.Parameters.AddWithValue("@Story_Number", _story.StoryNumber);
                         cmd.Parameters.AddWithValue("@Story_Start_Date", _story.StartDate);

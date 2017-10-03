@@ -64,6 +64,7 @@
     <Compile Include="Model\KPIDM.cs" />
     <Compile Include="Model\PositionsDM.cs" />
     <Compile Include="Model\ProjectDM.cs" />
+    <Compile Include="Model\LoginDM.cs" />
     <Compile Include="Model\RolesDM.cs" />
     <Compile Include="Model\StatusDM.cs" />
     <Compile Include="Model\SprintDM.cs" />

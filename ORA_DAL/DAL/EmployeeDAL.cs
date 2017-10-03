@@ -31,7 +31,6 @@ namespace ORA_Data.Data
                 using (SqlCommand command = new SqlCommand("", Connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters["Employee_ID"].Value = employee.EmployeeNumber;
                     command.Parameters["Employee_Name"].Value = employee.EmployeeName;
                     command.Parameters["Employee_FirstName"].Value = employee.EmployeeFirstName;
                     command.Parameters["Employee_MiddleName"].Value = employee.EmployeeMiddle;

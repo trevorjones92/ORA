@@ -1,4 +1,4 @@
-﻿using ORA.Models;
+﻿using ORA_Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -21,14 +21,14 @@ namespace ORA_Data.DAL
 
         SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
 
-        public bool Login(string email, string password)
+        public bool Login(LoginDM login)
         {
             try
             {
-                bool login = false;
+                bool loggedIN = false;
                 using (SqlCommand command = new SqlCommand("", Connection))
                 {
-                    command.Parameters["Email"].Value = email;
+                    command.Parameters["Email"].Value = login.Email;
                     command.CommandType = CommandType.StoredProcedure;
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -36,11 +36,11 @@ namespace ORA_Data.DAL
                         {
                             while (reader.Read())
                             {
-                                if ((string)reader["Email"] == email)
+                                if ((string)reader["Email"] == login.Email)
                                 {
-                                    if ((string)reader["Password"] == password)
+                                    if ((string)reader["Password"] == login.Password)
                                     {
-                                        login = true;
+                                        loggedIN = true;
                                     }
                                 }
                             }
@@ -48,7 +48,7 @@ namespace ORA_Data.DAL
                     }
                     command.Connection.Close();
                 }
-                return login;
+                return loggedIN;
             }
             catch (Exception ex)
             {
@@ -56,7 +56,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void Register(string email, string password, string salt)
+        public void Register(LoginDM login)
         {
             try
             {
@@ -65,9 +65,9 @@ namespace ORA_Data.DAL
                     command.CommandType = CommandType.StoredProcedure;
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        command.Parameters["Email"].Value = email;
-                        command.Parameters["Password"].Value = password;
-                        command.Parameters["Salt"].Value = salt;
+                        command.Parameters["Email"].Value = login.Email;
+                        command.Parameters["Password"].Value = login.Password;
+                        command.Parameters["Salt"].Value = login.Salt;
                     }
                     command.Connection.Close();
                 }

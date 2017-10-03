@@ -92,6 +92,7 @@ namespace ORA_DAL.DAL
                                 while (reader.Read())
                                 {
                                     var _assessment = new AssessmentDM();
+                                    _assessment.AssessmentId = (int)reader["Assessment_ID"];
                                     _assessment.TDProblemSolving = (int)reader["TD_Problem_Solving"];
                                     _assessment.TDQualityOfWork = (int)reader["TD_Quality_Of_Work"];
                                     _assessment.TDProductivity = (int)reader["TD_Productivity"];
@@ -131,9 +132,9 @@ namespace ORA_DAL.DAL
                 }
                 return (assessmentList);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return null;
+                throw ex;
             }
         }
 

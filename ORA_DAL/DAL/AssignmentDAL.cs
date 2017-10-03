@@ -83,9 +83,9 @@ namespace ORA_DAL.DAL
                 }
                 return (_assignmentList);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return null;
+                throw ex;
             }
         }
 

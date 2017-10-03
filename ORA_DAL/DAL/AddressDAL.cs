@@ -97,7 +97,6 @@ namespace ORA_Data
                     using (SqlCommand cmd = new SqlCommand("UPDATE_ADDRESS", Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Address_ID", _address.Address_ID);
                         cmd.Parameters.AddWithValue("@Address", _address.Address);
                         cmd.Parameters.AddWithValue("@FirstName", _address.City);
@@ -125,7 +124,6 @@ namespace ORA_Data
                 {
                     using (SqlCommand cmd = new SqlCommand("DELETE_ADDRESS", Connection))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Address_ID", _address.Address_ID);
                         Connection.Open();
