@@ -7,9 +7,9 @@ namespace ORA.Models
 {
     public class EmployeeDM
     {
-        public int EmployeeId { get; set; }
+        public Int64 EmployeeId { get; set; }
 
-        public int EmployeeNumber { get; set; }
+        public string EmployeeNumber { get; set; }
 
         public string EmployeeName { get; set; }
 
@@ -21,12 +21,12 @@ namespace ORA.Models
 
         public int Age { get; set; }
 
-        public DateTime BirthDate { get; set; }
+        public string BirthDate { get; set; }
 
-        public int AddressID { get; set; }
+        public Int64 AddressID { get; set; }
 
-        public int TimeID { get; set; }
+        public Int64 TimeID { get; set; }
 
-        public int WorkStatusID { get; set; }
+        public Int64 WorkStatusID { get; set; }
     }
 }

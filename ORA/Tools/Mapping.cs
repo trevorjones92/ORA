@@ -16,7 +16,13 @@ namespace ORA.Tools
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<LoginVM,LoginDM>();
+                cfg.CreateMap<EmployeeVM, EmployeeDM>();
+                cfg.CreateMap<List<EmployeeVM>, List<EmployeeDM>>();
+                cfg.CreateMap<List<EmployeeDM>, List<EmployeeVM>>();
             });
+
+           
+           
         }
     }
 }
