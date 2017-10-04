@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ORA_Data;
 using ORA_Data.DAL;
 using AutoMapper;
 using ORA_Data.Model;
@@ -25,12 +26,13 @@ namespace ORA.Controllers
         [HttpPost]
         public ActionResult Register(LoginVM info)
         {
+
             try
             {
                 info.Salt = Salt.GenerateSalt().ToString();
                 info.Password = ORA_Data.Hash.GetHash(info.Password + info.Salt);
                 LoginDAL.Register(Mapper.Map<LoginDM>(info));
-                return View("Login",info);
+                return View("Login", info);
             }
             catch
             {
