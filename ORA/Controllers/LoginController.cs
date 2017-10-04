@@ -8,6 +8,7 @@ using ORA_Data;
 using ORA_Data.DAL;
 using AutoMapper;
 using ORA_Data.Model;
+using System.Configuration;
 
 namespace ORA.Controllers
 {
@@ -29,14 +30,29 @@ namespace ORA.Controllers
 
             try
             {
-                info.Salt = Salt.GenerateSalt().ToString();
-                info.Password = ORA_Data.Hash.GetHash(info.Password + info.Salt);
-                LoginDAL.Register(Mapper.Map<LoginDM>(info));
-                return View("Login", info);
+                if(info.Password == info.ConfirmPassword)
+                {
+                    info.Salt = Convert.ToBase64String(Salt.GenerateSalt());
+                    info.Password = ORA_Data.Hash.GetHash(info.Password + info.Salt);
+                    LoginDAL.Register(Mapper.Map<LoginDM>(info));
+                    info.Password = "";
+                    if (ConfigurationManager.AppSettings["RegisterToLogin"].ToLower()=="true")
+                    {
+                        return RedirectToAction("Login", "Login", info);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Home", "Index", new { area = "Default" });
+                    }
+                }
+                else
+                {
+                    return View();
+                }
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                throw ex;
             }
         }
 
@@ -49,14 +65,28 @@ namespace ORA.Controllers
         {
             try
             {
-                LoginDAL.Login(Mapper.Map<LoginDM>(info));
-                Session["LoggedIn"] = true;
-                return View("Index");
+                Session["LoggedIn"] = LoginDAL.Login(Mapper.Map<LoginDM>(info));
+                if ((bool)Session["LoggedIn"])
+                {
+                Session["Email"] = info.Email;
+                return RedirectToAction("Index", "Home", new { area = "Default" });
+                }
+                else
+                {
+                    return View();
+                }
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                throw ex;
             }
         }
+
+        public ActionResult LogOut()
+        {
+            Session["LoggedIn"] = false;
+            return View();
+        }
+
     }
 }

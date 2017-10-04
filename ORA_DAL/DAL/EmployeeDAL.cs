@@ -18,7 +18,7 @@ namespace ORA_Data.Data
         /// 
 
         #region EMPLOYEE DAL METHODS
-        SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
+        static SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
 
         private static RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider();
 
@@ -90,7 +90,7 @@ namespace ORA_Data.Data
             }
         }
 
-        public DataTable ReadAllEmployees()
+        public static DataTable ReadAllEmployees()
         {
             try
             {

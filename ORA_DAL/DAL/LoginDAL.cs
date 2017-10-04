@@ -28,7 +28,8 @@ namespace ORA_Data.DAL
                 bool loggedIN = false;
                 using (SqlCommand command = new SqlCommand("READ_LOGIN_BY_EMAIL", Connection))
                 {
-                    command.Parameters["Email"].Value = login.Email;
+                    command.Connection.Open();
+                    command.Parameters.AddWithValue("Email",login.Email);
                     command.CommandType = CommandType.StoredProcedure;
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -62,13 +63,12 @@ namespace ORA_Data.DAL
             {
                 using (SqlCommand command = new SqlCommand("CREATE_LOGIN", Connection))
                 {
+                    command.Parameters.AddWithValue("@Email",login.Email);
+                    command.Parameters.AddWithValue("@Password",login.Password);
+                    command.Parameters.AddWithValue("@Salt",login.Salt);
                     command.CommandType = CommandType.StoredProcedure;
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        command.Parameters["Email"].Value = login.Email;
-                        command.Parameters["Password"].Value = login.Password;
-                        command.Parameters["Salt"].Value = login.Salt;
-                    }
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
                     command.Connection.Close();
                 }
             }
@@ -120,6 +120,7 @@ namespace ORA_Data.DAL
                         cmd.Parameters.AddWithValue("@Email", login.Email);
                         Connection.Open();
                         cmd.ExecuteNonQuery();
+                        Connection.Close();
                     }
                 }
             }

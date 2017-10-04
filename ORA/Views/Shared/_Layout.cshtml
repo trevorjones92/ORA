@@ -24,7 +24,22 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
+                <div class="navbar-collapse collapse" style="float:right;z-index:1;position:relative;">
+                    <ul class="nav navbar-nav">
+                     @if ((bool)Session["LoggedIn"])
+                        {
+                           <li><a>@Session["Email"]</a></li>
+                        <li>@Html.ActionLink("Logout", "LogOut", "Login")</li>
+                     }
+                     else
+                     {
+                           <li>@Html.ActionLink("Register", "Register", "Login")</li>
+                           <li>@Html.ActionLink("Login", "Login", "Login")</li>
+                        }
+                    </ul>
+                </div>
             </div>
+            
         </div>
     </div>
     <div class="container body-content">
