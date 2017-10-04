@@ -56,6 +56,7 @@
     <Compile Include="DAL\StoryDAL.cs" />
     <Compile Include="DAL\TeamsDAL.cs" />
     <Compile Include="DAL\Work_StatusDAL.cs" />
+    <Compile Include="Hash.cs" />
     <Compile Include="Model\AddressDM.cs" />
     <Compile Include="Model\AssessmentDM.cs" />
     <Compile Include="Model\AssignmentDM.cs" />
@@ -71,12 +72,6 @@
     <Compile Include="Model\StoryDM.cs" />
     <Compile Include="Model\TeamsDM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ORA\ORA.csproj">
-      <Project>{72df197e-b32e-41be-811c-9f5e083a8cca}</Project>
-      <Name>ORA</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,7 +10,7 @@ using System.Web;
 
 namespace ORA_Data.DAL
 {
-    class LoginDAL
+    public class LoginDAL
     {
         /// <summary>
         /// Basic methods for Logging in and Registering information.
@@ -19,9 +19,9 @@ namespace ORA_Data.DAL
 
         #region LOGIN DAL METHODS
 
-        SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
+        static SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
 
-        public bool Login(LoginDM login)
+        public static bool Login(LoginDM login)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace ORA_Data.DAL
                             {
                                 if ((string)reader["Email"] == login.Email)
                                 {
-                                    if ((string)reader["Password"] == login.Password)
+                                    if ((string)reader["Password"] == ORA_Data.Hash.GetHash(login.Password + (string)reader["Salt"]))
                                     {
                                         loggedIN = true;
                                     }
@@ -56,7 +56,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void Register(LoginDM login)
+        public static void Register(LoginDM login)
         {
             try
             {
