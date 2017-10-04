@@ -10,17 +10,19 @@ using System.Web;
 
 namespace ORA_Data.Data
 {
-    public class UserData
+    public class EmployeeDAL
     {
         /// <summary>
         /// Basic CRUD methods for Employee information. EmployeeDM is the model being used here.
         /// </summary>
         /// 
+        public string ConnectionString = @"Data Source=GDC-LAPTOP-148; Initial Catalog = ORATest; Integrated Security = True";
 
+        
         #region EMPLOYEE DAL METHODS
-        static SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
+        SqlConnection _connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
 
-        private static RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider();
+        private static RNGCryptoServiceProvider _crypto = new RNGCryptoServiceProvider();
 
         //Creates the Employee in the database
         public EmployeeDM CreateEmployee(EmployeeDM employee)
@@ -28,7 +30,7 @@ namespace ORA_Data.Data
             try
             {
                 //EmployeeDM employee = new EmployeeDM();
-                using (SqlCommand command = new SqlCommand("", Connection))
+                using (SqlCommand command = new SqlCommand("", _connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters["Employee_Name"].Value = employee.EmployeeName;
@@ -40,7 +42,7 @@ namespace ORA_Data.Data
                     command.Parameters["Address_ID"].Value = employee.AddressID;
                     command.Parameters["Time_ID"].Value = employee.TimeID;
                     command.Parameters["Work_Status_ID"].Value = employee.WorkStatusID;
-                    
+
                     command.Connection.Close();
                 }
                 return employee;
@@ -51,14 +53,14 @@ namespace ORA_Data.Data
             }
         }
 
-        public EmployeeDM ReadEmployeeByID(int employeeID)
+        public EmployeeDM ReadEmployeeById(int employeeId)
         {
             try
             {
                 EmployeeDM employee = new EmployeeDM();
-                using (SqlCommand command = new SqlCommand("", Connection))
+                using (SqlCommand command = new SqlCommand("", _connection))
                 {
-                    command.Parameters["Employee_ID"].Value = employeeID;
+                    command.Parameters["Employee_ID"].Value = employeeId;
                     command.CommandType = CommandType.StoredProcedure;
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -66,16 +68,16 @@ namespace ORA_Data.Data
                         {
                             while (reader.Read())
                             {
-                                employee.EmployeeNumber = (int)reader["Employee_ID"];
+                                employee.EmployeeNumber = (string)reader["Employee_ID"];
                                 employee.EmployeeName = (string)reader["Employee_Name"];
                                 employee.EmployeeFirstName = (string)reader["Employee_FirstName"];
                                 employee.EmployeeMiddle = (string)reader["Employee_MiddleName"];
                                 employee.EmployeeLastName = (string)reader["Employee_LastName"];
                                 employee.Age = (int)reader["Age"];
-                                employee.BirthDate = (DateTime)reader["Birth_Date"];
-                                employee.AddressID = (int)reader["Address_ID"];
-                                employee.TimeID = (int)reader["Time_ID"];
-                                employee.WorkStatusID = (int)reader["Work_Status_ID"];
+                                employee.BirthDate = (string)reader["Birth_Date"];
+                                employee.AddressID = (Int64)reader["Address_ID"];
+                                employee.TimeID = (Int64)reader["Time_ID"];
+                                employee.WorkStatusID = (Int64)reader["Work_Status_ID"];
                             }
                         }
                     }
@@ -90,90 +92,98 @@ namespace ORA_Data.Data
             }
         }
 
-        public static DataTable ReadAllEmployees()
+        public List<EmployeeDM> ReadEmployee()
         {
+            List<EmployeeDM> employeeList = new List<EmployeeDM>();
             try
             {
-                DataTable table = new DataTable();
-                using (SqlCommand command = new SqlCommand("", Connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    table.Load(command.ExecuteReader());
-                    command.Connection.Close();
-                }
-                return table;
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-        }
-
-        public void UpdateEmployee(string employeeID, List<string> updates)
-        {
-            try
-            {
-                using (SqlCommand command = new SqlCommand("", Connection))
-                {
-                    command.Parameters["Employee_ID"].Value = employeeID;
-                    command.CommandType = CommandType.StoredProcedure;
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("READ_EMPLOYEE", connection))
                     {
-                        if (reader.HasRows)
+                        cmd.Connection = connection;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        using (var reader = cmd.ExecuteReader())
                         {
+                            if (!reader.HasRows) return (employeeList);
                             while (reader.Read())
                             {
-                                if (updates[0] != "")
+                                var employee = new EmployeeDM
                                 {
-                                    command.Parameters["Employee_Name"].Value = updates[0];
-                                }
-                                if (updates[1] != "")
-                                {
-                                    command.Parameters["Employee_FirstName"].Value = updates[1];
-                                }
-                                if (updates[2] != "")
-                                {
-                                    command.Parameters["Employee_MiddleName"].Value = updates[2];
-                                }
-                                if (updates[3] != "")
-                                {
-                                    command.Parameters["Employee_LastName"].Value = updates[3];
-                                }
-                                if (updates[4] != "")
-                                {
-                                    command.Parameters["Age"].Value = updates[4];
-                                }
-                                if (updates[5] != "")
-                                {
-                                    command.Parameters["Birth_Date"].Value = updates[5];
-                                }
+                                    EmployeeNumber = (string)reader["Employee_Number"],
+                                    EmployeeName = (string)reader["Employee_Name"],
+                                    EmployeeFirstName = (string)reader["Employee_FirstName"],
+                                    EmployeeMiddle = (string)reader["Employee_MiddleName"],
+                                    EmployeeLastName = (string)reader["Employee_LastName"],
+                                    Age = (int)reader["Age"],
+                                    BirthDate = (string)reader["Birth_Date"],
+                                    AddressID = (Int64)reader["Address_ID"],
+                                    TimeID = (Int64)reader["Time_ID"],
+                                    WorkStatusID = (Int64)reader["Work_Status_ID"]
+                                };
+                                employeeList.Add(employee);
                             }
                         }
                     }
-
-                    command.Connection.Close();
                 }
+                return (employeeList);
             }
             catch (Exception ex)
             {
-                throw (ex);
+                throw ex;
             }
         }
 
-        public void DeleteEmployee(string employeeID)
+        public void UpdateEmployee(EmployeeDM employee)
         {
             try
             {
-                using (SqlCommand command = new SqlCommand("", Connection))
+                using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
                 {
-                    command.Parameters["Employee_ID"].Value = employeeID;
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Connection.Close();
+                    using (SqlCommand cmd = new SqlCommand("UPDATE_EMPLOYEE", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Employee_ID", employee.EmployeeId);
+                        cmd.Parameters.AddWithValue("@Employee_Name", employee.EmployeeName);
+                        cmd.Parameters.AddWithValue("@Employee_First_Name", employee.EmployeeFirstName);
+                        cmd.Parameters.AddWithValue("@Employee_Middle", employee.EmployeeMiddle);
+                        cmd.Parameters.AddWithValue("@Employee_Last_Name", employee.EmployeeLastName);
+                        cmd.Parameters.AddWithValue("@Age", employee.Age);
+                        cmd.Parameters.AddWithValue("@Birth_Date", employee.BirthDate);
+                        cmd.Parameters.AddWithValue("@Address_ID", employee.AddressID);
+                        cmd.Parameters.AddWithValue("@Time_ID", employee.TimeID);
+                        cmd.Parameters.AddWithValue("@Work_Status_ID", employee.WorkStatusID);
+                        connection.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw (e);
+            }
+        }
+
+        public void DeleteEmployee(EmployeeDM employee)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
+                {
+                    using (SqlCommand cmd = new SqlCommand("DELETE_EMPLOYEE", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Employee_ID", employee.EmployeeId);
+                        connection.Open();
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
             catch (Exception ex)
             {
-                throw (ex);
+                //Write to error log
+                throw ex;
             }
         }
 

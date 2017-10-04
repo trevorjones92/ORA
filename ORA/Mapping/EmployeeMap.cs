@@ -4,21 +4,34 @@ using System.Linq;
 using System.Web;
 using ORA.Models;
 using AutoMapper;
+using ORA.Tools;
+using ORA_Data.Data;
+using ORA_Data.DAL;
 
 namespace ORA.Mapping
 {
     public class EmployeeMap
     {
-        public static EmployeeVM _employee = new EmployeeVM();
+        public static EmployeeDAL employeeDO = new EmployeeDAL();
 
-        public static EmployeeVM PlaceHolderMethod(EmployeeVM _employee)
+        public static void CreateEmployee(EmployeeVM employee)
         {
-            return (_employee);
+            employeeDO.CreateEmployee(Mapper.Map<EmployeeDM>(employee));
         }
 
-        public static EmployeeVM PlaceHolderMethodByID(EmployeeVM _employee)
+        public static List<EmployeeDM> ReadEmployees()
         {
-            return (_employee);
+            return Mapper.Map<List<EmployeeDM>>(employeeDO.ReadEmployee());
+        }
+
+        public static void UpdateEmployee(EmployeeVM employee)
+        {
+            employeeDO.UpdateEmployee(Mapper.Map<EmployeeDM>(employee));
+        }
+
+        public static void DeleteEmployee(EmployeeVM employee)
+        {
+            employeeDO.DeleteEmployee(Mapper.Map<EmployeeDM>(employee));
         }
     }
 }

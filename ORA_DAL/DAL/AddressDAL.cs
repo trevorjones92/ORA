@@ -11,40 +11,40 @@ using System.Web;
 
 namespace ORA_Data
 {
-    class AddressDAL
+    class AddressDal
     {
         /// <summary>
         /// Basic CRUD methods for address information. AddressDM is the model being used here.
         /// </summary>
         
         #region ADDRESS DAL METHODS
-        public void CreateAddress(AddressDM _address)
+        public void CreateAddress(AddressDM address)
         {
             try
             {
                 //Creating a way of adding new user information to my database 
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
+                using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
                 {
-                    using (SqlCommand cmd = new SqlCommand("CREATE_ADDRESS", Connection))
+                    using (SqlCommand cmd = new SqlCommand("CREATE_ADDRESS", connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Address", _address.Address);
-                        cmd.Parameters.AddWithValue("@City", _address.City);
-                        cmd.Parameters.AddWithValue("@State", _address.State);
-                        cmd.Parameters.AddWithValue("@Zip_Code", _address.Zip_Code);
-                        cmd.Parameters.AddWithValue("@Country", _address.Country);
-                        cmd.Parameters.AddWithValue("@Phone", _address.Phone);
-                        cmd.Parameters.AddWithValue("@Email", _address.Email);
-                        Connection.Open();
+                        cmd.Parameters.AddWithValue("@Address", address.Address);
+                        cmd.Parameters.AddWithValue("@City", address.City);
+                        cmd.Parameters.AddWithValue("@State", address.State);
+                        cmd.Parameters.AddWithValue("@Zip_Code", address.Zip_Code);
+                        cmd.Parameters.AddWithValue("@Country", address.Country);
+                        cmd.Parameters.AddWithValue("@Phone", address.Phone);
+                        cmd.Parameters.AddWithValue("@Email", address.Email);
+                        connection.Open();
                         cmd.ExecuteNonQuery();
-                        Connection.Close();
-                        Connection.Dispose();
+                        connection.Close();
+                        connection.Dispose();
                     }
                 }
             }
             catch (Exception e)
             {
-                throw (e);
+                throw e;
             }
         }
 
@@ -53,29 +53,29 @@ namespace ORA_Data
             List<AddressDM> addressList = new List<AddressDM>();
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
+                using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
                 {
-                    Connection.Open();
-                    using (SqlCommand cmd = new SqlCommand("READ_ADDRESS", Connection))
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("READ_ADDRESS", connection))
                     {
-                        cmd.Connection = Connection;
+                        cmd.Connection = connection;
                         cmd.CommandType = CommandType.StoredProcedure;
                         using (var reader = cmd.ExecuteReader())
                         {
-                            if (reader.HasRows)
+                            if (!reader.HasRows) return (addressList);
+                            while (reader.Read())
                             {
-                                while (reader.Read())
+                                var address = new AddressDM
                                 {
-                                    var _address = new AddressDM();
-                                    _address.Address = (string)reader["Address"];
-                                    _address.City = (string)reader["City"];
-                                    _address.State = (string)reader["State"];
-                                    _address.Zip_Code = (int)reader["Zip_Code"];
-                                    _address.Country = (string)reader["Country"];
-                                    _address.Phone = (string)reader["Phone"];
-                                    _address.Email = (string)reader["Email"];
-                                    addressList.Add(_address);
-                                }
+                                    Address = (string) reader["Address"],
+                                    City = (string) reader["City"],
+                                    State = (string) reader["State"],
+                                    Zip_Code = (int) reader["Zip_Code"],
+                                    Country = (string) reader["Country"],
+                                    Phone = (string) reader["Phone"],
+                                    Email = (string) reader["Email"]
+                                };
+                                addressList.Add(address);
                             }
                         }
                     }
@@ -88,24 +88,24 @@ namespace ORA_Data
             }
         }
 
-        public void UpdateAddress(AddressDM _address)
+        public void UpdateAddress(AddressDM address)
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
+                using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
                 {
-                    using (SqlCommand cmd = new SqlCommand("UPDATE_ADDRESS", Connection))
+                    using (SqlCommand cmd = new SqlCommand("UPDATE_ADDRESS", connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Address_ID", _address.Address_ID);
-                        cmd.Parameters.AddWithValue("@Address", _address.Address);
-                        cmd.Parameters.AddWithValue("@FirstName", _address.City);
-                        cmd.Parameters.AddWithValue("@LastName", _address.State);
-                        cmd.Parameters.AddWithValue("@DoB", _address.Zip_Code);
-                        cmd.Parameters.AddWithValue("@PhoneNumber", _address.Country);
-                        cmd.Parameters.AddWithValue("@UserName", _address.Phone);
-                        cmd.Parameters.AddWithValue("@Password", _address.Email);
-                        Connection.Open();
+                        cmd.Parameters.AddWithValue("@Address_ID", address.Address_ID);
+                        cmd.Parameters.AddWithValue("@Address", address.Address);
+                        cmd.Parameters.AddWithValue("@FirstName", address.City);
+                        cmd.Parameters.AddWithValue("@LastName", address.State);
+                        cmd.Parameters.AddWithValue("@DoB", address.Zip_Code);
+                        cmd.Parameters.AddWithValue("@PhoneNumber", address.Country);
+                        cmd.Parameters.AddWithValue("@UserName", address.Phone);
+                        cmd.Parameters.AddWithValue("@Password", address.Email);
+                        connection.Open();
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -116,17 +116,17 @@ namespace ORA_Data
             }
         }
 
-        public void DeleteAddress(AddressDM _address)
+        public void DeleteAddress(AddressDM address)
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
+                using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
                 {
-                    using (SqlCommand cmd = new SqlCommand("DELETE_ADDRESS", Connection))
+                    using (SqlCommand cmd = new SqlCommand("DELETE_ADDRESS", connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Address_ID", _address.Address_ID);
-                        Connection.Open();
+                        cmd.Parameters.AddWithValue("@Address_ID", address.Address_ID);
+                        connection.Open();
                         cmd.ExecuteNonQuery();
                     }
                 }
