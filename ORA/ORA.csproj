@@ -236,6 +236,7 @@
     <Content Include="Views\Login\LogOut.cshtml" />
     <Content Include="Views\Employee\ViewEmployees.cshtml" />
     <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Employee\CreateEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

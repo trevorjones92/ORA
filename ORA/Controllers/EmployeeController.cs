@@ -48,8 +48,8 @@ namespace ORA.Controllers
         [HttpPost]
         public ActionResult CreateEmployee(EmployeeVM employee)
         {
-            //EmployeeMap.PlaceHolderMethodById(employee);
-            return RedirectToAction("", "", new { area = "" });
+            EmployeeMap.CreateEmployee(employee);
+            return View();
         }
 
         public ActionResult SortEmployeeBy()
@@ -73,8 +73,8 @@ namespace ORA.Controllers
             return RedirectToAction("", "", new { area = "" });
         }
 
-        /*TODO: Needs javascript functionality to reconfirm deletion of an employee. Deleting an employee shouldnt actually delete employ, but change work status
-         *      and cascade delete everywhere else where that employee is being referenced. Keeping the employee in the system for records, but removing him elsewhere
+        /*TODO @Trevor Jones: Needs javascript functionality to reconfirm deletion of an employee. Deleting an employee shouldnt actually delete employ, but change work status
+         *TODO:               and cascade delete everywhere else where that employee is being referenced. Keeping the employee in the system for records, but removing elsewhere
          */
         [HttpPost]
         public ActionResult DeleteEmployee(EmployeeVM employee)

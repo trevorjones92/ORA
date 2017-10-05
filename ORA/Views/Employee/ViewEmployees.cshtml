@@ -1,5 +1,4 @@
-﻿@using ORA.Models
-@model IEnumerable<ORA.Models.EmployeeVM>
+﻿@model IEnumerable<ORA.Models.EmployeeVM>
 
 @{
     ViewBag.Title = "ViewEmployees";
@@ -8,7 +7,7 @@
 <h2>Employees</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Employee", "CreateEmployee")
 </p>
 <table class="table">
     <tr>
@@ -84,5 +83,4 @@
         </td>
     </tr>
 }
-
 </table>
