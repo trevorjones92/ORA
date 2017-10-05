@@ -15,11 +15,6 @@ namespace ORA.Tools
             {
                 cfg.CreateMap<LoginVM,LoginDM>();
                 cfg.CreateMap<EmployeeVM, EmployeeDM>();
-                cfg.CreateMap<List<EmployeeVM>, List<EmployeeDM>>();
-<<<<<<< HEAD
-=======
-                cfg.CreateMap<List<EmployeeDM>, List<EmployeeVM>>();
->>>>>>> 788adcab32142a1a3f01fa3b0cd37d01080a219e
             });
 
            

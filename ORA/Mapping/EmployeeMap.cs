@@ -17,7 +17,7 @@ namespace ORA.Mapping
 
         public static List<EmployeeDM> ReadEmployees()
         {
-            return Mapper.Map<List<EmployeeDM>>(employeeDO.ReadEmployee());
+            return Mapper.Map<List<EmployeeDM>>(employeeDO.ReadEmployees());
         }
 
         public static void UpdateEmployee(EmployeeVM employee)

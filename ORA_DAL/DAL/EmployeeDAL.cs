@@ -90,7 +90,7 @@ namespace ORA_Data.Data
             }
         }
 
-        public List<EmployeeDM> ReadEmployee()
+        public List<EmployeeDM> ReadEmployees()
         {
             List<EmployeeDM> employeeList = new List<EmployeeDM>();
             try
@@ -98,7 +98,7 @@ namespace ORA_Data.Data
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    using (SqlCommand cmd = new SqlCommand("READ_EMPLOYEE", connection))
+                    using (SqlCommand cmd = new SqlCommand("READ_EMPLOYEES", connection))
                     {
                         cmd.Connection = connection;
                         cmd.CommandType = CommandType.StoredProcedure;
