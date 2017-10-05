@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace ORA.Models
+namespace ORA_DAL.Model
 {
     public class EmployeeDM
     {

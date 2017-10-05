@@ -1,12 +1,10 @@
-﻿using ORA.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Web;
+using ORA_DAL.Model;
 
 namespace ORA_Data.Data
 {

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using AutoMapper;
 using ORA.Models;
 using ORA_Data.Model;
+using ORA_DAL.Model;
 
 namespace ORA.Tools
 {
