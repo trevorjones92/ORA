@@ -21,10 +21,17 @@ namespace ORA.Controllers
                 }
 
                 /*Service managers will team Leads and employees for specific Client AND Location*/
+<<<<<<< HEAD
                 else if (Session["Roles"].ToString().ToUpper().Trim().Contains("SERVICEMANAGER"))
                 {
                     return View(/*Returns a List of employees*/);
                 }
+=======
+                //else if (Session["Roles"].ToString().ToUpper().Trim().Contains("SERVICEMANAGER"))
+                //{
+                    //return View(/*Returns a List of employees*/);
+                //}
+>>>>>>> 386b201499e73d21a7ce3c78e5996ac6ba23bcb6
 
                 /*Team Leads can only see employees within Team AND Location */
                 else
