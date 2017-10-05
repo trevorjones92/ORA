@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using ORA.Models;
 using ORA.Mapping;
-using ORA_DAL.Model;
 
 namespace ORA.Controllers
 {
@@ -13,26 +11,30 @@ namespace ORA.Controllers
         public ActionResult ViewEmployees(EmployeeVM employee)
         {
             //This view is not accessable to regular employees
-            //if (!string.IsNullOrEmpty((string)Session["Roles"]))
-            //{
-                //if (Session["Roles"].ToString().ToUpper().Trim().Contains("DIRECTOR") || Session["Roles"].ToString().ToUpper().Trim().Contains("ADMINISTRATOR"))
-                //{
+            if (!string.IsNullOrEmpty((string)Session["Roles"]))
+            {
+                if (Session["Roles"].ToString().ToUpper().Trim().Contains("DIRECTOR") || Session["Roles"].ToString().ToUpper().Trim().Contains("ADMINISTRATOR"))
+                {
                     return View(EmployeeMap.ReadEmployees());
-                //}
+                }
 
                 /*Service managers will team Leads and employees for specific Client AND Location*/
+                else if (Session["Roles"].ToString().ToUpper().Trim().Contains("SERVICEMANAGER"))
+                {
+                    return View(/*Returns a List of employees*/);
+                }
                 //else if (Session["Roles"].ToString().ToUpper().Trim().Contains("SERVICEMANAGER"))
                 //{
                     //return View(/*Returns a List of employees*/);
                 //}
 
                 /*Team Leads can only see employees within Team AND Location */
-                //else
-                //    return View(/*Returns a List of employees*/);
-            //}
-            ////Else returns to Login if session is null or empty
-            //else
-            //    return RedirectToAction("", "", new { area = "" });
+                else
+                    return View(/*Returns a List of employees*/);
+            }
+            //Else returns to Login if session is null or empty
+            else
+                return RedirectToAction("", "", new { area = "" });
         }
 
         #region ADMIN/MANAGER CREATE, READ, UPDATE, DELETE METHODS FOR SUPER USER
@@ -47,9 +49,8 @@ namespace ORA.Controllers
         public ActionResult CreateEmployee(EmployeeVM employee)
         {
             //EmployeeMap.PlaceHolderMethodById(employee);
-            return RedirectToAction("", "", new { area = "" }); ;
+            return RedirectToAction("", "", new { area = "" });
         }
-
 
         public ActionResult SortEmployeeBy()
         {
@@ -79,7 +80,7 @@ namespace ORA.Controllers
         public ActionResult DeleteEmployee(EmployeeVM employee)
         {
             //EmployeeMap.PlaceHolderMethodById(employee);
-            return RedirectToAction("", "", new { area = "" }); ;
+            return RedirectToAction("", "", new { area = "" });
         }
         #endregion
     }
