@@ -48,8 +48,8 @@ namespace ORA.Controllers
         [HttpPost]
         public ActionResult CreateEmployee(EmployeeVM employee)
         {
-            //EmployeeMap.PlaceHolderMethodById(employee);
-            return RedirectToAction("", "", new { area = "" });
+            EmployeeMap.CreateEmployee(employee);
+            return View();
         }
 
         public ActionResult SortEmployeeBy()

@@ -17,31 +17,37 @@ namespace ORA_Data.Data
         #region EMPLOYEE DAL METHODS
 
         //Creates the Employee in the database
-        public EmployeeDM CreateEmployee(EmployeeDM employee)
+        public void CreateEmployee(EmployeeDM employee)
         {
             try
             {
                 using (SqlCommand command = new SqlCommand("CREATE_EMPLOYEE", SqlConnect.Connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters["Employee_Name"].Value = employee.EmployeeName;
-                    command.Parameters["Employee_FirstName"].Value = employee.EmployeeFirstName;
-                    command.Parameters["Employee_MiddleName"].Value = employee.EmployeeMiddle;
-                    command.Parameters["Employee_LastName"].Value = employee.EmployeeLastName;
-                    command.Parameters["Age"].Value = employee.Age;
-                    command.Parameters["Birth_Date"].Value = employee.BirthDate;
-                    command.Parameters["Address_ID"].Value = employee.AddressID;
-                    command.Parameters["Time_ID"].Value = employee.TimeID;
-                    command.Parameters["Work_Status_ID"].Value = employee.WorkStatusID;
+                    command.Parameters.AddWithValue("@Employee_Number", employee.EmployeeNumber);
+                    command.Parameters.AddWithValue("@Employee_Name", employee.EmployeeName);
+                    command.Parameters.AddWithValue("@Employee_FirstName", employee.EmployeeFirstName);
+                    command.Parameters.AddWithValue("@Employee_MiddleName", employee.EmployeeMiddle);
+                    command.Parameters.AddWithValue("@Employee_LastName", employee.EmployeeLastName);
+                    command.Parameters.AddWithValue("@Age", employee.Age);
+                    command.Parameters.AddWithValue("@Birth_Date", employee.BirthDate);
+                    command.Parameters.AddWithValue("@Address_ID", employee.AddressID);
+                    command.Parameters.AddWithValue("@Time_ID", employee.TimeID);
+                    command.Parameters.AddWithValue("@Work_Status_ID", employee.WorkStatusID);
 
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
                     command.Connection.Close();
                 }
-                return employee;
             }
             catch (Exception ex)
             {
-                SqlConnect.Connection.Close();
                 throw (ex);
+            }
+
+            finally
+            {
+                SqlConnect.Connection.Close();
             }
         }
 
@@ -90,7 +96,6 @@ namespace ORA_Data.Data
             List<EmployeeDM> employeeList = new List<EmployeeDM>();
             try
             {
-                EmployeeDM employee = new EmployeeDM();
                 SqlConnect.Connection.Open();
                 using (SqlCommand cmd = new SqlCommand("READ_EMPLOYEES", SqlConnect.Connection))
                 {
@@ -100,6 +105,7 @@ namespace ORA_Data.Data
                         if (!reader.HasRows) return (employeeList);
                         while (reader.Read())
                         {
+                            EmployeeDM employee = new EmployeeDM();
                             employee.EmployeeNumber = (string)reader["Employee_Number"];
                             employee.EmployeeName = (string)reader["Employee_Name"];
                             employee.EmployeeFirstName = (string)reader["Employee_FirstName"];
@@ -110,21 +116,23 @@ namespace ORA_Data.Data
                             if (reader["Address_ID"] != DBNull.Value)
                                 employee.AddressID = (Int64)reader["Address_ID"];
                             if (reader["Time_ID"] != DBNull.Value)
-                                employee.TimeID = (Int64) reader["Time_ID"];
+                                employee.TimeID = (Int64)reader["Time_ID"];
                             if (reader["Work_Status_ID"] != DBNull.Value)
                                 employee.WorkStatusID = (Int64)reader["Work_Status_ID"];
                             employeeList.Add(employee);
                         }
                     }
+                    cmd.Connection.Close();
                 }
-
-                SqlConnect.Connection.Close();
                 return (employeeList);
             }
             catch (Exception ex)
             {
-                SqlConnect.Connection.Close();
                 throw ex;
+            }
+            finally
+            {
+                SqlConnect.Connection.Close();
             }
         }
 
