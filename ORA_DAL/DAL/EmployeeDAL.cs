@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Security.Cryptography;
 using ORA_DAL.Model;
 
 namespace ORA_Data.Data
@@ -15,12 +14,9 @@ namespace ORA_Data.Data
         /// </summary>
         /// 
         public string ConnectionString = @"Data Source=GDC-LAPTOP-148; Initial Catalog = ORATest; Integrated Security = True";
-
         
         #region EMPLOYEE DAL METHODS
         SqlConnection _connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
-
-        private static RNGCryptoServiceProvider _crypto = new RNGCryptoServiceProvider();
 
         //Creates the Employee in the database
         public EmployeeDM CreateEmployee(EmployeeDM employee)

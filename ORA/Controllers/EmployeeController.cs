@@ -13,26 +13,26 @@ namespace ORA.Controllers
         public ActionResult ViewEmployees(EmployeeVM employee)
         {
             //This view is not accessable to regular employees
-            //if (!string.IsNullOrEmpty((string)Session["Roles"]))
-            //{
-                //if (Session["Roles"].ToString().ToUpper().Trim().Contains("DIRECTOR") || Session["Roles"].ToString().ToUpper().Trim().Contains("ADMINISTRATOR"))
-                //{
+            if (!string.IsNullOrEmpty((string)Session["Roles"]))
+            {
+                if (Session["Roles"].ToString().ToUpper().Trim().Contains("DIRECTOR") || Session["Roles"].ToString().ToUpper().Trim().Contains("ADMINISTRATOR"))
+                {
                     return View(EmployeeMap.ReadEmployees());
-                //}
+                }
 
                 /*Service managers will team Leads and employees for specific Client AND Location*/
-                //else if (Session["Roles"].ToString().ToUpper().Trim().Contains("SERVICEMANAGER"))
-                //{
+                else if (Session["Roles"].ToString().ToUpper().Trim().Contains("SERVICEMANAGER"))
+                {
                     return View(/*Returns a List of employees*/);
-                //}
+                }
 
                 /*Team Leads can only see employees within Team AND Location */
-                //else
-                //    return View(/*Returns a List of employees*/);
-            //}
-            ////Else returns to Login if session is null or empty
-            //else
-            //    return RedirectToAction("", "", new { area = "" });
+                else
+                    return View(/*Returns a List of employees*/);
+            }
+            //Else returns to Login if session is null or empty
+            else
+                return RedirectToAction("", "", new { area = "" });
         }
 
         #region ADMIN/MANAGER CREATE, READ, UPDATE, DELETE METHODS FOR SUPER USER
@@ -49,7 +49,6 @@ namespace ORA.Controllers
             //EmployeeMap.PlaceHolderMethodById(employee);
             return RedirectToAction("", "", new { area = "" }); ;
         }
-
 
         public ActionResult SortEmployeeBy()
         {

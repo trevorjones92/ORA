@@ -8,16 +8,16 @@ namespace ORA.Mapping
 {
     public class EmployeeMap
     {
-        public static EmployeeDAL employeeDO = new EmployeeDAL();
+        private static EmployeeDAL employeeDO = new EmployeeDAL();
 
         public static void CreateEmployee(EmployeeVM employee)
         {
             employeeDO.CreateEmployee(Mapper.Map<EmployeeDM>(employee));
         }
 
-        public static List<EmployeeDM> ReadEmployees()
+        public static List<EmployeeVM> ReadEmployees()
         {
-            return Mapper.Map<List<EmployeeDM>>(employeeDO.ReadEmployee());
+            return Mapper.Map<List<EmployeeVM>>(employeeDO.ReadEmployee());
         }
 
         public static void UpdateEmployee(EmployeeVM employee)
