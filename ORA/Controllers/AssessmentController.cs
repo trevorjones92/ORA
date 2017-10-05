@@ -15,8 +15,6 @@ namespace ORA.Controllers
 
         //Get Assessments for different Roles
 
-        ///Get personal assessment 
-
         //Update Assessments
 
         //Delete Assessments

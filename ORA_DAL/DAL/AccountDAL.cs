@@ -1,4 +1,4 @@
-﻿namespace ORA_Data.DAL
+﻿namespace ORA_DAL.DAL
 {
     class AccountDAL
     {

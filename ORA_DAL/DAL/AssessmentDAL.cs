@@ -15,51 +15,51 @@ namespace ORA_DAL.DAL
         /// 
 
         #region Assessment DAL Methods
-        public void CreateAssessment(AssessmentDM _assessment)
+        public void CreateAssessment(AssessmentDM assessment)
         {
             try
             {
                 //Creating a way of adding new user information to my database 
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
+                using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
                 {
-                    using (SqlCommand cmd = new SqlCommand("CREATE_ASSESSMENT", Connection))
+                    using (SqlCommand cmd = new SqlCommand("CREATE_ASSESSMENT", connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@TD_Problem_Solving", _assessment.TDProblemSolving);
-                        cmd.Parameters.AddWithValue("@TD_Quality_of_Work", _assessment.TDQualityOfWork);
-                        cmd.Parameters.AddWithValue("@TD_Productivity", _assessment.TDProductivity);
-                        cmd.Parameters.AddWithValue("@TD_Product_Knowledge", _assessment.TDProductKnowledge);
-                        cmd.Parameters.AddWithValue("@TD_Comments", _assessment.TDComments);
-                        cmd.Parameters.AddWithValue("@CSR_Proffesionalism_Teamwork", _assessment.CSRProffesionalismTeamwork);
-                        cmd.Parameters.AddWithValue("@CSR_Verbal_Skills", _assessment.CSRVerbalSkills);
-                        cmd.Parameters.AddWithValue("@CSR_Written_Skills", _assessment.CSRWrittenSkills);
-                        cmd.Parameters.AddWithValue("@CSR_Listening_Skills", _assessment.CSRListeningSkills);
-                        cmd.Parameters.AddWithValue("@CSR_Comments", _assessment.CSRComments);
-                        cmd.Parameters.AddWithValue("@AD_Attendence", _assessment.ADAttendence);
-                        cmd.Parameters.AddWithValue("@AD_Ethical_Behavior", _assessment.ADEthicalBehavior);
-                        cmd.Parameters.AddWithValue("@AD_Meet_Deadlines", _assessment.ADMeetDeadlines);
-                        cmd.Parameters.AddWithValue("@AD_Organize_Detailed_Work", _assessment.ADOrganizeDetailedWork);
-                        cmd.Parameters.AddWithValue("@AD_Comments", _assessment.ADComments);
-                        cmd.Parameters.AddWithValue("@TM_Resource_Use", _assessment.TMResourceUse);
-                        cmd.Parameters.AddWithValue("@TM_Feedback", _assessment.TMFeedback);
-                        cmd.Parameters.AddWithValue("@TM_Technical_Monitoring", _assessment.TMTechnicalMonitoring);
-                        cmd.Parameters.AddWithValue("@TM_Asking_Questions", _assessment.TMAskingQuestions);
-                        cmd.Parameters.AddWithValue("@TM_Comments", _assessment.TMComments);
-                        cmd.Parameters.AddWithValue("@MI_Attitude_Work", _assessment.MIAttitudeWork);
-                        cmd.Parameters.AddWithValue("@MI_Grooming_Appearance", _assessment.MIGroomingAppearance);
-                        cmd.Parameters.AddWithValue("@MI_Personal_Growth", _assessment.MIPersonalGrowth);
-                        cmd.Parameters.AddWithValue("@MI_Potential_Advancement", _assessment.MIPotentialAdvancement);
-                        cmd.Parameters.AddWithValue("@MI_Comments", _assessment.MIComments);
-                        cmd.Parameters.AddWithValue("@Assignment_ID", _assessment.AssignmentID);
-                        cmd.Parameters.AddWithValue("@Created", _assessment.Created);
-                        cmd.Parameters.AddWithValue("@Created_By", _assessment.CreatedBy);
-                        cmd.Parameters.AddWithValue("@Modified", _assessment.Modified);
-                        cmd.Parameters.AddWithValue("@Modified_By", _assessment.ModifiedBy);
+                        cmd.Parameters.AddWithValue("@TD_Problem_Solving", assessment.TDProblemSolving);
+                        cmd.Parameters.AddWithValue("@TD_Quality_of_Work", assessment.TDQualityOfWork);
+                        cmd.Parameters.AddWithValue("@TD_Productivity", assessment.TDProductivity);
+                        cmd.Parameters.AddWithValue("@TD_Product_Knowledge", assessment.TDProductKnowledge);
+                        cmd.Parameters.AddWithValue("@TD_Comments", assessment.TDComments);
+                        cmd.Parameters.AddWithValue("@CSR_Proffesionalism_Teamwork", assessment.CSRProffesionalismTeamwork);
+                        cmd.Parameters.AddWithValue("@CSR_Verbal_Skills", assessment.CSRVerbalSkills);
+                        cmd.Parameters.AddWithValue("@CSR_Written_Skills", assessment.CSRWrittenSkills);
+                        cmd.Parameters.AddWithValue("@CSR_Listening_Skills", assessment.CSRListeningSkills);
+                        cmd.Parameters.AddWithValue("@CSR_Comments", assessment.CSRComments);
+                        cmd.Parameters.AddWithValue("@AD_Attendence", assessment.ADAttendence);
+                        cmd.Parameters.AddWithValue("@AD_Ethical_Behavior", assessment.ADEthicalBehavior);
+                        cmd.Parameters.AddWithValue("@AD_Meet_Deadlines", assessment.ADMeetDeadlines);
+                        cmd.Parameters.AddWithValue("@AD_Organize_Detailed_Work", assessment.ADOrganizeDetailedWork);
+                        cmd.Parameters.AddWithValue("@AD_Comments", assessment.ADComments);
+                        cmd.Parameters.AddWithValue("@TM_Resource_Use", assessment.TMResourceUse);
+                        cmd.Parameters.AddWithValue("@TM_Feedback", assessment.TMFeedback);
+                        cmd.Parameters.AddWithValue("@TM_Technical_Monitoring", assessment.TMTechnicalMonitoring);
+                        cmd.Parameters.AddWithValue("@TM_Asking_Questions", assessment.TMAskingQuestions);
+                        cmd.Parameters.AddWithValue("@TM_Comments", assessment.TMComments);
+                        cmd.Parameters.AddWithValue("@MI_Attitude_Work", assessment.MIAttitudeWork);
+                        cmd.Parameters.AddWithValue("@MI_Grooming_Appearance", assessment.MIGroomingAppearance);
+                        cmd.Parameters.AddWithValue("@MI_Personal_Growth", assessment.MIPersonalGrowth);
+                        cmd.Parameters.AddWithValue("@MI_Potential_Advancement", assessment.MIPotentialAdvancement);
+                        cmd.Parameters.AddWithValue("@MI_Comments", assessment.MIComments);
+                        cmd.Parameters.AddWithValue("@Assignment_ID", assessment.AssignmentID);
+                        cmd.Parameters.AddWithValue("@Created", assessment.Created);
+                        cmd.Parameters.AddWithValue("@Created_By", assessment.CreatedBy);
+                        cmd.Parameters.AddWithValue("@Modified", assessment.Modified);
+                        cmd.Parameters.AddWithValue("@Modified_By", assessment.ModifiedBy);
 
-                        Connection.Open();
+                        connection.Open();
                         cmd.ExecuteNonQuery();
-                        Connection.Close();
-                        Connection.Dispose();
+                        connection.Close();
+                        connection.Dispose();
                     }
                 }
             }
@@ -74,12 +74,12 @@ namespace ORA_DAL.DAL
             List<AssessmentDM> assessmentList = new List<AssessmentDM>();
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
+                using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
                 {
-                    Connection.Open();
-                    using (SqlCommand cmd = new SqlCommand("READ_ASSESSMENT", Connection))
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("READ_ASSESSMENT", connection))
                     {
-                        cmd.Connection = Connection;
+                        cmd.Connection = connection;
                         cmd.CommandType = CommandType.StoredProcedure;
                         using (var reader = cmd.ExecuteReader())
                         {
@@ -134,7 +134,7 @@ namespace ORA_DAL.DAL
             }
         }
 
-        public void UpdateAssessment(AssessmentDM _assessment)
+        public void UpdateAssessment(AssessmentDM assessment)
         {
             try
             {
@@ -144,36 +144,36 @@ namespace ORA_DAL.DAL
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Assessment_ID", _assessment.AssessmentId);
-                        cmd.Parameters.AddWithValue("@TD_Problem_Solving", _assessment.TDProblemSolving);
-                        cmd.Parameters.AddWithValue("@TD_Quality_of_Work", _assessment.TDQualityOfWork);
-                        cmd.Parameters.AddWithValue("@TD_Productivity", _assessment.TDProductivity);
-                        cmd.Parameters.AddWithValue("@TD_Product_Knowledge", _assessment.TDProductKnowledge);
-                        cmd.Parameters.AddWithValue("@TD_Comments", _assessment.TDComments);
-                        cmd.Parameters.AddWithValue("@CSR_Proffesionalism_Teamwork", _assessment.CSRProffesionalismTeamwork);
-                        cmd.Parameters.AddWithValue("@CSR_Verbal_Skills", _assessment.CSRVerbalSkills);
-                        cmd.Parameters.AddWithValue("@CSR_Written_Skills", _assessment.CSRWrittenSkills);
-                        cmd.Parameters.AddWithValue("@CSR_Listening_Skills", _assessment.CSRListeningSkills);
-                        cmd.Parameters.AddWithValue("@CSR_Comments", _assessment.CSRComments);
-                        cmd.Parameters.AddWithValue("@AD_Attendence", _assessment.ADAttendence);
-                        cmd.Parameters.AddWithValue("@AD_Ethical_Behavior", _assessment.ADEthicalBehavior);
-                        cmd.Parameters.AddWithValue("@AD_Meet_Deadlines", _assessment.ADMeetDeadlines);
-                        cmd.Parameters.AddWithValue("@AD_Organize_Detailed_Work", _assessment.ADOrganizeDetailedWork);
-                        cmd.Parameters.AddWithValue("@AD_Comments", _assessment.ADComments);
-                        cmd.Parameters.AddWithValue("@TM_Resource_Use", _assessment.TMResourceUse);
-                        cmd.Parameters.AddWithValue("@TM_Feedback", _assessment.TMFeedback);
-                        cmd.Parameters.AddWithValue("@TM_Technical_Monitoring", _assessment.TMTechnicalMonitoring);
-                        cmd.Parameters.AddWithValue("@TM_Asking_Questions", _assessment.TMAskingQuestions);
-                        cmd.Parameters.AddWithValue("@TM_Comments", _assessment.TMComments);
-                        cmd.Parameters.AddWithValue("@MI_Attitude_Work", _assessment.MIAttitudeWork);
-                        cmd.Parameters.AddWithValue("@MI_Grooming_Appearance", _assessment.MIGroomingAppearance);
-                        cmd.Parameters.AddWithValue("@MI_Personal_Growth", _assessment.MIPersonalGrowth);
-                        cmd.Parameters.AddWithValue("@MI_Potential_Advancement", _assessment.MIPotentialAdvancement);
-                        cmd.Parameters.AddWithValue("@MI_Comments", _assessment.MIComments);
-                        cmd.Parameters.AddWithValue("@Created", _assessment.Created);
-                        cmd.Parameters.AddWithValue("@Created_By", _assessment.CreatedBy);
-                        cmd.Parameters.AddWithValue("@Modified", _assessment.Modified);
-                        cmd.Parameters.AddWithValue("@Modified_By", _assessment.ModifiedBy);
+                        cmd.Parameters.AddWithValue("@Assessment_ID", assessment.AssessmentId);
+                        cmd.Parameters.AddWithValue("@TD_Problem_Solving", assessment.TDProblemSolving);
+                        cmd.Parameters.AddWithValue("@TD_Quality_of_Work", assessment.TDQualityOfWork);
+                        cmd.Parameters.AddWithValue("@TD_Productivity", assessment.TDProductivity);
+                        cmd.Parameters.AddWithValue("@TD_Product_Knowledge", assessment.TDProductKnowledge);
+                        cmd.Parameters.AddWithValue("@TD_Comments", assessment.TDComments);
+                        cmd.Parameters.AddWithValue("@CSR_Proffesionalism_Teamwork", assessment.CSRProffesionalismTeamwork);
+                        cmd.Parameters.AddWithValue("@CSR_Verbal_Skills", assessment.CSRVerbalSkills);
+                        cmd.Parameters.AddWithValue("@CSR_Written_Skills", assessment.CSRWrittenSkills);
+                        cmd.Parameters.AddWithValue("@CSR_Listening_Skills", assessment.CSRListeningSkills);
+                        cmd.Parameters.AddWithValue("@CSR_Comments", assessment.CSRComments);
+                        cmd.Parameters.AddWithValue("@AD_Attendence", assessment.ADAttendence);
+                        cmd.Parameters.AddWithValue("@AD_Ethical_Behavior", assessment.ADEthicalBehavior);
+                        cmd.Parameters.AddWithValue("@AD_Meet_Deadlines", assessment.ADMeetDeadlines);
+                        cmd.Parameters.AddWithValue("@AD_Organize_Detailed_Work", assessment.ADOrganizeDetailedWork);
+                        cmd.Parameters.AddWithValue("@AD_Comments", assessment.ADComments);
+                        cmd.Parameters.AddWithValue("@TM_Resource_Use", assessment.TMResourceUse);
+                        cmd.Parameters.AddWithValue("@TM_Feedback", assessment.TMFeedback);
+                        cmd.Parameters.AddWithValue("@TM_Technical_Monitoring", assessment.TMTechnicalMonitoring);
+                        cmd.Parameters.AddWithValue("@TM_Asking_Questions", assessment.TMAskingQuestions);
+                        cmd.Parameters.AddWithValue("@TM_Comments", assessment.TMComments);
+                        cmd.Parameters.AddWithValue("@MI_Attitude_Work", assessment.MIAttitudeWork);
+                        cmd.Parameters.AddWithValue("@MI_Grooming_Appearance", assessment.MIGroomingAppearance);
+                        cmd.Parameters.AddWithValue("@MI_Personal_Growth", assessment.MIPersonalGrowth);
+                        cmd.Parameters.AddWithValue("@MI_Potential_Advancement", assessment.MIPotentialAdvancement);
+                        cmd.Parameters.AddWithValue("@MI_Comments", assessment.MIComments);
+                        cmd.Parameters.AddWithValue("@Created", assessment.Created);
+                        cmd.Parameters.AddWithValue("@Created_By", assessment.CreatedBy);
+                        cmd.Parameters.AddWithValue("@Modified", assessment.Modified);
+                        cmd.Parameters.AddWithValue("@Modified_By", assessment.ModifiedBy);
                         Connection.Open();
                         cmd.ExecuteNonQuery();
                     }
@@ -185,7 +185,7 @@ namespace ORA_DAL.DAL
             }
         }
 
-        public void DeleteAssessment(AssessmentDM _assessment)
+        public void DeleteAssessment(AssessmentDM assessment)
         {
             try
             {
@@ -195,7 +195,7 @@ namespace ORA_DAL.DAL
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Assessment_ID", _assessment.AssessmentId);
+                        cmd.Parameters.AddWithValue("@Assessment_ID", assessment.AssessmentId);
                         Connection.Open();
                         cmd.ExecuteNonQuery();
                     }

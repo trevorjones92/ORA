@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using ORA.Models;
 using ORA.Mapping;
-using ORA_DAL.Model;
 
 namespace ORA.Controllers
 {
@@ -51,7 +49,7 @@ namespace ORA.Controllers
         public ActionResult CreateEmployee(EmployeeVM employee)
         {
             //EmployeeMap.PlaceHolderMethodById(employee);
-            return RedirectToAction("", "", new { area = "" }); ;
+            return RedirectToAction("", "", new { area = "" });
         }
 
         public ActionResult SortEmployeeBy()
@@ -82,7 +80,7 @@ namespace ORA.Controllers
         public ActionResult DeleteEmployee(EmployeeVM employee)
         {
             //EmployeeMap.PlaceHolderMethodById(employee);
-            return RedirectToAction("", "", new { area = "" }); ;
+            return RedirectToAction("", "", new { area = "" });
         }
         #endregion
     }

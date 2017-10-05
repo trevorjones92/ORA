@@ -14,9 +14,8 @@ namespace ORA_Data.DAL
         /// </summary>
         /// 
 
-        #region LOGIN DAL METHODS
-
-        static SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
+        #region LOGIN DAL METHODS 
+        private static readonly SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
 
         public static bool Login(LoginDM login)
         {
@@ -36,7 +35,7 @@ namespace ORA_Data.DAL
                             {
                                 if ((string)reader["Email"] == login.Email)
                                 {
-                                    if ((string)reader["Password"] == ORA_Data.Hash.GetHash(login.Password + (string)reader["Salt"]))
+                                    if ((string)reader["Password"] == Hash.GetHash(login.Password + (string)reader["Salt"]))
                                     {
                                         loggedIN = true;
                                     }

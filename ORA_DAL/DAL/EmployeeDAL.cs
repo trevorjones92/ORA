@@ -16,7 +16,8 @@ namespace ORA_Data.Data
         public string ConnectionString = @"Data Source=GDC-LAPTOP-148; Initial Catalog = ORATest; Integrated Security = True";
         
         #region EMPLOYEE DAL METHODS
-        SqlConnection _connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
+
+        private readonly SqlConnection _connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
 
         //Creates the Employee in the database
         public EmployeeDM CreateEmployee(EmployeeDM employee)

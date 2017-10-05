@@ -8,7 +8,7 @@ namespace ORA.Mapping
 {
     public class EmployeeMap
     {
-        private static EmployeeDAL employeeDO = new EmployeeDAL();
+        private static readonly EmployeeDAL employeeDO = new EmployeeDAL();
 
         public static void CreateEmployee(EmployeeVM employee)
         {

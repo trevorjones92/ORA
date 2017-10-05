@@ -58,20 +58,18 @@ namespace ORA_DAL.DAL
                         cmd.CommandType = CommandType.StoredProcedure;
                         using (var reader = cmd.ExecuteReader())
                         {
-                            if (reader.HasRows)
+                            if (!reader.HasRows) return (customerList);
+                            while (reader.Read())
                             {
-                                while (reader.Read())
-                                {
-                                    var _status = new StatusDM();
-                                    _status.EmployeeStatus = (string)reader["Employee_Status"];
-                                    _status.HireDate = (DateTime)reader["Hire_Date"];
-                                    _status.PayType = (string)reader["Pay_Type"];
-                                    _status.ServiceLength = (string)reader["Service_Length"];
-                                    _status.EmploymentType = (string)reader["Employement_Type"];
-                                    _status.OfficeLocation = (string)reader["Office_Location"];
-                                    _status.TerminationDate = (DateTime)reader["Termination_Date"];
-                                    customerList.Add(_status);
-                                }
+                                var status = new StatusDM();
+                                status.EmployeeStatus = (string)reader["Employee_Status"];
+                                status.HireDate = (DateTime)reader["Hire_Date"];
+                                status.PayType = (string)reader["Pay_Type"];
+                                status.ServiceLength = (string)reader["Service_Length"];
+                                status.EmploymentType = (string)reader["Employement_Type"];
+                                status.OfficeLocation = (string)reader["Office_Location"];
+                                status.TerminationDate = (DateTime)reader["Termination_Date"];
+                                customerList.Add(status);
                             }
                         }
                     }
@@ -84,7 +82,7 @@ namespace ORA_DAL.DAL
             }
         }
 
-        public void UpdateAddress(StatusDM _status)
+        public void UpdateAddress(StatusDM status)
         {
             try
             {
@@ -94,14 +92,14 @@ namespace ORA_DAL.DAL
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Employee_Status", _status.EmployeeStatus);
-                        cmd.Parameters.AddWithValue("@Hire_Date", _status.HireDate);
-                        cmd.Parameters.AddWithValue("@Pay_Type", _status.PayType);
-                        cmd.Parameters.AddWithValue("@Service_Length", _status.ServiceLength);
-                        cmd.Parameters.AddWithValue("@Employment_Type", _status.EmploymentType);
-                        cmd.Parameters.AddWithValue("@Office_Location", _status.OfficeLocation);
-                        cmd.Parameters.AddWithValue("@Termination_Date", _status.TerminationDate);
-                        cmd.Parameters.AddWithValue("@Work_Status_ID", _status.StatusId);
+                        cmd.Parameters.AddWithValue("@Employee_Status", status.EmployeeStatus);
+                        cmd.Parameters.AddWithValue("@Hire_Date", status.HireDate);
+                        cmd.Parameters.AddWithValue("@Pay_Type", status.PayType);
+                        cmd.Parameters.AddWithValue("@Service_Length", status.ServiceLength);
+                        cmd.Parameters.AddWithValue("@Employment_Type", status.EmploymentType);
+                        cmd.Parameters.AddWithValue("@Office_Location", status.OfficeLocation);
+                        cmd.Parameters.AddWithValue("@Termination_Date", status.TerminationDate);
+                        cmd.Parameters.AddWithValue("@Work_Status_ID", status.StatusId);
                         Connection.Open();
                         cmd.ExecuteNonQuery();
                     }
@@ -113,7 +111,7 @@ namespace ORA_DAL.DAL
             }
         }
 
-        public void DeleteAddress(StatusDM _status)
+        public void DeleteAddress(StatusDM status)
         {
             try
             {
@@ -122,7 +120,7 @@ namespace ORA_DAL.DAL
                     using (SqlCommand cmd = new SqlCommand("DELETE_WORK_STATUS", Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Work_Status_ID", _status.StatusId);
+                        cmd.Parameters.AddWithValue("@Work_Status_ID", status.StatusId);
                         Connection.Open();
                         cmd.ExecuteNonQuery();
                     }
