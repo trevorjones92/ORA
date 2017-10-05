@@ -14,5 +14,9 @@ namespace ORA
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Tools.Mapping.MappingMethod();
         }
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            Session["LoggedIn"] = false;
+        }
     }
 }
