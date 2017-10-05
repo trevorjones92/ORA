@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-=======
 ﻿using System;
 using System.Collections.Generic;
->>>>>>> 386b201499e73d21a7ce3c78e5996ac6ba23bcb6
 using System.ComponentModel.DataAnnotations;
 
 namespace ORA.Models
-<<<<<<< HEAD
-
-=======
->>>>>>> 386b201499e73d21a7ce3c78e5996ac6ba23bcb6
 {
     public class LoginVM
     {
