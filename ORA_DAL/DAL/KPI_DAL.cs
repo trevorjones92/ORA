@@ -5,9 +5,9 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace ORA_DAL.DAL
+namespace ORA_Data.DAL
 {
-    class KPI_DAL
+    public class KPI_DAL
     {
         /// <summary>
         /// Basic CRUD methods for KPI information. KPIDM is the model being used here.

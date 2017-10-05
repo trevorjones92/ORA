@@ -5,9 +5,9 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace ORA_DAL.DAL
+namespace ORA_Data.DAL
 {
-    class ProjectDAL
+    public class ProjectDAL
     {
         /// <summary>
         /// Basic CRUD methods for address information. ProjectDM is the model being used here.

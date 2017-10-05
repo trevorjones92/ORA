@@ -5,7 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace ORA_DAL.DAL
+namespace ORA_Data.DAL
 {
     /// <summary>
     /// Basic CRUD methods for Client information. ClientsDM is the model being used here.

@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using AutoMapper;
+using ORA.Models;
+using ORA_Data.DAL;
+using System.Web.Mvc;
 
 namespace ORA.Controllers
 {
@@ -7,6 +10,17 @@ namespace ORA.Controllers
         // GET: Roles
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(RolesVM role)
+        {
+            RolesDAL.CreateRole(Mapper.Map<RolesDM>(role));
             return View();
         }
     }

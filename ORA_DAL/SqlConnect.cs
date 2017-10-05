@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ORA_DAL
+namespace ORA_Data
 {
     public class SqlConnect
     {

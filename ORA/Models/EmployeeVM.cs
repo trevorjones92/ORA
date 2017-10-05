@@ -20,10 +20,10 @@ namespace ORA.Models
 
         public string BirthDate { get; set; }
 
-        public int AddressID { get; set; }
+        public Int64 AddressID { get; set; }
 
-        public int TimeID { get; set; }
+        public Int64 TimeID { get; set; }
 
-        public int WorkStatusID { get; set; }
+        public Int64 WorkStatusID { get; set; }
     }
 }

@@ -235,6 +235,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\LogOut.cshtml" />
     <Content Include="Views\Employee\ViewEmployees.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -242,11 +243,9 @@
     <Folder Include="Views\Assessment\" />
     <Folder Include="Views\Assignment\" />
     <Folder Include="Views\Clients\" />
-    <Folder Include="Views\Employee\" />
     <Folder Include="Views\KPI\" />
     <Folder Include="Views\Position\" />
     <Folder Include="Views\Project\" />
-    <Folder Include="Views\Roles\" />
     <Folder Include="Views\Sprint\" />
     <Folder Include="Views\Story\" />
     <Folder Include="Views\Team\" />

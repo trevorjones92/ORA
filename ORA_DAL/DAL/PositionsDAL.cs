@@ -5,9 +5,9 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace ORA_DAL.DAL
+namespace ORA_Data.DAL
 {
-    class PositionsDAL
+    public class PositionsDAL
     {
         /// <summary>
         /// Basic CRUD methods for Position information. PositionsDM is the model being used here.

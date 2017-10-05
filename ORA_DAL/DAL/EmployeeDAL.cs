@@ -70,9 +70,9 @@ namespace ORA_Data.Data
                                 employee.EmployeeLastName = (string)reader["Employee_LastName"];
                                 employee.Age = (int)reader["Age"];
                                 employee.BirthDate = (string)reader["Birth_Date"];
-                                employee.AddressID = (int)reader["Address_ID"];
-                                employee.TimeID = (int)reader["Time_ID"];
-                                employee.WorkStatusID = (int)reader["Work_Status_ID"];
+                                employee.AddressID = (Int64)reader["Address_ID"];
+                                employee.TimeID = (Int64)reader["Time_ID"];
+                                employee.WorkStatusID = (Int64)reader["Work_Status_ID"];
                             }
                         }
                     }
