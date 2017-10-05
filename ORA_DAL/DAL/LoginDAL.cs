@@ -1,4 +1,5 @@
-﻿using ORA_Data.Model;
+﻿using ORA_DAL;
+using ORA_Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,14 +17,12 @@ namespace ORA_Data.DAL
 
         #region LOGIN DAL METHODS
 
-        static SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]);
-
         public static bool Login(LoginDM login)
         {
             try
             {
                 bool loggedIN = false;
-                using (SqlCommand command = new SqlCommand("READ_LOGIN_BY_EMAIL", Connection))
+                using (SqlCommand command = new SqlCommand("READ_LOGIN_BY_EMAIL", SqlConnect.Connection))
                 {
                     command.Connection.Open();
                     command.Parameters.AddWithValue("Email",login.Email);
@@ -50,6 +49,7 @@ namespace ORA_Data.DAL
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 throw (ex);
             }
         }
@@ -58,7 +58,7 @@ namespace ORA_Data.DAL
         {
             try
             {
-                using (SqlCommand command = new SqlCommand("CREATE_LOGIN", Connection))
+                using (SqlCommand command = new SqlCommand("CREATE_LOGIN", SqlConnect.Connection))
                 {
                     command.Parameters.AddWithValue("@Email",login.Email);
                     command.Parameters.AddWithValue("@Password",login.Password);
@@ -71,6 +71,7 @@ namespace ORA_Data.DAL
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 throw (ex);
             }
         }
@@ -80,7 +81,7 @@ namespace ORA_Data.DAL
         {
             try
             {
-                using (SqlCommand command = new SqlCommand("READ_LOGINS", Connection))
+                using (SqlCommand command = new SqlCommand("READ_LOGINS", SqlConnect.Connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -100,6 +101,7 @@ namespace ORA_Data.DAL
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 throw (ex);
             }
         }
@@ -108,21 +110,18 @@ namespace ORA_Data.DAL
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("DELETE_LOGIN", Connection))
+                    using (SqlCommand cmd = new SqlCommand("DELETE_LOGIN", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Email", login.Email);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                        Connection.Close();
+                        SqlConnect.Connection.Close();
                     }
-                }
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 throw (ex);
             }
         }

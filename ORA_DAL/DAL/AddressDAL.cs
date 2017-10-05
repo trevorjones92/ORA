@@ -1,4 +1,5 @@
-﻿using ORA_Data.Model;
+﻿using ORA_DAL;
+using ORA_Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,9 +20,7 @@ namespace ORA_Data
             try
             {
                 //Creating a way of adding new user information to my database 
-                using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("CREATE_ADDRESS", connection))
+                    using (SqlCommand cmd = new SqlCommand("CREATE_ADDRESS", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Address", address.Address);
@@ -31,15 +30,14 @@ namespace ORA_Data
                         cmd.Parameters.AddWithValue("@Country", address.Country);
                         cmd.Parameters.AddWithValue("@Phone", address.Phone);
                         cmd.Parameters.AddWithValue("@Email", address.Email);
-                        connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                        connection.Close();
-                        connection.Dispose();
+                        SqlConnect.Connection.Close();
                     }
-                }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw e;
             }
         }
@@ -49,13 +47,10 @@ namespace ORA_Data
             List<AddressDM> addressList = new List<AddressDM>();
             try
             {
-                using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    connection.Open();
-                    using (SqlCommand cmd = new SqlCommand("READ_ADDRESS", connection))
+                    using (SqlCommand cmd = new SqlCommand("READ_ADDRESS", SqlConnect.Connection))
                     {
-                        cmd.Connection = connection;
                         cmd.CommandType = CommandType.StoredProcedure;
+                    SqlConnect.Connection.Open();
                         using (var reader = cmd.ExecuteReader())
                         {
                             if (!reader.HasRows) return (addressList);
@@ -73,13 +68,14 @@ namespace ORA_Data
                                 };
                                 addressList.Add(address);
                             }
-                        }
                     }
+                    SqlConnect.Connection.Close();
                 }
                 return (addressList);
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 throw ex;
             }
         }
@@ -88,9 +84,7 @@ namespace ORA_Data
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("UPDATE_ADDRESS", connection))
+                    using (SqlCommand cmd = new SqlCommand("UPDATE_ADDRESS", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Address_ID", address.Address_ID);
@@ -101,13 +95,14 @@ namespace ORA_Data
                         cmd.Parameters.AddWithValue("@PhoneNumber", address.Country);
                         cmd.Parameters.AddWithValue("@UserName", address.Phone);
                         cmd.Parameters.AddWithValue("@Password", address.Email);
-                        connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                    }
+                    SqlConnect.Connection.Close();
                 }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }
@@ -116,19 +111,18 @@ namespace ORA_Data
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("DELETE_ADDRESS", connection))
+                    using (SqlCommand cmd = new SqlCommand("DELETE_ADDRESS", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Address_ID", address.Address_ID);
-                        connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                    }
+                    SqlConnect.Connection.Close();
                 }
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 //Write to error log
                 throw ex;
             }

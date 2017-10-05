@@ -19,9 +19,7 @@ namespace ORA_DAL.DAL
             try
             {
                 //Creating a way of adding new user information to my database 
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("CREATE_SPRINT", Connection))
+                    using (SqlCommand cmd = new SqlCommand("CREATE_SPRINT", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Sprint_Number", _sprint.SprintNumber);
@@ -29,15 +27,14 @@ namespace ORA_DAL.DAL
                         cmd.Parameters.AddWithValue("@Client_ID", _sprint.ClientId);
                         cmd.Parameters.AddWithValue("@Start_Date", _sprint.EndDate);
                         cmd.Parameters.AddWithValue("@End_Date", _sprint.StartDate);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                        Connection.Close();
-                        Connection.Dispose();
+                        SqlConnect.Connection.Close();
                     }
-                }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }
@@ -47,13 +44,10 @@ namespace ORA_DAL.DAL
             List<SprintDM> customerList = new List<SprintDM>();
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    Connection.Open();
-                    using (SqlCommand cmd = new SqlCommand("READ_SPRINTS", Connection))
+                    using (SqlCommand cmd = new SqlCommand("READ_SPRINTS", SqlConnect.Connection))
                     {
-                        cmd.Connection = Connection;
                         cmd.CommandType = CommandType.StoredProcedure;
+                    SqlConnect.Connection.Open();
                         using (var reader = cmd.ExecuteReader())
                         {
                             if (reader.HasRows)
@@ -70,13 +64,14 @@ namespace ORA_DAL.DAL
                                     customerList.Add(_sprint);
                                 }
                             }
-                        }
                     }
+                    SqlConnect.Connection.Close();
                 }
                 return (customerList);
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 throw ex;
             }
         }
@@ -85,11 +80,8 @@ namespace ORA_DAL.DAL
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("UPDATE_SPRINT", Connection))
+                    using (SqlCommand cmd = new SqlCommand("UPDATE_SPRINT", SqlConnect.Connection))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Sprint_Name", _sprint.SprintName);
                         cmd.Parameters.AddWithValue("@Sprint_Number", _sprint.SprintNumber);
@@ -97,13 +89,14 @@ namespace ORA_DAL.DAL
                         cmd.Parameters.AddWithValue("@End_Date", _sprint.EndDate);
                         cmd.Parameters.AddWithValue("@Client_ID", _sprint.ClientId);
                         cmd.Parameters.AddWithValue("@Sprint_ID", _sprint.SprintId);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                    }
+                    SqlConnect.Connection.Close();
                 }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }
@@ -112,19 +105,18 @@ namespace ORA_DAL.DAL
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("DELETE_SPRINT", Connection))
+                    using (SqlCommand cmd = new SqlCommand("DELETE_SPRINT", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Sprint_ID", _sprint.SprintId);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                    }
+                    SqlConnect.Connection.Close();
                 }
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 //Write to error log
                 throw ex;
             }

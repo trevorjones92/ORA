@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using ORA_Data;
 
 namespace ORA_DAL.DAL
 {
@@ -14,27 +15,26 @@ namespace ORA_DAL.DAL
         /// </summary>
 
         #region ADDRESS DAL METHODS
+        //public SqlSqlConnect.Connection SqlConnect.Connection = new SqlSqlConnect.Connection(ConfigurationManager.AppSettings["SQLSqlConnect.Connection"]);
+
         public void CreateProject(RolesDM _role)
         {
             try
             {
                 //Creating a way of adding new user information to my database 
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("CREATE_ROLE", Connection))
+                    using (SqlCommand cmd = new SqlCommand("CREATE_ROLE", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Role_Name", _role.RoleName);
                         cmd.Parameters.AddWithValue("@Role_Description", _role.RoleDescription);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                        Connection.Close();
-                        Connection.Dispose();
+                    SqlConnect.Connection.Close();
                     }
-                }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }
@@ -44,13 +44,10 @@ namespace ORA_DAL.DAL
             List<RolesDM> customerList = new List<RolesDM>();
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    Connection.Open();
-                    using (SqlCommand cmd = new SqlCommand("READ_ROLES", Connection))
+                    using (SqlCommand cmd = new SqlCommand("READ_ROLES", SqlConnect.Connection))
                     {
-                        cmd.Connection = Connection;
                         cmd.CommandType = CommandType.StoredProcedure;
+                SqlConnect.Connection.Open();
                         using (var reader = cmd.ExecuteReader())
                         {
                             if (reader.HasRows)
@@ -64,13 +61,14 @@ namespace ORA_DAL.DAL
                                     customerList.Add(_role);
                                 }
                             }
-                        }
                     }
+                    SqlConnect.Connection.Close();
                 }
                 return (customerList);
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 throw ex;
             }
         }
@@ -79,22 +77,20 @@ namespace ORA_DAL.DAL
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("UPDATE_ROLE", Connection))
+                    using (SqlCommand cmd = new SqlCommand("UPDATE_ROLE", SqlConnect.Connection))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Role_Name", _role.RoleName);
                         cmd.Parameters.AddWithValue("@Role_Number", _role.RoleDescription);
                         cmd.Parameters.AddWithValue("@Role_ID", _role.RoleId);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                    }
+                    SqlConnect.Connection.Close();
                 }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }
@@ -103,19 +99,18 @@ namespace ORA_DAL.DAL
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("DELETE_ROLE", Connection))
+                    using (SqlCommand cmd = new SqlCommand("DELETE_ROLE", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Role_ID", _role.RoleId);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                    }
+                    SqlConnect.Connection.Close();
                 }
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 //Write to error log
                 throw ex;
             }

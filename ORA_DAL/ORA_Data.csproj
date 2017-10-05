@@ -72,6 +72,7 @@
     <Compile Include="Model\StoryDM.cs" />
     <Compile Include="Model\TeamsDM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlConnect.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

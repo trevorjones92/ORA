@@ -19,9 +19,7 @@ namespace ORA_DAL.DAL
             try
             {
                 //Creating a way of adding new user information to my database 
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("CREATE_WORK_STATUS", Connection))
+                    using (SqlCommand cmd = new SqlCommand("CREATE_WORK_STATUS", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Employee_Status", _status.EmployeeStatus);
@@ -31,15 +29,14 @@ namespace ORA_DAL.DAL
                         cmd.Parameters.AddWithValue("@Employement_Type", _status.EmploymentType);
                         cmd.Parameters.AddWithValue("@Office_Location", _status.OfficeLocation);
                         cmd.Parameters.AddWithValue("@Termination_Date", _status.TerminationDate);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                        Connection.Close();
-                        Connection.Dispose();
+                        SqlConnect.Connection.Close();
                     }
-                }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }
@@ -49,13 +46,10 @@ namespace ORA_DAL.DAL
             List<StatusDM> customerList = new List<StatusDM>();
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    Connection.Open();
-                    using (SqlCommand cmd = new SqlCommand("READ_WORK_STATUS", Connection))
+                    using (SqlCommand cmd = new SqlCommand("READ_WORK_STATUS", SqlConnect.Connection))
                     {
-                        cmd.Connection = Connection;
                         cmd.CommandType = CommandType.StoredProcedure;
+                    SqlConnect.Connection.Open();
                         using (var reader = cmd.ExecuteReader())
                         {
                             if (reader.HasRows)
@@ -73,13 +67,14 @@ namespace ORA_DAL.DAL
                                     customerList.Add(_status);
                                 }
                             }
-                        }
                     }
+                    SqlConnect.Connection.Close();
                 }
                 return (customerList);
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 throw ex;
             }
         }
@@ -88,11 +83,8 @@ namespace ORA_DAL.DAL
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("UPDATE_WORK_STATUS", Connection))
+                    using (SqlCommand cmd = new SqlCommand("UPDATE_WORK_STATUS", SqlConnect.Connection))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Employee_Status", _status.EmployeeStatus);
                         cmd.Parameters.AddWithValue("@Hire_Date", _status.HireDate);
@@ -102,13 +94,14 @@ namespace ORA_DAL.DAL
                         cmd.Parameters.AddWithValue("@Office_Location", _status.OfficeLocation);
                         cmd.Parameters.AddWithValue("@Termination_Date", _status.TerminationDate);
                         cmd.Parameters.AddWithValue("@Work_Status_ID", _status.StatusId);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                    }
+                    SqlConnect.Connection.Close();
                 }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }
@@ -117,19 +110,18 @@ namespace ORA_DAL.DAL
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("DELETE_WORK_STATUS", Connection))
+                    using (SqlCommand cmd = new SqlCommand("DELETE_WORK_STATUS", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Work_Status_ID", _status.StatusId);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                    }
+                    SqlConnect.Connection.Close();
                 }
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 //Write to error log
                 throw ex;
             }

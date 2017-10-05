@@ -19,9 +19,7 @@ namespace ORA_DAL.DAL
             try
             {
                 //Creating a way of adding new user information to my database 
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("CREATE_STORY", Connection))
+                    using (SqlCommand cmd = new SqlCommand("CREATE_STORY", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Story_Name", _story.StoryName);
@@ -29,15 +27,14 @@ namespace ORA_DAL.DAL
                         cmd.Parameters.AddWithValue("@Story_Start_Date", _story.StartDate);
                         cmd.Parameters.AddWithValue("@Story_End_Date", _story.EndDate);
                         cmd.Parameters.AddWithValue("@Client_ID", _story.ClientId);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                        Connection.Close();
-                        Connection.Dispose();
+                        SqlConnect.Connection.Close();
                     }
-                }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }
@@ -47,12 +44,9 @@ namespace ORA_DAL.DAL
             List<StoryDM> customerList = new List<StoryDM>();
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    Connection.Open();
-                    using (SqlCommand cmd = new SqlCommand("READ_STORYS", Connection))
+                    using (SqlCommand cmd = new SqlCommand("READ_STORYS", SqlConnect.Connection))
                     {
-                        cmd.Connection = Connection;
+                    SqlConnect.Connection.Open();
                         cmd.CommandType = CommandType.StoredProcedure;
                         using (var reader = cmd.ExecuteReader())
                         {
@@ -70,13 +64,14 @@ namespace ORA_DAL.DAL
                                     customerList.Add(_story);
                                 }
                             }
-                        }
                     }
+                    SqlConnect.Connection.Close();
                 }
                 return (customerList);
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 throw ex;
             }
         }
@@ -85,11 +80,8 @@ namespace ORA_DAL.DAL
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("UPDATE_STORY", Connection))
+                    using (SqlCommand cmd = new SqlCommand("UPDATE_STORY", SqlConnect.Connection))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Story_ID", _story.StoryId);
                         cmd.Parameters.AddWithValue("@Story_Name", _story.StoryName);
@@ -97,13 +89,14 @@ namespace ORA_DAL.DAL
                         cmd.Parameters.AddWithValue("@Story_Start_Date", _story.StartDate);
                         cmd.Parameters.AddWithValue("@Story_End_Date", _story.EndDate);
                         cmd.Parameters.AddWithValue("@Client_ID", _story.ClientId);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                    }
+                    SqlConnect.Connection.Close();
                 }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }
@@ -112,19 +105,18 @@ namespace ORA_DAL.DAL
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("DELETE_STORY", Connection))
+                    using (SqlCommand cmd = new SqlCommand("DELETE_STORY", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Story_ID", _story.StoryId);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                    }
+                    SqlConnect.Connection.Close();
                 }
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 //Write to error log
                 throw ex;
             }

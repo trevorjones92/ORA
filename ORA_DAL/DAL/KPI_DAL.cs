@@ -20,9 +20,7 @@ namespace ORA_DAL.DAL
             try
             {
                 //Creating a way of adding new user information to my database 
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("CREATE_KPI", Connection))
+                    using (SqlCommand cmd = new SqlCommand("CREATE_KPI", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Create_Date", _kpi.CreateDate);
@@ -47,15 +45,14 @@ namespace ORA_DAL.DAL
                         cmd.Parameters.AddWithValue("@Sprint_ID", _kpi.SprintId);
                         cmd.Parameters.AddWithValue("@Story_ID", _kpi.StoryId);
 
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                        Connection.Close();
-                        Connection.Dispose();
+                        SqlConnect.Connection.Close();
                     }
-                }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }
@@ -65,12 +62,9 @@ namespace ORA_DAL.DAL
             List<KPIDM> _kpiList = new List<KPIDM>();
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    Connection.Open();
-                    using (SqlCommand cmd = new SqlCommand("READ_KPI", Connection))
+                    using (SqlCommand cmd = new SqlCommand("READ_KPI", SqlConnect.Connection))
                     {
-                        cmd.Connection = Connection;
+                    SqlConnect.Connection.Open();
                         cmd.CommandType = CommandType.StoredProcedure;
                         using (var reader = cmd.ExecuteReader())
                         {
@@ -104,14 +98,15 @@ namespace ORA_DAL.DAL
                                     _kpiList.Add(_kpi);
                                 }
                             }
-                        }
                     }
+                    SqlConnect.Connection.Close();
                 }
                 return (_kpiList);
             }
             catch (Exception e)
             {
-                throw(e);
+                SqlConnect.Connection.Close();
+                throw (e);
             }
         }
 
@@ -119,9 +114,7 @@ namespace ORA_DAL.DAL
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("UPDATE_KPI", Connection))
+                    using (SqlCommand cmd = new SqlCommand("UPDATE_KPI", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@KPI_ID", _kpi.KPIID);
@@ -143,13 +136,14 @@ namespace ORA_DAL.DAL
                         cmd.Parameters.AddWithValue("@Bugs_Found_Production", _kpi.BugsFoundProduction);
                         cmd.Parameters.AddWithValue("@Total_Hrs_Fixing_Bugs", _kpi.TotalHrsFixingBugs);
 
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                    }
+                    SqlConnect.Connection.Close();
                 }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }
@@ -158,20 +152,18 @@ namespace ORA_DAL.DAL
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("DELETE_KPI", Connection))
+                    using (SqlCommand cmd = new SqlCommand("DELETE_KPI", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@KPI_ID", _kpi.KPIID);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                    }
+                    SqlConnect.Connection.Close();
                 }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }

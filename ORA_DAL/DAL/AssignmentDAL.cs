@@ -20,9 +20,7 @@ namespace ORA_DAL.DAL
             try
             {
                 //Creating a way of adding new user information to my database 
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("CREATE_ADDRESS", Connection))
+                    using (SqlCommand cmd = new SqlCommand("CREATE_ADDRESS", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Start_Date", _assignment.StartDate);
@@ -32,15 +30,14 @@ namespace ORA_DAL.DAL
                         cmd.Parameters.AddWithValue("@Position_Id", _assignment.PositionId);
                         cmd.Parameters.AddWithValue("@Role_Id", _assignment.RoleId);
                         cmd.Parameters.AddWithValue("@Team_Id", _assignment.TeamId);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                        Connection.Close();
-                        Connection.Dispose();
+                        SqlConnect.Connection.Close();
                     }
-                }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }
@@ -50,13 +47,10 @@ namespace ORA_DAL.DAL
             List<AssignmentDM> _assignmentList = new List<AssignmentDM>();
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    Connection.Open();
-                    using (SqlCommand cmd = new SqlCommand("READ_ASSIGNMENT", Connection))
+                    using (SqlCommand cmd = new SqlCommand("READ_ASSIGNMENT", SqlConnect.Connection))
                     {
-                        cmd.Connection = Connection;
                         cmd.CommandType = CommandType.StoredProcedure;
+                    SqlConnect.Connection.Open();
                         using (var reader = cmd.ExecuteReader())
                         {
                             if (reader.HasRows)
@@ -74,13 +68,14 @@ namespace ORA_DAL.DAL
                                     _assignmentList.Add(_assignment);
                                 }
                             }
-                        }
                     }
+                    SqlConnect.Connection.Close();
                 }
                 return (_assignmentList);
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 throw ex;
             }
         }
@@ -89,11 +84,8 @@ namespace ORA_DAL.DAL
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("UPDATE_ASSIGNMENT", Connection))
+                    using (SqlCommand cmd = new SqlCommand("UPDATE_ASSIGNMENT", SqlConnect.Connection))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Assignment_ID", _assignment.AssignmentId);
                         cmd.Parameters.AddWithValue("@Start_Date", _assignment.StartDate);
@@ -103,13 +95,14 @@ namespace ORA_DAL.DAL
                         cmd.Parameters.AddWithValue("@Position_ID", _assignment.PositionId);
                         cmd.Parameters.AddWithValue("@Role_ID", _assignment.RoleId);
                         cmd.Parameters.AddWithValue("@Team_ID", _assignment.TeamId);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                    }
+                    SqlConnect.Connection.Close();
                 }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }
@@ -118,20 +111,18 @@ namespace ORA_DAL.DAL
         {
             try
             {
-                using (SqlConnection Connection = new SqlConnection(ConfigurationManager.AppSettings["SQLConnection"]))
-                {
-                    using (SqlCommand cmd = new SqlCommand("DELETE_ADDRESS", Connection))
+                    using (SqlCommand cmd = new SqlCommand("DELETE_ADDRESS", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Assignment_ID", _assignment.AssignmentId);
-                        Connection.Open();
+                        SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
-                    }
+                    SqlConnect.Connection.Close();
                 }
             }
             catch (Exception e)
             {
+                SqlConnect.Connection.Close();
                 throw (e);
             }
         }
