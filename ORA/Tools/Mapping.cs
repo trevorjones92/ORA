@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using AutoMapper;
+﻿using AutoMapper;
 using ORA.Models;
 using ORA_Data.Model;
 using ORA_DAL.Model;
