@@ -25,7 +25,6 @@ namespace ORA_Data.DAL
                 {
                     command.Parameters.AddWithValue("Email",login.Email);
                     command.CommandType = CommandType.StoredProcedure;
-                    using (var reader = command.ExecuteReader())
                     command.Connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
                     {

@@ -32,17 +32,13 @@ namespace ORA_DAL.Model
 
         public AddressDM address { get; set; }
 
-        public EmployeeTimeDM employeeTime { get; set; }
+        public EmployeeTimeDM EmployeeTime { get; set; }
 
-        public ClientsDM client { get; set; }
+        public ClientsDM Client { get; set; }
 
-        public PositionsDM position { get; set; }
+        public PositionsDM Position { get; set; }
 
-        public TeamsDM team { get; set; }
-
-        public StatusDM workStatus { get; set; }
-
-        public AddressDM Address { get; set; }
+        public TeamsDM Team { get; set; }
 
         public StatusDM Status { get; set; }
 
