@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using ORA.Models;
 using ORA_Data.Model;
-using ORA_DAL.Model;
-using ORA_DAL;
 
 namespace ORA_Data.Data
 {
@@ -146,22 +143,22 @@ namespace ORA_Data.Data
                             #endregion
 
                             #region Pulls Employee Time Table Information
-                            employeeTime.Other_Total = (decimal)reader["Other_Total"];
-                            employeeTime.Other_Available = (decimal)reader["Other_Available"];
-                            employeeTime.Other_Used = (decimal)reader["Other_Used"];
-                            employeeTime.Payed_Total = (decimal)reader["Payed_Total"];
-                            employeeTime.Payed_Used = (decimal)reader["Payed_Total"];
+                            EmployeeTime.Other_Total = (decimal)reader["Other_Total"];
+                            EmployeeTime.Other_Available = (decimal)reader["Other_Available"];
+                            EmployeeTime.Other_Used = (decimal)reader["Other_Used"];
+                            EmployeeTime.Payed_Total = (decimal)reader["Payed_Total"];
+                            EmployeeTime.Payed_Used = (decimal)reader["Payed_Total"];
                             #endregion
 
                             #region Pulls Employee Work Status Information
 
-                            workStatus.EmployeeStatus = (string) reader["Employee_Status"];
-                            workStatus.HireDate = (DateTime) reader["Hire_Date"];
-                            workStatus.PayType = (string) reader["Pay_Type"];
-                            workStatus.ServiceLength = (string) reader["Service_Length"];
-                            workStatus.EmploymentType = (string) reader["Employement_Type"];
-                            workStatus.OfficeLocation = (string) reader["Office_Location"];
-                            workStatus.TerminationDate = (DateTime) reader["Termination_Date"];
+                            Status.EmployeeStatus = (string) reader["Employee_Status"];
+                            Status.HireDate = (DateTime) reader["Hire_Date"];
+                            Status.PayType = (string) reader["Pay_Type"];
+                            Status.ServiceLength = (string) reader["Service_Length"];
+                            Status.EmploymentType = (string) reader["Employement_Type"];
+                            Status.OfficeLocation = (string) reader["Office_Location"];
+                            Status.TerminationDate = (DateTime) reader["Termination_Date"];
                             #endregion
 
                             //Adding the object properties to the employment object to be used together for the view modal
