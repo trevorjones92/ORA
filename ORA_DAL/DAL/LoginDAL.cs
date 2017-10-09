@@ -23,9 +23,9 @@ namespace ORA_Data.DAL
                 bool loggedIN = false;
                 using (SqlCommand command = new SqlCommand("READ_LOGIN_BY_EMAIL", SqlConnect.Connection))
                 {
-                    command.Connection.Open();
                     command.Parameters.AddWithValue("Email",login.Email);
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.HasRows)

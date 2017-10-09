@@ -1,4 +1,4 @@
-﻿using ORA.Models;
+﻿using ORA_Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -77,7 +77,7 @@ namespace ORA_Data.DAL
                 using (SqlCommand cmd = new SqlCommand("READ_ROLE", SqlConnect.Connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Role_ID", _role.RoleId);
+                    cmd.Parameters.AddWithValue("Role_ID", _role.RoleId);
                     SqlConnect.Connection.Open();
                     using (var reader = cmd.ExecuteReader())
                     {

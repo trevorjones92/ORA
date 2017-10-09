@@ -26,13 +26,13 @@ namespace ORA.Controllers
 
             try
             {
-                if(info.Password == info.ConfirmPassword)
+                if (info.Password == info.ConfirmPassword)
                 {
                     info.Salt = Convert.ToBase64String(Salt.GenerateSalt());
                     info.Password = ORA_Data.Hash.GetHash(info.Password + info.Salt);
                     LoginDAL.Register(Mapper.Map<LoginDM>(info));
                     info.Password = "";
-                    if (ConfigurationManager.AppSettings["RegisterToLogin"].ToLower()=="true")
+                    if (ConfigurationManager.AppSettings["RegisterToLogin"].ToLower() == "true")
                     {
                         return RedirectToAction("Login", "Login", info);
                     }
@@ -46,7 +46,7 @@ namespace ORA.Controllers
                     return View();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -61,18 +61,20 @@ namespace ORA.Controllers
         {
             try
             {
-                Session["LoggedIn"] = LoginDAL.Login(Mapper.Map<LoginDM>(info));
-                if ((bool)Session["LoggedIn"])
+                if (info.Email != null)
                 {
-                Session["Email"] = info.Email;
-                return RedirectToAction("Index", "Home", new { area = "Default" });
+                    Session["LoggedIn"] = LoginDAL.Login(Mapper.Map<LoginDM>(info));
+                    Session["Role"] = RolesDAL.ReadRoleByID(Mapper.Map<RolesDM>(info));
+                    if ((bool)Session["LoggedIn"])
+                    {
+                        Session["Email"] = info.Email;
+                        return RedirectToAction("Index", "Home", new { area = "Default" });
+                    }
                 }
-                else
-                {
-                    return View();
-                }
+                return View();
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ORA.Models
+namespace ORA_Data.Model
 {
     public class SprintDM
     {

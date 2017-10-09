@@ -25,5 +25,12 @@ namespace ORA.Models
         public Int64 TimeID { get; set; }
 
         public Int64 WorkStatusID { get; set; }
+
+        public AddressVM Address { get; set; }
+
+        public StatusVM Status { get; set; }
+
+        public AssignmentVM Assignment { get; set; }
+
     }
 }
