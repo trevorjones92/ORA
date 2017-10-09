@@ -14,9 +14,9 @@ namespace ORA_Data.Data
     {
         protected EmployeeDM employee = new EmployeeDM();
         protected AddressDM address = new AddressDM();
-        protected EmployeeTimeDM employeeTime = new EmployeeTimeDM();
+        protected EmployeeTimeDM EmployeeTime = new EmployeeTimeDM();
         protected PositionsDM position = new PositionsDM();
-        protected StatusDM workStatus = new StatusDM();
+        protected StatusDM Status = new StatusDM();
 
         /// <summary>
         /// Basic CRUD methods for Employee information. EmployeeDM is the model being used here.
@@ -165,7 +165,7 @@ namespace ORA_Data.Data
                             #endregion
 
                             //Adding the object properties to the employment object to be used together for the view modal
-                            employee.address = address; employee.employeeTime = employeeTime; employee.workStatus = workStatus;
+                            employee.address = address; employee.EmployeeTime = EmployeeTime; employee.Status = Status;
 
                             employeeList.Add(employee);
                         }
