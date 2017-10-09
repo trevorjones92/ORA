@@ -240,10 +240,8 @@
     <Content Include="Views\Employee\ViewEmployees.cshtml" />
     <Content Include="Views\Roles\CreateRole.cshtml" />
     <Content Include="Views\Employee\CreateEmployee.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Employee\UpdateEmployee.cshtml" />
     <Content Include="Views\Employee\EmployeeDetails.cshtml" />
-=======
     <Content Include="Views\Account\CreateAccount.cshtml" />
     <Content Include="Views\Account\ReadAccount.cshtml" />
     <Content Include="Views\Account\UpdateAccount.cshtml" />
@@ -289,7 +287,6 @@
     <Content Include="Views\Team\ReadTeam.cshtml" />
     <Content Include="Views\Team\UpdateTeam.cshtml" />
     <Content Include="Views\Team\DeleteTeam.cshtml" />
->>>>>>> 2522debfdd1879f9367679f69723a16157f195ef
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
