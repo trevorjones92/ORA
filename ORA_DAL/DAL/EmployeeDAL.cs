@@ -109,11 +109,16 @@ namespace ORA_Data.Data
                         if (!reader.HasRows) return (employeeList);
                         while (reader.Read())
                         {
+                            //Creating objects of the modals inside the loop so that 
+                            //the object can be used for new information every iteration of the loop.
+                            #region Modal Objects
                             EmployeeDM employee = new EmployeeDM();
                             AddressDM address = new AddressDM();
                             EmployeeTimeDM EmployeeTime = new EmployeeTimeDM();
                             PositionsDM position = new PositionsDM();
                             StatusDM Status = new StatusDM();
+                            #endregion
+
                             #region Pulling Employee Table Information
                             employee.EmployeeId = (Int64)reader["Employee_ID"];
                             employee.EmployeeNumber = (string)reader["Employee_Number"];
@@ -151,14 +156,14 @@ namespace ORA_Data.Data
 
                             #region Pulls Employee Work Status Information
 
-                            Status.EmployeeStatus = (string) reader["Employee_Status"];
-                            Status.HireDate = (DateTime) reader["Hire_Date"];
-                            Status.PayType = (string) reader["Pay_Type"];
-                            Status.ServiceLength = (string) reader["Service_Length"];
-                            Status.EmploymentType = (string) reader["Employment_Type"];
-                            Status.OfficeLocation = (string) reader["Office_Location"];
+                            Status.EmployeeStatus = (string)reader["Employee_Status"];
+                            Status.HireDate = (DateTime)reader["Hire_Date"];
+                            Status.PayType = (string)reader["Pay_Type"];
+                            Status.ServiceLength = (string)reader["Service_Length"];
+                            Status.EmploymentType = (string)reader["Employment_Type"];
+                            Status.OfficeLocation = (string)reader["Office_Location"];
                             if (reader["Termination_Date"] != DBNull.Value)
-                                Status.TerminationDate = (DateTime) reader["Termination_Date"];
+                                Status.TerminationDate = (DateTime)reader["Termination_Date"];
                             #endregion
 
                             //Adding the object properties to the employment object to be used together for the view modal
