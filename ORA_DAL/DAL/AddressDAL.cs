@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace ORA_Data
+namespace ORA_Data.DAL
 {
-    class AddressDal
+    public class AddressDal
     {
         /// <summary>
         /// Basic CRUD methods for address information. AddressDM is the model being used here.

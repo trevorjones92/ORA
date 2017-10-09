@@ -1,4 +1,6 @@
-﻿namespace ORA_Data.Model
+﻿using ORA_DAL.Model;
+
+namespace ORA_Data.Model
 {
     public class LoginDM
     {
@@ -11,5 +13,9 @@
         public string Salt { get; set; }
 
         public int EmployeeId { get; set; }
+
+        public EmployeeDM Employee { get; set; }
+
+        public RolesDM Role { get; set; }
     }
 }

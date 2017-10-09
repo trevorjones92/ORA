@@ -7,7 +7,26 @@ namespace ORA.Controllers
         // GET: Assessment
         public ActionResult Index()
         {
+            return View();
+        }
 
+        public ActionResult CreateAssessment()
+        {
+            return View();
+        }
+
+        public ActionResult ReadAssessment()
+        {
+            return View();
+        }
+
+        public ActionResult UpdateAssessment()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteAssessment()
+        {
             return View();
         }
 

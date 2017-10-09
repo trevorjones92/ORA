@@ -9,5 +9,25 @@ namespace ORA.Controllers
         {
             return View();
         }
+
+        public ActionResult CreateProject()
+        {
+            return View();
+        }
+
+        public ActionResult ReadProject()
+        {
+            return View();
+        }
+
+        public ActionResult UpdateProject()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteProject()
+        {
+            return View();
+        }
     }
 }

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace ORA_DAL.DAL
+namespace ORA_Data.DAL
 {
-    class Work_StatusDAL
+    public class Work_StatusDAL
     {
         /// <summary>
         /// Basic CRUD methods for address information. ProjectDM is the model being used here.

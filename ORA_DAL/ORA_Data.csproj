@@ -7,8 +7,8 @@
     <ProjectGuid>{52B20D0B-5C4C-4874-844E-33D28CF421A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ORA_DAL</RootNamespace>
-    <AssemblyName>ORA_DAL</AssemblyName>
+    <RootNamespace>ORA_Data</RootNamespace>
+    <AssemblyName>ORA_Data</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

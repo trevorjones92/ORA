@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
 
-namespace ORA_DAL
+namespace ORA_Data
 {
     public class SqlConnect
     {

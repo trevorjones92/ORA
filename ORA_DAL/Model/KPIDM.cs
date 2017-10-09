@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ORA.Models
+namespace ORA_Data.Model
 {
     public class KPIDM
     {
@@ -51,5 +51,11 @@ namespace ORA.Models
         public DateTime Modified { get; set; }
 
         public DateTime Created { get; set; }
+
+        public ProjectDM Project { get; set; }
+
+        public StoryDM Story { get; set; }
+
+        public SprintDM Sprint { get; set; }
     }
 }

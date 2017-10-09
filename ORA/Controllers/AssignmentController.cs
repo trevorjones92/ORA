@@ -9,5 +9,25 @@ namespace ORA.Controllers
         {
             return View();
         }
+
+        public ActionResult CreateAssignment()
+        {
+            return View();
+        }
+
+        public ActionResult ReadAssignment()
+        {
+            return View();
+        }
+
+        public ActionResult UpdateAssignment()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteAssignment()
+        {
+            return View();
+        }
     }
 }

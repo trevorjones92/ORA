@@ -54,8 +54,15 @@ namespace ORA.Controllers
         [HttpPost]
         public ActionResult CreateEmployee(EmployeeVM employee)
         {
-            EmployeeMap.CreateEmployee(employee);
+            try
+            {
+                EmployeeMap.CreateEmployee(employee);
+                return RedirectToAction("Register", "Login", new { area = "Default" });
+            }
+            catch
+            {
             return View();
+            }
         }
 
         public ActionResult SortEmployeeBy()

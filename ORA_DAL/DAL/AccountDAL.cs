@@ -1,6 +1,6 @@
-﻿namespace ORA_DAL.DAL
+﻿namespace ORA_Data.DAL
 {
-    class AccountDAL
+    public class AccountDAL
     {
 
     }

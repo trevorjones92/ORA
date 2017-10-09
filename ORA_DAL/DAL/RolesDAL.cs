@@ -1,21 +1,20 @@
-﻿using ORA.Models;
+﻿using ORA_Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace ORA_DAL.DAL
+namespace ORA_Data.DAL
 {
-    class RolesDAL
+    public class RolesDAL
     {
         /// <summary>
-        /// Basic CRUD methods for address information. ProjectDM is the model being used here.
+        /// Basic CRUD methods for address information. RoleDM is the model being used here.
         /// </summary>
 
-        #region ADDRESS DAL METHODS
-        //public SqlSqlConnect.Connection SqlConnect.Connection = new SqlSqlConnect.Connection(ConfigurationManager.AppSettings["SQLSqlConnect.Connection"]);
+        #region ROLE DAL METHODS
 
-        public void CreateProject(RolesDM _role)
+        public static void CreateRole(RolesDM _role)
         {
             try
             {
@@ -37,7 +36,7 @@ namespace ORA_DAL.DAL
             }
         }
 
-        public List<RolesDM> ReadAddress()
+        public static List<RolesDM> ReadRoles()
         {
             List<RolesDM> customerList = new List<RolesDM>();
             try
@@ -71,7 +70,70 @@ namespace ORA_DAL.DAL
             }
         }
 
-        public void UpdateAddress(RolesDM _role)
+        public static RolesDM ReadRoleByID(RolesDM _role)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("READ_ROLE", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Role_ID", _role.RoleId);
+                    SqlConnect.Connection.Open();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                _role.RoleName = (string)reader["Role_Name"];
+                                _role.RoleDescription = (string)reader["Role_Description"];
+                            }
+                        }
+                    }
+                    SqlConnect.Connection.Close();
+                }
+                return (_role);
+            }
+            catch (Exception ex)
+            {
+                SqlConnect.Connection.Close();
+                throw ex;
+            }
+        }
+
+        public static RolesDM ReadRoleForEmployee(LoginDM _role)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("READ_ROLE_FOR_EMPLOYEE", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Employee_ID", _role.EmployeeId);
+                    SqlConnect.Connection.Open();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                _role.Role.RoleName = (string)reader["Role_Name"];
+                                _role.Role.RoleDescription = (string)reader["Role_Description"];
+                            }
+                        }
+                    }
+                    SqlConnect.Connection.Close();
+                }
+                return (_role.Role);
+            }
+            catch (Exception ex)
+            {
+                SqlConnect.Connection.Close();
+                throw ex;
+            }
+        }
+
+
+        public static void UpdateRole(RolesDM _role)
         {
             try
             {
@@ -93,7 +155,7 @@ namespace ORA_DAL.DAL
             }
         }
 
-        public void DeleteAddress(RolesDM _role)
+        public static void DeleteRole(RolesDM _role)
         {
             try
             {

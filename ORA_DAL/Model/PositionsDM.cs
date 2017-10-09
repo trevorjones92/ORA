@@ -1,4 +1,4 @@
-﻿namespace ORA.Models
+﻿namespace ORA_Data.Model
 {
     public class PositionsDM
     {

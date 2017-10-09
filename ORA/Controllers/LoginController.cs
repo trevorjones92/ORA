@@ -27,6 +27,7 @@ namespace ORA.Controllers
 
             try
             {
+<<<<<<< HEAD
                 if (info.Password != info.ConfirmPassword) return View();
                 info.Salt = Convert.ToBase64String(Salt.GenerateSalt());
                 info.Password = ORA_Data.Hash.GetHash(info.Password + info.Salt);
@@ -34,8 +35,29 @@ namespace ORA.Controllers
                 info.Password = "";
                 return ConfigurationManager.AppSettings["RegisterToLogin"].ToLower()=="true" 
                     ? RedirectToAction("Login", "Login", info) : RedirectToAction("Home", "Index", new { area = "Default" });
+=======
+                if (info.Password == info.ConfirmPassword)
+                {
+                    info.Salt = Convert.ToBase64String(Salt.GenerateSalt());
+                    info.Password = ORA_Data.Hash.GetHash(info.Password + info.Salt);
+                    LoginDAL.Register(Mapper.Map<LoginDM>(info));
+                    info.Password = "";
+                    if (ConfigurationManager.AppSettings["RegisterToLogin"].ToLower() == "true")
+                    {
+                        return RedirectToAction("Login", "Login", info);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Home", "Index", new { area = "Default" });
+                    }
+                }
+                else
+                {
+                    return View();
+                }
+>>>>>>> 2522debfdd1879f9367679f69723a16157f195ef
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -51,12 +73,28 @@ namespace ORA.Controllers
         {
             try
             {
+<<<<<<< HEAD
                 Session["LoggedIn"] = LoginDAL.Login(Mapper.Map<LoginDM>(info));
                 if (!(bool) Session["LoggedIn"]) return View();
                 Session["Email"] = info.Email;
                 return RedirectToAction("Index", "Home", new { area = "Default" });
+=======
+                if (info.Email != null)
+                {
+                    Session["LoggedIn"] = LoginDAL.Login(Mapper.Map<LoginDM>(info));
+                    //RolesDAL.ReadRoleByID(Mapper.Map<RolesDM>(info.Role));
+                    Session["Role"] = "employee" /*info*/;
+                    if ((bool)Session["LoggedIn"])
+                    {
+                        Session["Email"] = info.Email;
+                        return RedirectToAction("Index", "Home", new { area = "Default" });
+                    }
+                }
+                return View();
+
+>>>>>>> 2522debfdd1879f9367679f69723a16157f195ef
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -65,6 +103,21 @@ namespace ORA.Controllers
         public ActionResult LogOut()
         {
             Session["LoggedIn"] = false;
+            return View();
+        }
+        
+        public ActionResult ReadLogin()
+        {
+            return View();
+        }
+
+        public ActionResult UpdateLogin()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteLogin()
+        {
             return View();
         }
 

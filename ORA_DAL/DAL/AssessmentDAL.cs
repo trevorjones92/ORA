@@ -1,12 +1,12 @@
-﻿using ORA.Models;
+﻿using ORA_Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace ORA_DAL.DAL
+namespace ORA_Data.DAL
 {
-    class AssessmentDAL
+    public class AssessmentDAL
     {
         /// <summary>
         /// Basic CRUD methods for Assessment information. AssessmentDM is the model being used here.
