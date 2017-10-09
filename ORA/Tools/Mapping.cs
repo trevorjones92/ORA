@@ -38,6 +38,8 @@ namespace ORA.Tools
                 cfg.CreateMap<EmployeeDM, EmployeeVM>();
                 cfg.CreateMap<RolesVM, RolesDM>();
                 cfg.CreateMap<RolesDM, RolesVM>();
+                cfg.CreateMap<EmployeeTimeDM, EmployeeTimeVM>();
+                cfg.CreateMap<EmployeeTimeVM, EmployeeTimeDM>();
             });
         }
     }

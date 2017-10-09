@@ -9,12 +9,6 @@ namespace ORA_Data.Data
 {
     public class EmployeeDAL
     {
-        protected EmployeeDM employee = new EmployeeDM();
-        protected AddressDM address = new AddressDM();
-        protected EmployeeTimeDM EmployeeTime = new EmployeeTimeDM();
-        protected PositionsDM position = new PositionsDM();
-        protected StatusDM Status = new StatusDM();
-
         /// <summary>
         /// Basic CRUD methods for Employee information. EmployeeDM is the model being used here.
         /// </summary>
@@ -115,6 +109,11 @@ namespace ORA_Data.Data
                         if (!reader.HasRows) return (employeeList);
                         while (reader.Read())
                         {
+                            EmployeeDM employee = new EmployeeDM();
+                            AddressDM address = new AddressDM();
+                            EmployeeTimeDM EmployeeTime = new EmployeeTimeDM();
+                            PositionsDM position = new PositionsDM();
+                            StatusDM Status = new StatusDM();
                             #region Pulling Employee Table Information
                             employee.EmployeeId = (Int64)reader["Employee_ID"];
                             employee.EmployeeNumber = (string)reader["Employee_Number"];
@@ -156,9 +155,10 @@ namespace ORA_Data.Data
                             Status.HireDate = (DateTime) reader["Hire_Date"];
                             Status.PayType = (string) reader["Pay_Type"];
                             Status.ServiceLength = (string) reader["Service_Length"];
-                            Status.EmploymentType = (string) reader["Employement_Type"];
+                            Status.EmploymentType = (string) reader["Employment_Type"];
                             Status.OfficeLocation = (string) reader["Office_Location"];
-                            Status.TerminationDate = (DateTime) reader["Termination_Date"];
+                            if (reader["Termination_Date"] != DBNull.Value)
+                                Status.TerminationDate = (DateTime) reader["Termination_Date"];
                             #endregion
 
                             //Adding the object properties to the employment object to be used together for the view modal
