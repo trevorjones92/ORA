@@ -26,26 +26,20 @@ namespace ORA.Models
 
         public Int64 WorkStatusID { get; set; }
 
-<<<<<<< HEAD
         //Objects of other models
-        public AddressVM address { get; set; }
-
-        public EmployeeTimeVM employeeTime { get; set; }
-
-        public ClientsVM client { get; set; }
-
-        public PositionsVM position { get; set; }
-
-        public TeamsVM team { get; set; }
-
-        public StatusVM workStatus { get; set; }
-=======
         public AddressVM Address { get; set; }
+
+        public EmployeeTimeVM EmployeeTime { get; set; }
+
+        public ClientsVM Client { get; set; }
+
+        public PositionsVM Position { get; set; }
+
+        public TeamsVM Team { get; set; }
 
         public StatusVM Status { get; set; }
 
         public AssignmentVM Assignment { get; set; }
-
->>>>>>> 2522debfdd1879f9367679f69723a16157f195ef
+        
     }
 }
