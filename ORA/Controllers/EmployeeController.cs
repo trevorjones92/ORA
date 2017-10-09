@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using ORA.Models;
 using ORA.Mapping;
+using AutoMapper;
 
 namespace ORA.Controllers
 {
@@ -39,6 +40,11 @@ namespace ORA.Controllers
 
         #region ADMIN/MANAGER CREATE, READ, UPDATE, DELETE METHODS FOR SUPER USER
 
+        public ActionResult EmployeeDetails(int id)
+        {
+            return View(Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById(id)));
+        }
+
         [HttpGet]
         public ActionResult CreateEmployee()
         {
@@ -61,16 +67,17 @@ namespace ORA.Controllers
         }
 
         [HttpGet]
-        public ActionResult UpdateEmployee()
+        public ActionResult UpdateEmployee(int employeeId)
         {
-            return View(/*Update Employee View*/);
+            return View(Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById(employeeId)));
         }
 
         [HttpPost]
         public ActionResult UpdateEmployee(EmployeeVM employee)
         {
-            //EmployeeMap.PlaceHolderMethodById(employee);
-            return RedirectToAction("", "", new { area = "" });
+            EmployeeMap.UpdateEmployee(employee);
+            ModelState.Clear();
+            return RedirectToAction("ViewEmployees");
         }
 
         /*TODO @Trevor Jones: Needs javascript functionality to reconfirm deletion of an employee. Deleting an employee shouldnt actually delete employ, but change work status

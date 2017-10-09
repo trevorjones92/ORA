@@ -20,31 +20,20 @@ namespace ORA.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Register(LoginVM info)
         {
 
             try
             {
-                if(info.Password == info.ConfirmPassword)
-                {
-                    info.Salt = Convert.ToBase64String(Salt.GenerateSalt());
-                    info.Password = ORA_Data.Hash.GetHash(info.Password + info.Salt);
-                    LoginDAL.Register(Mapper.Map<LoginDM>(info));
-                    info.Password = "";
-                    if (ConfigurationManager.AppSettings["RegisterToLogin"].ToLower()=="true")
-                    {
-                        return RedirectToAction("Login", "Login", info);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Home", "Index", new { area = "Default" });
-                    }
-                }
-                else
-                {
-                    return View();
-                }
+                if (info.Password != info.ConfirmPassword) return View();
+                info.Salt = Convert.ToBase64String(Salt.GenerateSalt());
+                info.Password = ORA_Data.Hash.GetHash(info.Password + info.Salt);
+                LoginDAL.Register(Mapper.Map<LoginDM>(info));
+                info.Password = "";
+                return ConfigurationManager.AppSettings["RegisterToLogin"].ToLower()=="true" 
+                    ? RedirectToAction("Login", "Login", info) : RedirectToAction("Home", "Index", new { area = "Default" });
             }
             catch(Exception ex)
             {
@@ -56,21 +45,16 @@ namespace ORA.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Login(LoginVM info)
         {
             try
             {
                 Session["LoggedIn"] = LoginDAL.Login(Mapper.Map<LoginDM>(info));
-                if ((bool)Session["LoggedIn"])
-                {
+                if (!(bool) Session["LoggedIn"]) return View();
                 Session["Email"] = info.Email;
                 return RedirectToAction("Index", "Home", new { area = "Default" });
-                }
-                else
-                {
-                    return View();
-                }
             }
             catch(Exception ex)
             {

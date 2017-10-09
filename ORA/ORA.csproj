@@ -178,8 +178,10 @@
     <Compile Include="Models\AssessmentVM.cs" />
     <Compile Include="Models\AssignmentVM.cs" />
     <Compile Include="Models\ClientsVM.cs" />
+    <Compile Include="Models\EmloyeeTimeVM.cs" />
     <Compile Include="Models\EmployeeVM.cs" />
     <Compile Include="Models\KPIVM.cs" />
+    <Compile Include="Models\MasterEmployeeDetailsVM.cs" />
     <Compile Include="Models\PositionsVM.cs" />
     <Compile Include="Models\ProjectVM.cs" />
     <Compile Include="Models\LoginVM.cs" />
@@ -236,6 +238,8 @@
     <Content Include="Views\Login\LogOut.cshtml" />
     <Content Include="Views\Employee\ViewEmployees.cshtml" />
     <Content Include="Views\Employee\CreateEmployee.cshtml" />
+    <Content Include="Views\Employee\UpdateEmployee.cshtml" />
+    <Content Include="Views\Employee\EmployeeDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

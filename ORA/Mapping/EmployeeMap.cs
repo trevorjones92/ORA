@@ -20,6 +20,11 @@ namespace ORA.Mapping
             return Mapper.Map<List<EmployeeVM>>(employeeDO.ReadEmployees());
         }
 
+        public static EmployeeVM GetEmployeeById(int employeeId)
+        {
+            return Mapper.Map<EmployeeVM>(employeeDO.ReadEmployeeById(employeeId));
+        }
+
         public static void UpdateEmployee(EmployeeVM employee)
         {
             employeeDO.UpdateEmployee(Mapper.Map<EmployeeDM>(employee));

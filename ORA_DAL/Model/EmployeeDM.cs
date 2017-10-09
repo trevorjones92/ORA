@@ -1,8 +1,10 @@
 ﻿using System;
+using ORA.Models;
+using ORA_Data.Model;
 
 namespace ORA_DAL.Model
 {
-    public class EmployeeDM
+    public class EmployeeDM : AddressDM
     {
         public Int64 EmployeeId { get; set; }
 
@@ -25,5 +27,17 @@ namespace ORA_DAL.Model
         public Int64 TimeID { get; set; }
 
         public Int64 WorkStatusID { get; set; }
+
+        public AddressDM address { get; set; }
+
+        public EmployeeTimeDM employeeTime { get; set; }
+
+        public ClientsDM client { get; set; }
+
+        public PositionsDM position { get; set; }
+
+        public TeamsDM team { get; set; }
+
+        public StatusDM workStatus { get; set; }
     }
 }

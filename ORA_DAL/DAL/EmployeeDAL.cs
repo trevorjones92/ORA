@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using ORA.Models;
+using ORA_Data.Model;
 using ORA_DAL.Model;
 using ORA_DAL;
 
@@ -9,6 +12,12 @@ namespace ORA_Data.Data
 {
     public class EmployeeDAL
     {
+        protected EmployeeDM employee = new EmployeeDM();
+        protected AddressDM address = new AddressDM();
+        protected EmployeeTimeDM employeeTime = new EmployeeTimeDM();
+        protected PositionsDM position = new PositionsDM();
+        protected StatusDM workStatus = new StatusDM();
+
         /// <summary>
         /// Basic CRUD methods for Employee information. EmployeeDM is the model being used here.
         /// </summary>
@@ -56,38 +65,42 @@ namespace ORA_Data.Data
             try
             {
                 EmployeeDM employee = new EmployeeDM();
-                using (SqlCommand command = new SqlCommand("", SqlConnect.Connection))
+                using (SqlCommand command = new SqlCommand("READ_EMPLOYEE_BY_ID", SqlConnect.Connection))
                 {
-                    command.Parameters["Employee_ID"].Value = employeeId;
+                    command.Connection.Open();
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Employee_ID", employeeId);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.HasRows)
                         {
                             while (reader.Read())
                             {
-                                employee.EmployeeNumber = (string)reader["Employee_ID"];
+                                employee.EmployeeId = (Int64)reader["Employee_ID"];
+                                employee.EmployeeNumber = (string)reader["Employee_Number"];
                                 employee.EmployeeName = (string)reader["Employee_Name"];
                                 employee.EmployeeFirstName = (string)reader["Employee_FirstName"];
                                 employee.EmployeeMiddle = (string)reader["Employee_MiddleName"];
                                 employee.EmployeeLastName = (string)reader["Employee_LastName"];
                                 employee.Age = (int)reader["Age"];
                                 employee.BirthDate = (string)reader["Birth_Date"];
-                                employee.AddressID = (int)reader["Address_ID"];
-                                employee.TimeID = (int)reader["Time_ID"];
-                                employee.WorkStatusID = (int)reader["Work_Status_ID"];
+                                employee.AddressID = (Int64)reader["Address_ID"];
+                                employee.TimeID = (Int64)reader["Time_ID"];
+                                employee.WorkStatusID = (Int64)reader["Work_Status_ID"];
                             }
                         }
                     }
-
                     command.Connection.Close();
                 }
                 return employee;
             }
             catch (Exception ex)
             {
-                SqlConnect.Connection.Close();
                 throw (ex);
+            }
+            finally
+            {
+                SqlConnect.Connection.Close();
             }
         }
 
@@ -105,7 +118,8 @@ namespace ORA_Data.Data
                         if (!reader.HasRows) return (employeeList);
                         while (reader.Read())
                         {
-                            EmployeeDM employee = new EmployeeDM();
+                            #region Pulling Employee Table Information
+                            employee.EmployeeId = (Int64)reader["Employee_ID"];
                             employee.EmployeeNumber = (string)reader["Employee_Number"];
                             employee.EmployeeName = (string)reader["Employee_Name"];
                             employee.EmployeeFirstName = (string)reader["Employee_FirstName"];
@@ -119,6 +133,40 @@ namespace ORA_Data.Data
                                 employee.TimeID = (Int64)reader["Time_ID"];
                             if (reader["Work_Status_ID"] != DBNull.Value)
                                 employee.WorkStatusID = (Int64)reader["Work_Status_ID"];
+                            #endregion
+
+                            #region Pulling Address Table Information
+                            address.Address = (string)reader["Address"];
+                            address.City = (string)reader["City"];
+                            address.State = (string)reader["State"];
+                            address.Country = (string)reader["Country"];
+                            address.Zip_Code = (int)reader["Zip_Code"];
+                            address.Phone = (string)reader["Phone"];
+                            address.Email = (string)reader["Email"];
+                            #endregion
+
+                            #region Pulls Employee Time Table Information
+                            employeeTime.Other_Total = (decimal)reader["Other_Total"];
+                            employeeTime.Other_Available = (decimal)reader["Other_Available"];
+                            employeeTime.Other_Used = (decimal)reader["Other_Used"];
+                            employeeTime.Payed_Total = (decimal)reader["Payed_Total"];
+                            employeeTime.Payed_Used = (decimal)reader["Payed_Total"];
+                            #endregion
+
+                            #region Pulls Employee Work Status Information
+
+                            workStatus.EmployeeStatus = (string) reader["Employee_Status"];
+                            workStatus.HireDate = (DateTime) reader["Hire_Date"];
+                            workStatus.PayType = (string) reader["Pay_Type"];
+                            workStatus.ServiceLength = (string) reader["Service_Length"];
+                            workStatus.EmploymentType = (string) reader["Employement_Type"];
+                            workStatus.OfficeLocation = (string) reader["Office_Location"];
+                            workStatus.TerminationDate = (DateTime) reader["Termination_Date"];
+                            #endregion
+
+                            //Adding the object properties to the employment object to be used together for the view modal
+                            employee.address = address; employee.employeeTime = employeeTime; employee.workStatus = workStatus;
+
                             employeeList.Add(employee);
                         }
                     }
@@ -144,10 +192,11 @@ namespace ORA_Data.Data
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Employee_ID", employee.EmployeeId);
+                    cmd.Parameters.AddWithValue("@Employee_Number", employee.EmployeeNumber);
                     cmd.Parameters.AddWithValue("@Employee_Name", employee.EmployeeName);
-                    cmd.Parameters.AddWithValue("@Employee_First_Name", employee.EmployeeFirstName);
-                    cmd.Parameters.AddWithValue("@Employee_Middle", employee.EmployeeMiddle);
-                    cmd.Parameters.AddWithValue("@Employee_Last_Name", employee.EmployeeLastName);
+                    cmd.Parameters.AddWithValue("@Employee_FirstName", employee.EmployeeFirstName);
+                    cmd.Parameters.AddWithValue("@Employee_MiddleName", employee.EmployeeMiddle);
+                    cmd.Parameters.AddWithValue("@Employee_LastName", employee.EmployeeLastName);
                     cmd.Parameters.AddWithValue("@Age", employee.Age);
                     cmd.Parameters.AddWithValue("@Birth_Date", employee.BirthDate);
                     cmd.Parameters.AddWithValue("@Address_ID", employee.AddressID);

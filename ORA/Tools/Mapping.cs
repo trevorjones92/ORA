@@ -7,7 +7,6 @@ namespace ORA.Tools
 {
     public class Mapping
     {
-
         public static void MappingMethod()
         {
             Mapper.Initialize(cfg =>
@@ -16,10 +15,9 @@ namespace ORA.Tools
                 cfg.CreateMap<LoginDM, LoginVM>();
                 cfg.CreateMap<EmployeeVM, EmployeeDM>();
                 cfg.CreateMap<EmployeeDM, EmployeeVM>();
+                cfg.CreateMap<AddressVM, AddressDM>();
+                cfg.CreateMap<AddressDM, AddressVM>();
             });
-
-           
-           
         }
     }
 }

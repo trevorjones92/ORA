@@ -2,7 +2,7 @@
 
 namespace ORA.Models
 {
-    public class EmployeeVM
+    public class EmployeeVM 
     {
         public Int64 EmployeeId { get; set; }
 
@@ -25,5 +25,18 @@ namespace ORA.Models
         public Int64 TimeID { get; set; }
 
         public Int64 WorkStatusID { get; set; }
+
+        //Objects of other models
+        public AddressVM address { get; set; }
+
+        public EmployeeTimeVM employeeTime { get; set; }
+
+        public ClientsVM client { get; set; }
+
+        public PositionsVM position { get; set; }
+
+        public TeamsVM team { get; set; }
+
+        public StatusVM workStatus { get; set; }
     }
 }
