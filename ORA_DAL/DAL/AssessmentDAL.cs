@@ -14,7 +14,7 @@ namespace ORA_Data.DAL
         /// 
 
         #region Assessment DAL Methods
-        public void CreateAssessment(AssessmentDM _assessment)
+        public static void CreateAssessment(AssessmentDM _assessment)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public List<AssessmentDM> ReadAddress()
+        public static List<AssessmentDM> ReadAddress()
         {
             List<AssessmentDM> assessmentList = new List<AssessmentDM>();
             try
@@ -127,7 +127,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void UpdateAssessment(AssessmentDM _assessment)
+        public static void UpdateAssessment(AssessmentDM _assessment)
         {
             try
             {
@@ -176,7 +176,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void DeleteAssessment(AssessmentDM _assessment)
+        public static void DeleteAssessment(AssessmentDM _assessment)
         {
             try
             {

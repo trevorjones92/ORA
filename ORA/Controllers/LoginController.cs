@@ -5,6 +5,7 @@ using ORA_Data.DAL;
 using AutoMapper;
 using ORA_Data.Model;
 using System.Configuration;
+using System.Collections.Generic;
 
 namespace ORA.Controllers
 {
@@ -77,9 +78,10 @@ namespace ORA.Controllers
             return View();
         }
         
-        public ActionResult ReadLogin()
+        public ActionResult ReadLogins()
         {
-            return View();
+            List<LoginVM> logins = Mapper.Map<List<LoginVM>>(LoginDAL.ViewLoginEmails());
+            return View(logins);
         }
 
         public ActionResult UpdateLogin()
@@ -87,8 +89,22 @@ namespace ORA.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult UpdateLogin(LoginVM login)
+        {
+            LoginDAL.UpdateLogin(Mapper.Map<LoginDM>(login));
+            return View();
+        }
+
         public ActionResult DeleteLogin()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteLogin(LoginVM login)
+        {
+            LoginDAL.DeleteLogin(Mapper.Map<LoginDM>(login));
             return View();
         }
 

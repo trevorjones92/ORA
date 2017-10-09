@@ -75,10 +75,11 @@ namespace ORA_Data.DAL
         }
 
 
-        public List<LoginDM> ViewLoginEmails(List<LoginDM> logins)
+        public static List<LoginDM> ViewLoginEmails()
         {
             try
             {
+                List<LoginDM> logins = new List<LoginDM>();
                 using (SqlCommand command = new SqlCommand("READ_LOGINS", SqlConnect.Connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
@@ -104,7 +105,31 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void DeleteLogin(LoginDM login)
+        public static void UpdateLogin(LoginDM login)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("UPDATE_LOGIN", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Login_ID", login.LoginId);
+                    cmd.Parameters.AddWithValue("@Email", login.Email);
+                    cmd.Parameters.AddWithValue("@Password", login.Password);
+                    cmd.Parameters.AddWithValue("@Salt", login.Salt);
+                    cmd.Parameters.AddWithValue("@Employee_ID", login.EmployeeId);
+                    SqlConnect.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                    SqlConnect.Connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                SqlConnect.Connection.Close();
+                throw (e);
+            }
+        }
+
+        public static void DeleteLogin(LoginDM login)
         {
             try
             {

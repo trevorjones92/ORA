@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using ORA.Models;
 using ORA_Data.Model;
+using ORA_DAL.Model;
+using ORA_DAL;
 
 namespace ORA_Data.Data
 {
@@ -162,7 +165,7 @@ namespace ORA_Data.Data
                             #endregion
 
                             //Adding the object properties to the employment object to be used together for the view modal
-                            employee.address = address; employee.EmployeeTime = employeeTime; employee.Status = workStatus;
+                            employee.address = address; employee.employeeTime = employeeTime; employee.workStatus = workStatus;
 
                             employeeList.Add(employee);
                         }

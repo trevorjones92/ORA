@@ -15,7 +15,7 @@ namespace ORA_Data.DAL
 
     public class ClientsDAL
     {
-        public void CreateClient(ClientsDM _client)
+        public static void CreateClient(ClientsDM _client)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public List<ClientsDM> ReadClient()
+        public static List<ClientsDM> ReadClient()
         {
             List<ClientsDM> _clientList = new List<ClientsDM>();
             try
@@ -70,7 +70,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void UpdateClient(ClientsDM _client)
+        public static void UpdateClient(ClientsDM _client)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void DeleteClient(ClientsDM _client)
+        public static void DeleteClient(ClientsDM _client)
         {
             try
             {

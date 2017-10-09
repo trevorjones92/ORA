@@ -6,14 +6,14 @@ using System.Data.SqlClient;
 
 namespace ORA_Data.DAL
 {
-    public class AddressDal
+    public class AddressDAL
     {
         /// <summary>
         /// Basic CRUD methods for address information. AddressDM is the model being used here.
         /// </summary>
         
         #region ADDRESS DAL METHODS
-        public void CreateAddress(AddressDM address)
+        public static void CreateAddress(AddressDM address)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public List<AddressDM> ReadAddress()
+        public static List<AddressDM> ReadAddress()
         {
             List<AddressDM> addressList = new List<AddressDM>();
             try
@@ -78,7 +78,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void UpdateAddress(AddressDM address)
+        public static void UpdateAddress(AddressDM address)
         {
             try
             {
@@ -105,7 +105,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void DeleteAddress(AddressDM address)
+        public static void DeleteAddress(AddressDM address)
         {
             try
             {

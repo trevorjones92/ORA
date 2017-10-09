@@ -145,6 +145,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AssessmentController.cs" />
     <Compile Include="Controllers\AssignmentController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
@@ -181,7 +182,6 @@
     <Compile Include="Models\EmloyeeTimeVM.cs" />
     <Compile Include="Models\EmployeeVM.cs" />
     <Compile Include="Models\KPIVM.cs" />
-    <Compile Include="Models\MasterEmployeeDetailsVM.cs" />
     <Compile Include="Models\PositionsVM.cs" />
     <Compile Include="Models\ProjectVM.cs" />
     <Compile Include="Models\LoginVM.cs" />
@@ -242,10 +242,6 @@
     <Content Include="Views\Employee\CreateEmployee.cshtml" />
     <Content Include="Views\Employee\UpdateEmployee.cshtml" />
     <Content Include="Views\Employee\EmployeeDetails.cshtml" />
-    <Content Include="Views\Account\CreateAccount.cshtml" />
-    <Content Include="Views\Account\ReadAccount.cshtml" />
-    <Content Include="Views\Account\UpdateAccount.cshtml" />
-    <Content Include="Views\Account\DeleteAccount.cshtml" />
     <Content Include="Views\Assessment\CreateAssessment.cshtml" />
     <Content Include="Views\Assessment\ReadAssessment.cshtml" />
     <Content Include="Views\Assessment\UpdateAssessment.cshtml" />
@@ -287,9 +283,13 @@
     <Content Include="Views\Team\ReadTeam.cshtml" />
     <Content Include="Views\Team\UpdateTeam.cshtml" />
     <Content Include="Views\Team\DeleteTeam.cshtml" />
+    <Content Include="Views\Login\ReadLogins.cshtml" />
+    <Content Include="Views\Login\DeleteLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Address\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

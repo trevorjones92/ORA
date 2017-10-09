@@ -64,7 +64,6 @@
     <Compile Include="Model\EmployeeDM.cs" />
     <Compile Include="Model\EmployeeTimeDM.cs" />
     <Compile Include="Model\KPIDM.cs" />
-    <Compile Include="Model\MasterEmployeeDetailsDM.cs" />
     <Compile Include="Model\PositionsDM.cs" />
     <Compile Include="Model\ProjectDM.cs" />
     <Compile Include="Model\LoginDM.cs" />

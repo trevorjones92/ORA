@@ -14,7 +14,7 @@ namespace ORA_Data.DAL
         /// 
 
         #region ASSIGNMENT DAL Methods
-        public void CreateAssignment(AssignmentDM _assignment)
+        public static void CreateAssignment(AssignmentDM _assignment)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public List<AssignmentDM> ReadAssignment()
+        public static List<AssignmentDM> ReadAssignment()
         {
             List<AssignmentDM> _assignmentList = new List<AssignmentDM>();
             try
@@ -79,7 +79,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void UpdateAssignment(AssignmentDM _assignment)
+        public static void UpdateAssignment(AssignmentDM _assignment)
         {
             try
             {
@@ -106,7 +106,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void DeleteAssignment(AssignmentDM _assignment)
+        public static void DeleteAssignment(AssignmentDM _assignment)
         {
             try
             {

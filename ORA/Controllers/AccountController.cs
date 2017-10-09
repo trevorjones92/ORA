@@ -1,4 +1,11 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using ORA.Models;
+using System.Web.Mvc;
+using ORA_Data.DAL;
+using AutoMapper;
+using ORA_Data.Model;
+using System.Configuration;
+using System.Collections.Generic;
 
 namespace ORA.Controllers
 {
@@ -14,6 +21,7 @@ namespace ORA.Controllers
         {
             return View();
         }
+        
 
         public ActionResult ReadAccount()
         {
