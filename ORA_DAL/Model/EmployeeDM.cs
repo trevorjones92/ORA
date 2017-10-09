@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 ﻿using System;
 using ORA.Models;
 using ORA_Data.Model;
-=======
 ﻿using ORA_Data.Model;
 using System;
->>>>>>> 2522debfdd1879f9367679f69723a16157f195ef
 
 namespace ORA_DAL.Model
 {
@@ -33,7 +30,6 @@ namespace ORA_DAL.Model
 
         public Int64 WorkStatusID { get; set; }
 
-<<<<<<< HEAD
         public AddressDM address { get; set; }
 
         public EmployeeTimeDM employeeTime { get; set; }
@@ -45,12 +41,11 @@ namespace ORA_DAL.Model
         public TeamsDM team { get; set; }
 
         public StatusDM workStatus { get; set; }
-=======
+
         public AddressDM Address { get; set; }
 
         public StatusDM Status { get; set; }
 
         public AssignmentDM Assignment { get; set; }
->>>>>>> 2522debfdd1879f9367679f69723a16157f195ef
     }
 }
