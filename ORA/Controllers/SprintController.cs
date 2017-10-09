@@ -9,5 +9,25 @@ namespace ORA.Controllers
         {
             return View();
         }
+
+        public ActionResult CreateSprint()
+        {
+            return View();
+        }
+
+        public ActionResult ReadSprint()
+        {
+            return View();
+        }
+
+        public ActionResult UpdateSprint()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteSprint()
+        {
+            return View();
+        }
     }
 }

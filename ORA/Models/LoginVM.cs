@@ -28,5 +28,7 @@ namespace ORA.Models
 
         public EmployeeVM Employee { get; set; }
 
+        public RolesVM Role { get; set; }
+
     }
 }

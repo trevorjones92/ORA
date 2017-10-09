@@ -64,7 +64,8 @@ namespace ORA.Controllers
                 if (info.Email != null)
                 {
                     Session["LoggedIn"] = LoginDAL.Login(Mapper.Map<LoginDM>(info));
-                    Session["Role"] = RolesDAL.ReadRoleByID(Mapper.Map<RolesDM>(info));
+                    //RolesDAL.ReadRoleByID(Mapper.Map<RolesDM>(info.Role));
+                    Session["Role"] = "employee" /*info*/;
                     if ((bool)Session["LoggedIn"])
                     {
                         Session["Email"] = info.Email;
@@ -83,6 +84,21 @@ namespace ORA.Controllers
         public ActionResult LogOut()
         {
             Session["LoggedIn"] = false;
+            return View();
+        }
+        
+        public ActionResult ReadLogin()
+        {
+            return View();
+        }
+
+        public ActionResult UpdateLogin()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteLogin()
+        {
             return View();
         }
 

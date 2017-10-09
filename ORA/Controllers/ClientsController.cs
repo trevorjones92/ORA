@@ -9,5 +9,25 @@ namespace ORA.Controllers
         {
             return View();
         }
+
+        public ActionResult CreateClient()
+        {
+            return View();
+        }
+
+        public ActionResult ReadClient()
+        {
+            return View();
+        }
+
+        public ActionResult UpdateClient()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteClient()
+        {
+            return View();
+        }
     }
 }

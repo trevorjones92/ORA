@@ -101,6 +101,38 @@ namespace ORA_Data.DAL
             }
         }
 
+        public static RolesDM ReadRoleForEmployee(LoginDM _role)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("READ_ROLE_FOR_EMPLOYEE", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Employee_ID", _role.EmployeeId);
+                    SqlConnect.Connection.Open();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                _role.Role.RoleName = (string)reader["Role_Name"];
+                                _role.Role.RoleDescription = (string)reader["Role_Description"];
+                            }
+                        }
+                    }
+                    SqlConnect.Connection.Close();
+                }
+                return (_role.Role);
+            }
+            catch (Exception ex)
+            {
+                SqlConnect.Connection.Close();
+                throw ex;
+            }
+        }
+
+
         public static void UpdateRole(RolesDM _role)
         {
             try

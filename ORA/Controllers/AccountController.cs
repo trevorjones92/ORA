@@ -9,5 +9,25 @@ namespace ORA.Controllers
         {
             return View();
         }
+
+        public ActionResult CreateAccount()
+        {
+            return View();
+        }
+
+        public ActionResult ReadAccount()
+        {
+            return View();
+        }
+
+        public ActionResult UpdateAccount()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteAccount()
+        {
+            return View();
+        }
     }
 }

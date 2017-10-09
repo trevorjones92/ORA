@@ -9,5 +9,25 @@ namespace ORA.Controllers
         {
             return View();
         }
+
+        public ActionResult CreateTeam()
+        {
+            return View();
+        }
+
+        public ActionResult ReadTeam()
+        {
+            return View();
+        }
+
+        public ActionResult UpdateTeam()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteTeam()
+        {
+            return View();
+        }
     }
 }

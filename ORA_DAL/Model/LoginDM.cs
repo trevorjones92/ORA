@@ -15,5 +15,7 @@ namespace ORA_Data.Model
         public int EmployeeId { get; set; }
 
         public EmployeeDM Employee { get; set; }
+
+        public RolesDM Role { get; set; }
     }
 }

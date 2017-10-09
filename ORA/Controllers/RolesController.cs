@@ -14,14 +14,29 @@ namespace ORA.Controllers
             return View();
         }
 
-        public ActionResult Create()
+        public ActionResult CreateRole()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Create(RolesVM role)
+        public ActionResult CreateRole(RolesVM role)
         {
             RolesDAL.CreateRole(Mapper.Map<RolesDM>(role));
+            return View();
+        }
+        
+        public ActionResult ReadRole()
+        {
+            return View();
+        }
+
+        public ActionResult UpdateRole()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteRole()
+        {
             return View();
         }
     }
