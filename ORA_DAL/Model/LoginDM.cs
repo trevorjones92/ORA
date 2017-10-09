@@ -1,5 +1,4 @@
-﻿using ORA_DAL.Model;
-
+﻿
 namespace ORA_Data.Model
 {
     public class LoginDM

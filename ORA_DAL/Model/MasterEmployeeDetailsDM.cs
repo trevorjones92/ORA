@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ORA_Data.Model;
 
-namespace ORA_DAL.Model
+namespace ORA_Data.Model
 {
     public class MasterEmployeeDetailsDM
     {

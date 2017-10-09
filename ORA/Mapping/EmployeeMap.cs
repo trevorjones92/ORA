@@ -2,7 +2,7 @@
 using ORA.Models;
 using AutoMapper;
 using ORA_Data.Data;
-using ORA_DAL.Model;
+using ORA_Data.Model;
 
 namespace ORA.Mapping
 {
