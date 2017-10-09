@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using ORA.Models;
 using ORA_Data.Model;
-using ORA_DAL.Model;
 
 namespace ORA.Tools
 {

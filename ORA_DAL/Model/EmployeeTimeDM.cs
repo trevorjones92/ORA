@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ORA_DAL.Model
+namespace ORA_Data.Model
 {
     public class EmployeeTimeDM
     {

@@ -1,10 +1,6 @@
 ﻿using System;
-using ORA.Models;
-using ORA_Data.Model;
-﻿using ORA_Data.Model;
-using System;
 
-namespace ORA_DAL.Model
+namespace ORA_Data.Model
 {
     public class EmployeeDM : AddressDM
     {
