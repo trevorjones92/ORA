@@ -10,36 +10,21 @@ namespace ORA.Tools
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<AddressVM, AddressDM>();
-                cfg.CreateMap<AddressDM, AddressVM>();
-                cfg.CreateMap<AssessmentVM, AssessmentDM>();
-                cfg.CreateMap<AssessmentDM, AssessmentVM>();
-                cfg.CreateMap<AssignmentVM, AssignmentDM>();
-                cfg.CreateMap<AssignmentDM, AssignmentVM>();
-                cfg.CreateMap<ClientsVM, ClientsDM>();
-                cfg.CreateMap<ClientsDM, ClientsVM>();
-                cfg.CreateMap<KPIVM, KPIDM>();
-                cfg.CreateMap<KPIDM, KPIVM>();
-                cfg.CreateMap<PositionsVM, PositionsDM>();
-                cfg.CreateMap<PositionsDM, PositionsVM>();
-                cfg.CreateMap<ProjectVM, ProjectDM>();
-                cfg.CreateMap<ProjectDM, ProjectVM>();
-                cfg.CreateMap<SprintVM, SprintDM>();
-                cfg.CreateMap<SprintDM, SprintVM>();
-                cfg.CreateMap<StatusVM, StatusDM>();
-                cfg.CreateMap<StatusDM, StatusVM>();
-                cfg.CreateMap<StoryVM, StoryDM>();
-                cfg.CreateMap<StoryDM, StoryVM>();
-                cfg.CreateMap<TeamsVM, TeamsDM>();
-                cfg.CreateMap<TeamsDM, TeamsVM>();
-                cfg.CreateMap<LoginVM,LoginDM>();
-                cfg.CreateMap<LoginDM, LoginVM>();
-                cfg.CreateMap<EmployeeVM, EmployeeDM>();
-                cfg.CreateMap<EmployeeDM, EmployeeVM>();
-                cfg.CreateMap<RolesVM, RolesDM>();
-                cfg.CreateMap<RolesDM, RolesVM>();
-                cfg.CreateMap<EmployeeTimeDM, EmployeeTimeVM>();
-                cfg.CreateMap<EmployeeTimeVM, EmployeeTimeDM>();
+                cfg.CreateMap<AddressVM, AddressDM>().ReverseMap();
+                cfg.CreateMap<AssessmentVM, AssessmentDM>().ReverseMap();
+                cfg.CreateMap<AssignmentVM, AssignmentDM>().ReverseMap();
+                cfg.CreateMap<ClientsVM, ClientsDM>().ReverseMap();
+                cfg.CreateMap<KPIVM, KPIDM>().ReverseMap();
+                cfg.CreateMap<PositionsVM, PositionsDM>().ReverseMap();
+                cfg.CreateMap<ProjectVM, ProjectDM>().ReverseMap();
+                cfg.CreateMap<SprintVM, SprintDM>().ReverseMap();
+                cfg.CreateMap<StatusVM, StatusDM>().ReverseMap();
+                cfg.CreateMap<StoryVM, StoryDM>().ReverseMap();
+                cfg.CreateMap<TeamsVM, TeamsDM>().ReverseMap();
+                cfg.CreateMap<LoginVM,LoginDM>().ReverseMap();
+                cfg.CreateMap<EmployeeVM, EmployeeDM>().ReverseMap();
+                cfg.CreateMap<RolesVM, RolesDM>().ReverseMap();
+                cfg.CreateMap<EmployeeTimeDM, EmployeeTimeVM>().ReverseMap();
             });
         }
     }
