@@ -9,11 +9,11 @@ namespace ORA_Data.DAL
     public class StoryDAL
     {
         /// <summary>
-        /// Basic CRUD methods for address information. ProjectDM is the model being used here.
+        /// Basic CRUD methods for Story information. StoryDM is the model being used here.
         /// </summary>
 
-        #region ADDRESS DAL METHODS
-        public void CreateProject(StoryDM _story)
+        #region Story DAL METHODS
+        public static void CreateStory(StoryDM _story)
         {
             try
             {
@@ -38,9 +38,9 @@ namespace ORA_Data.DAL
             }
         }
 
-        public List<StoryDM> ReadAddress()
+        public static List<StoryDM> ReadAStory()
         {
-            List<StoryDM> customerList = new List<StoryDM>();
+            List<StoryDM> storyList = new List<StoryDM>();
             try
             {
                     using (SqlCommand cmd = new SqlCommand("READ_STORYS", SqlConnect.Connection))
@@ -60,13 +60,13 @@ namespace ORA_Data.DAL
                                     _story.StartDate = (DateTime)reader["Story_Start_Date"];
                                     _story.EndDate = (DateTime)reader["Story_End_Date"];
                                     _story.ClientId = (int)reader["Client_ID"];
-                                    customerList.Add(_story);
+                                    storyList.Add(_story);
                                 }
                             }
                     }
                     SqlConnect.Connection.Close();
                 }
-                return (customerList);
+                return (storyList);
             }
             catch (Exception ex)
             {
@@ -75,7 +75,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void UpdateAddress(StoryDM _story)
+        public static void UpdateStory(StoryDM _story)
         {
             try
             {
@@ -100,7 +100,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void DeleteAddress(StoryDM _story)
+        public static void DeleteStory(StoryDM _story)
         {
             try
             {

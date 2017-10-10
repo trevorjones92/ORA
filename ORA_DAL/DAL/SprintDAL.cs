@@ -9,11 +9,11 @@ namespace ORA_Data.DAL
     public class SprintDAL
     {
         /// <summary>
-        /// Basic CRUD methods for address information. ProjectDM is the model being used here.
+        /// Basic CRUD methods for Sprint information. SprintDM is the model being used here.
         /// </summary>
 
-        #region ADDRESS DAL METHODS
-        public void CreateProject(SprintDM _sprint)
+        #region Sprint DAL METHODS
+        public static void CreateSprint(SprintDM _sprint)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public List<SprintDM> ReadAddress()
+        public static List<SprintDM> ReadSprint()
         {
             List<SprintDM> customerList = new List<SprintDM>();
             try
@@ -75,7 +75,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void UpdateAddress(SprintDM _sprint)
+        public static void UpdateSprint(SprintDM _sprint)
         {
             try
             {
@@ -100,7 +100,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void DeleteAddress(SprintDM _sprint)
+        public static void DeleteSprint(SprintDM _sprint)
         {
             try
             {

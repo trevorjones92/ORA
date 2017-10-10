@@ -15,7 +15,7 @@ namespace ORA_Data.DAL
 
         #region POSITION DAL METHODS
 
-        public void CreatePosition(PositionsDM _position)
+        public static void CreatePosition(PositionsDM _position)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public List<PositionsDM> ReadPosition()
+        public static List<PositionsDM> ReadPosition()
         {
             List<PositionsDM> _positionList = new List<PositionsDM>();
             try
@@ -68,7 +68,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void UpdatePosition(PositionsDM _position)
+        public static void UpdatePosition(PositionsDM _position)
         {
             try
             {
@@ -89,7 +89,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void DeletePosition(PositionsDM _position)
+        public static void DeletePosition(PositionsDM _position)
         {
             try
             {

@@ -1,5 +1,7 @@
-﻿using ORA.Models;
+﻿using AutoMapper;
+using ORA.Models;
 using ORA_Data.DAL;
+using ORA_Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +26,13 @@ namespace ORA.Controllers
         [HttpPost]
         public ActionResult CreateAddress(AddressVM address)
         {
-            AddressDAL.
+            AddressDAL.CreateAddress(Mapper.Map<AddressDM>(address));
             return View();
         }
 
         public ActionResult ReadAddress()
         {
+            AddressDAL.ReadAllAddress();
             return View();
         }
 

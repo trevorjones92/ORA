@@ -13,7 +13,7 @@ namespace ORA_Data.DAL
         /// </summary>
 
         #region ADDRESS DAL METHODS
-        public void CreateProject(StatusDM _status)
+        public static void CreateProject(StatusDM _status)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public List<StatusDM> ReadAddress()
+        public static List<StatusDM> ReadStatus()
         {
             List<StatusDM> customerList = new List<StatusDM>();
             try
@@ -78,7 +78,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void UpdateAddress(StatusDM _status)
+        public static void UpdateStatus(StatusDM _status)
         {
             try
             {
@@ -105,7 +105,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void DeleteAddress(StatusDM _status)
+        public static void DeleteStatus(StatusDM _status)
         {
             try
             {

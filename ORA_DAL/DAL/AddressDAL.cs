@@ -40,12 +40,12 @@ namespace ORA_Data.DAL
             }
         }
 
-        public static List<AddressDM> ReadAddress()
+        public static List<AddressDM> ReadAllAddress()
         {
             List<AddressDM> addressList = new List<AddressDM>();
             try
             {
-                    using (SqlCommand cmd = new SqlCommand("READ_ADDRESS", SqlConnect.Connection))
+                    using (SqlCommand cmd = new SqlCommand("READ_ALL_ADDRESS", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                     SqlConnect.Connection.Open();
@@ -54,8 +54,9 @@ namespace ORA_Data.DAL
                             if (!reader.HasRows) return (addressList);
                             while (reader.Read())
                             {
-                                var address = new AddressDM
-                                {
+                            var address = new AddressDM
+                            {
+                                    Address_ID = (int)reader["Address_ID"],
                                     Address = (string) reader["Address"],
                                     City = (string) reader["City"],
                                     State = (string) reader["State"],

@@ -14,7 +14,7 @@ namespace ORA_Data.DAL
 
         #region KPI DAL METHODS
 
-        public void CreateKPI(KPIDM _kpi)
+        public static void CreateKPI(KPIDM _kpi)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public List<KPIDM> ReadKPI()
+        public static List<KPIDM> ReadKPI()
         {
             List<KPIDM> _kpiList = new List<KPIDM>();
             try
@@ -109,7 +109,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void UpdateKPI(KPIDM _kpi)
+        public static void UpdateKPI(KPIDM _kpi)
         {
             try
             {
@@ -147,7 +147,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void DeleteKPI(KPIDM _kpi)
+        public static void DeleteKPI(KPIDM _kpi)
         {
             try
             {

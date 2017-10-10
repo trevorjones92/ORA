@@ -9,7 +9,7 @@ namespace ORA_Data.DAL
     public class RolesDAL
     {
         /// <summary>
-        /// Basic CRUD methods for address information. RoleDM is the model being used here.
+        /// Basic CRUD methods for Role information. RoleDM is the model being used here.
         /// </summary>
 
         #region ROLE DAL METHODS

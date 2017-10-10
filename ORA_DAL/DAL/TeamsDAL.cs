@@ -9,11 +9,11 @@ namespace ORA_Data.DAL
     public class TeamsDAL
     {
         /// <summary>
-        /// Basic CRUD methods for address information. ProjectDM is the model being used here.
+        /// Basic CRUD methods for Team information. TeamDM is the model being used here.
         /// </summary>
 
-        #region ADDRESS DAL METHODS
-        public void CreateProject(TeamsDM _team)
+        #region Team DAL METHODS
+        public static void CreateTeam(TeamsDM _team)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public List<TeamsDM> ReadAddress()
+        public static List<TeamsDM> ReadTeam()
         {
             List<TeamsDM> customerList = new List<TeamsDM>();
             try
@@ -69,7 +69,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void UpdateAddress(TeamsDM _team)
+        public static void UpdateTeam(TeamsDM _team)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void DeleteAddress(TeamsDM _team)
+        public static void DeleteTeam(TeamsDM _team)
         {
             try
             {

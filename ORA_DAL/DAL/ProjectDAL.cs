@@ -9,11 +9,11 @@ namespace ORA_Data.DAL
     public class ProjectDAL
     {
         /// <summary>
-        /// Basic CRUD methods for address information. ProjectDM is the model being used here.
+        /// Basic CRUD methods for Project information. ProjectDM is the model being used here.
         /// </summary>
 
-        #region ADDRESS DAL METHODS
-        public void CreateProject(ProjectDM _project)
+        #region Project DAL METHODS
+        public static void CreateProject(ProjectDM _project)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public List<ProjectDM> ReadAddress()
+        public static List<ProjectDM> ReadProject()
         {
             List<ProjectDM> customerList = new List<ProjectDM>();
             try
@@ -75,7 +75,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void UpdateAddress(ProjectDM _project)
+        public static void UpdateProject(ProjectDM _project)
         {
             try
             {
@@ -100,7 +100,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public void DeleteAddress(ProjectDM _project)
+        public static void DeleteProject(ProjectDM _project)
         {
             try
             {
