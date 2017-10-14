@@ -1,7 +1,9 @@
-﻿using System.Web.Mvc;
-using ORA.Models;
+﻿using AutoMapper;
 using ORA.Mapping;
-using AutoMapper;
+using ORA.Models;
+using ORA_Data.DAL;
+using ORA_Data.Model;
+using System.Web.Mvc;
 
 namespace ORA.Controllers
 {

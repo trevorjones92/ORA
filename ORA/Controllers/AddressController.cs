@@ -17,7 +17,7 @@ namespace ORA.Controllers
         {
             return View();
         }
-
+        [Route("Address/Create")]
         public ActionResult CreateAddress()
         {
             return View();
@@ -30,14 +30,25 @@ namespace ORA.Controllers
             return View();
         }
 
-        public ActionResult ReadAddress()
+        public ActionResult ReadAllAddress()
         {
-            AddressDAL.ReadAllAddress();
-            return View();
+            return View(Mapper.Map<List<AddressVM>>(AddressDAL.ReadAllAddress()));
+        }
+        
+        public ActionResult ReadAddressByID(AddressVM address)
+        {
+            return View(Mapper.Map<AddressVM>(AddressDAL.ReadAddressByID(address.Address_ID.ToString())));
         }
 
         public ActionResult UpdateAddress()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UpdateAddress(AddressVM address)
+        {
+            AddressDAL.UpdateAddress(Mapper.Map<AddressDM>(address));
             return View();
         }
 
@@ -49,6 +60,7 @@ namespace ORA.Controllers
         [HttpPost]
         public ActionResult DeleteAddress(AddressVM address)
         {
+            AddressDAL.DeleteAddress(Mapper.Map<AddressDM>(address));
             return View();
         }
     }

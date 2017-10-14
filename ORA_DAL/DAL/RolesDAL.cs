@@ -70,11 +70,12 @@ namespace ORA_Data.DAL
             }
         }
 
-        public static RolesDM ReadRoleByID(RolesDM _role)
+        public static RolesDM ReadRoleByID(string roleId)
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("READ_ROLE", SqlConnect.Connection))
+                RolesDM _role = new RolesDM();
+                using (SqlCommand cmd = new SqlCommand("READ_ROLE_BY_ID", SqlConnect.Connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("Role_ID", _role.RoleId);
@@ -85,6 +86,7 @@ namespace ORA_Data.DAL
                         {
                             while (reader.Read())
                             {
+                                _role.RoleId = (int)reader["Role_ID"];
                                 _role.RoleName = (string)reader["Role_Name"];
                                 _role.RoleDescription = (string)reader["Role_Description"];
                             }

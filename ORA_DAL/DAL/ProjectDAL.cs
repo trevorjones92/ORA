@@ -38,9 +38,9 @@ namespace ORA_Data.DAL
             }
         }
 
-        public static List<ProjectDM> ReadProject()
+        public static List<ProjectDM> ReadProjects()
         {
-            List<ProjectDM> customerList = new List<ProjectDM>();
+            List<ProjectDM> projectList = new List<ProjectDM>();
             try
             {
                     using (SqlCommand cmd = new SqlCommand("READ_PROJECTS", SqlConnect.Connection))
@@ -60,13 +60,49 @@ namespace ORA_Data.DAL
                                     _project.StartDate = (DateTime)reader["Project_Start_Date"];
                                     _project.EndDate = (DateTime)reader["Project_End_Date"];
                                     _project.ClientId = (int)reader["Client_ID"];
-                                    customerList.Add(_project);
+                                    projectList.Add(_project);
                                 }
                             }
                     }
                     SqlConnect.Connection.Close();
                 }
-                return (customerList);
+                return (projectList);
+            }
+            catch (Exception ex)
+            {
+                SqlConnect.Connection.Close();
+                throw ex;
+            }
+        }
+
+        public static ProjectDM ReadProjectById(string projectId)
+        {
+            ProjectDM _project = new ProjectDM();
+            try
+            {
+                    using (SqlCommand cmd = new SqlCommand("READ_PROJECT_BY_ID", SqlConnect.Connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                    SqlConnect.Connection.Open();
+                    cmd.Parameters.AddWithValue("@Project_ID", projectId);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    _project.ProjectId = (int)reader["Project_ID"];
+                                    _project.ProjectName = (string)reader["Project_Name"];
+                                    _project.ProjectNumber = (int)reader["Project_Number"];
+                                    _project.StartDate = (DateTime)reader["Project_Start_Date"];
+                                    _project.EndDate = (DateTime)reader["Project_End_Date"];
+                                    _project.ClientId = (int)reader["Client_ID"];
+                                }
+                            }
+                    }
+                    SqlConnect.Connection.Close();
+                }
+                return (_project);
             }
             catch (Exception ex)
             {

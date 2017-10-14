@@ -1,4 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using AutoMapper;
+using ORA.Models;
+using ORA_Data.DAL;
+using ORA_Data.Model;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace ORA.Controllers
 {
@@ -15,9 +20,21 @@ namespace ORA.Controllers
             return View();
         }
 
-        public ActionResult ReadAssessment()
+        [HttpPost]
+        public ActionResult CreateAssessment(AssessmentVM assessment)
         {
+            AssessmentDAL.CreateAssessment(Mapper.Map<AssessmentDM>(assessment));
             return View();
+        }
+
+        public ActionResult ReadAssessments()
+        {
+            return View(Mapper.Map<List<AddressVM>>(AssessmentDAL.ReadAssessments()));
+        }
+
+        public ActionResult ReadAssessmentByID(AssessmentDM assessment)
+        {
+            return View(Mapper.Map<AddressVM>(AssessmentDAL.ReadAssessmentByID(assessment.AssessmentId.ToString())));
         }
 
         public ActionResult UpdateAssessment()
@@ -25,8 +42,22 @@ namespace ORA.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult UpdateAssessment(AssessmentVM assessment)
+        {
+            AssessmentDAL.UpdateAssessment(Mapper.Map<AssessmentDM>(assessment));
+            return View();
+        }
+
         public ActionResult DeleteAssessment()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteAssessment(AssessmentVM assessment)
+        {
+            AssessmentDAL.DeleteAssessment(Mapper.Map<AssessmentDM>(assessment));
             return View();
         }
 

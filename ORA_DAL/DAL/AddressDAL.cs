@@ -79,6 +79,42 @@ namespace ORA_Data.DAL
             }
         }
 
+        public static AddressDM ReadAddressByID(string addressId)
+        {
+            try
+            {
+                AddressDM address = new AddressDM();
+                using (SqlCommand cmd = new SqlCommand("READ_ADDRESS_BY_ID", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlConnect.Connection.Open();
+                    cmd.Parameters.AddWithValue("@Address_ID", addressId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (!reader.HasRows) return (address);
+                        while (reader.Read())
+                        {
+                            address.Address_ID = (int)reader["Address_ID"];
+                            address.Address = (string)reader["Address"];
+                            address.City = (string)reader["City"];
+                            address.State = (string)reader["State"];
+                            address.Zip_Code = (int)reader["Zip_Code"];
+                            address.Country = (string)reader["Country"];
+                            address.Phone = (string)reader["Phone"];
+                            address.Email = (string)reader["Email"];
+                        }
+                    }
+                    SqlConnect.Connection.Close();
+                }
+                return (address);
+            }
+            catch (Exception ex)
+            {
+                SqlConnect.Connection.Close();
+                throw ex;
+            }
+        }
+
         public static void UpdateAddress(AddressDM address)
         {
             try

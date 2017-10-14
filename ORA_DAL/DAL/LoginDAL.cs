@@ -75,7 +75,7 @@ namespace ORA_Data.DAL
         }
 
 
-        public static List<LoginDM> ViewLoginEmails()
+        public static List<LoginDM> ViewLogins()
         {
             try
             {
@@ -97,6 +97,36 @@ namespace ORA_Data.DAL
                     command.Connection.Close();
                 }
                 return logins;
+            }
+            catch (Exception ex)
+            {
+                SqlConnect.Connection.Close();
+                throw (ex);
+            }
+        }
+
+        public static LoginDM ReadLoginById(string loginId)
+        {
+            try
+            {
+                LoginDM login = new LoginDM();
+                using (SqlCommand command = new SqlCommand("READ_LOGIN_BY_ID", SqlConnect.Connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Login_ID", loginId);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                login.Email = (string)reader["Email"];
+                            }
+                        }
+                    }
+                    command.Connection.Close();
+                }
+                return login;
             }
             catch (Exception ex)
             {
