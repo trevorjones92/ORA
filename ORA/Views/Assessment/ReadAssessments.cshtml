@@ -1,0 +1,208 @@
+﻿@model IEnumerable<ORA.Models.AssessmentVM>
+
+@{
+    ViewBag.Title = "ReadAssessments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ReadAssessments</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssessmentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDProblemSolving)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDQualityOfWork)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDProductivity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDProductKnowledge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CSRProffesionalismTeamwork)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CSRVerbalSkills)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CSRWrittenSkills)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CSRListeningSkills)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CSRComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADAttendence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADEthicalBehavior)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADMeetDeadlines)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADOrganizeDetailedWork)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TMResourceUse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TMFeedback)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TMTechnicalMonitoring)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TMAskingQuestions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TMComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MIAttitudeWork)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MIGroomingAppearance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MIPersonalGrowth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MIPotentialAdvancement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MIComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssessmentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDProblemSolving)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDQualityOfWork)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDProductivity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDProductKnowledge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CSRProffesionalismTeamwork)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CSRVerbalSkills)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CSRWrittenSkills)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CSRListeningSkills)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CSRComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADAttendence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADEthicalBehavior)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADMeetDeadlines)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADOrganizeDetailedWork)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TMResourceUse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TMFeedback)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TMTechnicalMonitoring)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TMAskingQuestions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TMComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MIAttitudeWork)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MIGroomingAppearance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MIPersonalGrowth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MIPotentialAdvancement)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MIComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modified)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

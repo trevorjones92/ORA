@@ -1,0 +1,172 @@
+﻿@model IEnumerable<ORA.Models.KPIVM>
+
+@{
+    ViewBag.Title = "ReadKPIs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ReadKPIs</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KPIID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Points)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TCCreated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TCExecuted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TCFailed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TCPassed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TCBlocked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefectsFound)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefectsFixed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefectsAccepted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefectsRejected)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefectsDeferred)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CriticalDefects)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestHrsPlanned)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestHrsActual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BugsFoundProduction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalHrsFixingBugs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignmentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SprintId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KPIID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Points)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TCCreated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TCExecuted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TCFailed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TCPassed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TCBlocked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefectsFound)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefectsFixed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefectsAccepted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefectsRejected)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefectsDeferred)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CriticalDefects)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestHrsPlanned)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestHrsActual)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BugsFoundProduction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalHrsFixingBugs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignmentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SprintId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modified)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -7,13 +7,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ORA.Mapping;
 
 namespace ORA.Controllers
 {
     public class AddressController : Controller
     {
-        
+        // GET: Address
+        public ActionResult Index()
+        {
+            return View();
+        }
+        [Route("Address/Create")]
         public ActionResult CreateAddress()
         {
             return View();
@@ -26,41 +30,38 @@ namespace ORA.Controllers
             return View();
         }
 
-        public ActionResult ReadAddress()
+        public ActionResult ReadAllAddress()
         {
-            return View(AddressDAL.ReadAllAddress());
+            return View(Mapper.Map<List<AddressVM>>(AddressDAL.ReadAllAddress()));
+        }
+        
+        public ActionResult ReadAddressByID(AddressVM address)
+        {
+            return View(Mapper.Map<AddressVM>(AddressDAL.ReadAddressByID(address.Address_ID.ToString())));
         }
 
-        public ActionResult AddressDetails(int addressId)
+        public ActionResult UpdateAddress()
         {
-            return View(Mapper.Map<AddressVM>(AddressDAL.ReadAddressById(addressId)));
-        }
-
-        [HttpGet]
-        public ActionResult UpdateAddress(int addressId)
-        {
-            return View(Mapper.Map<AddressVM>(AddressDAL.ReadAddressById(addressId)));
+            return View();
         }
 
         [HttpPost]
         public ActionResult UpdateAddress(AddressVM address)
         {
             AddressDAL.UpdateAddress(Mapper.Map<AddressDM>(address));
-            ModelState.Clear();
-            return RedirectToAction("ReadAddress");
+            return View();
         }
 
-        public ActionResult DeleteAddress(int addressId)
+        public ActionResult DeleteAddress()
         {
-            return View(Mapper.Map<AddressVM>(AddressDAL.ReadAddressById(addressId)));
+            return View();
         }
 
         [HttpPost]
         public ActionResult DeleteAddress(AddressVM address)
         {
             AddressDAL.DeleteAddress(Mapper.Map<AddressDM>(address));
-            ModelState.Clear();
-            return RedirectToAction("ReadAddress");
+            return View();
         }
     }
 }

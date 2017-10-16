@@ -41,12 +41,12 @@ namespace ORA_Data.DAL
             }
         }
 
-        public static List<AssignmentDM> ReadAssignment()
+        public static List<AssignmentDM> ReadAssignments()
         {
             List<AssignmentDM> _assignmentList = new List<AssignmentDM>();
             try
             {
-                    using (SqlCommand cmd = new SqlCommand("READ_ASSIGNMENT", SqlConnect.Connection))
+                    using (SqlCommand cmd = new SqlCommand("READ_ASSIGNMENTS", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                     SqlConnect.Connection.Open();
@@ -71,6 +71,44 @@ namespace ORA_Data.DAL
                     SqlConnect.Connection.Close();
                 }
                 return (_assignmentList);
+            }
+            catch (Exception ex)
+            {
+                SqlConnect.Connection.Close();
+                throw ex;
+            }
+        }
+
+        public static AssignmentDM ReadAssignmentByID(string assignmentId)
+        {
+            AssignmentDM _assignment = new AssignmentDM();
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("READ_ASSIGNMENT_BY_ID", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlConnect.Connection.Open();
+                    cmd.Parameters.AddWithValue("@Assignment_ID", assignmentId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                _assignment.AssignmentId = (int)reader["Assignment_ID"];
+                                _assignment.StartDate = (DateTime)reader["Start_Date"];
+                                _assignment.EndDate = (DateTime)reader["End_Date"];
+                                _assignment.ClientId = (int)reader["Client_ID"];
+                                _assignment.EmployeeId = (int)reader["Employee_ID"];
+                                _assignment.PositionId = (int)reader["Position_ID"];
+                                _assignment.RoleId = (int)reader["Role_ID"];
+                                _assignment.TeamId = (int)reader["Team_ID"];
+                            }
+                        }
+                    }
+                    SqlConnect.Connection.Close();
+                }
+                return (_assignment);
             }
             catch (Exception ex)
             {

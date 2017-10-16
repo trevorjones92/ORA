@@ -36,12 +36,12 @@ namespace ORA_Data.DAL
             }
         }
 
-        public static List<PositionsDM> ReadPosition()
+        public static List<PositionsDM> ReadPositions()
         {
             List<PositionsDM> _positionList = new List<PositionsDM>();
             try
             {
-                    using (SqlCommand cmd = new SqlCommand("READ_POSITION", SqlConnect.Connection))
+                    using (SqlCommand cmd = new SqlCommand("READ_POSITIONS", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                     SqlConnect.Connection.Open();
@@ -60,6 +60,38 @@ namespace ORA_Data.DAL
                     SqlConnect.Connection.Close();
                 }
                 return (_positionList);
+            }
+            catch (Exception e)
+            {
+                SqlConnect.Connection.Close();
+                throw (e);
+            }
+        }
+
+        public static PositionsDM ReadPositionById(string positionId)
+        {
+            PositionsDM _position = new PositionsDM();
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("READ_POSITION_BY_ID", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlConnect.Connection.Open();
+                    cmd.Parameters.AddWithValue("@Position_ID", positionId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                _position.PositionId = (int)reader["Position_ID"];
+                                _position.PositionName = (string)reader["Position_Name"];
+                            }
+                        }
+                    }
+                    SqlConnect.Connection.Close();
+                }
+                return (_position);
             }
             catch (Exception e)
             {

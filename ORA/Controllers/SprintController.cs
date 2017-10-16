@@ -1,4 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using AutoMapper;
+using ORA.Models;
+using ORA_Data.DAL;
+using ORA_Data.Model;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace ORA.Controllers
 {
@@ -15,9 +20,21 @@ namespace ORA.Controllers
             return View();
         }
 
-        public ActionResult ReadSprint()
+        [HttpPost]
+        public ActionResult CreateSprint(SprintVM sprint)
         {
+            SprintDAL.CreateSprint(Mapper.Map<SprintDM>(sprint));
             return View();
+        }
+
+        public ActionResult ReadSprints()
+        {
+            return View(Mapper.Map<List<SprintVM>>(SprintDAL.ReadSprints()));
+        }
+
+        public ActionResult ReadSprintByID(SprintDM sprint)
+        {
+            return View(Mapper.Map<SprintVM>(SprintDAL.ReadSprintById(sprint.SprintId.ToString())));
         }
 
         public ActionResult UpdateSprint()
@@ -25,8 +42,22 @@ namespace ORA.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult UpdateSprint(SprintVM sprint)
+        {
+            SprintDAL.UpdateSprint(Mapper.Map<SprintDM>(sprint));
+            return View();
+        }
+
         public ActionResult DeleteSprint()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteSprint(SprintVM sprint)
+        {
+            SprintDAL.DeleteSprint(Mapper.Map<SprintDM>(sprint));
             return View();
         }
     }

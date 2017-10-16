@@ -2,6 +2,7 @@
 using ORA.Models;
 using ORA_Data.DAL;
 using ORA_Data.Model;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace ORA.Controllers
@@ -18,6 +19,7 @@ namespace ORA.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult CreateRole(RolesVM role)
         {
@@ -25,9 +27,14 @@ namespace ORA.Controllers
             return View();
         }
         
-        public ActionResult ReadRole()
+        public ActionResult ReadRoles()
         {
-            return View();
+            return View(Mapper.Map<List<RolesVM>>(RolesDAL.ReadRoles()));
+        }
+
+        public ActionResult ReadRoleByID(RolesDM role)
+        {
+            return View(Mapper.Map<RolesVM>(RolesDAL.ReadRoleByID(role.RoleId.ToString())));
         }
 
         public ActionResult UpdateRole()
@@ -35,8 +42,22 @@ namespace ORA.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult UpdateRole(RolesVM role)
+        {
+            RolesDAL.UpdateRole(Mapper.Map<RolesDM>(role));
+            return View();
+        }
+
         public ActionResult DeleteRole()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteRole(RolesVM role)
+        {
+            RolesDAL.DeleteRole(Mapper.Map<RolesDM>(role));
             return View();
         }
     }

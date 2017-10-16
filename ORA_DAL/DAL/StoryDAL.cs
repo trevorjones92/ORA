@@ -38,7 +38,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public static List<StoryDM> ReadAStory()
+        public static List<StoryDM> ReadStorys()
         {
             List<StoryDM> storyList = new List<StoryDM>();
             try
@@ -67,6 +67,42 @@ namespace ORA_Data.DAL
                     SqlConnect.Connection.Close();
                 }
                 return (storyList);
+            }
+            catch (Exception ex)
+            {
+                SqlConnect.Connection.Close();
+                throw ex;
+            }
+        }
+
+        public static StoryDM ReadStoryById(string storyId)
+        {
+            StoryDM _story = new StoryDM();
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("READ_STORY_BY_ID", SqlConnect.Connection))
+                {
+                    SqlConnect.Connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Story_ID", storyId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                _story.StoryId = (int)reader["Story_ID"];
+                                _story.StoryName = (string)reader["Story_Name"];
+                                _story.StoryNumber = (int)reader["Story_Number"];
+                                _story.StartDate = (DateTime)reader["Story_Start_Date"];
+                                _story.EndDate = (DateTime)reader["Story_End_Date"];
+                                _story.ClientId = (int)reader["Client_ID"];
+                            }
+                        }
+                    }
+                    SqlConnect.Connection.Close();
+                }
+                return (_story);
             }
             catch (Exception ex)
             {

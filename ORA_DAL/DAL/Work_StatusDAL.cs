@@ -9,10 +9,10 @@ namespace ORA_Data.DAL
     public class Work_StatusDAL
     {
         /// <summary>
-        /// Basic CRUD methods for address information. ProjectDM is the model being used here.
+        /// Basic CRUD methods for status information. StatusDM is the model being used here.
         /// </summary>
 
-        #region ADDRESS DAL METHODS
+        #region STATUS DAL METHODS
         public static void CreateProject(StatusDM _status)
         {
             try
@@ -40,7 +40,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public static List<StatusDM> ReadStatus()
+        public static List<StatusDM> ReadAllStatus()
         {
             List<StatusDM> customerList = new List<StatusDM>();
             try
@@ -56,6 +56,7 @@ namespace ORA_Data.DAL
                                 while (reader.Read())
                                 {
                                     var _status = new StatusDM();
+                                _status.StatusId = (int)reader["Work_Status_ID"];
                                     _status.EmployeeStatus = (string)reader["Employee_Status"];
                                     _status.HireDate = (DateTime)reader["Hire_Date"];
                                     _status.PayType = (string)reader["Pay_Type"];
@@ -70,6 +71,44 @@ namespace ORA_Data.DAL
                     SqlConnect.Connection.Close();
                 }
                 return (customerList);
+            }
+            catch (Exception ex)
+            {
+                SqlConnect.Connection.Close();
+                throw ex;
+            }
+        }
+
+        public static StatusDM ReadStatusById(string statusId)
+        {
+            StatusDM _status = new StatusDM();
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("READ_WORK_STATUS_BY_ID", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlConnect.Connection.Open();
+                    cmd.Parameters.AddWithValue("@Status_ID", statusId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                _status.StatusId = (int)reader["Work_Status_ID"];
+                                _status.EmployeeStatus = (string)reader["Employee_Status"];
+                                _status.HireDate = (DateTime)reader["Hire_Date"];
+                                _status.PayType = (string)reader["Pay_Type"];
+                                _status.ServiceLength = (string)reader["Service_Length"];
+                                _status.EmploymentType = (string)reader["Employement_Type"];
+                                _status.OfficeLocation = (string)reader["Office_Location"];
+                                _status.TerminationDate = (DateTime)reader["Termination_Date"];
+                            }
+                        }
+                    }
+                    SqlConnect.Connection.Close();
+                }
+                return (_status);
             }
             catch (Exception ex)
             {

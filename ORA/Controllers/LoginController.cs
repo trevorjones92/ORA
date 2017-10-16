@@ -80,8 +80,12 @@ namespace ORA.Controllers
         
         public ActionResult ReadLogins()
         {
-            List<LoginVM> logins = Mapper.Map<List<LoginVM>>(LoginDAL.ViewLoginEmails());
-            return View(logins);
+            return View(Mapper.Map<List<LoginVM>>(LoginDAL.ViewLogins()));
+        }
+
+        public ActionResult ReadLoginByID(LoginDM login)
+        {
+            return View(Mapper.Map<LoginVM>(LoginDAL.ReadLoginById(login.LoginId.ToString())));
         }
 
         public ActionResult UpdateLogin()

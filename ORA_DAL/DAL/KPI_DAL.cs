@@ -56,12 +56,12 @@ namespace ORA_Data.DAL
             }
         }
 
-        public static List<KPIDM> ReadKPI()
+        public static List<KPIDM> ReadKPIs()
         {
             List<KPIDM> _kpiList = new List<KPIDM>();
             try
             {
-                    using (SqlCommand cmd = new SqlCommand("READ_KPI", SqlConnect.Connection))
+                    using (SqlCommand cmd = new SqlCommand("READ_KPIS", SqlConnect.Connection))
                     {
                     SqlConnect.Connection.Open();
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -101,6 +101,58 @@ namespace ORA_Data.DAL
                     SqlConnect.Connection.Close();
                 }
                 return (_kpiList);
+            }
+            catch (Exception e)
+            {
+                SqlConnect.Connection.Close();
+                throw (e);
+            }
+        }
+
+        public static KPIDM ReadKPIById(string kpiId)
+        {
+            KPIDM _kpi = new KPIDM();
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("READ_KPI_BY_ID", SqlConnect.Connection))
+                {
+                    SqlConnect.Connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@KPI_ID", kpiId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                _kpi.KPIID = (int)reader["KPI_ID"];
+                                _kpi.CreateDate = (DateTime)reader["Create_Date"];
+                                _kpi.Points = (int)reader["Points"];
+                                _kpi.TCCreated = (int)reader["TC_Created"];
+                                _kpi.TCExecuted = (int)reader["TC_Executed"];
+                                _kpi.TCFailed = (int)reader["TC_Failed"];
+                                _kpi.TCPassed = (int)reader["TC_Passed"];
+                                _kpi.TCBlocked = (int)reader["TC_Blocked"];
+                                _kpi.DefectsFound = (int)reader["Defects_Found"];
+                                _kpi.DefectsFixed = (int)reader["Defects_Fixed"];
+                                _kpi.DefectsAccepted = (int)reader["Defects_Accepted"];
+                                _kpi.DefectsRejected = (int)reader["Defects_Rejected"];
+                                _kpi.DefectsDeferred = (int)reader["Defects_Deferred"];
+                                _kpi.CriticalDefects = (int)reader["Critical_Defects"];
+                                _kpi.TestHrsPlanned = (decimal)reader["Test_Hrs_Planned"];
+                                _kpi.TestHrsActual = (decimal)reader["Test_Hrs_Actual"];
+                                _kpi.BugsFoundProduction = (int)reader["Bugs_Found_Production"];
+                                _kpi.TotalHrsFixingBugs = (decimal)reader["Total_Hrs_Fixing_Bugs"];
+                                _kpi.AssignmentId = (int)reader["Assignment_ID"];
+                                _kpi.ProjectId = (int)reader["Project_ID"];
+                                _kpi.SprintId = (int)reader["Sprint_ID"];
+                                _kpi.StoryId = (int)reader["Story_ID"];
+                            }
+                        }
+                    }
+                    SqlConnect.Connection.Close();
+                }
+                return (_kpi);
             }
             catch (Exception e)
             {
