@@ -48,7 +48,7 @@ namespace ORA.Controllers
         [HttpGet]
         public ActionResult CreateEmployee()
         {
-            return View(/*Create Employee View*/);
+            return View();
         }
 
         [HttpPost]
@@ -61,7 +61,7 @@ namespace ORA.Controllers
             }
             catch
             {
-            return View();
+                return View();
             }
         }
 
@@ -88,13 +88,20 @@ namespace ORA.Controllers
         }
 
         /*TODO @Trevor Jones: Needs javascript functionality to reconfirm deletion of an employee. Deleting an employee shouldnt actually delete employ, but change work status
-         *TODO:               and cascade delete everywhere else where that employee is being referenced. Keeping the employee in the system for records, but removing elsewhere
+         *TODO:               and cascade delete everywhere else where that employee is being referenced. Keeping the employee in the system for records, but removing other info
          */
+
+        [HttpGet]
+        public ActionResult DeleteEmployee(int employeeId)
+        {
+            return View(Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById(employeeId)));
+        }
+
         [HttpPost]
         public ActionResult DeleteEmployee(EmployeeVM employee)
         {
-            //EmployeeMap.PlaceHolderMethodById(employee);
-            return RedirectToAction("", "", new { area = "" });
+            EmployeeMap.DeleteEmployee(employee);
+            return RedirectToAction("ViewEmployees");
         }
         #endregion
     }

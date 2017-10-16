@@ -7,17 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ORA.Mapping;
 
 namespace ORA.Controllers
 {
     public class AddressController : Controller
     {
-        // GET: Address
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+        
         public ActionResult CreateAddress()
         {
             return View();
@@ -32,24 +28,39 @@ namespace ORA.Controllers
 
         public ActionResult ReadAddress()
         {
-            AddressDAL.ReadAllAddress();
-            return View();
+            return View(AddressDAL.ReadAllAddress());
         }
 
-        public ActionResult UpdateAddress()
+        public ActionResult AddressDetails(int addressId)
         {
-            return View();
+            return View(Mapper.Map<AddressVM>(AddressDAL.ReadAddressById(addressId)));
         }
 
-        public ActionResult DeleteAddress()
+        [HttpGet]
+        public ActionResult UpdateAddress(int addressId)
         {
-            return View();
+            return View(Mapper.Map<AddressVM>(AddressDAL.ReadAddressById(addressId)));
+        }
+
+        [HttpPost]
+        public ActionResult UpdateAddress(AddressVM address)
+        {
+            AddressDAL.UpdateAddress(Mapper.Map<AddressDM>(address));
+            ModelState.Clear();
+            return RedirectToAction("ReadAddress");
+        }
+
+        public ActionResult DeleteAddress(int addressId)
+        {
+            return View(Mapper.Map<AddressVM>(AddressDAL.ReadAddressById(addressId)));
         }
 
         [HttpPost]
         public ActionResult DeleteAddress(AddressVM address)
         {
-            return View();
+            AddressDAL.DeleteAddress(Mapper.Map<AddressDM>(address));
+            ModelState.Clear();
+            return RedirectToAction("ReadAddress");
         }
     }
 }

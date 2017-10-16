@@ -1,8 +1,10 @@
-﻿namespace ORA.Models
+﻿using System;
+
+namespace ORA.Models
 {
     public class AddressVM
     {
-        public int Address_ID { get; set; }
+        public Int64 Address_ID { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }

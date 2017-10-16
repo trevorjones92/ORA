@@ -164,6 +164,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\AccountMap.cs" />
+    <Compile Include="Mapping\AddressMap.cs" />
     <Compile Include="Mapping\AssessmentMap.cs" />
     <Compile Include="Mapping\AssignmentMap.cs" />
     <Compile Include="Mapping\ClientsMap.cs" />
@@ -287,11 +288,14 @@
     <Content Include="Views\Team\DeleteTeam.cshtml" />
     <Content Include="Views\Login\ReadLogins.cshtml" />
     <Content Include="Views\Login\DeleteLogin.cshtml" />
+    <Content Include="Views\Address\UpdateAddress.cshtml" />
+    <Content Include="Views\Address\ReadAddress.cshtml" />
+    <Content Include="Views\Address\AddressDetails.cshtml" />
+    <Content Include="Views\Address\DeleteAddress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Account\" />
-    <Folder Include="Views\Address\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
