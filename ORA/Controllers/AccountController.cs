@@ -17,6 +17,17 @@ namespace ORA.Controllers
             return View();
         }
 
+        public ActionResult AccountCreation()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AccountCreation(EmployeeVM employee)
+        {
+            return View();
+        }
+
         public ActionResult CreateAccount()
         {
             return View();

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ORA.Models
 {
@@ -20,6 +21,7 @@ namespace ORA.Models
         [Required]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,15}$", ErrorMessage = "Password must be at least 8 characters, no more than 15 characters, and must include at least one upper case letter, one lower case letter, and one numeric digit")]
         [DataType(DataType.Password)]
+        [DisplayName("Confirm Password")]
         public string ConfirmPassword { get; set; }
 
         public string Salt { get; set; }
