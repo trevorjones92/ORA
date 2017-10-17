@@ -7,11 +7,9 @@ namespace ORA.Models
     {
         public int RoleId { get; set; }
 
-        [Required]
         [DisplayName("Role Name")]
         public string RoleName { get; set; }
 
-        [Required]
         [DisplayName("Role Description")]
         public string RoleDescription { get; set; }
     }

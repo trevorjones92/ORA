@@ -20,7 +20,7 @@ namespace ORA_Data.DAL
             try
             {
                 //Creating a way of adding new user information to my database 
-                    using (SqlCommand cmd = new SqlCommand("CREATE_ADDRESS", SqlConnect.Connection))
+                    using (SqlCommand cmd = new SqlCommand("CREATE_CLIENT", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Client_Name", _client.ClientName);
