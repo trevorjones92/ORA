@@ -2,10 +2,10 @@
 {
     public class TeamsDM
     {
-        public int TeamId { get; set; }
+        public long TeamId { get; set; }
 
         public string TeamName { get; set; }
 
-        public int ClientId { get; set; }
+        public long ClientId { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace ORA_Data.Model
 {
     public class EmployeeTimeDM
     {
-        public int Time_ID { get; set; }
+        public long Time_ID { get; set; }
 
         public decimal Other_Total { get; set; }
 

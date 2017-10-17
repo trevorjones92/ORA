@@ -20,14 +20,14 @@ namespace ORA_Data.DAL
             try
             {
                 //Creating a way of adding new user information to my database 
-                    using (SqlCommand cmd = new SqlCommand("CREATE_POSITION", SqlConnect.Connection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Position_Name", _position.PositionName);
-                        SqlConnect.Connection.Open();
-                        cmd.ExecuteNonQuery();
-                        SqlConnect.Connection.Close();
-                    }
+                using (SqlCommand cmd = new SqlCommand("CREATE_POSITION", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Position_Name", _position.PositionName);
+                    SqlConnect.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                    SqlConnect.Connection.Close();
+                }
             }
             catch (Exception e)
             {
@@ -41,21 +41,22 @@ namespace ORA_Data.DAL
             List<PositionsDM> _positionList = new List<PositionsDM>();
             try
             {
-                    using (SqlCommand cmd = new SqlCommand("READ_POSITIONS", SqlConnect.Connection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
+                using (SqlCommand cmd = new SqlCommand("READ_POSITIONS", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     SqlConnect.Connection.Open();
-                        using (var reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
                         {
-                            if (reader.HasRows)
+                            while (reader.Read())
                             {
-                                while (reader.Read())
-                                {
-                                    var _position = new PositionsDM();
-                                    _position.PositionName = (string)reader["Position_Name"];
-                                    _positionList.Add(_position);
-                                }
+                                var _position = new PositionsDM();
+                                _position.PositionId = (Int64)reader["Position_ID"];
+                                _position.PositionName = (string)reader["Position_Name"];
+                                _positionList.Add(_position);
                             }
+                        }
                     }
                     SqlConnect.Connection.Close();
                 }
@@ -84,7 +85,7 @@ namespace ORA_Data.DAL
                         {
                             while (reader.Read())
                             {
-                                _position.PositionId = (int)reader["Position_ID"];
+                                _position.PositionId = (Int64)reader["Position_ID"];
                                 _position.PositionName = (string)reader["Position_Name"];
                             }
                         }
@@ -104,13 +105,13 @@ namespace ORA_Data.DAL
         {
             try
             {
-                    using (SqlCommand cmd = new SqlCommand("UPDATE_POSITION", SqlConnect.Connection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Position_ID", _position.PositionId);
-                        cmd.Parameters.AddWithValue("@Position_Name", _position.PositionName);
-                        SqlConnect.Connection.Open();
-                        cmd.ExecuteNonQuery();
+                using (SqlCommand cmd = new SqlCommand("UPDATE_POSITION", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Position_ID", _position.PositionId);
+                    cmd.Parameters.AddWithValue("@Position_Name", _position.PositionName);
+                    SqlConnect.Connection.Open();
+                    cmd.ExecuteNonQuery();
                     SqlConnect.Connection.Close();
                 }
             }
@@ -125,12 +126,12 @@ namespace ORA_Data.DAL
         {
             try
             {
-                    using (SqlCommand cmd = new SqlCommand("DELETE_POSITION", SqlConnect.Connection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Position_ID", _position.PositionId);
-                        SqlConnect.Connection.Open();
-                        cmd.ExecuteNonQuery();
+                using (SqlCommand cmd = new SqlCommand("DELETE_POSITION", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Position_ID", _position.PositionId);
+                    SqlConnect.Connection.Open();
+                    cmd.ExecuteNonQuery();
                     SqlConnect.Connection.Close();
                 }
             }

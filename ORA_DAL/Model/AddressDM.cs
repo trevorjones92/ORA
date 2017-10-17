@@ -4,7 +4,7 @@ namespace ORA_Data.Model
 {
     public class AddressDM
     {
-        public Int64 Address_ID { get; set; }
+        public long Address_ID { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }

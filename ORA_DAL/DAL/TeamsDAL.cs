@@ -52,8 +52,8 @@ namespace ORA_Data.DAL
                             {
                                 var _team = new TeamsDM();
                                 _team.TeamName = (string)reader["Team_Name"];
-                                _team.TeamId = (int)reader["Team_ID"];
-                                _team.ClientId = (int)reader["Client_ID"];
+                                _team.TeamId = (Int64)reader["Team_ID"];
+                                _team.ClientId = (Int64)reader["Client_ID"];
                                 teamList.Add(_team);
                             }
                         }
@@ -86,8 +86,8 @@ namespace ORA_Data.DAL
                             while (reader.Read())
                             {
                                 _team.TeamName = (string)reader["Team_Name"];
-                                _team.TeamId = (int)reader["Team_ID"];
-                                _team.ClientId = (int)reader["Client_ID"];
+                                _team.TeamId = (Int64)reader["Team_ID"];
+                                _team.ClientId = (Int64)reader["Client_ID"];
                             }
                         }
                     }

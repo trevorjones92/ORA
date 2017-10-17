@@ -56,7 +56,7 @@ namespace ORA_Data.DAL
                                 while (reader.Read())
                                 {
                                     var _status = new StatusDM();
-                                _status.StatusId = (int)reader["Work_Status_ID"];
+                                _status.StatusId = (Int64)reader["Work_Status_ID"];
                                     _status.EmployeeStatus = (string)reader["Employee_Status"];
                                     _status.HireDate = (DateTime)reader["Hire_Date"];
                                     _status.PayType = (string)reader["Pay_Type"];
@@ -95,7 +95,7 @@ namespace ORA_Data.DAL
                         {
                             while (reader.Read())
                             {
-                                _status.StatusId = (int)reader["Work_Status_ID"];
+                                _status.StatusId = (Int64)reader["Work_Status_ID"];
                                 _status.EmployeeStatus = (string)reader["Employee_Status"];
                                 _status.HireDate = (DateTime)reader["Hire_Date"];
                                 _status.PayType = (string)reader["Pay_Type"];

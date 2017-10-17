@@ -3,7 +3,7 @@ namespace ORA_Data.Model
 {
     public class LoginDM
     {
-        public int LoginId { get; set; }
+        public long LoginId { get; set; }
 
         public string Email { get; set; }
 
@@ -11,7 +11,7 @@ namespace ORA_Data.Model
 
         public string Salt { get; set; }
 
-        public int EmployeeId { get; set; }
+        public long EmployeeId { get; set; }
 
         public EmployeeDM Employee { get; set; }
 

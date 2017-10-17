@@ -20,15 +20,15 @@ namespace ORA_Data.DAL
             try
             {
                 //Creating a way of adding new user information to my database 
-                    using (SqlCommand cmd = new SqlCommand("CREATE_CLIENT", SqlConnect.Connection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Client_Name", _client.ClientName);
-                        cmd.Parameters.AddWithValue("@Client_Abbreviation", _client.ClientAbbreviation);
-                        SqlConnect.Connection.Open();
-                        cmd.ExecuteNonQuery();
-                        SqlConnect.Connection.Close();
-                    }
+                using (SqlCommand cmd = new SqlCommand("CREATE_CLIENT", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Client_Name", _client.ClientName);
+                    cmd.Parameters.AddWithValue("@Client_Abbreviation", _client.ClientAbbreviation);
+                    SqlConnect.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                    SqlConnect.Connection.Close();
+                }
             }
             catch (Exception e)
             {
@@ -42,22 +42,23 @@ namespace ORA_Data.DAL
             List<ClientsDM> _clientList = new List<ClientsDM>();
             try
             {
-                    using (SqlCommand cmd = new SqlCommand("READ_CLIENTS", SqlConnect.Connection))
-                    {
+                using (SqlCommand cmd = new SqlCommand("READ_CLIENTS", SqlConnect.Connection))
+                {
                     SqlConnect.Connection.Open();
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        using (var reader = cmd.ExecuteReader())
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
                         {
-                            if (reader.HasRows)
+                            while (reader.Read())
                             {
-                                while (reader.Read())
-                                {
-                                    var _client = new ClientsDM();
-                                    _client.ClientName = (string)reader["Client_Name"];
-                                    _client.ClientAbbreviation = (string)reader["Client_Abbreviation"];
-                                    _clientList.Add(_client);
-                                }
+                                var _client = new ClientsDM();
+                                _client.ClientId = (Int64)reader["Client_ID"];
+                                _client.ClientName = (string)reader["Client_Name"];
+                                _client.ClientAbbreviation = (string)reader["Client_Abbreviation"];
+                                _clientList.Add(_client);
                             }
+                        }
                     }
                     SqlConnect.Connection.Close();
                 }
@@ -86,6 +87,7 @@ namespace ORA_Data.DAL
                         {
                             while (reader.Read())
                             {
+                                _client.ClientId = (Int64)reader["Client_ID"];
                                 _client.ClientName = (string)reader["Client_Name"];
                                 _client.ClientAbbreviation = (string)reader["Client_Abbreviation"];
                             }
@@ -106,14 +108,14 @@ namespace ORA_Data.DAL
         {
             try
             {
-                    using (SqlCommand cmd = new SqlCommand("UPDATE_CLIENT", SqlConnect.Connection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Client_ID", _client.ClientId);
-                        cmd.Parameters.AddWithValue("@Client_Name", _client.ClientName);
-                        cmd.Parameters.AddWithValue("@Client_Abbreviation", _client.ClientAbbreviation);
-                        SqlConnect.Connection.Open();
-                        cmd.ExecuteNonQuery();
+                using (SqlCommand cmd = new SqlCommand("UPDATE_CLIENT", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Client_ID", _client.ClientId);
+                    cmd.Parameters.AddWithValue("@Client_Name", _client.ClientName);
+                    cmd.Parameters.AddWithValue("@Client_Abbreviation", _client.ClientAbbreviation);
+                    SqlConnect.Connection.Open();
+                    cmd.ExecuteNonQuery();
                     SqlConnect.Connection.Close();
                 }
             }
@@ -128,12 +130,12 @@ namespace ORA_Data.DAL
         {
             try
             {
-                    using (SqlCommand cmd = new SqlCommand("DELETE_CLIENT", SqlConnect.Connection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Client_ID", _client.ClientId);
-                        SqlConnect.Connection.Open();
-                        cmd.ExecuteNonQuery();
+                using (SqlCommand cmd = new SqlCommand("DELETE_CLIENT", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Client_ID", _client.ClientId);
+                    SqlConnect.Connection.Open();
+                    cmd.ExecuteNonQuery();
                     SqlConnect.Connection.Close();
                 }
             }

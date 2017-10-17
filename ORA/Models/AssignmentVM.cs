@@ -21,8 +21,6 @@ namespace ORA.Models
 
         public int RoleId { get; set; }
 
-        public int TeamId { get; set; }
-
         public DateTime Modify { get; set; }
 
         [DisplayName("Modified By")]

@@ -4,7 +4,7 @@ namespace ORA_Data.Model
 {
     public class AssessmentDM
     {
-        public int AssessmentId { get; set; }
+        public long AssessmentId { get; set; }
 
         public int TDProblemSolving { get; set; }
 
@@ -56,7 +56,7 @@ namespace ORA_Data.Model
 
         public string MIComments { get; set; }
 
-        public int AssignmentID { get; set; }
+        public long AssignmentID { get; set; }
 
         public DateTime Created { get; set; }
 

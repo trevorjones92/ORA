@@ -21,11 +21,11 @@ namespace ORA_Data.Model
 
         public string BirthDate { get; set; }
 
-        public Int64 AddressID { get; set; }
+        public long AddressID { get; set; }
 
-        public Int64 TimeID { get; set; }
+        public long TimeID { get; set; }
 
-        public Int64 WorkStatusID { get; set; }
+        public long WorkStatusID { get; set; }
 
         public AddressDM address { get; set; }
 

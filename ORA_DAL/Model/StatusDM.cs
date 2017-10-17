@@ -4,7 +4,7 @@ namespace ORA_Data.Model
 {
     public class StatusDM
     {
-        public int StatusId { get; set; }
+        public long StatusId { get; set; }
 
         public string EmployeeStatus { get; set; }
 

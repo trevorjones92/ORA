@@ -4,7 +4,7 @@ namespace ORA_Data.Model
 {
     public class StoryDM
     {
-        public int StoryId { get; set; }
+        public long StoryId { get; set; }
 
         public string StoryName { get; set; }
 
@@ -18,6 +18,6 @@ namespace ORA_Data.Model
 
         public DateTime Modified { get; set; }
 
-        public int ClientId { get; set; }
+        public long ClientId { get; set; }
     }
 }

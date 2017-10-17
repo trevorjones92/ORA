@@ -54,7 +54,7 @@ namespace ORA_Data.DAL
                                     var _role = new RolesDM();
                                     _role.RoleName = (string)reader["Role_Name"];
                                     _role.RoleDescription = (string)reader["Role_Description"];
-                                    _role.RoleId = (int)reader["Role_ID"];
+                                    _role.RoleId = (Int64)reader["Role_ID"];
                                     customerList.Add(_role);
                                 }
                             }
@@ -86,7 +86,7 @@ namespace ORA_Data.DAL
                         {
                             while (reader.Read())
                             {
-                                _role.RoleId = (int)reader["Role_ID"];
+                                _role.RoleId = (Int64)reader["Role_ID"];
                                 _role.RoleName = (string)reader["Role_Name"];
                                 _role.RoleDescription = (string)reader["Role_Description"];
                             }
@@ -118,6 +118,7 @@ namespace ORA_Data.DAL
                         {
                             while (reader.Read())
                             {
+                                _role.Role.RoleId = (Int64)reader["Role_ID"];
                                 _role.Role.RoleName = (string)reader["Role_Name"];
                                 _role.Role.RoleDescription = (string)reader["Role_Description"];
                             }
