@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace ORA.Models
 {
@@ -6,6 +7,7 @@ namespace ORA.Models
     {
         public int KPIID { get; set; }
 
+        [DisplayName("Created Date")]
         public DateTime CreateDate { get; set; }
 
         public decimal Points { get; set; }
@@ -20,8 +22,10 @@ namespace ORA.Models
 
         public int TCBlocked { get; set; }
 
+        [DisplayName("Defects Found")]
         public int DefectsFound { get; set; }
 
+        [DisplayName("Defects Fixed")]
         public int DefectsFixed { get; set; }
 
         public int DefectsAccepted { get; set; }

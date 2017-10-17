@@ -204,8 +204,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\dropdownIcon.png" />
     <Content Include="Images\Onshore.png" />
     <Content Include="Images\OnshoreLogo.png" />
+    <Content Include="Images\OnshoreLogoWhite.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -305,10 +307,10 @@
     <Content Include="Views\Story\ReadStoryByID.cshtml" />
     <Content Include="Views\Team\ReadTeams.cshtml" />
     <Content Include="Views\Team\ReadTeamByID.cshtml" />
+    <Content Include="Views\Account\AccountCreation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
