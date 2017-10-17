@@ -53,11 +53,11 @@ namespace ORA.Controllers
         {
             try
             {
-                if (info.Email != null)
+                if (info.Email != null && LoginDAL.Login(Mapper.Map<LoginDM>(info)))
                 {
-                    Session["LoggedIn"] = LoginDAL.Login(Mapper.Map<LoginDM>(info));
+                    Session["LoggedIn"] = true;
                     //RolesDAL.ReadRoleByID(Mapper.Map<RolesDM>(info.Role));
-                    Session["Role"] = "employee" /*info*/;
+                    Session["Role"] = info.Role.RoleName;
                     if ((bool)Session["LoggedIn"])
                     {
                         Session["Email"] = info.Email;
