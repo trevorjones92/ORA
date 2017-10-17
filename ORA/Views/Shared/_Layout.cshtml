@@ -17,17 +17,27 @@
                     <span class="icon-bar"></span>
                 </button>
                 @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-                <a href='@Url.Action("Index", "Home")'><img src="~/Images/OnshoreLogo.png" width="50px" style="position:center;"/></a>
+                <a href='@Url.Action("Index", "Home")'><img src="~/Images/OnshoreLogo.png" width="50px" style="position:center;" /></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                    <li>@Html.ActionLink("Employees", "ViewEmployees", "Employee")</li>
-                    <li>@Html.ActionLink("Clients", "ReadClients", "Clients")</li>
-                    <li>@Html.ActionLink("Teams", "ReadTeams", "Team")</li>
+                    @if ((bool)Session["LoggedIn"]) //&& ((string)Session["Role"] == "Admin" || (string)Session["Role"] == "Director"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin Tools <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Employees", "ViewEmployees", "Employee")</li>
+                                <li>@Html.ActionLink("Clients", "ReadClients", "Clients")</li>
+                                <li>@Html.ActionLink("Teams", "ReadTeams", "Team")</li>
+                                <li class="divider"></li>
+                                <li><a href="#">Not yet implemented tool</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Not yet implemented tool</a></li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
+
                 <div class="navbar-collapse collapse" style="float:right;z-index:1;position:relative;">
                     <ul class="nav navbar-nav">
                         @if ((bool)Session["LoggedIn"])
