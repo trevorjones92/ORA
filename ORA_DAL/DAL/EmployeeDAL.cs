@@ -120,6 +120,7 @@ namespace ORA_Data.Data
                             #endregion
 
                             #region Pulling Employee Table Information
+
                             employee.EmployeeId = (Int64)reader["Employee_ID"];
                             employee.EmployeeNumber = (string)reader["Employee_Number"];
                             employee.EmployeeName = (string)reader["Employee_Name"];
@@ -134,6 +135,7 @@ namespace ORA_Data.Data
                                 employee.TimeID = (Int64)reader["Time_ID"];
                             if (reader["Work_Status_ID"] != DBNull.Value)
                                 employee.WorkStatusID = (Int64)reader["Work_Status_ID"];
+
                             #endregion
 
                             #region Pulling Address Table Information

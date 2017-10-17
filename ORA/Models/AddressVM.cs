@@ -1,11 +1,12 @@
-﻿using System.ComponentModel;
+﻿﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+﻿using System;
 
 namespace ORA.Models
 {
     public class AddressVM
     {
-        public int Address_ID { get; set; }
+        public Int64 Address_ID { get; set; }
 
         [DisplayName("Address")]
         public string Address { get; set; }
