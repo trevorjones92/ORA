@@ -24,7 +24,7 @@ namespace ORA.Controllers
             employee.TeamList = Mapper.Map<List<TeamsVM>>(TeamsDAL.ReadTeams());
             employee.AssignmentList = Mapper.Map<List<AssignmentVM>>(AssignmentDAL.ReadAssignments());
             employee.RoleList = Mapper.Map<List<RolesVM>>(RolesDAL.ReadRoles());
-            return View();
+            return View(employee);
         }
 
         [HttpPost]

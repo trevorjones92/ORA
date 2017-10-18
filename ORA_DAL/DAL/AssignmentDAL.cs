@@ -59,6 +59,7 @@ namespace ORA_Data.DAL
                             {
                                 var _assignment = new AssignmentDM();
                                 _assignment.AssignmentId = (Int64)reader["Assignment_ID"];
+                                _assignment.AssignmentName = (string)reader["Assignment_Name"];
                                 _assignment.StartDate = (DateTime)reader["Start_Date"];
                                 _assignment.EndDate = (DateTime)reader["End_Date"];
                                 _assignment.ClientId = (Int64)reader["Client_ID"];
@@ -95,6 +96,7 @@ namespace ORA_Data.DAL
                             while (reader.Read())
                             {
                                 _assignment.AssignmentId = (Int64)reader["Assignment_ID"];
+                                _assignment.AssignmentName = (string)reader["Assignment_Name"];
                                 _assignment.StartDate = (DateTime)reader["Start_Date"];
                                 _assignment.EndDate = (DateTime)reader["End_Date"];
                                 _assignment.ClientId = (Int64)reader["Client_ID"];
@@ -121,6 +123,7 @@ namespace ORA_Data.DAL
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Assignment_ID", _assignment.AssignmentId);
+                    cmd.Parameters.AddWithValue("@Assignment_Name", _assignment.AssignmentName);
                     cmd.Parameters.AddWithValue("@Start_Date", _assignment.StartDate.ToShortDateString());
                     if (_assignment.EndDate != null)
                         cmd.Parameters.AddWithValue("@EndDate", _assignment.EndDate.ToShortDateString());
