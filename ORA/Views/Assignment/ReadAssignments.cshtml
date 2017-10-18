@@ -13,6 +13,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.AssignmentName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.AssignmentId)
         </th>
         <th>
@@ -25,16 +28,7 @@
             @Html.DisplayNameFor(model => model.ClientId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EmployeeId)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.PositionId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RoleId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TeamId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Modify)
@@ -54,6 +48,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayNameFor(model => model.AssignmentName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.AssignmentId)
         </td>
         <td>
@@ -66,16 +63,7 @@
             @Html.DisplayFor(modelItem => item.ClientId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EmployeeId)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.PositionId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RoleId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeamId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Modify)
