@@ -54,12 +54,12 @@ namespace ORA_Data.DAL
                                 while (reader.Read())
                                 {
                                     var _story = new StoryDM();
-                                    _story.StoryId = (int)reader["Story_ID"];
+                                    _story.StoryId = (Int64)reader["Story_ID"];
                                     _story.StoryName = (string)reader["Story_Name"];
                                     _story.StoryNumber = (int)reader["Story_Number"];
                                     _story.StartDate = (DateTime)reader["Story_Start_Date"];
                                     _story.EndDate = (DateTime)reader["Story_End_Date"];
-                                    _story.ClientId = (int)reader["Client_ID"];
+                                    _story.ClientId = (Int64)reader["Client_ID"];
                                     storyList.Add(_story);
                                 }
                             }
@@ -91,12 +91,12 @@ namespace ORA_Data.DAL
                         {
                             while (reader.Read())
                             {
-                                _story.StoryId = (int)reader["Story_ID"];
+                                _story.StoryId = (Int64)reader["Story_ID"];
                                 _story.StoryName = (string)reader["Story_Name"];
                                 _story.StoryNumber = (int)reader["Story_Number"];
                                 _story.StartDate = (DateTime)reader["Story_Start_Date"];
                                 _story.EndDate = (DateTime)reader["Story_End_Date"];
-                                _story.ClientId = (int)reader["Client_ID"];
+                                _story.ClientId = (Int64)reader["Client_ID"];
                             }
                         }
                     }

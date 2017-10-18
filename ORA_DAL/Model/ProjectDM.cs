@@ -4,7 +4,7 @@ namespace ORA_Data.Model
 {
     public class ProjectDM
     {
-        public int ProjectId { get; set; }
+        public long ProjectId { get; set; }
 
         public string ProjectName { get; set; }
 
@@ -14,7 +14,7 @@ namespace ORA_Data.Model
 
         public DateTime EndDate { get; set; }
 
-        public int ClientId { get; set; }
+        public long ClientId { get; set; }
 
         public DateTime Created { get; set; }
 

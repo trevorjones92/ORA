@@ -2,7 +2,7 @@
 {
     public class RolesDM
     {
-        public int RoleId { get; set; }
+        public long RoleId { get; set; }
 
         public string RoleName { get; set; }
 

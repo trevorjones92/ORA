@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace ORA.Models
@@ -46,11 +47,19 @@ namespace ORA.Models
 
         public int AssignmentId { get; set; }
 
+        public List<AssignmentVM> Assignments { get; set; }
+
         public int ProjectId { get; set; }
+
+        public List<ProjectVM> Projects { get; set; }
 
         public int SprintId { get; set; }
 
+        public List<SprintVM> Sprints { get; set; }
+
         public int StoryId { get; set; }
+
+        public List<StoryVM> Stories { get; set; }
 
         public DateTime Modified { get; set; }
 

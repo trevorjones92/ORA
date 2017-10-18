@@ -54,12 +54,12 @@ namespace ORA_Data.DAL
                                 while (reader.Read())
                                 {
                                     var _project = new ProjectDM();
-                                    _project.ProjectId = (int)reader["Project_ID"];
+                                    _project.ProjectId = (Int64)reader["Project_ID"];
                                     _project.ProjectName = (string)reader["Project_Name"];
                                     _project.ProjectNumber = (int)reader["Project_Number"];
                                     _project.StartDate = (DateTime)reader["Project_Start_Date"];
                                     _project.EndDate = (DateTime)reader["Project_End_Date"];
-                                    _project.ClientId = (int)reader["Client_ID"];
+                                    _project.ClientId = (Int64)reader["Client_ID"];
                                     projectList.Add(_project);
                                 }
                             }
@@ -91,12 +91,12 @@ namespace ORA_Data.DAL
                             {
                                 while (reader.Read())
                                 {
-                                    _project.ProjectId = (int)reader["Project_ID"];
+                                    _project.ProjectId = (Int64)reader["Project_ID"];
                                     _project.ProjectName = (string)reader["Project_Name"];
                                     _project.ProjectNumber = (int)reader["Project_Number"];
                                     _project.StartDate = (DateTime)reader["Project_Start_Date"];
                                     _project.EndDate = (DateTime)reader["Project_End_Date"];
-                                    _project.ClientId = (int)reader["Client_ID"];
+                                    _project.ClientId = (Int64)reader["Client_ID"];
                                 }
                             }
                     }

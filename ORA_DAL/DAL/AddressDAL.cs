@@ -56,7 +56,7 @@ namespace ORA_Data.DAL
                             {
                             var address = new AddressDM
                             {
-                                    Address_ID = (int)reader["Address_ID"],
+                                    Address_ID = (Int64)reader["Address_ID"],
                                     Address = (string) reader["Address"],
                                     City = (string) reader["City"],
                                     State = (string) reader["State"],
@@ -94,7 +94,7 @@ namespace ORA_Data.DAL
                         if (!reader.HasRows) return (address);
                         while (reader.Read())
                         {
-                            address.Address_ID = (int)reader["Address_ID"];
+                            address.Address_ID = (Int64)reader["Address_ID"];
                             address.Address = (string)reader["Address"];
                             address.City = (string)reader["City"];
                             address.State = (string)reader["State"];

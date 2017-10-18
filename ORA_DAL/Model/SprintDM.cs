@@ -4,7 +4,7 @@ namespace ORA_Data.Model
 {
     public class SprintDM
     {
-        public int SprintId { get; set; }
+        public long SprintId { get; set; }
 
         public int SprintNumber { get; set; }
 
@@ -18,6 +18,6 @@ namespace ORA_Data.Model
 
         public DateTime Created { get; set; }
         
-        public int ClientId { get; set; }
+        public long ClientId { get; set; }
     }
 }

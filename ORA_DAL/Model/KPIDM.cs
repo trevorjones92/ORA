@@ -4,7 +4,7 @@ namespace ORA_Data.Model
 {
     public class KPIDM
     {
-        public int KPIID { get; set; }
+        public long KPIID { get; set; }
 
         public DateTime CreateDate { get; set; }
 
@@ -40,13 +40,13 @@ namespace ORA_Data.Model
 
         public decimal TotalHrsFixingBugs { get; set; }
 
-        public int AssignmentId { get; set; }
+        public long AssignmentId { get; set; }
 
-        public int ProjectId { get; set; }
+        public long ProjectId { get; set; }
 
-        public int SprintId { get; set; }
+        public long SprintId { get; set; }
 
-        public int StoryId { get; set; }
+        public long StoryId { get; set; }
 
         public DateTime Modified { get; set; }
 

@@ -17,7 +17,9 @@ namespace ORA.Controllers
 
         public ActionResult CreateTeam()
         {
-            return View();
+            TeamsVM team = new TeamsVM();
+            team.Clients = Mapper.Map<List<ClientsVM>>(ClientsDAL.ReadClients());
+            return View(team);
         }
 
         [HttpPost]

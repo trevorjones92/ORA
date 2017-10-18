@@ -19,20 +19,17 @@ namespace ORA_Data.DAL
             try
             {
                 //Creating a way of adding new user information to my database 
-                    using (SqlCommand cmd = new SqlCommand("CREATE_ADDRESS", SqlConnect.Connection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Start_Date", _assignment.StartDate);
-                        cmd.Parameters.AddWithValue("@End_Date", _assignment.EndDate);
-                        cmd.Parameters.AddWithValue("@Client_Id", _assignment.ClientId);
-                        cmd.Parameters.AddWithValue("@Employee_Id", _assignment.EmployeeId);
-                        cmd.Parameters.AddWithValue("@Position_Id", _assignment.PositionId);
-                        cmd.Parameters.AddWithValue("@Role_Id", _assignment.RoleId);
-                        cmd.Parameters.AddWithValue("@Team_Id", _assignment.TeamId);
-                        SqlConnect.Connection.Open();
-                        cmd.ExecuteNonQuery();
-                        SqlConnect.Connection.Close();
-                    }
+                using (SqlCommand cmd = new SqlCommand("CREATE_ADDRESS", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Start_Date", _assignment.StartDate);
+                    cmd.Parameters.AddWithValue("@End_Date", _assignment.EndDate);
+                    cmd.Parameters.AddWithValue("@Client_Id", _assignment.ClientId);
+                    cmd.Parameters.AddWithValue("@Position_Id", _assignment.PositionId);
+                    SqlConnect.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                    SqlConnect.Connection.Close();
+                }
             }
             catch (Exception e)
             {
@@ -46,27 +43,25 @@ namespace ORA_Data.DAL
             List<AssignmentDM> _assignmentList = new List<AssignmentDM>();
             try
             {
-                    using (SqlCommand cmd = new SqlCommand("READ_ASSIGNMENTS", SqlConnect.Connection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
+                using (SqlCommand cmd = new SqlCommand("READ_ASSIGNMENTS", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     SqlConnect.Connection.Open();
-                        using (var reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
                         {
-                            if (reader.HasRows)
+                            while (reader.Read())
                             {
-                                while (reader.Read())
-                                {
-                                    var _assignment = new AssignmentDM();
-                                    _assignment.StartDate = (DateTime)reader["Start_Date"];
-                                    _assignment.EndDate = (DateTime)reader["End_Date"];
-                                    _assignment.ClientId = (int)reader["Client_ID"];
-                                    _assignment.EmployeeId = (int)reader["Employee_ID"];
-                                    _assignment.PositionId = (int)reader["Position_ID"];
-                                    _assignment.RoleId = (int)reader["Role_ID"];
-                                    _assignment.TeamId = (int)reader["Team_ID"];
-                                    _assignmentList.Add(_assignment);
-                                }
+                                var _assignment = new AssignmentDM();
+                                _assignment.AssignmentId = (Int64)reader["Assignment_ID"];
+                                _assignment.StartDate = (DateTime)reader["Start_Date"];
+                                _assignment.EndDate = (DateTime)reader["End_Date"];
+                                _assignment.ClientId = (Int64)reader["Client_ID"];
+                                _assignment.PositionId = (Int64)reader["Position_ID"];
+                                _assignmentList.Add(_assignment);
                             }
+                        }
                     }
                     SqlConnect.Connection.Close();
                 }
@@ -95,14 +90,11 @@ namespace ORA_Data.DAL
                         {
                             while (reader.Read())
                             {
-                                _assignment.AssignmentId = (int)reader["Assignment_ID"];
+                                _assignment.AssignmentId = (Int64)reader["Assignment_ID"];
                                 _assignment.StartDate = (DateTime)reader["Start_Date"];
                                 _assignment.EndDate = (DateTime)reader["End_Date"];
-                                _assignment.ClientId = (int)reader["Client_ID"];
-                                _assignment.EmployeeId = (int)reader["Employee_ID"];
-                                _assignment.PositionId = (int)reader["Position_ID"];
-                                _assignment.RoleId = (int)reader["Role_ID"];
-                                _assignment.TeamId = (int)reader["Team_ID"];
+                                _assignment.ClientId = (Int64)reader["Client_ID"];
+                                _assignment.PositionId = (Int64)reader["Position_ID"];
                             }
                         }
                     }
@@ -121,19 +113,16 @@ namespace ORA_Data.DAL
         {
             try
             {
-                    using (SqlCommand cmd = new SqlCommand("UPDATE_ASSIGNMENT", SqlConnect.Connection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Assignment_ID", _assignment.AssignmentId);
-                        cmd.Parameters.AddWithValue("@Start_Date", _assignment.StartDate);
-                        cmd.Parameters.AddWithValue("@End_Date", _assignment.EndDate);
-                        cmd.Parameters.AddWithValue("@Client_ID", _assignment.ClientId);
-                        cmd.Parameters.AddWithValue("@Employee_ID", _assignment.EmployeeId);
-                        cmd.Parameters.AddWithValue("@Position_ID", _assignment.PositionId);
-                        cmd.Parameters.AddWithValue("@Role_ID", _assignment.RoleId);
-                        cmd.Parameters.AddWithValue("@Team_ID", _assignment.TeamId);
-                        SqlConnect.Connection.Open();
-                        cmd.ExecuteNonQuery();
+                using (SqlCommand cmd = new SqlCommand("UPDATE_ASSIGNMENT", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Assignment_ID", _assignment.AssignmentId);
+                    cmd.Parameters.AddWithValue("@Start_Date", _assignment.StartDate);
+                    cmd.Parameters.AddWithValue("@End_Date", _assignment.EndDate);
+                    cmd.Parameters.AddWithValue("@Client_ID", _assignment.ClientId);
+                    cmd.Parameters.AddWithValue("@Position_ID", _assignment.PositionId);
+                    SqlConnect.Connection.Open();
+                    cmd.ExecuteNonQuery();
                     SqlConnect.Connection.Close();
                 }
             }
@@ -148,12 +137,12 @@ namespace ORA_Data.DAL
         {
             try
             {
-                    using (SqlCommand cmd = new SqlCommand("DELETE_ADDRESS", SqlConnect.Connection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Assignment_ID", _assignment.AssignmentId);
-                        SqlConnect.Connection.Open();
-                        cmd.ExecuteNonQuery();
+                using (SqlCommand cmd = new SqlCommand("DELETE_ADDRESS", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Assignment_ID", _assignment.AssignmentId);
+                    SqlConnect.Connection.Open();
+                    cmd.ExecuteNonQuery();
                     SqlConnect.Connection.Close();
                 }
             }

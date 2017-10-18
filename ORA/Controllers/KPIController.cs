@@ -17,7 +17,12 @@ namespace ORA.Controllers
 
         public ActionResult CreateKPI()
         {
-            return View();
+            KPIVM kpi = new KPIVM();
+            kpi.Assignments = Mapper.Map<List<AssignmentVM>>(AssignmentDAL.ReadAssignments());
+            kpi.Projects = Mapper.Map<List<ProjectVM>>(ProjectDAL.ReadProjects());
+            kpi.Sprints = Mapper.Map<List<SprintVM>>(SprintDAL.ReadSprints());
+            kpi.Stories = Mapper.Map<List<StoryVM>>(StoryDAL.ReadStorys());
+            return View(kpi);
         }
 
         [HttpPost]

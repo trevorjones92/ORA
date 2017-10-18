@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace ORA.Models
@@ -7,21 +8,21 @@ namespace ORA.Models
     {
         public int AssignmentId { get; set; }
 
+        public string AssignmentName { get; set; }
+
         [DisplayName("Start Date")]
         public DateTime StartDate { get; set; }
 
         [DisplayName("End Date")]
         public DateTime EndDate { get; set; }
 
-        public int ClientId { get; set; } 
+        public int ClientId { get; set; }
 
-        public int EmployeeId { get; set; }
+        public List<ClientsVM> Clients { get; set; }
 
         public int PositionId { get; set; }
 
-        public int RoleId { get; set; }
-
-        public int TeamId { get; set; }
+        public List<PositionsVM> Positions { get; set; }
 
         public DateTime Modify { get; set; }
 

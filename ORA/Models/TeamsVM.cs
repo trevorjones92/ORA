@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ORA.Models
 {
@@ -10,5 +11,7 @@ namespace ORA.Models
         public string TeamName { get; set; }
 
         public int ClientId { get; set; }
+
+        public List<ClientsVM> Clients { get; set; }
     }
 }

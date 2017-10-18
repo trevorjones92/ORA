@@ -84,7 +84,7 @@ namespace ORA_Data.DAL
                                 while (reader.Read())
                                 {
                                     var _assessment = new AssessmentDM();
-                                    _assessment.AssessmentId = (int)reader["Assessment_ID"];
+                                    _assessment.AssessmentId = (Int64)reader["Assessment_ID"];
                                     _assessment.TDProblemSolving = (int)reader["TD_Problem_Solving"];
                                     _assessment.TDQualityOfWork = (int)reader["TD_Quality_Of_Work"];
                                     _assessment.TDProductivity = (int)reader["TD_Productivity"];
@@ -110,7 +110,7 @@ namespace ORA_Data.DAL
                                     _assessment.MIPersonalGrowth = (int)reader["MI_Personal_Growth"];
                                     _assessment.MIPotentialAdvancement = (int)reader["MI_Potential_Advancement"];
                                     _assessment.MIComments = (string)reader["MI_Comments"];
-                                    _assessment.AssignmentID = (int)reader["Assignment_ID"];
+                                    _assessment.AssignmentID = (Int64)reader["Assignment_ID"];
                                     _assessment.Created = (DateTime)reader["Created"];
                                     _assessment.CreatedBy = (string)reader["Created_By"];
                                     _assessment.Modified = (DateTime)reader["Modified"];
@@ -147,7 +147,7 @@ namespace ORA_Data.DAL
                         {
                             while (reader.Read())
                             {
-                                _assessment.AssessmentId = (int)reader["Assessment_ID"];
+                                _assessment.AssessmentId = (Int64)reader["Assessment_ID"];
                                 _assessment.TDProblemSolving = (int)reader["TD_Problem_Solving"];
                                 _assessment.TDQualityOfWork = (int)reader["TD_Quality_Of_Work"];
                                 _assessment.TDProductivity = (int)reader["TD_Productivity"];
@@ -173,7 +173,7 @@ namespace ORA_Data.DAL
                                 _assessment.MIPersonalGrowth = (int)reader["MI_Personal_Growth"];
                                 _assessment.MIPotentialAdvancement = (int)reader["MI_Potential_Advancement"];
                                 _assessment.MIComments = (string)reader["MI_Comments"];
-                                _assessment.AssignmentID = (int)reader["Assignment_ID"];
+                                _assessment.AssignmentID = (Int64)reader["Assignment_ID"];
                                 _assessment.Created = (DateTime)reader["Created"];
                                 _assessment.CreatedBy = (string)reader["Created_By"];
                                 _assessment.Modified = (DateTime)reader["Modified"];

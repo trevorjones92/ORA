@@ -28,36 +28,45 @@ namespace ORA.Models
         [DisplayName("Birth Date")]
         public string BirthDate { get; set; }
 
-        public Int64 AddressID { get; set; }
-
-        public Int64 TimeID { get; set; }
-
-        public Int64 WorkStatusID { get; set; }
-
         //Objects of other models
+
+        public long AddressId { get; set; }
+
         public AddressVM Address { get; set; }
 
         public List<AddressVM> AddressList { get; set; }
+
+        public long TimeId { get; set; }
 
         public EmployeeTimeVM EmployeeTime { get; set; }
 
         public List<EmployeeTimeVM> EmployeeTimeList { get; set; }
 
+        public long ClientId { get; set; }
+
         public ClientsVM Client { get; set; }
 
         public List<ClientsVM> ClientList { get; set; }
+
+        public long PositionId { get; set; }
 
         public PositionsVM Position { get; set; }
 
         public List<PositionsVM> PositionList { get; set; }
 
+        public long TeamId { get; set; }
+
         public TeamsVM Team { get; set; }
 
         public List<TeamsVM> TeamList { get; set; }
 
+        public long StatusId { get; set; }
+
         public StatusVM Status { get; set; }
 
         public List<StatusVM> StatusList { get; set; }
+
+        public long AssignmentId { get; set; }
 
         public AssignmentVM Assignment { get; set; }
 

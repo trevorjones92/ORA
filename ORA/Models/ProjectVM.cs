@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace ORA.Models
@@ -20,6 +21,8 @@ namespace ORA.Models
         public int EndDate { get; set; }
 
         public int ClientId { get; set; }
+
+        public List<ClientsVM> Clients { get; set; }
 
         public DateTime Created { get; set; }
 

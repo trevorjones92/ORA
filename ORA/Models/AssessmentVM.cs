@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ORA.Models
 {
@@ -57,6 +58,8 @@ namespace ORA.Models
         public string MIComments { get; set; }
 
         public int AssignmentID { get; set; }
+
+        public List<AssignmentVM> Assignments { get; set; }
 
         public DateTime Created { get; set; }
 
