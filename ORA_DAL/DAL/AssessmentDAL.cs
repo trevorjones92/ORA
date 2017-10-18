@@ -131,17 +131,16 @@ namespace ORA_Data.DAL
             }
         }
 
-        public static AssessmentDM ReadAssessmentByID(string assignmentId)
+        public static AssessmentDM ReadAssessmentByID(string assessmentId)
         {
             try
             {
                 AssessmentDM _assessment = new AssessmentDM();
-                assignmentId = _assessment.AssignmentID.ToString();
-                using (SqlCommand cmd = new SqlCommand("GET_ASSESSMENTS_BY_ASSIGNMENT_ID", SqlConnect.Connection))
+                using (SqlCommand cmd = new SqlCommand("READ_ASSESSMENT_BY_ID", SqlConnect.Connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     SqlConnect.Connection.Open();
-                    cmd.Parameters.AddWithValue("@Assessment_ID", assignmentId);
+                    cmd.Parameters.AddWithValue("@Assessment_ID", assessmentId);
                     using (var reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
