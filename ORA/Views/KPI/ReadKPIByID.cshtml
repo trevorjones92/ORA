@@ -11,13 +11,8 @@
     <h4>KPIVM</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.KPIID)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.KPIID)
-        </dd>
+            @Html.HiddenFor(model => model.KPIID)
 
         <dt>
             @Html.DisplayNameFor(model => model.CreateDate)
@@ -160,7 +155,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AssignmentId)
+            @Html.ActionLink("Assignment", "ReadAssignmentByID", "Assignment", new { id = Model.AssignmentId })
         </dd>
 
         <dt>
@@ -168,7 +163,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ProjectId)
+            @Html.ActionLink("Project", "ReadProjectByID", "Project", new { id = Model.ProjectId })
         </dd>
 
         <dt>
@@ -176,7 +171,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SprintId)
+            @Html.ActionLink("Sprint", "ReadSprintByID", "Sprint", new { id = Model.SprintId })
         </dd>
 
         <dt>
@@ -184,23 +179,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.StoryId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Modified)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Modified)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Created)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Created)
+            @Html.ActionLink("Story", "ReadStoryByID", "Story", new { id = Model.StoryId })
         </dd>
 
     </dl>

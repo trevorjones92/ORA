@@ -13,9 +13,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.KPIID)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.CreateDate)
         </th>
         <th>
@@ -78,20 +75,14 @@
         <th>
             @Html.DisplayNameFor(model => model.StoryId)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Modified)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Created)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.KPIID)
-        </td>
+
+        @Html.HiddenFor(modelItem => item.KPIID)
+
         <td>
             @Html.DisplayFor(modelItem => item.CreateDate)
         </td>
@@ -144,22 +135,16 @@
             @Html.DisplayFor(modelItem => item.TotalHrsFixingBugs)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AssignmentId)
+            @Html.ActionLink("Assignment", "ReadAssignmentByID", "Assignment" , new { id=item.AssignmentId })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProjectId)
+            @Html.ActionLink("Project", "ReadProjectByID", "Project" , new { id=item.ProjectId })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SprintId)
+            @Html.ActionLink("Sprint", "ReadSprintByID", "Sprint" , new { id=item.SprintId })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StoryId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Modified)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Created)
+            @Html.ActionLink("Story", "ReadStoryByID", "Story" , new { id=item.StoryId })
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

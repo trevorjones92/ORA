@@ -47,17 +47,25 @@ namespace ORA.Models
 
         public int AssignmentId { get; set; }
 
+        public AssignmentVM Assignment { get; set; }
+
         public List<AssignmentVM> Assignments { get; set; }
 
         public int ProjectId { get; set; }
+
+        public ProjectVM Project { get; set; }
 
         public List<ProjectVM> Projects { get; set; }
 
         public int SprintId { get; set; }
 
+        public SprintVM Sprint { get; set; }
+
         public List<SprintVM> Sprints { get; set; }
 
         public int StoryId { get; set; }
+
+        public StoryVM Story { get; set; }
 
         public List<StoryVM> Stories { get; set; }
 

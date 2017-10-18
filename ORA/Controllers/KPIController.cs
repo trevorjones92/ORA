@@ -2,6 +2,7 @@
 using ORA.Models;
 using ORA_Data.DAL;
 using ORA_Data.Model;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -28,6 +29,7 @@ namespace ORA.Controllers
         [HttpPost]
         public ActionResult CreateKPI(KPIVM kpi)
         {
+            kpi.CreateDate = DateTime.Now;
             KPI_DAL.CreateKPI(Mapper.Map<KPIDM>(kpi));
             return View();
         }
@@ -42,9 +44,15 @@ namespace ORA.Controllers
             return View(Mapper.Map<KPIVM>(KPI_DAL.ReadKPIById(kpi.KPIID.ToString())));
         }
 
-        public ActionResult UpdateKPI()
+        public ActionResult UpdateKPI(string id)
         {
-            return View();
+            KPIVM kpi = new KPIVM();
+            kpi = Mapper.Map<KPIVM>(KPI_DAL.ReadKPIById(id));
+            kpi.Stories = Mapper.Map<List<StoryVM>>(StoryDAL.ReadStorys());
+            kpi.Projects = Mapper.Map<List<ProjectVM>>(ProjectDAL.ReadProjects());
+            kpi.Sprints = Mapper.Map<List<SprintVM>>(SprintDAL.ReadSprints());
+            kpi.Assignments = Mapper.Map<List<AssignmentVM>>(AssignmentDAL.ReadAssignments());
+            return View(kpi);
         }
 
         [HttpPost]
@@ -54,9 +62,11 @@ namespace ORA.Controllers
             return View();
         }
 
-        public ActionResult DeleteKPI()
+        public ActionResult DeleteKPI(string id)
         {
-            return View();
+            KPIVM kpi = new KPIVM();
+            kpi = Mapper.Map<KPIVM>(KPI_DAL.ReadKPIById(id));
+            return View(kpi);
         }
 
         [HttpPost]

@@ -13,7 +13,7 @@ namespace ORA_Data.DAL
         /// </summary>
 
         #region STATUS DAL METHODS
-        public static void CreateProject(StatusDM _status)
+        public static void CreateStatus(StatusDM _status)
         {
             try
             {
