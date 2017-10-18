@@ -6,6 +6,7 @@ using AutoMapper;
 using ORA_Data.Model;
 using System.Configuration;
 using System.Collections.Generic;
+using ORA.Mapping;
 
 namespace ORA.Controllers
 {
@@ -36,7 +37,7 @@ namespace ORA.Controllers
 
         public ActionResult ReadAccount()
         {
-            return View();
+            return View(Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById((int)Session["ID"])));
         }
 
         public ActionResult UpdateAccount()

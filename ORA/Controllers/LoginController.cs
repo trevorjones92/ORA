@@ -33,7 +33,7 @@ namespace ORA.Controllers
                 info.Password = ORA_Data.Hash.GetHash(info.Password + info.Salt);
                 LoginDAL.Register(Mapper.Map<LoginDM>(info));
                 info.Password = "";
-                return ConfigurationManager.AppSettings["RegisterToLogin"].ToLower()=="true" 
+                return ConfigurationManager.AppSettings["RegisterToLogin"].ToLower() == "true"
                     ? RedirectToAction("Login", "Login", info) : RedirectToAction("Home", "Index", new { area = "Default" });
 
             }
@@ -48,6 +48,7 @@ namespace ORA.Controllers
             return View();
         }
 
+        readonly EmployeeVM _employee = new EmployeeVM();
         [HttpPost]
         public ActionResult Login(LoginVM info)
         {
@@ -57,11 +58,20 @@ namespace ORA.Controllers
                 {
                     Session["LoggedIn"] = true;
                     //RolesDAL.ReadRoleByID(Mapper.Map<RolesDM>(info.Role));
-                    Session["Role"] = info.Role.RoleName;
+                    //Session["Role"] = info.Role.RoleName;
+                    Session["ID"] = info.EmployeeId;
                     if ((bool)Session["LoggedIn"])
                     {
-                        Session["Email"] = info.Email;
-                        return RedirectToAction("Index", "Home", new { area = "Default" });
+                        if ((string)Session["Role"] == "ADMIN" || ((string)Session["Role"] == "DIRECTOR"))
+                        {
+                            Session["Email"] = info.Email;
+                            return RedirectToAction("AdminDashboard", "Home", new { area = "Default" });
+                        }
+                        else
+                        {
+                            Session["Email"] = info.Email;
+                            return RedirectToAction("ReadAccount", "Account", new { area = "Default" });
+                        }
                     }
                 }
                 return View();
@@ -77,7 +87,7 @@ namespace ORA.Controllers
             Session["LoggedIn"] = false;
             return View();
         }
-        
+
         public ActionResult ReadLogins()
         {
             return View(Mapper.Map<List<LoginVM>>(LoginDAL.ViewLogins()));

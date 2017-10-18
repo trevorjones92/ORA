@@ -74,7 +74,5 @@ namespace ORA.Controllers
         //Average for each team
 
         //Average for each client
-
-
     }
 }

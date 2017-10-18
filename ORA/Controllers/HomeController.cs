@@ -14,6 +14,11 @@ namespace ORA.Controllers
             return View();
         }
 
+        public ActionResult AdminDashboard()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             return View();
