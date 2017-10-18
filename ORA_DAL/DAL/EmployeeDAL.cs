@@ -30,7 +30,7 @@ namespace ORA_Data.DAL
                     command.Parameters.AddWithValue("@Employee_MiddleName", employee.EmployeeMiddle);
                     command.Parameters.AddWithValue("@Employee_LastName", employee.EmployeeLastName);
                     command.Parameters.AddWithValue("@Age", employee.Age);
-                    command.Parameters.AddWithValue("@Birth_Date", employee.BirthDate);
+                    command.Parameters.AddWithValue("@Birth_Date", employee.BirthDate.ToShortDateString());
                     command.Parameters.AddWithValue("@Address_ID", employee.AddressID);
                     command.Parameters.AddWithValue("@Time_ID", employee.TimeID);
                     command.Parameters.AddWithValue("@Work_Status_ID", employee.WorkStatusID);
@@ -77,7 +77,7 @@ namespace ORA_Data.DAL
                                 employee.EmployeeMiddle = (string)reader["Employee_MiddleName"];
                                 employee.EmployeeLastName = (string)reader["Employee_LastName"];
                                 employee.Age = (int)reader["Age"];
-                                employee.BirthDate = (string)reader["Birth_Date"];
+                                employee.BirthDate = (DateTime)reader["Birth_Date"];
                                 employee.AddressID = (Int64)reader["Address_ID"];
                                 employee.TimeID = (Int64)reader["Time_ID"];
                                 employee.WorkStatusID = (Int64)reader["Work_Status_ID"];
@@ -131,7 +131,7 @@ namespace ORA_Data.DAL
                             employee.EmployeeMiddle = (string)reader["Employee_MiddleName"];
                             employee.EmployeeLastName = (string)reader["Employee_LastName"];
                             employee.Age = (int)reader["Age"];
-                            employee.BirthDate = (string)reader["Birth_Date"];
+                            employee.BirthDate = (DateTime)reader["Birth_Date"];
                             if (reader["Address_ID"] != DBNull.Value)
                                 employee.AddressID = (Int64)reader["Address_ID"];
                             if (reader["Time_ID"] != DBNull.Value)
@@ -205,7 +205,7 @@ namespace ORA_Data.DAL
                     cmd.Parameters.AddWithValue("@Employee_MiddleName", employee.EmployeeMiddle);
                     cmd.Parameters.AddWithValue("@Employee_LastName", employee.EmployeeLastName);
                     cmd.Parameters.AddWithValue("@Age", employee.Age);
-                    cmd.Parameters.AddWithValue("@Birth_Date", employee.BirthDate);
+                    cmd.Parameters.AddWithValue("@Birth_Date", employee.BirthDate.ToShortDateString());
                     cmd.Parameters.AddWithValue("@Address_ID", employee.AddressID);
                     cmd.Parameters.AddWithValue("@Time_ID", employee.TimeID);
                     cmd.Parameters.AddWithValue("@Work_Status_ID", employee.WorkStatusID);

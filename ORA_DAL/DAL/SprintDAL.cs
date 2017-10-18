@@ -24,8 +24,8 @@ namespace ORA_Data.DAL
                     cmd.Parameters.AddWithValue("@Sprint_Number", _sprint.SprintNumber);
                     cmd.Parameters.AddWithValue("@Sprint_Name", _sprint.SprintName);
                     cmd.Parameters.AddWithValue("@Client_ID", _sprint.ClientId);
-                    cmd.Parameters.AddWithValue("@Start_Date", _sprint.EndDate);
-                    cmd.Parameters.AddWithValue("@End_Date", _sprint.StartDate);
+                    cmd.Parameters.AddWithValue("@Start_Date", _sprint.EndDate.ToShortDateString());
+                    cmd.Parameters.AddWithValue("@End_Date", _sprint.StartDate.ToShortDateString());
                     SqlConnect.Connection.Open();
                     cmd.ExecuteNonQuery();
                     SqlConnect.Connection.Close();
@@ -122,8 +122,8 @@ namespace ORA_Data.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Sprint_Name", _sprint.SprintName);
                     cmd.Parameters.AddWithValue("@Sprint_Number", _sprint.SprintNumber);
-                    cmd.Parameters.AddWithValue("@Start_Date", _sprint.StartDate);
-                    cmd.Parameters.AddWithValue("@End_Date", _sprint.EndDate);
+                    cmd.Parameters.AddWithValue("@Start_Date", _sprint.StartDate.ToShortDateString());
+                    cmd.Parameters.AddWithValue("@End_Date", _sprint.EndDate.ToShortDateString());
                     cmd.Parameters.AddWithValue("@Client_ID", _sprint.ClientId);
                     cmd.Parameters.AddWithValue("@Sprint_ID", _sprint.SprintId);
                     SqlConnect.Connection.Open();

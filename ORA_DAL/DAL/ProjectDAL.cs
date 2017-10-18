@@ -23,8 +23,8 @@ namespace ORA_Data.DAL
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Project_Name", _project.ProjectName);
                         cmd.Parameters.AddWithValue("@Project_Number", _project.ProjectNumber);
-                        cmd.Parameters.AddWithValue("@Project_Start_Date", _project.StartDate);
-                        cmd.Parameters.AddWithValue("@Project_End_Date", _project.EndDate);
+                        cmd.Parameters.AddWithValue("@Project_Start_Date", _project.StartDate.ToShortDateString());
+                        cmd.Parameters.AddWithValue("@Project_End_Date", _project.EndDate.ToShortDateString());
                         cmd.Parameters.AddWithValue("@Client_ID", _project.ClientId);
                         SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
@@ -121,8 +121,8 @@ namespace ORA_Data.DAL
                         cmd.Parameters.AddWithValue("@Project_ID", _project.ProjectId);
                         cmd.Parameters.AddWithValue("@Project_Name", _project.ProjectName);
                         cmd.Parameters.AddWithValue("@Project_Number", _project.ProjectNumber);
-                        cmd.Parameters.AddWithValue("@Project_Start_Date", _project.StartDate);
-                        cmd.Parameters.AddWithValue("@Project_End_Date", _project.EndDate);
+                        cmd.Parameters.AddWithValue("@Project_Start_Date", _project.StartDate.ToShortDateString());
+                        cmd.Parameters.AddWithValue("@Project_End_Date", _project.EndDate.ToShortDateString());
                         cmd.Parameters.AddWithValue("@Client_ID", _project.ClientId);
                         SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
@@ -140,7 +140,7 @@ namespace ORA_Data.DAL
         {
             try
             {
-                    using (SqlCommand cmd = new SqlCommand("DELETE_ADDRESS", SqlConnect.Connection))
+                    using (SqlCommand cmd = new SqlCommand("DELETE_PROJECT", SqlConnect.Connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Project_ID", _project.ProjectId);

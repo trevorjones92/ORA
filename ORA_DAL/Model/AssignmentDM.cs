@@ -6,6 +6,8 @@ namespace ORA_Data.Model
     {
         public long AssignmentId { get; set; }
 
+        public string AssignmentName { get; set; }
+
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
@@ -18,7 +20,7 @@ namespace ORA_Data.Model
 
         public string ModifiedBy { get; set; }
 
-        public int Created { get; set; }
+        public DateTime Created { get; set; }
 
         public string CreatedBy { get; set; }
 

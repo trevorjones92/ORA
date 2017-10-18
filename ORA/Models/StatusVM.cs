@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ORA.Models
 {
@@ -10,6 +11,8 @@ namespace ORA.Models
         [DisplayName("Employee Status")]
         public string EmployeeStatus { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("Hire Date")]
         public DateTime HireDate { get; set; }
 
@@ -25,6 +28,8 @@ namespace ORA.Models
         [DisplayName("Office Location")]
         public string OfficeLocation { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("Termination Date")]
         public DateTime TerminationDate { get; set; }
     }

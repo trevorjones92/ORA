@@ -19,7 +19,7 @@ namespace ORA_Data.Model
 
         public int Age { get; set; }
 
-        public string BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public long AddressID { get; set; }
 
