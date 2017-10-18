@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using ORA_Data.Model;
 
-namespace ORA_Data.Data
+namespace ORA_Data.DAL
 {
     public class EmployeeDAL
     {
@@ -34,6 +34,9 @@ namespace ORA_Data.Data
                     command.Parameters.AddWithValue("@Address_ID", employee.AddressID);
                     command.Parameters.AddWithValue("@Time_ID", employee.TimeID);
                     command.Parameters.AddWithValue("@Work_Status_ID", employee.WorkStatusID);
+                    command.Parameters.AddWithValue("@Team_ID", employee.TeamID);
+                    command.Parameters.AddWithValue("@Assignment_ID", employee.AssignmentID);
+                    command.Parameters.AddWithValue("@Role_ID", employee.RoleID);
 
                     command.Connection.Open();
                     command.ExecuteNonQuery();

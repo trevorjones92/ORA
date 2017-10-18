@@ -55,6 +55,7 @@
     <Compile Include="DAL\SprintDAL.cs" />
     <Compile Include="DAL\StoryDAL.cs" />
     <Compile Include="DAL\TeamsDAL.cs" />
+    <Compile Include="DAL\TimeDAL.cs" />
     <Compile Include="DAL\Work_StatusDAL.cs" />
     <Compile Include="Hash.cs" />
     <Compile Include="Model\AddressDM.cs" />

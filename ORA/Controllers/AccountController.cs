@@ -20,12 +20,21 @@ namespace ORA.Controllers
 
         public ActionResult AccountCreation()
         {
+            EmployeeVM employee = new EmployeeVM();
+            employee.TeamList = Mapper.Map<List<TeamsVM>>(TeamsDAL.ReadTeams());
+            employee.AssignmentList = Mapper.Map<List<AssignmentVM>>(AssignmentDAL.ReadAssignments());
+            employee.RoleList = Mapper.Map<List<RolesVM>>(RolesDAL.ReadRoles());
             return View();
         }
 
         [HttpPost]
         public ActionResult AccountCreation(EmployeeVM employee)
         {
+            EmployeeMap.CreateEmployee(employee);
+            AddressDAL.CreateAddress(Mapper.Map<AddressDM>(employee.Address));
+            TimeDAL.CreateTime(Mapper.Map<EmployeeTimeDM>(employee.EmployeeTime));
+            Work_StatusDAL.CreateStatus(Mapper.Map<StatusDM>(employee.Status));
+            LoginDAL.Register(Mapper.Map<LoginDM>(employee.Login));
             return View();
         }
 

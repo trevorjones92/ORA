@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using ORA.Models;
 using AutoMapper;
-using ORA_Data.Data;
 using ORA_Data.Model;
+using ORA_Data.DAL;
 
 namespace ORA.Mapping
 {
