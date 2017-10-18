@@ -90,7 +90,7 @@ namespace ORA_Data.DAL
                                     _assessment.TDProductivity = (int)reader["TD_Productivity"];
                                     _assessment.TDProductKnowledge = (int)reader["TD_Product_Knowledge"];
                                     _assessment.TDComments = (string)reader["TD_Comments"];
-                                    _assessment.CSRProffesionalismTeamwork = (int)reader["CSR_Proffesionalism_Teamwork"];
+                                    _assessment.CSRProffesionalismTeamwork = (int)reader["CSR_Professionalism_Teamwork"];
                                     _assessment.CSRVerbalSkills = (int)reader["CSR_Verbal_Skills"];
                                     _assessment.CSRWrittenSkills = (int)reader["CSR_Written_Skills"];
                                     _assessment.CSRListeningSkills = (int)reader["CSR_Listening_Skills"];
@@ -100,7 +100,7 @@ namespace ORA_Data.DAL
                                     _assessment.ADMeetDeadlines = (int)reader["AD_Meet_Deadlines"];
                                     _assessment.ADOrganizeDetailedWork = (int)reader["AD_Organize_Detailed_Work"];
                                     _assessment.ADComments = (string)reader["AD_Comments"];
-                                    _assessment.TMResourceUse = (int)reader["TM_ResourceUse"];
+                                    _assessment.TMResourceUse = (int)reader["TM_Resource_Use"];
                                     _assessment.TMFeedback = (int)reader["TM_Feedback"];
                                     _assessment.TMTechnicalMonitoring = (int)reader["TM_Technical_Monitoring"];
                                     _assessment.TMAskingQuestions = (int)reader["TM_Asking_Questions"];
@@ -131,16 +131,17 @@ namespace ORA_Data.DAL
             }
         }
 
-        public static AssessmentDM ReadAssessmentByID(string assessmentId)
+        public static AssessmentDM ReadAssessmentByID(string assignmentId)
         {
             try
             {
                 AssessmentDM _assessment = new AssessmentDM();
-                using (SqlCommand cmd = new SqlCommand("READ_ASSESSMENT_BY_ID", SqlConnect.Connection))
+                assignmentId = _assessment.AssignmentID.ToString();
+                using (SqlCommand cmd = new SqlCommand("GET_ASSESSMENTS_BY_ASSIGNMENT_ID", SqlConnect.Connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     SqlConnect.Connection.Open();
-                    cmd.Parameters.AddWithValue("@Assessment_ID", assessmentId);
+                    cmd.Parameters.AddWithValue("@Assessment_ID", assignmentId);
                     using (var reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)

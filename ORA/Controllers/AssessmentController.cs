@@ -29,12 +29,12 @@ namespace ORA.Controllers
 
         public ActionResult ReadAssessments()
         {
-            return View(Mapper.Map<List<AddressVM>>(AssessmentDAL.ReadAssessments()));
+            return View(Mapper.Map<List<AssessmentVM>>(AssessmentDAL.ReadAssessments()));
         }
 
         public ActionResult ReadAssessmentByID(AssessmentDM assessment)
         {
-            return View(Mapper.Map<AddressVM>(AssessmentDAL.ReadAssessmentByID(assessment.AssessmentId.ToString())));
+            return View(Mapper.Map<AssessmentVM>(AssessmentDAL.ReadAssessmentByID(assessment.AssignmentID.ToString())));
         }
 
         public ActionResult UpdateAssessment()
