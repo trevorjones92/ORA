@@ -1,14 +1,21 @@
 ﻿<!DOCTYPE html>
+<style>
+    body, html {
+        height: 100%;
+        background-repeat: no-repeat;
+        background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+    }
+</style>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - ORA</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:white;">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,7 +24,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-                <a href='@Url.Action("Index", "Home")'><img src="~/Images/OnshoreLogo.png" width="50px" style="position:center;" /></a>
+                <a href='@Url.Action("Index", "Home")'><img src="~/Images/OnshoreLogo.png" width="50px" style="position: center;" /></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -38,7 +45,7 @@
                     }
                 </ul>
 
-                <div class="navbar-collapse collapse" style="float:right;z-index:1;position:relative;">
+                <div class="navbar-collapse collapse" style="float: right; z-index: 1; position: relative;">
                     <ul class="nav navbar-nav">
                         @if ((bool)Session["LoggedIn"])
                         {
