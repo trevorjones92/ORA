@@ -37,25 +37,23 @@
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="active">
-                        <a href="user.html">
-                            <i class="pe-7s-user"></i>
-                            <p>User Profile</p>
-                        </a>
+                        <i class="pe-7s-user"></i>
+                        <p>User Profile</p>
                     </li>
                     <li>
-                        <a href="table.html">
+                        <a href="#">
                             <i class="pe-7s-note2"></i>
                             <p>My Assessments</p>
                         </a>
                     </li>
                     <li>
-                        <a href="typography.html">
+                        <a href="#">
                             <i class="pe-7s-bookmarks"></i>
                             <p>My KPI's</p>
                         </a>
                     </li>
                     <li>
-                        <a href="icons.html">
+                        <a href="#">
                             <i class="pe-7s-news-paper"></i>
                             <p>News Feed</p>
                         </a>
@@ -92,8 +90,8 @@
                                     Account
                                 </a>
                             </li>
-                            @if ((string)Session["Role"] == "MANAGER" || (string)Session["Role"] == "TEAMLEAD")
-                            {
+                            @*@if ((string)Session["Role"] == "MANAGER" || (string)Session["Role"] == "TEAMLEAD")
+                            {*@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         @Session["Role"] Tools
@@ -109,7 +107,7 @@
                                         <li><a href="#">Separated link</a></li>
                                     </ul>
                                 </li>
-                            }
+                                @*//}*@
 
                             <li>
                                 @Html.ActionLink("Log Out", "LogOut", "Login")
@@ -118,7 +116,10 @@
                     </div>
                 </div>
             </nav>
-
+            
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -152,14 +153,12 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>First Name</label>
-                                                    <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                                    @Html.EditorFor(model => model.EmployeeFirstName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "First Name", required = "required" } })
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Last Name</label>
-                                                    <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                                    @Html.EditorFor(model => model.EmployeeLastName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Last Name", required = "required" } })
                                                 </div>
                                             </div>
                                         </div>
@@ -208,14 +207,14 @@
                         <div class="col-md-4">
                             <div class="card card-user">
                                 <div class="image">
-                                    <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..." />
+                                    <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
                                 </div>
                                 <div class="content">
                                     <div class="author">
                                         <a href="#">
-                                            <img class="avatar border-gray" src="~/Content/assets/img/default-avatar.png" alt="..." />
+                                            <img class="avatar border-gray" src="~/Content/assets/img/default-avatar.png" alt="..."/>
                                             <h4 class="title">
-                                                @Session["Email"]<br />
+                                                @Session["Email"]<br/>
                                                 <small>testname</small>
                                             </h4>
                                         </a>
@@ -230,7 +229,7 @@
                     </div>
                 </div>
             </div>
-
+        }
             <footer class="footer">
                 <div class="container-fluid">
                     <nav class="pull-left">
