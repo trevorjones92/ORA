@@ -56,7 +56,7 @@ namespace ORA_Data.Model
 
         public string MIComments { get; set; }
 
-        public long AssignmentID { get; set; }
+        public long EmployeeID { get; set; }
 
         public DateTime Created { get; set; }
 

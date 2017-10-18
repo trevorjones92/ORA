@@ -22,7 +22,7 @@ namespace ORA_Data.DAL
                 using (SqlCommand cmd = new SqlCommand("CREATE_KPI", SqlConnect.Connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Create_Date", _kpi.CreateDate);
+                    cmd.Parameters.AddWithValue("@Create_Date", _kpi.CreateDate.ToShortDateString());
                     cmd.Parameters.AddWithValue("@Points", _kpi.Points);
                     cmd.Parameters.AddWithValue("@TC_Created", _kpi.TCCreated);
                     cmd.Parameters.AddWithValue("@TC_Executed", _kpi.TCExecuted);
@@ -170,7 +170,7 @@ namespace ORA_Data.DAL
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@KPI_ID", _kpi.KPIID);
-                    cmd.Parameters.AddWithValue("@Create_Date", _kpi.CreateDate);
+                    cmd.Parameters.AddWithValue("@Create_Date", _kpi.CreateDate.ToShortDateString());
                     cmd.Parameters.AddWithValue("@Points", _kpi.Points);
                     cmd.Parameters.AddWithValue("@TC_Created", _kpi.TCCreated);
                     cmd.Parameters.AddWithValue("@TC_Executed", _kpi.TCExecuted);

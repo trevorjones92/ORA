@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ORA.Models
 {
@@ -10,9 +11,13 @@ namespace ORA.Models
 
         public string AssignmentName { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("Start Date")]
         public DateTime StartDate { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("End Date")]
         public DateTime EndDate { get; set; }
 
@@ -29,7 +34,7 @@ namespace ORA.Models
         [DisplayName("Modified By")]
         public string ModifiedBy { get; set; }
 
-        public int Created { get; set; }
+        public DateTime Created { get; set; }
 
         [DisplayName("Created By")]
         public string CreatedBy { get; set; }

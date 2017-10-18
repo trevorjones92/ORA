@@ -19,11 +19,15 @@ namespace ORA_Data.DAL
             try
             {
                 //Creating a way of adding new user information to my database 
-                using (SqlCommand cmd = new SqlCommand("CREATE_ADDRESS", SqlConnect.Connection))
+                using (SqlCommand cmd = new SqlCommand("CREATE_ASSIGNMENT", SqlConnect.Connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Start_Date", _assignment.StartDate);
-                    cmd.Parameters.AddWithValue("@End_Date", _assignment.EndDate);
+                    cmd.Parameters.AddWithValue("@Assignment_Name", _assignment.AssignmentName);
+                    cmd.Parameters.AddWithValue("@StartDate", _assignment.StartDate.ToShortDateString());
+                    if (_assignment.EndDate != null)
+                        cmd.Parameters.AddWithValue("@EndDate", _assignment.EndDate.ToShortDateString());
+                    else
+                        cmd.Parameters.AddWithValue("@EndDate", null);
                     cmd.Parameters.AddWithValue("@Client_Id", _assignment.ClientId);
                     cmd.Parameters.AddWithValue("@Position_Id", _assignment.PositionId);
                     SqlConnect.Connection.Open();
@@ -117,8 +121,11 @@ namespace ORA_Data.DAL
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Assignment_ID", _assignment.AssignmentId);
-                    cmd.Parameters.AddWithValue("@Start_Date", _assignment.StartDate);
-                    cmd.Parameters.AddWithValue("@End_Date", _assignment.EndDate);
+                    cmd.Parameters.AddWithValue("@Start_Date", _assignment.StartDate.ToShortDateString());
+                    if (_assignment.EndDate != null)
+                        cmd.Parameters.AddWithValue("@EndDate", _assignment.EndDate.ToShortDateString());
+                    else
+                        cmd.Parameters.AddWithValue("@EndDate", null);
                     cmd.Parameters.AddWithValue("@Client_ID", _assignment.ClientId);
                     cmd.Parameters.AddWithValue("@Position_ID", _assignment.PositionId);
                     SqlConnect.Connection.Open();

@@ -2,6 +2,7 @@
 using ORA.Models;
 using ORA_Data.DAL;
 using ORA_Data.Model;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -17,6 +18,9 @@ namespace ORA.Controllers
 
         public ActionResult CreateStory()
         {
+            StoryVM story = new StoryVM();
+            story.Created = DateTime.Now;
+            story.Modified = DateTime.Now;
             return View();
         }
 

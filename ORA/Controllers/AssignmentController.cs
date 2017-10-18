@@ -2,6 +2,7 @@
 using ORA.Models;
 using ORA_Data.DAL;
 using ORA_Data.Model;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -17,7 +18,12 @@ namespace ORA.Controllers
 
         public ActionResult CreateAssignment()
         {
-            return View();
+            AssignmentVM assignmment = new AssignmentVM();
+            assignmment.Created = DateTime.Now;
+            assignmment.Modify = DateTime.Now;
+            assignmment.Clients = Mapper.Map<List<ClientsVM>>(ClientsDAL.ReadClients());
+            assignmment.Positions = Mapper.Map<List<PositionsVM>>(PositionsDAL.ReadPositions());
+            return View(assignmment);
         }
 
         [HttpPost]

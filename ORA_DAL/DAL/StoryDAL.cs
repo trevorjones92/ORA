@@ -23,8 +23,8 @@ namespace ORA_Data.DAL
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Story_Name", _story.StoryName);
                         cmd.Parameters.AddWithValue("@Story_Number", _story.StoryNumber);
-                        cmd.Parameters.AddWithValue("@Story_Start_Date", _story.StartDate);
-                        cmd.Parameters.AddWithValue("@Story_End_Date", _story.EndDate);
+                        cmd.Parameters.AddWithValue("@Story_Start_Date", _story.StartDate.ToShortDateString());
+                        cmd.Parameters.AddWithValue("@Story_End_Date", _story.EndDate.ToShortDateString());
                         cmd.Parameters.AddWithValue("@Client_ID", _story.ClientId);
                         SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
@@ -121,8 +121,8 @@ namespace ORA_Data.DAL
                         cmd.Parameters.AddWithValue("@Story_ID", _story.StoryId);
                         cmd.Parameters.AddWithValue("@Story_Name", _story.StoryName);
                         cmd.Parameters.AddWithValue("@Story_Number", _story.StoryNumber);
-                        cmd.Parameters.AddWithValue("@Story_Start_Date", _story.StartDate);
-                        cmd.Parameters.AddWithValue("@Story_End_Date", _story.EndDate);
+                        cmd.Parameters.AddWithValue("@Story_Start_Date", _story.StartDate.ToShortDateString());
+                        cmd.Parameters.AddWithValue("@Story_End_Date", _story.EndDate.ToShortDateString());
                         cmd.Parameters.AddWithValue("@Client_ID", _story.ClientId);
                         SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();

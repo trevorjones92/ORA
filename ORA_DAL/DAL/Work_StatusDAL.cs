@@ -22,12 +22,12 @@ namespace ORA_Data.DAL
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Employee_Status", _status.EmployeeStatus);
-                        cmd.Parameters.AddWithValue("@Hire_Date", _status.HireDate);
+                        cmd.Parameters.AddWithValue("@Hire_Date", _status.HireDate.ToShortDateString());
                         cmd.Parameters.AddWithValue("@Pay_Type", _status.PayType);
                         cmd.Parameters.AddWithValue("@Service_Length", _status.ServiceLength);
                         cmd.Parameters.AddWithValue("@Employement_Type", _status.EmploymentType);
                         cmd.Parameters.AddWithValue("@Office_Location", _status.OfficeLocation);
-                        cmd.Parameters.AddWithValue("@Termination_Date", _status.TerminationDate);
+                        cmd.Parameters.AddWithValue("@Termination_Date", _status.TerminationDate.ToShortDateString());
                         SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
                         SqlConnect.Connection.Close();
@@ -125,12 +125,12 @@ namespace ORA_Data.DAL
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Employee_Status", _status.EmployeeStatus);
-                        cmd.Parameters.AddWithValue("@Hire_Date", _status.HireDate);
+                        cmd.Parameters.AddWithValue("@Hire_Date", _status.HireDate.ToShortDateString());
                         cmd.Parameters.AddWithValue("@Pay_Type", _status.PayType);
                         cmd.Parameters.AddWithValue("@Service_Length", _status.ServiceLength);
                         cmd.Parameters.AddWithValue("@Employment_Type", _status.EmploymentType);
                         cmd.Parameters.AddWithValue("@Office_Location", _status.OfficeLocation);
-                        cmd.Parameters.AddWithValue("@Termination_Date", _status.TerminationDate);
+                        cmd.Parameters.AddWithValue("@Termination_Date", _status.TerminationDate.ToShortDateString());
                         cmd.Parameters.AddWithValue("@Work_Status_ID", _status.StatusId);
                         SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();

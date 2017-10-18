@@ -47,10 +47,10 @@ namespace ORA_Data.DAL
                     cmd.Parameters.AddWithValue("@MI_Personal_Growth", _assessment.MIPersonalGrowth);
                     cmd.Parameters.AddWithValue("@MI_Potential_Advancement", _assessment.MIPotentialAdvancement);
                     cmd.Parameters.AddWithValue("@MI_Comments", _assessment.MIComments);
-                    cmd.Parameters.AddWithValue("@Assignment_ID", _assessment.AssignmentID);
-                    cmd.Parameters.AddWithValue("@Created", _assessment.Created);
+                    cmd.Parameters.AddWithValue("@Employee_ID", _assessment.EmployeeID);
+                    cmd.Parameters.AddWithValue("@Created", _assessment.Created.ToShortDateString());
                     cmd.Parameters.AddWithValue("@Created_By", _assessment.CreatedBy);
-                    cmd.Parameters.AddWithValue("@Modified", _assessment.Modified);
+                    cmd.Parameters.AddWithValue("@Modified", _assessment.Modified.ToShortDateString());
                     cmd.Parameters.AddWithValue("@Modified_By", _assessment.ModifiedBy);
 
                     SqlConnect.Connection.Open();
@@ -110,7 +110,7 @@ namespace ORA_Data.DAL
                                     _assessment.MIPersonalGrowth = (int)reader["MI_Personal_Growth"];
                                     _assessment.MIPotentialAdvancement = (int)reader["MI_Potential_Advancement"];
                                     _assessment.MIComments = (string)reader["MI_Comments"];
-                                    _assessment.AssignmentID = (Int64)reader["Assignment_ID"];
+                                    _assessment.EmployeeID = (Int64)reader["Employee_ID"];
                                     _assessment.Created = (DateTime)reader["Created"];
                                     _assessment.CreatedBy = (string)reader["Created_By"];
                                     _assessment.Modified = (DateTime)reader["Modified"];
@@ -174,7 +174,7 @@ namespace ORA_Data.DAL
                                 _assessment.MIPersonalGrowth = (int)reader["MI_Personal_Growth"];
                                 _assessment.MIPotentialAdvancement = (int)reader["MI_Potential_Advancement"];
                                 _assessment.MIComments = (string)reader["MI_Comments"];
-                                _assessment.AssignmentID = (Int64)reader["Assignment_ID"];
+                                _assessment.EmployeeID = (Int64)reader["Employee_ID"];
                                 _assessment.Created = (DateTime)reader["Created"];
                                 _assessment.CreatedBy = (string)reader["Created_By"];
                                 _assessment.Modified = (DateTime)reader["Modified"];
@@ -227,9 +227,9 @@ namespace ORA_Data.DAL
                         cmd.Parameters.AddWithValue("@MI_Personal_Growth", _assessment.MIPersonalGrowth);
                         cmd.Parameters.AddWithValue("@MI_Potential_Advancement", _assessment.MIPotentialAdvancement);
                         cmd.Parameters.AddWithValue("@MI_Comments", _assessment.MIComments);
-                        cmd.Parameters.AddWithValue("@Created", _assessment.Created);
+                        cmd.Parameters.AddWithValue("@Created", _assessment.Created.ToShortDateString());
                         cmd.Parameters.AddWithValue("@Created_By", _assessment.CreatedBy);
-                        cmd.Parameters.AddWithValue("@Modified", _assessment.Modified);
+                        cmd.Parameters.AddWithValue("@Modified", _assessment.Modified.ToShortDateString());
                         cmd.Parameters.AddWithValue("@Modified_By", _assessment.ModifiedBy);
                         SqlConnect.Connection.Open();
                         cmd.ExecuteNonQuery();
