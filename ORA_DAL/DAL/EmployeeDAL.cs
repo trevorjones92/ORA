@@ -163,47 +163,47 @@ namespace ORA_Data.DAL
                             employee.EmployeeLastName = (string)reader["Employee_LastName"];
                             employee.Age = (int)reader["Age"];
                             employee.BirthDate = (DateTime)reader["Birth_Date"];
-                            if (reader["Address_ID"] != DBNull.Value)
-                                employee.AddressID = (Int64)reader["Address_ID"];
-                            if (reader["Time_ID"] != DBNull.Value)
-                                employee.TimeID = (Int64)reader["Time_ID"];
-                            if (reader["Work_Status_ID"] != DBNull.Value)
-                                employee.WorkStatusID = (Int64)reader["Work_Status_ID"];
+                            if (reader["Team_ID"] != DBNull.Value)
+                                employee.TeamID = (Int64)reader["Team_ID"];
+                            if (reader["Role_ID"] != DBNull.Value)
+                                employee.RoleID = (Int64)reader["Role_ID"];
+                            if (reader["Assignment_ID"] != DBNull.Value)
+                                employee.AssignmentID = (Int64)reader["Assignment_ID"];
 
                             #endregion
 
-                            #region Pulling Address Table Information
-                            address.Address = (string)reader["Address"];
-                            address.City = (string)reader["City"];
-                            address.State = (string)reader["State"];
-                            address.Country = (string)reader["Country"];
-                            address.Zip_Code = (int)reader["Zip_Code"];
-                            address.Phone = (string)reader["Phone"];
-                            address.Email = (string)reader["Email"];
-                            #endregion
+                            //#region Pulling Address Table Information
+                            //address.Address = (string)reader["Address"];
+                            //address.City = (string)reader["City"];
+                            //address.State = (string)reader["State"];
+                            //address.Country = (string)reader["Country"];
+                            //address.Zip_Code = (int)reader["Zip_Code"];
+                            //address.Phone = (string)reader["Phone"];
+                            //address.Email = (string)reader["Email"];
+                            //#endregion
 
-                            #region Pulls Employee Time Table Information
-                            EmployeeTime.Other_Total = (decimal)reader["Other_Total"];
-                            EmployeeTime.Other_Available = (decimal)reader["Other_Available"];
-                            EmployeeTime.Other_Used = (decimal)reader["Other_Used"];
-                            EmployeeTime.Payed_Total = (decimal)reader["Payed_Total"];
-                            EmployeeTime.Payed_Used = (decimal)reader["Payed_Total"];
-                            #endregion
+                            //#region Pulls Employee Time Table Information
+                            //EmployeeTime.Other_Total = (decimal)reader["Other_Total"];
+                            //EmployeeTime.Other_Available = (decimal)reader["Other_Available"];
+                            //EmployeeTime.Other_Used = (decimal)reader["Other_Used"];
+                            //EmployeeTime.Payed_Total = (decimal)reader["Payed_Total"];
+                            //EmployeeTime.Payed_Used = (decimal)reader["Payed_Total"];
+                            //#endregion
 
-                            #region Pulls Employee Work Status Information
+                            //#region Pulls Employee Work Status Information
 
-                            Status.EmployeeStatus = (string)reader["Employee_Status"];
-                            Status.HireDate = (DateTime)reader["Hire_Date"];
-                            Status.PayType = (string)reader["Pay_Type"];
-                            Status.ServiceLength = (string)reader["Service_Length"];
-                            Status.EmploymentType = (string)reader["Employment_Type"];
-                            Status.OfficeLocation = (string)reader["Office_Location"];
-                            if (reader["Termination_Date"] != DBNull.Value)
-                                Status.TerminationDate = (DateTime)reader["Termination_Date"];
-                            #endregion
+                            //Status.EmployeeStatus = (string)reader["Employee_Status"];
+                            //Status.HireDate = (DateTime)reader["Hire_Date"];
+                            //Status.PayType = (string)reader["Pay_Type"];
+                            //Status.ServiceLength = (string)reader["Service_Length"];
+                            //Status.EmploymentType = (string)reader["Employment_Type"];
+                            //Status.OfficeLocation = (string)reader["Office_Location"];
+                            //if (reader["Termination_Date"] != DBNull.Value)
+                            //    Status.TerminationDate = (DateTime)reader["Termination_Date"];
+                            //#endregion
 
-                            //Adding the object properties to the employment object to be used together for the view modal
-                            employee.address = address; employee.EmployeeTime = EmployeeTime; employee.Status = Status;
+                            ////Adding the object properties to the employment object to be used together for the view modal
+                            //employee.address = address; employee.EmployeeTime = EmployeeTime; employee.Status = Status;
 
                             employeeList.Add(employee);
                         }
@@ -237,9 +237,9 @@ namespace ORA_Data.DAL
                     cmd.Parameters.AddWithValue("@Employee_LastName", employee.EmployeeLastName);
                     cmd.Parameters.AddWithValue("@Age", employee.Age);
                     cmd.Parameters.AddWithValue("@Birth_Date", employee.BirthDate.ToShortDateString());
-                    cmd.Parameters.AddWithValue("@Address_ID", employee.AddressID);
-                    cmd.Parameters.AddWithValue("@Time_ID", employee.TimeID);
-                    cmd.Parameters.AddWithValue("@Work_Status_ID", employee.WorkStatusID);
+                    cmd.Parameters.AddWithValue("@Team_ID", employee.TeamID);
+                    cmd.Parameters.AddWithValue("@Role_ID", employee.RoleID);
+                    cmd.Parameters.AddWithValue("@Assignment_ID", employee.AssignmentID);
                     SqlConnect.Connection.Open();
                     cmd.ExecuteNonQuery();
                     SqlConnect.Connection.Close();
