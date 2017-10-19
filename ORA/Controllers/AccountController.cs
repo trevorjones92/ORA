@@ -46,7 +46,7 @@ namespace ORA.Controllers
 
         public ActionResult ReadAccount()
         {
-            return View(Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById((int)Session["ID"])));
+            return View(/*Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById((int)Session["ID"]))*/);
         }
 
         public ActionResult UpdateAccount()
