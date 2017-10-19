@@ -136,7 +136,6 @@ namespace ORA_Data.DAL
             try
             {
                 AssessmentDM _assessment = new AssessmentDM();
-                assignmentId = _assessment.AssignmentID.ToString();
                 using (SqlCommand cmd = new SqlCommand("GET_ASSESSMENTS_BY_ASSIGNMENT_ID", SqlConnect.Connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;

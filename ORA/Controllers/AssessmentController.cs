@@ -34,7 +34,7 @@ namespace ORA.Controllers
 
         public ActionResult ReadAssessmentByID(AssessmentDM assessment)
         {
-            return View(Mapper.Map<AssessmentVM>(AssessmentDAL.ReadAssessmentByID(assessment.AssignmentID.ToString())));
+            return View(Mapper.Map<AssessmentVM>(AssessmentDAL.ReadAssessmentByID(assessment.AssessmentId.ToString())));
         }
 
         public ActionResult UpdateAssessment()

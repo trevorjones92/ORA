@@ -25,7 +25,6 @@ namespace ORA_Data.DAL
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@Employee_Number", employee.EmployeeNumber);
-                    command.Parameters.AddWithValue("@Employee_Name", employee.EmployeeName);
                     command.Parameters.AddWithValue("@Employee_FirstName", employee.EmployeeFirstName);
                     command.Parameters.AddWithValue("@Employee_MiddleName", employee.EmployeeMiddle);
                     command.Parameters.AddWithValue("@Employee_LastName", employee.EmployeeLastName);
