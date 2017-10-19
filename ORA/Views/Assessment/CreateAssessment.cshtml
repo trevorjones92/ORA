@@ -18,40 +18,48 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TDProblemSolving, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TDProblemSolving, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TDProblemSolving, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AssignmentID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.AssignmentID, new SelectList(Model.Assignments, "AssignmentId", "AssignmentName"), "Select Assignment")
-                @Html.ValidationMessageFor(model => model.AssignmentID, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.TDProblemSolving, item) @item
+                }
+                @*@Html.EditorFor(model => model.TDProblemSolving, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.TDProblemSolving, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.TDQualityOfWork, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TDQualityOfWork, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TDQualityOfWork, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.TDQualityOfWork, item) @item
+                }
+                @*@Html.EditorFor(model => model.TDQualityOfWork, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.TDQualityOfWork, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.TDProductivity, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TDProductivity, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TDProductivity, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.TDProductivity, item) @item
+                }
+                @*@Html.EditorFor(model => model.TDProductivity, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.TDProductivity, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.TDProductKnowledge, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TDProductKnowledge, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TDProductKnowledge, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.TDProductKnowledge, item) @item
+                }
+                @*@Html.EditorFor(model => model.TDProductKnowledge, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.TDProductKnowledge, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -66,32 +74,48 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CSRProffesionalismTeamwork, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CSRProffesionalismTeamwork, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CSRProffesionalismTeamwork, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.CSRProffesionalismTeamwork, item) @item
+                }
+                @*@Html.EditorFor(model => model.CSRProffesionalismTeamwork, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.CSRProffesionalismTeamwork, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.CSRVerbalSkills, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CSRVerbalSkills, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CSRVerbalSkills, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.CSRVerbalSkills, item) @item
+                }
+                @*@Html.EditorFor(model => model.CSRVerbalSkills, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.CSRVerbalSkills, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.CSRWrittenSkills, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CSRWrittenSkills, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CSRWrittenSkills, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.CSRWrittenSkills, item) @item
+                }
+                @*@Html.EditorFor(model => model.CSRWrittenSkills, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.CSRWrittenSkills, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.CSRListeningSkills, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CSRListeningSkills, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CSRListeningSkills, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.CSRListeningSkills, item) @item
+                }
+                @*@Html.EditorFor(model => model.CSRListeningSkills, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.CSRListeningSkills, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -106,32 +130,48 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ADAttendence, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ADAttendence, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ADAttendence, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.ADAttendence, item) @item
+                }
+                @*@Html.EditorFor(model => model.ADAttendence, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.ADAttendence, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.ADEthicalBehavior, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ADEthicalBehavior, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ADEthicalBehavior, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.ADEthicalBehavior, item) @item
+                }
+                @*@Html.EditorFor(model => model.ADEthicalBehavior, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.ADEthicalBehavior, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.ADMeetDeadlines, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ADMeetDeadlines, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ADMeetDeadlines, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.ADMeetDeadlines, item) @item
+                }
+                @*@Html.EditorFor(model => model.ADMeetDeadlines, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.ADMeetDeadlines, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.ADOrganizeDetailedWork, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ADOrganizeDetailedWork, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ADOrganizeDetailedWork, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.ADOrganizeDetailedWork, item) @item
+                }
+                @*@Html.EditorFor(model => model.ADOrganizeDetailedWork, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.ADOrganizeDetailedWork, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -146,32 +186,48 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TMResourceUse, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TMResourceUse, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TMResourceUse, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.TMResourceUse, item) @item
+                }
+                @*@Html.EditorFor(model => model.TMResourceUse, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.TMResourceUse, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.TMFeedback, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TMFeedback, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TMFeedback, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.TDProblemSolving, item) @item
+                }
+                @*@Html.EditorFor(model => model.TMFeedback, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.TMFeedback, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.TMTechnicalMonitoring, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TMTechnicalMonitoring, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TMTechnicalMonitoring, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.TMTechnicalMonitoring, item) @item
+                }
+                @*@Html.EditorFor(model => model.TMTechnicalMonitoring, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.TMTechnicalMonitoring, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.TMAskingQuestions, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TMAskingQuestions, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TMAskingQuestions, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.TMAskingQuestions, item) @item
+                }
+                @*@Html.EditorFor(model => model.TMAskingQuestions, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.TMAskingQuestions, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -186,32 +242,48 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MIAttitudeWork, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MIAttitudeWork, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MIAttitudeWork, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.MIAttitudeWork, item) @item
+                }
+                @*@Html.EditorFor(model => model.MIAttitudeWork, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.MIAttitudeWork, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.MIGroomingAppearance, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MIGroomingAppearance, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MIGroomingAppearance, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.MIGroomingAppearance, item) @item
+                }
+                @*@Html.EditorFor(model => model.MIGroomingAppearance, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.MIGroomingAppearance, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.MIPersonalGrowth, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MIPersonalGrowth, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MIPersonalGrowth, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.MIPersonalGrowth, item) @item
+                }
+                @*@Html.EditorFor(model => model.MIPersonalGrowth, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.MIPersonalGrowth, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.MIPotentialAdvancement, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MIPotentialAdvancement, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MIPotentialAdvancement, "", new { @class = "text-danger" })
+                @foreach (var item in Model.Points)
+                {
+                    @Html.RadioButtonFor(model => model.MIPotentialAdvancement, item) @item
+                }
+                @*@Html.EditorFor(model => model.MIPotentialAdvancement, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.MIPotentialAdvancement, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -252,6 +324,14 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ModifiedBy, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ModifiedBy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.EmployeeID, new SelectList(Model.EmployeeList, "EmployeeId", "EmployeeName"), "Select Employee")
+                @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
             </div>
         </div>
 

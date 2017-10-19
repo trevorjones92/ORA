@@ -27,7 +27,7 @@ namespace ORA.Controllers
         [HttpPost]
         public ActionResult CreateAddress(AddressVM address)
         {
-            AddressDAL.CreateAddress(Mapper.Map<AddressDM>(address));
+            //AddressDAL.CreateAddress(Mapper.Map<AddressDM>(address));
             return View();
         }
 

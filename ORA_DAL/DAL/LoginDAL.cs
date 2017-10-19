@@ -52,12 +52,13 @@ namespace ORA_Data.DAL
             }
         }
 
-        public static void Register(LoginDM login)
+        public static void Register(LoginDM login, long EmpID)
         {
             try
             {
                 using (SqlCommand command = new SqlCommand("CREATE_LOGIN", SqlConnect.Connection))
                 {
+                    command.Parameters.AddWithValue("@Employee_ID", EmpID);
                     command.Parameters.AddWithValue("@Email",login.Email);
                     command.Parameters.AddWithValue("@Password",login.Password);
                     command.Parameters.AddWithValue("@Salt",login.Salt);
@@ -83,6 +84,7 @@ namespace ORA_Data.DAL
                 using (SqlCommand command = new SqlCommand("READ_LOGINS", SqlConnect.Connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.HasRows)
@@ -114,6 +116,7 @@ namespace ORA_Data.DAL
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@Login_ID", loginId);
+                    command.Connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.HasRows)
@@ -127,6 +130,37 @@ namespace ORA_Data.DAL
                     command.Connection.Close();
                 }
                 return login;
+            }
+            catch (Exception ex)
+            {
+                SqlConnect.Connection.Close();
+                throw (ex);
+            }
+        }
+
+        public static long ReadLoginByEmail(string email)
+        {
+            try
+            {
+                LoginDM login = new LoginDM();
+                using (SqlCommand command = new SqlCommand("READ_LOGIN_BY_EMAIL", SqlConnect.Connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Email", email);
+                    command.Connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                login.EmployeeId = (long)reader["Employee_ID"];
+                            }
+                        }
+                    }
+                    command.Connection.Close();
+                }
+                return login.EmployeeId;
             }
             catch (Exception ex)
             {

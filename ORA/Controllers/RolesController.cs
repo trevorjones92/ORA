@@ -34,7 +34,7 @@ namespace ORA.Controllers
 
         public ActionResult ReadRoleByID(RolesDM role)
         {
-            return View(Mapper.Map<RolesVM>(RolesDAL.ReadRoleByID(role.RoleId.ToString())));
+            return View(Mapper.Map<RolesVM>(RolesDAL.ReadRoleByID(role.RoleId)));
         }
 
         public ActionResult UpdateRole()

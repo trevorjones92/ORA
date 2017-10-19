@@ -6,6 +6,7 @@ using AutoMapper;
 using ORA_Data.Model;
 using System.Configuration;
 using System.Collections.Generic;
+using ORA.Mapping;
 
 namespace ORA.Controllers
 {
@@ -31,7 +32,7 @@ namespace ORA.Controllers
                 if (info.Password != info.ConfirmPassword) return View();
                 info.Salt = Convert.ToBase64String(Salt.GenerateSalt());
                 info.Password = ORA_Data.Hash.GetHash(info.Password + info.Salt);
-                LoginDAL.Register(Mapper.Map<LoginDM>(info));
+                //LoginDAL.Register(Mapper.Map<LoginDM>(info));
                 info.Password = "";
                 return ConfigurationManager.AppSettings["RegisterToLogin"].ToLower() == "true"
                     ? RedirectToAction("Login", "Login", info) : RedirectToAction("Home", "Index", new { area = "Default" });
@@ -57,8 +58,10 @@ namespace ORA.Controllers
                 if (info.Email != null && LoginDAL.Login(Mapper.Map<LoginDM>(info)))
                 {
                     Session["LoggedIn"] = true;
-                    //RolesDAL.ReadRoleByID(Mapper.Map<RolesDM>(info.Role));
-                    //Session["Role"] = info.Role.RoleName;
+                    info.EmployeeId = LoginDAL.ReadLoginByEmail(info.Email);
+                    info.Employee = EmployeeMap.GetEmployeeById(info.EmployeeId);
+                    info.Role = Mapper.Map<RolesVM>(RolesDAL.ReadRoleByID(info.Employee.RoleId));
+                    Session["Role"] = info.Role.RoleName;
                     Session["ID"] = info.EmployeeId;
                     if ((bool)Session["LoggedIn"])
                     {
