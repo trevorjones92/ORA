@@ -10,6 +10,8 @@ namespace ORA.Models
     {
         public int Time_ID { get; set; }
 
+        public int Employee_ID { get; set; }
+
         [DisplayName("Other Time Total")]
         public decimal Other_Total { get; set; }
 

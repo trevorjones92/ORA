@@ -10,6 +10,8 @@ namespace ORA_Data.Model
     {
         public long Time_ID { get; set; }
 
+        public long Employee_ID { get; set; }
+
         public decimal Other_Total { get; set; }
 
         public decimal Other_Available { get; set; }

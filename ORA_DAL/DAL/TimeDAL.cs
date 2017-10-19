@@ -42,6 +42,27 @@ namespace ORA_Data.DAL
             }
         }
 
+        public static void CreateEmptyTime(long employeeId)
+        {
+            try
+            {
+                //Creating a way of adding new user information to my database 
+                using (SqlCommand cmd = new SqlCommand("CREATE_EMPTY_EMPLOYEE_TIME", SqlConnect.Connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Employee_ID", employeeId);
+                    SqlConnect.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                    SqlConnect.Connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                SqlConnect.Connection.Close();
+                throw e;
+            }
+        }
+
         public static List<EmployeeTimeDM> ReadAllTime()
         {
             List<EmployeeTimeDM> timeList = new List<EmployeeTimeDM>();

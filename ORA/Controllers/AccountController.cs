@@ -31,10 +31,10 @@ namespace ORA.Controllers
         public ActionResult AccountCreation(EmployeeVM employee)
         {
             EmployeeMap.CreateEmployee(employee);
-            AddressDAL.CreateAddress(Mapper.Map<AddressDM>(employee.Address));
-            TimeDAL.CreateTime(Mapper.Map<EmployeeTimeDM>(employee.EmployeeTime));
-            Work_StatusDAL.CreateStatus(Mapper.Map<StatusDM>(employee.Status));
             LoginDAL.Register(Mapper.Map<LoginDM>(employee.Login));
+            AddressDAL.CreateAddress(Mapper.Map<AddressDM>(employee.Address));
+            Work_StatusDAL.CreateStatus(Mapper.Map<StatusDM>(employee.Status));
+            TimeDAL.CreateEmptyTime(Mapper.Map<EmployeeTimeDM>(employee.EmployeeId));
             return View();
         }
 
