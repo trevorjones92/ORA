@@ -31,9 +31,13 @@ namespace ORA.Controllers
         public ActionResult AccountCreation(EmployeeVM employee)
         {
             EmployeeMap.CreateEmployee(employee);
-            LoginDAL.Register(Mapper.Map<LoginDM>(employee.Login));
-            AddressDAL.CreateAddress(Mapper.Map<AddressDM>(employee.Address));
-            Work_StatusDAL.CreateStatus(Mapper.Map<StatusDM>(employee.Status));
+            employee.EmployeeId = EmployeeMap.GetEmployeeId(employee.EmployeeNumber);
+            employee.Login.Email = employee.Address.Email;
+            employee.Login.Salt = Convert.ToBase64String(Salt.GenerateSalt());
+            employee.Login.Password = ORA_Data.Hash.GetHash(employee.Login.Password + employee.Login.Salt);
+            LoginDAL.Register(Mapper.Map<LoginDM>(employee.Login), employee.EmployeeId);
+            AddressDAL.CreateAddress(Mapper.Map<AddressDM>(employee.Address), employee.EmployeeId);
+            Work_StatusDAL.CreateStatus(Mapper.Map<StatusDM>(employee.Status), employee.EmployeeId);
             TimeDAL.CreateEmptyTime(employee.EmployeeId);
             return View();
         }

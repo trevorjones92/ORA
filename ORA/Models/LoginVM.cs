@@ -27,7 +27,7 @@ namespace ORA.Models
 
         public string Salt { get; set; }
 
-        public int EmployeeId { get; set; }
+        public long EmployeeId { get; set; }
 
         public EmployeeVM Employee { get; set; }
 

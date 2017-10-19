@@ -31,9 +31,6 @@ namespace ORA_Data.DAL
                     command.Parameters.AddWithValue("@Employee_LastName", employee.EmployeeLastName);
                     command.Parameters.AddWithValue("@Age", employee.Age);
                     command.Parameters.AddWithValue("@Birth_Date", employee.BirthDate.ToShortDateString());
-                    command.Parameters.AddWithValue("@Address_ID", employee.AddressID);
-                    command.Parameters.AddWithValue("@Time_ID", employee.TimeID);
-                    command.Parameters.AddWithValue("@Work_Status_ID", employee.WorkStatusID);
                     command.Parameters.AddWithValue("@Team_ID", employee.TeamID);
                     command.Parameters.AddWithValue("@Assignment_ID", employee.AssignmentID);
                     command.Parameters.AddWithValue("@Role_ID", employee.RoleID);
@@ -54,7 +51,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public EmployeeDM ReadEmployeeById(int employeeId)
+        public EmployeeDM ReadEmployeeById(long employeeId)
         {
             try
             {
@@ -78,15 +75,49 @@ namespace ORA_Data.DAL
                                 employee.EmployeeLastName = (string)reader["Employee_LastName"];
                                 employee.Age = (int)reader["Age"];
                                 employee.BirthDate = (DateTime)reader["Birth_Date"];
-                                employee.AddressID = (Int64)reader["Address_ID"];
-                                employee.TimeID = (Int64)reader["Time_ID"];
-                                employee.WorkStatusID = (Int64)reader["Work_Status_ID"];
+                                employee.TeamID = (Int64)reader["Team_ID"];
+                                employee.RoleID = (Int64)reader["Role_ID"];
+                                employee.AssignmentID = (Int64)reader["Assignment_ID"];
                             }
                         }
                     }
                     command.Connection.Close();
                 }
                 return employee;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                SqlConnect.Connection.Close();
+            }
+        }
+
+        public long ReadEmployeeId(string employeeNum)
+        {
+            try
+            {
+                EmployeeDM employee = new EmployeeDM();
+                using (SqlCommand command = new SqlCommand("READ_EMPLOYEE_ID", SqlConnect.Connection))
+                {
+                    command.Connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Employee_Number", employeeNum);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                employee.EmployeeId = (Int64)reader["Employee_ID"];
+                            }
+                        }
+                    }
+                    command.Connection.Close();
+                }
+                return employee.EmployeeId;
             }
             catch (Exception ex)
             {
