@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ORA.Models
 {
@@ -32,7 +33,7 @@ namespace ORA.Models
         public int ADEthicalBehavior { get; set; }
 
         public int ADMeetDeadlines { get; set; }
-        
+
         public int ADOrganizeDetailedWork { get; set; }
 
         public string ADComments { get; set; }
@@ -72,6 +73,15 @@ namespace ORA.Models
         public long EmployeeID { get; set; }
 
         public List<EmployeeVM> EmployeeList { get; set; }
+
+        public List<int> Points
+        {
+            get
+            {
+                List<int> numbers = Enumerable.Range(1, 5).ToList();
+                return numbers;
+            }
+        }
 
     }
 }
