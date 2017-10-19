@@ -200,7 +200,7 @@ namespace ORA_Data.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Employee_ID", employee.EmployeeId);
                     cmd.Parameters.AddWithValue("@Employee_Number", employee.EmployeeNumber);
-                    cmd.Parameters.AddWithValue("@Employee_Name", employee.EmployeeName);
+                    cmd.Parameters.AddWithValue("@Employee_Name", employee.EmployeeFirstName + " " + employee.EmployeeMiddle + " " + employee.EmployeeLastName);
                     cmd.Parameters.AddWithValue("@Employee_FirstName", employee.EmployeeFirstName);
                     cmd.Parameters.AddWithValue("@Employee_MiddleName", employee.EmployeeMiddle);
                     cmd.Parameters.AddWithValue("@Employee_LastName", employee.EmployeeLastName);

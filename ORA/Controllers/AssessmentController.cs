@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ORA.Mapping;
 using ORA.Models;
 using ORA_Data.DAL;
 using ORA_Data.Model;
@@ -17,7 +18,9 @@ namespace ORA.Controllers
 
         public ActionResult CreateAssessment()
         {
-            return View();
+            AssessmentVM assessment = new AssessmentVM();
+            assessment.EmployeeList = EmployeeMap.ReadEmployees();
+            return View(assessment);
         }
 
         [HttpPost]

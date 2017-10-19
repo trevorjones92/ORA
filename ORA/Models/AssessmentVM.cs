@@ -69,5 +69,9 @@ namespace ORA.Models
 
         public string ModifiedBy { get; set; }
 
+        public long EmployeeID { get; set; }
+
+        public List<EmployeeVM> EmployeeList { get; set; }
+
     }
 }
