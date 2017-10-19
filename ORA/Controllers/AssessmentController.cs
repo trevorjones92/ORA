@@ -32,7 +32,12 @@ namespace ORA.Controllers
 
         public ActionResult ReadAssessments()
         {
-            return View(Mapper.Map<List<AssessmentVM>>(AssessmentDAL.ReadAssessments()));
+            List<AssessmentVM> list = Mapper.Map<List<AssessmentVM>>(AssessmentDAL.ReadAssessments());
+            foreach(AssessmentVM item in list)
+            {
+                item.Employee = EmployeeMap.GetEmployeeById(item.EmployeeID);
+            }
+            return View(list);
         }
 
         public ActionResult ReadAssessmentByID(AssessmentDM assessment)
