@@ -34,7 +34,7 @@ namespace ORA.Controllers
             LoginDAL.Register(Mapper.Map<LoginDM>(employee.Login));
             AddressDAL.CreateAddress(Mapper.Map<AddressDM>(employee.Address));
             Work_StatusDAL.CreateStatus(Mapper.Map<StatusDM>(employee.Status));
-            TimeDAL.CreateEmptyTime(Mapper.Map<EmployeeTimeDM>(employee.EmployeeId));
+            TimeDAL.CreateEmptyTime(employee.EmployeeId);
             return View();
         }
 

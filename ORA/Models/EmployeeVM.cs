@@ -7,7 +7,7 @@ namespace ORA.Models
 {
     public class EmployeeVM 
     {
-        public string EmployeeId { get; set; }
+        public long EmployeeId { get; set; }
 
         [DisplayName("Employee Number")]
         public string EmployeeNumber { get; set; }
