@@ -8,102 +8,20 @@
 <h2>ReadAssessments</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Assessment", "CreateAssessment")
 </p>
 <table>
     @{var counter = 1; }
     <tr>
         @foreach (var item in Model)
         {
+                @Html.HiddenFor(modelItem => item.AssessmentId)
             <td>
-                @Html.DisplayFor(modelItem => item.AssessmentId)
+                @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
             </td>
+                @Html.HiddenFor(modelItem => item.EmployeeID)
             <td>
-                @Html.DisplayFor(modelItem => item.TDProblemSolving)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TDQualityOfWork)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TDProductivity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TDProductKnowledge)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TDComments)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CSRProffesionalismTeamwork)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CSRVerbalSkills)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CSRWrittenSkills)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CSRListeningSkills)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CSRComments)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ADAttendence)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ADEthicalBehavior)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ADMeetDeadlines)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ADOrganizeDetailedWork)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ADComments)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TMResourceUse)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TMFeedback)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TMTechnicalMonitoring)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TMAskingQuestions)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TMComments)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MIAttitudeWork)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MIGroomingAppearance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MIPersonalGrowth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MIPotentialAdvancement)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MIComments)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Created)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Modified)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedBy)
+                @Html.ActionLink("Create New Assessment", "CreateAssessment", new { id = item.AssessmentId })
             </td>
             if (counter % 3 == 0)
             {
@@ -113,5 +31,4 @@
         }
     </tr>
 </table>
-    
 

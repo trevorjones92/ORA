@@ -72,6 +72,8 @@ namespace ORA.Models
 
         public long EmployeeID { get; set; }
 
+        public EmployeeVM Employee { get; set; }
+
         public List<EmployeeVM> EmployeeList { get; set; }
 
         public List<int> Points

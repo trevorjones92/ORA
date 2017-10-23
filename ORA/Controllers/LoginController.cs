@@ -7,6 +7,7 @@ using ORA_Data.Model;
 using System.Configuration;
 using System.Collections.Generic;
 using ORA.Mapping;
+using System.Web.Security;
 
 namespace ORA.Controllers
 {
@@ -63,6 +64,7 @@ namespace ORA.Controllers
                     info.Role = Mapper.Map<RolesVM>(RolesDAL.ReadRoleByID(info.Employee.RoleId));
                     Session["Role"] = info.Role.RoleName;
                     Session["ID"] = info.EmployeeId;
+                    FormsAuthentication.RedirectFromLoginPage(info.Role.RoleName, true);
                     if ((bool)Session["LoggedIn"])
                     {
                         if ((string)Session["Role"] == "ADMIN" || ((string)Session["Role"] == "DIRECTOR"))
