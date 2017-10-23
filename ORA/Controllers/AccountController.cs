@@ -39,7 +39,7 @@ namespace ORA.Controllers
             AddressDAL.CreateAddress(Mapper.Map<AddressDM>(employee.Address), employee.EmployeeId);
             Work_StatusDAL.CreateStatus(Mapper.Map<StatusDM>(employee.Status), employee.EmployeeId);
             TimeDAL.CreateEmptyTime(employee.EmployeeId);
-            return View();
+            return Redirect("AdminDashboard");
         }
 
         public ActionResult CreateAccount()

@@ -31,7 +31,7 @@ namespace ORA.Controllers
         {
             kpi.CreateDate = DateTime.Now;
             KPI_DAL.CreateKPI(Mapper.Map<KPIDM>(kpi));
-            return View();
+            return RedirectToAction("AdminDashboard","Home");
         }
 
         public ActionResult ReadKPIs()

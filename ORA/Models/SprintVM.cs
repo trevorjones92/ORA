@@ -9,7 +9,7 @@ namespace ORA.Models
         public int SprintId { get; set; }
 
         [DisplayName("Sprint Number")]
-        public int SprintNumber { get; set; }
+        public string SprintNumber { get; set; }
 
         [DisplayName("Sprint Name")]
         public string SprintName { get; set; }

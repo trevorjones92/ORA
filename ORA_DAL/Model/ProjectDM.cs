@@ -8,7 +8,7 @@ namespace ORA_Data.Model
 
         public string ProjectName { get; set; }
 
-        public int ProjectNumber { get; set; }
+        public string ProjectNumber { get; set; }
 
         public DateTime StartDate { get; set; }
 

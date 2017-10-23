@@ -56,7 +56,7 @@ namespace ORA_Data.DAL
                                 var _sprint = new SprintDM();
                                 _sprint.SprintId = (Int64)reader["Sprint_ID"];
                                 _sprint.SprintName = (string)reader["Sprint_Name"];
-                                _sprint.SprintNumber = (int)reader["Sprint_Number"];
+                                _sprint.SprintNumber = (string)reader["Sprint_Number"];
                                 _sprint.StartDate = (DateTime)reader["Start_Date"];
                                 _sprint.EndDate = (DateTime)reader["End_Date"];
                                 _sprint.ClientId = (Int64)reader["Client_ID"];
@@ -94,7 +94,7 @@ namespace ORA_Data.DAL
                             {
                                 _sprint.SprintId = (Int64)reader["Sprint_ID"];
                                 _sprint.SprintName = (string)reader["Sprint_Name"];
-                                _sprint.SprintNumber = (int)reader["Sprint_Number"];
+                                _sprint.SprintNumber = (string)reader["Sprint_Number"];
                                 _sprint.StartDate = (DateTime)reader["Start_Date"];
                                 _sprint.EndDate = (DateTime)reader["End_Date"];
                                 _sprint.ClientId = (Int64)reader["Client_ID"];

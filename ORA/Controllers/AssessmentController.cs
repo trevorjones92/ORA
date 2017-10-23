@@ -27,7 +27,7 @@ namespace ORA.Controllers
         public ActionResult CreateAssessment(AssessmentVM assessment)
         {
             AssessmentDAL.CreateAssessment(Mapper.Map<AssessmentDM>(assessment));
-            return View();
+            return RedirectToAction("ReadAssessments");
         }
 
         public ActionResult ReadAssessments()

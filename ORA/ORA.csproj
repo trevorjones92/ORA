@@ -233,28 +233,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Dashboard.css" />
+    <Content Include="Content\js\wizard.js" />
     <Content Include="Content\Login.css" />
-    <Content Include="Content\WizardAssets\css\bootstrap.min.css" />
-    <Content Include="Content\WizardAssets\css\demo.css" />
-    <Content Include="Content\WizardAssets\css\gsdk-bootstrap-wizard.css" />
-    <Content Include="Content\WizardAssets\img\apple-icon.png" />
-    <Content Include="Content\WizardAssets\img\default-avatar.png" />
-    <Content Include="Content\WizardAssets\img\favicon.ico" />
-    <Content Include="Content\WizardAssets\img\favicon.png" />
-    <Content Include="Content\WizardAssets\img\new_logo.png" />
-    <Content Include="Content\WizardAssets\img\thumb_list_boat.png" />
-    <Content Include="Content\WizardAssets\img\thumb_list_place.png" />
-    <Content Include="Content\WizardAssets\img\thumb_register.png" />
-    <Content Include="Content\WizardAssets\img\tim_80x80.png" />
-    <Content Include="Content\WizardAssets\img\wizard-boat.jpg" />
-    <Content Include="Content\WizardAssets\img\wizard-city.jpg" />
-    <Content Include="Content\WizardAssets\img\wizard.jpg" />
-    <Content Include="Content\WizardAssets\js\bootstrap.min.js" />
-    <Content Include="Content\WizardAssets\js\gsdk-bootstrap-wizard.js" />
-    <Content Include="Content\WizardAssets\js\jquery-1.10.2.js" />
-    <Content Include="Content\WizardAssets\js\jquery-2.2.4.min.js" />
-    <Content Include="Content\WizardAssets\js\jquery.bootstrap.wizard.js" />
-    <Content Include="Content\WizardAssets\js\jquery.validate.min.js" />
+    <Content Include="Content\wizard.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -323,28 +304,15 @@
     <Content Include="Content\assets\sass\lbd\_typography.scss" />
     <Content Include="Content\assets\sass\lbd\_variables.scss" />
     <Content Include="Content\assets\sass\light-bootstrap-dashboard.scss" />
-    <Content Include="Content\WizardAssets\assets\.DS_Store" />
-    <Content Include="Content\WizardAssets\css\.DS_Store" />
-    <Content Include="Content\WizardAssets\img\.DS_Store" />
-    <Content Include="Content\WizardAssets\js\.DS_Store" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard.scss" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard\mixins\_vendor-prefixes.scss" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard\_buttons.scss" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard\_card.scss" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard\_footers.scss" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard\_inputs.scss" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard\_labels.scss" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard\_misc.scss" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard\_mixins.scss" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard\_navs-pagination.scss" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard\_responsive.scss" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard\_tooltips.scss" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard\_typography.scss" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard\_variables.scss" />
-    <Content Include="Content\WizardAssets\scss\gsdk-bootstrap-wizard\_wizard-card.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.2.1.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.2.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -456,9 +424,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ORA_DAL\ORA_Data.csproj">

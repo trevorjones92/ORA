@@ -12,7 +12,7 @@ namespace ORA.Models
         public string StoryName { get; set; }
 
         [DisplayName("Story Number")]
-        public int StoryNumber { get; set; }
+        public string StoryNumber { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
