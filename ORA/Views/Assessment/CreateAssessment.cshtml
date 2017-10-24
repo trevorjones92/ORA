@@ -5,6 +5,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( document ).tooltip();
+  } );
+</script>
+<style>
+    label {
+        display: inline-block;
+    }
+</style>
+
 <h2>CreateAssessment</h2>
 
 @using (Html.BeginForm())
@@ -20,7 +35,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.TDProblemSolving, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "TD_Problem_Solving" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.TDProblemSolving, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.TDProblemSolving, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.TDProblemSolving, "", new { @class = "text-danger" })*@
@@ -32,8 +58,19 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.TDQualityOfWork, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "TD_Quality_of_Work" && info.Number == item)
+                        {
+                        <div class="radio-inline" title="@info.Name: @info.Desc">
+                            <label>
+                                @Html.RadioButtonFor(model => model.TDQualityOfWork, item, new { @class = "radio" })
+                                @item
+                            </label>
+                        </div>
+                    }
                 }
+            }
                 @*@Html.EditorFor(model => model.TDQualityOfWork, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.TDQualityOfWork, "", new { @class = "text-danger" })*@
             </div>
@@ -44,7 +81,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.TDProductivity, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "TD_Productivity" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.TDProductivity, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.TDProductivity, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.TDProductivity, "", new { @class = "text-danger" })*@
@@ -56,7 +104,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.TDProductKnowledge, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "TD_Product_Knowledge" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.TDProductKnowledge, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.TDProductKnowledge, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.TDProductKnowledge, "", new { @class = "text-danger" })*@
@@ -72,11 +131,22 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CSRProffesionalismTeamwork, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CSRProfesionalismTeamwork, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.CSRProffesionalismTeamwork, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "CSR_Professionalism_Teamwork" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.CSRProfesionalismTeamwork, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.CSRProffesionalismTeamwork, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.CSRProffesionalismTeamwork, "", new { @class = "text-danger" })*@
@@ -88,7 +158,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.CSRVerbalSkills, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "CSR_Verbal_Skills" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.CSRVerbalSkills, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.CSRVerbalSkills, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.CSRVerbalSkills, "", new { @class = "text-danger" })*@
@@ -100,7 +181,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.CSRWrittenSkills, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "CSR_Written_Skills" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.CSRWrittenSkills, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.CSRWrittenSkills, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.CSRWrittenSkills, "", new { @class = "text-danger" })*@
@@ -112,7 +204,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.CSRListeningSkills, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "CSR_Listening_Skills" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.CSRListeningSkills, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.CSRListeningSkills, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.CSRListeningSkills, "", new { @class = "text-danger" })*@
@@ -132,7 +235,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.ADAttendence, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "AD_Attendence" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.ADAttendence, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.ADAttendence, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.ADAttendence, "", new { @class = "text-danger" })*@
@@ -144,7 +258,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.ADEthicalBehavior, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "AD_Ethical_Behavior" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.ADEthicalBehavior, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.ADEthicalBehavior, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.ADEthicalBehavior, "", new { @class = "text-danger" })*@
@@ -156,7 +281,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.ADMeetDeadlines, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "AD_Meet_Deadlines" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.ADMeetDeadlines, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.ADMeetDeadlines, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.ADMeetDeadlines, "", new { @class = "text-danger" })*@
@@ -168,7 +304,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.ADOrganizeDetailedWork, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "AD_Organize_Detailed_Work" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.ADOrganizeDetailedWork, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.ADOrganizeDetailedWork, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.ADOrganizeDetailedWork, "", new { @class = "text-danger" })*@
@@ -188,7 +335,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.TMResourceUse, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "TM_Resource_Use" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.TMResourceUse, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.TMResourceUse, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.TMResourceUse, "", new { @class = "text-danger" })*@
@@ -200,7 +358,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.TDProblemSolving, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "TM_Feedback" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.TMFeedback, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.TMFeedback, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.TMFeedback, "", new { @class = "text-danger" })*@
@@ -212,7 +381,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.TMTechnicalMonitoring, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "TM_Technical_Monitoring" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.TMTechnicalMonitoring, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.TMTechnicalMonitoring, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.TMTechnicalMonitoring, "", new { @class = "text-danger" })*@
@@ -224,7 +404,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.TMAskingQuestions, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "TM_Asking_Questions" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.TMAskingQuestions, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.TMAskingQuestions, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.TMAskingQuestions, "", new { @class = "text-danger" })*@
@@ -244,7 +435,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.MIAttitudeWork, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "MI_Attitude_Work" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.MIAttitudeWork, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.MIAttitudeWork, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.MIAttitudeWork, "", new { @class = "text-danger" })*@
@@ -256,7 +458,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.MIGroomingAppearance, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "MI_Grooming_Appearance" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.MIGroomingAppearance, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.MIGroomingAppearance, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.MIGroomingAppearance, "", new { @class = "text-danger" })*@
@@ -268,7 +481,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.MIPersonalGrowth, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "MI_Personal_Growth" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.MIPersonalGrowth, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.MIPersonalGrowth, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.MIPersonalGrowth, "", new { @class = "text-danger" })*@
@@ -280,7 +504,18 @@
             <div class="col-md-10">
                 @foreach (var item in Model.Points)
                 {
-                    @Html.RadioButtonFor(model => model.MIPotentialAdvancement, item) @item
+                    foreach (var info in Model.Descriptions)
+                    {
+                        if (info.AssessName == "MI_Potential_Advancement" && info.Number == item)
+                        {
+                            <div class="radio-inline" title="@info.Name: @info.Desc">
+                                <label>
+                                    @Html.RadioButtonFor(model => model.MIPotentialAdvancement, item, new { @class = "radio" })
+                                    @item
+                                </label>
+                            </div>
+                        }
+                    }
                 }
                 @*@Html.EditorFor(model => model.MIPotentialAdvancement, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.MIPotentialAdvancement, "", new { @class = "text-danger" })*@

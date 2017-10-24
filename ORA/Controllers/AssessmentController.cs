@@ -20,6 +20,7 @@ namespace ORA.Controllers
         {
             AssessmentVM assessment = new AssessmentVM();
             assessment.EmployeeList = EmployeeMap.ReadEmployees();
+            assessment.Descriptions = Mapper.Map<List<DescriptionVM>>(AssessmentDAL.ReadAssessDescriptions());
             return View(assessment);
         }
 

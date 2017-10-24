@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ORA_Data.Model
 {
@@ -16,7 +17,7 @@ namespace ORA_Data.Model
 
         public string TDComments { get; set; }
 
-        public int CSRProffesionalismTeamwork { get; set; }
+        public int CSRProfesionalismTeamwork { get; set; }
 
         public int CSRVerbalSkills { get; set; }
 
@@ -65,5 +66,25 @@ namespace ORA_Data.Model
         public DateTime Modified { get; set; }
 
         public string ModifiedBy { get; set; }
+
+        public List<DescriptionDM> Descriptions { get; set; }
+
+    }
+    public class DescriptionDM
+    {
+        public DescriptionDM() { }
+
+        public DescriptionDM(string assessName, int num, string name, string desc)
+        {
+            AssessName = assessName;
+            Number = num;
+            Name = name;
+            Desc = desc;
+        }
+
+        public string AssessName { get; set; }
+        public int Number { get; set; }
+        public string Name { get; set; }
+        public string Desc { get; set; }
     }
 }

@@ -48,11 +48,25 @@ namespace ORA.Models
 
         public decimal TotalHrsFixingBugs { get; set; }
 
+        public long Velocity { get; set; }
+
+        public long Collaboration { get; set; }
+
+        public DateTime Start_Date { get; set; }
+
+        public DateTime End_Date { get; set; }
+
         public int AssignmentId { get; set; }
 
         public AssignmentVM Assignment { get; set; }
 
         public List<AssignmentVM> Assignments { get; set; }
+
+        public int EmployeeId { get; set; }
+
+        public EmployeeVM Employee { get; set; }
+
+        public List<EmployeeVM> EmployeeList { get; set; }
 
         public int ProjectId { get; set; }
 

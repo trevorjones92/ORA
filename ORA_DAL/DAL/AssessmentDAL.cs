@@ -27,7 +27,7 @@ namespace ORA_Data.DAL
                     cmd.Parameters.AddWithValue("@TD_Productivity", _assessment.TDProductivity);
                     cmd.Parameters.AddWithValue("@TD_Product_Knowledge", _assessment.TDProductKnowledge);
                     cmd.Parameters.AddWithValue("@TD_Comments", _assessment.TDComments);
-                    cmd.Parameters.AddWithValue("@CSR_Professionalism_Teamwork", _assessment.CSRProffesionalismTeamwork);
+                    cmd.Parameters.AddWithValue("@CSR_Professionalism_Teamwork", _assessment.CSRProfesionalismTeamwork);
                     cmd.Parameters.AddWithValue("@CSR_Verbal_Skills", _assessment.CSRVerbalSkills);
                     cmd.Parameters.AddWithValue("@CSR_Written_Skills", _assessment.CSRWrittenSkills);
                     cmd.Parameters.AddWithValue("@CSR_Listening_Skills", _assessment.CSRListeningSkills);
@@ -90,7 +90,7 @@ namespace ORA_Data.DAL
                                     _assessment.TDProductivity = (int)reader["TD_Productivity"];
                                     _assessment.TDProductKnowledge = (int)reader["TD_Product_Knowledge"];
                                     _assessment.TDComments = (string)reader["TD_Comments"];
-                                    _assessment.CSRProffesionalismTeamwork = (int)reader["CSR_Professionalism_Teamwork"];
+                                    _assessment.CSRProfesionalismTeamwork = (int)reader["CSR_Professionalism_Teamwork"];
                                     _assessment.CSRVerbalSkills = (int)reader["CSR_Verbal_Skills"];
                                     _assessment.CSRWrittenSkills = (int)reader["CSR_Written_Skills"];
                                     _assessment.CSRListeningSkills = (int)reader["CSR_Listening_Skills"];
@@ -153,7 +153,7 @@ namespace ORA_Data.DAL
                                 _assessment.TDProductivity = (int)reader["TD_Productivity"];
                                 _assessment.TDProductKnowledge = (int)reader["TD_Product_Knowledge"];
                                 _assessment.TDComments = (string)reader["TD_Comments"];
-                                _assessment.CSRProffesionalismTeamwork = (int)reader["CSR_Proffesionalism_Teamwork"];
+                                _assessment.CSRProfesionalismTeamwork = (int)reader["CSR_Proffesionalism_Teamwork"];
                                 _assessment.CSRVerbalSkills = (int)reader["CSR_Verbal_Skills"];
                                 _assessment.CSRWrittenSkills = (int)reader["CSR_Written_Skills"];
                                 _assessment.CSRListeningSkills = (int)reader["CSR_Listening_Skills"];
@@ -193,6 +193,43 @@ namespace ORA_Data.DAL
             }
         }
 
+        public static List<DescriptionDM> ReadAssessDescriptions()
+        {
+            List<DescriptionDM> descriptions = new List<DescriptionDM>();
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("READ_ASSESSMENT_DESCRIPTIONS", SqlConnect.Connection))
+                {
+                    SqlConnect.Connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                DescriptionDM info = new DescriptionDM()
+                                {
+                                    AssessName = (string)reader["AssessmentName"],
+                                    Number = (int)reader["Number"],
+                                    Name = (string)reader["Name"],
+                                    Desc = (string)reader["Description"],
+                                };
+                                descriptions.Add(info);
+                            }
+                        }
+                    }
+                    SqlConnect.Connection.Close();
+                }
+                return (descriptions);
+            }
+            catch (Exception e)
+            {
+                SqlConnect.Connection.Close();
+                throw (e);
+            }
+        }
+
         public static void UpdateAssessment(AssessmentDM _assessment)
         {
             try
@@ -206,7 +243,7 @@ namespace ORA_Data.DAL
                         cmd.Parameters.AddWithValue("@TD_Productivity", _assessment.TDProductivity);
                         cmd.Parameters.AddWithValue("@TD_Product_Knowledge", _assessment.TDProductKnowledge);
                         cmd.Parameters.AddWithValue("@TD_Comments", _assessment.TDComments);
-                        cmd.Parameters.AddWithValue("@CSR_Proffesionalism_Teamwork", _assessment.CSRProffesionalismTeamwork);
+                        cmd.Parameters.AddWithValue("@CSR_Proffesionalism_Teamwork", _assessment.CSRProfesionalismTeamwork);
                         cmd.Parameters.AddWithValue("@CSR_Verbal_Skills", _assessment.CSRVerbalSkills);
                         cmd.Parameters.AddWithValue("@CSR_Written_Skills", _assessment.CSRWrittenSkills);
                         cmd.Parameters.AddWithValue("@CSR_Listening_Skills", _assessment.CSRListeningSkills);

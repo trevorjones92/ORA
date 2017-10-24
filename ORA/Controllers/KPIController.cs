@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ORA.Mapping;
 using ORA.Models;
 using ORA_Data.DAL;
 using ORA_Data.Model;
@@ -19,6 +20,7 @@ namespace ORA.Controllers
         public ActionResult CreateKPI()
         {
             KPIVM kpi = new KPIVM();
+            kpi.EmployeeList = Mapper.Map<List<EmployeeVM>>(EmployeeMap.ReadEmployees());
             kpi.Assignments = Mapper.Map<List<AssignmentVM>>(AssignmentDAL.ReadAssignments());
             kpi.Projects = Mapper.Map<List<ProjectVM>>(ProjectDAL.ReadProjects());
             kpi.Sprints = Mapper.Map<List<SprintVM>>(SprintDAL.ReadSprints());
