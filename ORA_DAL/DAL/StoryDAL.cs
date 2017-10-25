@@ -56,7 +56,7 @@ namespace ORA_Data.DAL
                                     var _story = new StoryDM();
                                     _story.StoryId = (Int64)reader["Story_ID"];
                                     _story.StoryName = (string)reader["Story_Name"];
-                                    _story.StoryNumber = (int)reader["Story_Number"];
+                                    _story.StoryNumber = (string)reader["Story_Number"];
                                     _story.StartDate = (DateTime)reader["Story_Start_Date"];
                                     _story.EndDate = (DateTime)reader["Story_End_Date"];
                                     _story.ClientId = (Int64)reader["Client_ID"];
@@ -93,7 +93,7 @@ namespace ORA_Data.DAL
                             {
                                 _story.StoryId = (Int64)reader["Story_ID"];
                                 _story.StoryName = (string)reader["Story_Name"];
-                                _story.StoryNumber = (int)reader["Story_Number"];
+                                _story.StoryNumber = (string)reader["Story_Number"];
                                 _story.StartDate = (DateTime)reader["Story_Start_Date"];
                                 _story.EndDate = (DateTime)reader["Story_End_Date"];
                                 _story.ClientId = (Int64)reader["Client_ID"];

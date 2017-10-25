@@ -6,7 +6,7 @@ namespace ORA_Data.Model
     {
         public long SprintId { get; set; }
 
-        public int SprintNumber { get; set; }
+        public string SprintNumber { get; set; }
 
         public string SprintName { get; set; }
 

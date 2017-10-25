@@ -56,7 +56,7 @@ namespace ORA_Data.DAL
                                     var _project = new ProjectDM();
                                     _project.ProjectId = (Int64)reader["Project_ID"];
                                     _project.ProjectName = (string)reader["Project_Name"];
-                                    _project.ProjectNumber = (int)reader["Project_Number"];
+                                    _project.ProjectNumber = (string)reader["Project_Number"];
                                     _project.StartDate = (DateTime)reader["Project_Start_Date"];
                                     _project.EndDate = (DateTime)reader["Project_End_Date"];
                                     _project.ClientId = (Int64)reader["Client_ID"];
@@ -93,7 +93,7 @@ namespace ORA_Data.DAL
                                 {
                                     _project.ProjectId = (Int64)reader["Project_ID"];
                                     _project.ProjectName = (string)reader["Project_Name"];
-                                    _project.ProjectNumber = (int)reader["Project_Number"];
+                                    _project.ProjectNumber = (string)reader["Project_Number"];
                                     _project.StartDate = (DateTime)reader["Project_Start_Date"];
                                     _project.EndDate = (DateTime)reader["Project_End_Date"];
                                     _project.ClientId = (Int64)reader["Client_ID"];

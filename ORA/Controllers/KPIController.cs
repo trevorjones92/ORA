@@ -33,23 +33,32 @@ namespace ORA.Controllers
         {
             kpi.CreateDate = DateTime.Now;
             KPI_DAL.CreateKPI(Mapper.Map<KPIDM>(kpi));
-            return View();
+            return RedirectToAction("AdminDashboard","Home");
         }
 
         public ActionResult ReadKPIs()
         {
-            return View(Mapper.Map<List<KPIVM>>(KPI_DAL.ReadKPIs()));
+            List<KPIVM> kpis = new List<KPIVM>();
+            kpis = Mapper.Map<List<KPIVM>>(KPI_DAL.ReadKPIs());
+            foreach(KPIVM info in kpis)
+            {
+                info.Employee = Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById(info.EmployeeId));
+            }
+            return View(kpis);
         }
 
-        public ActionResult ReadKPIByID(KPIDM kpi)
+        public ActionResult ReadKPIByID(string kpiID)
         {
-            return View(Mapper.Map<KPIVM>(KPI_DAL.ReadKPIById(kpi.KPIID.ToString())));
+            KPIVM kpi = Mapper.Map<KPIVM>(KPI_DAL.ReadKPIById(kpiID));
+            kpi.Employee = Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById(kpi.EmployeeId));
+            return View(kpi);
         }
 
         public ActionResult UpdateKPI(string id)
         {
             KPIVM kpi = new KPIVM();
             kpi = Mapper.Map<KPIVM>(KPI_DAL.ReadKPIById(id));
+            kpi.Employee = Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById(kpi.EmployeeId));
             kpi.Stories = Mapper.Map<List<StoryVM>>(StoryDAL.ReadStorys());
             kpi.Projects = Mapper.Map<List<ProjectVM>>(ProjectDAL.ReadProjects());
             kpi.Sprints = Mapper.Map<List<SprintVM>>(SprintDAL.ReadSprints());

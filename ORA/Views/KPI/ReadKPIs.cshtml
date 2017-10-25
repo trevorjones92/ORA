@@ -5,13 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ReadKPIs</h2>
+<h2>KPI REPORTS</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateKPI")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.CreateDate)
         </th>
@@ -96,6 +99,10 @@
         @Html.HiddenFor(modelItem => item.KPIID)
 
         <td>
+            @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
+            @Html.ActionLink("Employee", "ReadEmployeeByID", "Employee", new { id = item.AssignmentId })
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.CreateDate)
         </td>
         <td>
@@ -171,9 +178,8 @@
             @Html.ActionLink("Story", "ReadStoryByID", "Story" , new { id=item.StoryId })
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "UpdateKPI", new { id=item.KPIID }) |
+            @Html.ActionLink("Delete", "DeleteKPI", new { id=item.KPIID })
         </td>
     </tr>
 }

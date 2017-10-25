@@ -13,17 +13,17 @@ namespace ORA.Models
         public string ProjectName { get; set; }
 
         [DisplayName("Project Number")]
-        public int ProjectNumber { get; set; }
+        public string ProjectNumber { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("Start Date")]
-        public int StartDate { get; set; }
+        public DateTime StartDate { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("End Date")]
-        public int EndDate { get; set; }
+        public DateTime EndDate { get; set; }
 
         public int ClientId { get; set; }
 

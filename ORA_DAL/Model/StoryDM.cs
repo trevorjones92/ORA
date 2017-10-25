@@ -8,7 +8,7 @@ namespace ORA_Data.Model
 
         public string StoryName { get; set; }
 
-        public int StoryNumber { get; set; }
+        public string StoryNumber { get; set; }
 
         public DateTime StartDate { get; set; }
 
