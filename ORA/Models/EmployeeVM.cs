@@ -85,5 +85,12 @@ namespace ORA.Models
 
         public LoginVM Login { get; set; }
 
+        public ResumeVM Resume { get; set; }
+
+        public EducationVM Education { get; set; }
+
+        public SkillsVM Skills { get; set; }
+
+        public WorkHistoryVM WorkHistory { get; set; }
     }
 }

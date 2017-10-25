@@ -51,6 +51,7 @@
     <Compile Include="DAL\LoginDAL.cs" />
     <Compile Include="DAL\PositionsDAL.cs" />
     <Compile Include="DAL\ProjectDAL.cs" />
+    <Compile Include="DAL\ResumeDAL.cs" />
     <Compile Include="DAL\RolesDAL.cs" />
     <Compile Include="DAL\SprintDAL.cs" />
     <Compile Include="DAL\StoryDAL.cs" />
@@ -62,17 +63,21 @@
     <Compile Include="Model\AssessmentDM.cs" />
     <Compile Include="Model\AssignmentDM.cs" />
     <Compile Include="Model\ClientsDM.cs" />
+    <Compile Include="Model\EducationDM.cs" />
     <Compile Include="Model\EmployeeDM.cs" />
     <Compile Include="Model\EmployeeTimeDM.cs" />
     <Compile Include="Model\KPIDM.cs" />
     <Compile Include="Model\PositionsDM.cs" />
     <Compile Include="Model\ProjectDM.cs" />
     <Compile Include="Model\LoginDM.cs" />
+    <Compile Include="Model\ResumeDM.cs" />
     <Compile Include="Model\RolesDM.cs" />
+    <Compile Include="Model\SkillsDM.cs" />
     <Compile Include="Model\StatusDM.cs" />
     <Compile Include="Model\SprintDM.cs" />
     <Compile Include="Model\StoryDM.cs" />
     <Compile Include="Model\TeamsDM.cs" />
+    <Compile Include="Model\WorkHistoryDM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlConnect.cs" />
   </ItemGroup>
