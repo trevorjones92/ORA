@@ -27,6 +27,7 @@ namespace ORA.Tools
                 cfg.CreateMap<EmployeeTimeDM, EmployeeTimeVM>().ReverseMap();
                 cfg.CreateMap<ResumeVM, ResumeDM>().ReverseMap();
                 cfg.CreateMap<EducationVM, EducationDM>().ReverseMap();
+                cfg.CreateMap<SkillsVM, SkillsDM>().ReverseMap();
                 cfg.CreateMap<WorkHistoryVM, WorkHistoryDM>().ReverseMap();
             });
         }

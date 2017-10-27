@@ -21,5 +21,6 @@ namespace ORA.Models
 
         public string AreaOfStudy { get; set; }
 
+        public int ResumeID { get; set; }
     }
 }

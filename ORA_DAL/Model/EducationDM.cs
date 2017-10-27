@@ -21,5 +21,7 @@ namespace ORA_Data.Model
         public string EducationEarned { get; set; }
 
         public string AreaOfStudy { get; set; }
+
+        public int ResumeID { get; set; }
     }
 }

@@ -49,10 +49,8 @@
                         @Html.ActionLink("My KPI's", "ReadKPIs", "KPI")
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="pe-7s-note2"></i>
-                            <p>My Resume</p>
-                        </a>
+                        <i class="pe-7s-note2"></i>
+                        @Html.ActionLink("My Resume", "ReadResumeById", "Resume")
                     </li>
                     <li>
                         <a href="#">
@@ -98,8 +96,8 @@
                                     Account
                                 </a>
                             </li>
-                            @*@if ((string)Session["Role"] == "MANAGER" || (string)Session["Role"] == "TEAMLEAD")
-                                {*@
+                            @if (Session["Role"].ToString().ToUpper().Trim() == "MANAGER" || Session["Role"].ToString().ToUpper().Trim() == "TEAMLEAD")
+                                {
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     @Session["Role"] Tools
@@ -115,7 +113,7 @@
                                     <li><a href="#">Separated link</a></li>
                                 </ul>
                             </li>
-                            @*}*@
+                            }
 
                             <li>
                                 @Html.ActionLink("Log Out", "LogOut", "Login")
