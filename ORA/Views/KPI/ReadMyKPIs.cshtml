@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ORA.Models.KPIVM>
 
 @{
-    ViewBag.Title = "ReadKPIs";
+    ViewBag.Title = "ReadMyKPIs";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,7 +11,6 @@
     @Html.ActionLink("Create New", "CreateKPI")
 </p>
 <table>
-    @{var counter = 1; }
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Employee.EmployeeName)
@@ -19,8 +18,8 @@
     </tr>
     @foreach (var item in Model)
     {
-        @Html.HiddenFor(modelItem => item.KPIID)
         <tr>
+            @Html.HiddenFor(modelItem => item.KPIID)
             <td>
                 @Html.ActionLink(item.Employee.EmployeeName, "ReadKPIByID", "KPI", new { id = item.KPIID }, new { })
             </td>
@@ -28,4 +27,3 @@
         </tr>
     }
 </table>
-

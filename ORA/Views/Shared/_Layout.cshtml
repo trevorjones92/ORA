@@ -42,7 +42,7 @@
                     <ul class="nav navbar-nav">
                         @if ((bool)Session["LoggedIn"])
                         {
-                            <li><a>@Session["Email"]</a></li>
+                            <li><a href="~/Account/ReadAccount">@Session["Email"]</a></li>
                             <li>@Html.ActionLink("Logout", "LogOut", "Login")</li>
                         }
                         else

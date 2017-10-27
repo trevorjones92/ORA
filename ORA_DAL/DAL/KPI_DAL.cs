@@ -177,6 +177,66 @@ namespace ORA_Data.DAL
             }
         }
 
+        public static List<KPIDM> ReadMyKPIsById(int id)
+        {
+            KPIDM _kpi = new KPIDM();
+            List<KPIDM> kpiList = new List<KPIDM>();
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("READ_MY_KPIS_BY_ID", SqlConnect.Connection))
+                {
+                    SqlConnect.Connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Employee_ID", id);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                _kpi.KPIID = (Int64)reader["KPI_ID"];
+                                _kpi.CreateDate = (DateTime)reader["Create_Date"];
+                                _kpi.Points = (int)reader["Points"];
+                                _kpi.TCCreated = (int)reader["TC_Created"];
+                                _kpi.TCExecuted = (int)reader["TC_Executed"];
+                                _kpi.TCFailed = (int)reader["TC_Failed"];
+                                _kpi.TCPassed = (int)reader["TC_Passed"];
+                                _kpi.TCBlocked = (int)reader["TC_Blocked"];
+                                _kpi.DefectsFound = (int)reader["Defects_Found"];
+                                _kpi.DefectsFixed = (int)reader["Defects_Fixed"];
+                                _kpi.DefectsAccepted = (int)reader["Defects_Accepted"];
+                                _kpi.DefectsRejected = (int)reader["Defects_Rejected"];
+                                _kpi.DefectsDeferred = (int)reader["Defects_Deferred"];
+                                _kpi.CriticalDefects = (int)reader["Critical_Defects"];
+                                _kpi.TestHrsPlanned = (decimal)reader["Test_Hrs_Planned"];
+                                _kpi.TestHrsActual = (decimal)reader["Test_Hrs_Actual"];
+                                _kpi.BugsFoundProduction = (int)reader["Bugs_Found_Production"];
+                                _kpi.TotalHrsFixingBugs = (decimal)reader["Total_Hrs_Fixing_Bugs"];
+                                _kpi.Velocity = (Int64)reader["Velocity"];
+                                _kpi.Collaboration = (Int64)reader["Collaboration"];
+                                _kpi.Start_Date = (DateTime)reader["Start_Date"];
+                                _kpi.End_Date = (DateTime)reader["End_Date"];
+                                _kpi.AssignmentId = (Int64)reader["Assignment_ID"];
+                                _kpi.ProjectId = (Int64)reader["Project_ID"];
+                                _kpi.SprintId = (Int64)reader["Sprint_ID"];
+                                _kpi.StoryId = (Int64)reader["Story_ID"];
+                                _kpi.EmployeeId = (Int64)reader["Employee_ID"];
+
+                                kpiList.Add(_kpi);
+                            }
+                        }
+                    }
+                    SqlConnect.Connection.Close();
+                }
+                return (kpiList);
+            }
+            catch (Exception e)
+            {
+                SqlConnect.Connection.Close();
+                throw (e);
+            }
+        }
+
         public static void UpdateKPI(KPIDM _kpi)
         {
             try

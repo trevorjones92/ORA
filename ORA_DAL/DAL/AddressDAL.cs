@@ -80,7 +80,7 @@ namespace ORA_Data.DAL
             }
         }
 
-        public static AddressDM ReadAddressByID(string addressId)
+        public static AddressDM ReadAddressByID(string id)
         {
             try
             {
@@ -89,7 +89,7 @@ namespace ORA_Data.DAL
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     SqlConnect.Connection.Open();
-                    cmd.Parameters.AddWithValue("@Address_ID", addressId);
+                    cmd.Parameters.AddWithValue("@Employee_ID", id);
                     using (var reader = cmd.ExecuteReader())
                     {
                         if (!reader.HasRows) return (address);

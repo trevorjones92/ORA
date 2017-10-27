@@ -340,7 +340,6 @@
     <Content Include="Views\Address\AddressDetails.cshtml" />
     <Content Include="Views\Address\CreateAddress.cshtml" />
     <Content Include="Views\Address\DeleteAddress.cshtml" />
-    <Content Include="Views\Address\ReadAddress.cshtml" />
     <Content Include="Views\Address\ReadAddressByID.cshtml" />
     <Content Include="Views\Address\ReadAllAddress.cshtml" />
     <Content Include="Views\Address\UpdateAddress.cshtml" />
@@ -414,6 +413,8 @@
     <Content Include="Views\Team\UpdateTeam.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Assessment\ReadMyAssessments.cshtml" />
+    <Content Include="Views\KPI\ReadMyKPIs.cshtml" />
     <Content Include="Views\Resume\CreateResume.cshtml" />
     <Content Include="Views\Resume\ReadResumeById.cshtml" />
     <Content Include="Views\Resume\UpdateResume.cshtml" />

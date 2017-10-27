@@ -51,7 +51,17 @@ namespace ORA.Controllers
 
         public ActionResult ReadAccount()
         {
-            return View(/*Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById((int)Session["ID"]))*/);
+            EmployeeVM employee = Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById((long)Session["ID"]));
+            employee.Address = Mapper.Map<AddressVM>(AddressDAL.ReadAddressByID(employee.EmployeeId.ToString()));
+            return View(employee);
+        }
+
+        [HttpPost]
+        public ActionResult ReadAccount(EmployeeVM item)
+        {
+            EmployeeMap.UpdateEmployee(item);
+            AddressDAL.UpdateAddress(Mapper.Map<AddressDM>(item.Address));
+            return View(item);
         }
 
         public ActionResult UpdateAccount()

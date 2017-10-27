@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ORA.Models.AssessmentVM>
 
 @{
-    ViewBag.Title = "ReadAssessments";
+    ViewBag.Title = "ReadMyAssessments";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,6 +11,7 @@
     @Html.ActionLink("Create New Assessment", "CreateAssessment")
 </p>
 <table>
+    @{var counter = 1; }
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Employee.EmployeeName)
