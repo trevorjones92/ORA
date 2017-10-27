@@ -42,6 +42,7 @@ namespace ORA_Data.DAL
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 throw (ex);
             }
 
@@ -87,6 +88,7 @@ namespace ORA_Data.DAL
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 throw (ex);
             }
             finally
@@ -121,6 +123,7 @@ namespace ORA_Data.DAL
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 throw (ex);
             }
             finally
@@ -214,6 +217,7 @@ namespace ORA_Data.DAL
             }
             catch (Exception ex)
             {
+                SqlConnect.Connection.Close();
                 throw ex;
             }
             finally

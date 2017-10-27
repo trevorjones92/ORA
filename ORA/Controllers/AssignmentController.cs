@@ -35,12 +35,13 @@ namespace ORA.Controllers
 
         public ActionResult ReadAssignments()
         {
-            return View(Mapper.Map<List<AddressVM>>(AssignmentDAL.ReadAssignments()));
+            return View(Mapper.Map<List<AssignmentVM>>(AssignmentDAL.ReadAssignments()));
         }
 
-        public ActionResult ReadAssignmentByID(AssignmentDM assignment)
+        public ActionResult ReadAssignmentByID(string id)
         {
-            return View(Mapper.Map<AddressVM>(AssignmentDAL.ReadAssignmentByID(assignment.AssignmentId.ToString())));
+            AssignmentVM assign = Mapper.Map<AssignmentVM>(AssignmentDAL.ReadAssignmentByID(id));
+            return View(assign);
         }
 
         public ActionResult UpdateAssignment()

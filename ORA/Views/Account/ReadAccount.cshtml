@@ -42,12 +42,25 @@
                     </li>
                     <li>
                         <i class="pe-7s-note2"></i>
-                        @Html.ActionLink("My Assessments", "ReadAssessments", "Assessment")
+                        @Html.ActionLink("My Assessments", "ReadMyAssessments", "Assessment", new { id = Model.EmployeeId }, new { })
                     </li>
                     <li>
                         <i class="pe-7s-bookmarks"></i>
-                        @Html.ActionLink("My KPI's", "ReadKPIs", "KPI")
+                        @Html.ActionLink("My KPI's", "ReadMyKPIs", "KPI", new { id = Model.EmployeeId }, new { })
                     </li>
+
+                    @if ((string)Session["Role"] == "Team Lead")
+                    {
+                        <li>
+                            <i class="pe-7s-note2"></i>
+                            @Html.ActionLink("Team Assessments", "ReadAssessments", "Assessment", new { id = Model.EmployeeId }, new { })
+                        </li>
+                        <li>
+                            <i class="pe-7s-note2"></i>
+                            @Html.ActionLink("Team KPI's", "ReadKPIs", "KPI", new { id = Model.EmployeeId }, new { })
+                        </li>
+
+                    }
                     <li>
                         <a href="#">
                             <i class="pe-7s-note2"></i>
@@ -61,8 +74,8 @@
                         </a>
                     </li>
                     <li>
-                            <i class="pe-7s-news-paper"></i>
-                            @Html.ActionLink("News Feed", "Index", "Home")
+                        <i class="pe-7s-news-paper"></i>
+                        @Html.ActionLink("News Feed", "Index", "Home")
                     </li>
                 </ul>
             </div>
@@ -77,11 +90,11 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        @if ((string)Session["Role"] == "MANAGER")
+                        @if ((string)Session["Role"] == "Manager")
                         {
                             <a class="navbar-brand" href="#">MANAGER DASHBOARD</a>
                         }
-                        @if ((string)Session["Role"] == "TEAMLEAD")
+                        @if ((string)Session["Role"] == "Team Lead")
                         {
                             <a class="navbar-brand" href="#">TEAM LEAD DASHBOARD</a>
                         }
@@ -96,7 +109,7 @@
                                     Account
                                 </a>
                             </li>
-                            @*@if ((string)Session["Role"] == "MANAGER" || (string)Session["Role"] == "TEAMLEAD")
+                            @*@if ((string)Session["Role"] == "Manager" || (string)Session["Role"] == "Team Lead")
                                 {*@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -156,43 +169,62 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @Html.HiddenFor(model => model.EmployeeId)
+                                            @Html.HiddenFor(model => model.EmployeeNumber)
+                                            @Html.HiddenFor(model => model.Age)
+                                            @Html.HiddenFor(model => model.BirthDate)
+                                            @Html.HiddenFor(model => model.TeamId)
+                                            @Html.HiddenFor(model => model.RoleId)
+                                            @Html.HiddenFor(model => model.AssignmentId)
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
+                                                        @Html.LabelFor(model => model.EmployeeFirstName)
                                                         @Html.EditorFor(model => model.EmployeeFirstName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "First Name", required = "required" } })
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
+                                                        @Html.LabelFor(model => model.EmployeeMiddle)
+                                                        @Html.EditorFor(model => model.EmployeeMiddle, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Middle Name/Initial", required = "required" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.EmployeeLastName)
                                                         @Html.EditorFor(model => model.EmployeeLastName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Last Name", required = "required" } })
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            @Html.HiddenFor(model => model.Address.Email)
+                                            @Html.HiddenFor(model => model.Address.Phone)
+                                            @Html.HiddenFor(model => model.Address.Address_ID)
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label>Address</label>
-                                                        <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                                        @Html.LabelFor(model => model.Address.Address)
+                                                        @Html.EditorFor(model => model.Address.Address, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Address", required = "required" } })
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label>City</label>
-                                                        <input type="text" class="form-control" placeholder="City" value="Mike">
+                                                        @Html.LabelFor(model => model.Address.City)
+                                                        @Html.EditorFor(model => model.Address.City, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "City", required = "required" } })
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label>Country</label>
-                                                        <input type="text" class="form-control" placeholder="Country" value="Andrew">
+                                                        @Html.LabelFor(model => model.Address.Country)
+                                                        @Html.EditorFor(model => model.Address.Country, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Country", required = "required" } })
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label>Postal Code</label>
-                                                        <input type="number" class="form-control" placeholder="ZIP Code">
+                                                        @Html.LabelFor(model => model.Address.Zip_Code)
+                                                        @Html.EditorFor(model => model.Address.Zip_Code, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Zip Code", required = "required" } })
                                                     </div>
                                                 </div>
                                             </div>
@@ -221,7 +253,7 @@
                                                 <img class="avatar border-gray" src="~/Content/assets/img/default-avatar.png" alt="..." />
                                                 <h4 class="title">
                                                     @Session["Email"]<br />
-                                                    <small>testname</small>
+                                                    @*<small>testname</small>*@
                                                 </h4>
                                             </a>
                                         </div>

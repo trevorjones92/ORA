@@ -32,24 +32,48 @@ namespace ORA.Controllers
         public ActionResult CreateKPI(KPIVM kpi)
         {
             kpi.CreateDate = DateTime.Now;
+            kpi.Modified = DateTime.Now;
             KPI_DAL.CreateKPI(Mapper.Map<KPIDM>(kpi));
             return RedirectToAction("AdminDashboard","Home");
         }
 
-        public ActionResult ReadKPIs()
+        public ActionResult ReadKPIs(int id)
         {
-            List<KPIVM> kpis = new List<KPIVM>();
-            kpis = Mapper.Map<List<KPIVM>>(KPI_DAL.ReadKPIs());
-            foreach(KPIVM info in kpis)
+            List<KPIVM> teamList = new List<KPIVM>();
+            List<KPIVM> list = Mapper.Map<List<KPIVM>>(KPI_DAL.ReadKPIs());
+            foreach (KPIVM item in list)
             {
-                info.Employee = Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById(info.EmployeeId));
+                item.Employee = EmployeeMap.GetEmployeeById(item.EmployeeId);
+                item.Employee.Team = Mapper.Map<TeamsVM>(TeamsDAL.ReadTeamById(item.Employee.TeamId.ToString()));
+            }
+            if (Session["Role"].ToString() == "Team Lead")
+            {
+                EmployeeVM lead = Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById(id));
+                foreach (KPIVM assess in list)
+                {
+                    if (assess.Employee.TeamId == lead.TeamId)
+                    {
+                        teamList.Add(assess);
+                    }
+                }
+                return View(teamList);
+            }
+            return View(list);
+        }
+
+        public ActionResult ReadMyKPIs(int id)
+        {
+            List<KPIVM> kpis = Mapper.Map<List<KPIVM>>(KPI_DAL.ReadMyKPIsById(id));
+            foreach (KPIVM info in kpis)
+            {
+                info.Employee = Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById(id));
             }
             return View(kpis);
         }
 
-        public ActionResult ReadKPIByID(string kpiID)
+        public ActionResult ReadKPIByID(string id)
         {
-            KPIVM kpi = Mapper.Map<KPIVM>(KPI_DAL.ReadKPIById(kpiID));
+            KPIVM kpi = Mapper.Map<KPIVM>(KPI_DAL.ReadKPIById(id));
             kpi.Employee = Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById(kpi.EmployeeId));
             return View(kpi);
         }
