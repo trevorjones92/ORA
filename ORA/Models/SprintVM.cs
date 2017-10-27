@@ -6,7 +6,7 @@ namespace ORA.Models
 {
     public class SprintVM
     {
-        public int SprintId { get; set; }
+        public long SprintId { get; set; }
 
         [DisplayName("Sprint Number")]
         public string SprintNumber { get; set; }
@@ -27,5 +27,7 @@ namespace ORA.Models
         public DateTime Modified { get; set; }
 
         public DateTime Created { get; set; }
+
+        public long ClientId { get; set; }
     }
 }

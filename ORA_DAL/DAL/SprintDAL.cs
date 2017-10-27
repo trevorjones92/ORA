@@ -60,7 +60,6 @@ namespace ORA_Data.DAL
                                 _sprint.StartDate = (DateTime)reader["Start_Date"];
                                 _sprint.EndDate = (DateTime)reader["End_Date"];
                                 _sprint.ClientId = (Int64)reader["Client_ID"];
-                                _sprint.SprintId = (Int64)reader["Sprint_ID"];
                                 sprintList.Add(_sprint);
                             }
                         }

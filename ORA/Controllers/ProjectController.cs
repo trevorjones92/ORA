@@ -17,7 +17,9 @@ namespace ORA.Controllers
 
         public ActionResult CreateProject()
         {
-            return View();
+            ProjectVM proj = new ProjectVM();
+            proj.Clients = Mapper.Map<List<ClientsVM>>(ClientsDAL.ReadClients());
+            return View(proj);
         }
 
         [HttpPost]
@@ -29,7 +31,8 @@ namespace ORA.Controllers
 
         public ActionResult ReadProjects()
         {
-            return View(Mapper.Map<List<ProjectVM>>(ProjectDAL.ReadProjects()));
+            List<ProjectVM> projects = Mapper.Map<List<ProjectVM>>(ProjectDAL.ReadProjects());
+            return View(projects);
         }
 
         public ActionResult ReadProjectByID(ProjectDM project)
@@ -39,7 +42,9 @@ namespace ORA.Controllers
 
         public ActionResult UpdateProject()
         {
-            return View();
+            ProjectVM proj = new ProjectVM();
+            proj.Clients = Mapper.Map<List<ClientsVM>>(ClientsDAL.ReadClients());
+            return View(proj);
         }
 
         [HttpPost]

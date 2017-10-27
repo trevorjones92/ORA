@@ -47,6 +47,17 @@ namespace ORA.Controllers
 
         public ActionResult Login()
         {
+            if ((bool)Session["LoggedIn"])
+            {
+                if ((string)Session["Role"] == "ADMIN" || ((string)Session["Role"] == "DIRECTOR"))
+                {
+                    return RedirectToAction("AdminDashboard", "Home", new { area = "Default" });
+                }
+                else
+                {
+                    return RedirectToAction("ReadAccount", "Account", new { area = "Default" });
+                }
+            }
             return View();
         }
 
@@ -65,6 +76,7 @@ namespace ORA.Controllers
                     Session["Role"] = info.Role.RoleName;
                     Session["ID"] = info.EmployeeId;
                     FormsAuthentication.RedirectFromLoginPage(info.Role.RoleName, true);
+                    FormsAuthentication.SetAuthCookie(info.Email, false);
                     if ((bool)Session["LoggedIn"])
                     {
                         if ((string)Session["Role"] == "ADMIN" || ((string)Session["Role"] == "DIRECTOR"))

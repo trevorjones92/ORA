@@ -39,10 +39,15 @@ namespace ORA_Data.DAL
                     cmd.Parameters.AddWithValue("@Test_Hrs_Actual", _kpi.TestHrsActual);
                     cmd.Parameters.AddWithValue("@Bugs_Found_Production", _kpi.BugsFoundProduction);
                     cmd.Parameters.AddWithValue("@Total_Hrs_Fixing_Bugs", _kpi.TotalHrsFixingBugs);
+                    cmd.Parameters.AddWithValue("@Velocity", _kpi.Velocity);
+                    cmd.Parameters.AddWithValue("@Collaboration", _kpi.Collaboration);
+                    cmd.Parameters.AddWithValue("@Start_Date", _kpi.Start_Date);
+                    cmd.Parameters.AddWithValue("@End_Date", _kpi.End_Date);
                     cmd.Parameters.AddWithValue("@Assignment_ID", _kpi.AssignmentId);
                     cmd.Parameters.AddWithValue("@Project_ID", _kpi.ProjectId);
                     cmd.Parameters.AddWithValue("@Sprint_ID", _kpi.SprintId);
                     cmd.Parameters.AddWithValue("@Story_ID", _kpi.StoryId);
+                    cmd.Parameters.AddWithValue("@Employee_ID", _kpi.EmployeeId);
 
                     SqlConnect.Connection.Open();
                     cmd.ExecuteNonQuery();
@@ -90,10 +95,15 @@ namespace ORA_Data.DAL
                                 _kpi.TestHrsActual = (decimal)reader["Test_Hrs_Actual"];
                                 _kpi.BugsFoundProduction = (int)reader["Bugs_Found_Production"];
                                 _kpi.TotalHrsFixingBugs = (decimal)reader["Total_Hrs_Fixing_Bugs"];
+                                _kpi.Velocity = (Int64)reader["Velocity"];
+                                _kpi.Collaboration = (Int64)reader["Collaboration"];
+                                _kpi.Start_Date = (DateTime)reader["Start_Date"];
+                                _kpi.End_Date = (DateTime)reader["End_Date"];
                                 _kpi.AssignmentId = (Int64)reader["Assignment_ID"];
                                 _kpi.ProjectId = (Int64)reader["Project_ID"];
                                 _kpi.SprintId = (Int64)reader["Sprint_ID"];
                                 _kpi.StoryId = (Int64)reader["Story_ID"];
+                                _kpi.EmployeeId = (Int64)reader["Employee_ID"];
 
                                 _kpiList.Add(_kpi);
                             }
@@ -144,10 +154,15 @@ namespace ORA_Data.DAL
                                 _kpi.TestHrsActual = (decimal)reader["Test_Hrs_Actual"];
                                 _kpi.BugsFoundProduction = (int)reader["Bugs_Found_Production"];
                                 _kpi.TotalHrsFixingBugs = (decimal)reader["Total_Hrs_Fixing_Bugs"];
+                                _kpi.Velocity = (Int64)reader["Velocity"];
+                                _kpi.Collaboration = (Int64)reader["Collaboration"];
+                                _kpi.Start_Date = (DateTime)reader["Start_Date"];
+                                _kpi.End_Date = (DateTime)reader["End_Date"];
                                 _kpi.AssignmentId = (Int64)reader["Assignment_ID"];
                                 _kpi.ProjectId = (Int64)reader["Project_ID"];
                                 _kpi.SprintId = (Int64)reader["Sprint_ID"];
                                 _kpi.StoryId = (Int64)reader["Story_ID"];
+                                _kpi.EmployeeId = (Int64)reader["Employee_ID"];
                             }
                         }
                     }
@@ -187,6 +202,10 @@ namespace ORA_Data.DAL
                     cmd.Parameters.AddWithValue("@Test_Hrs_Actual", _kpi.TestHrsActual);
                     cmd.Parameters.AddWithValue("@Bugs_Found_Production", _kpi.BugsFoundProduction);
                     cmd.Parameters.AddWithValue("@Total_Hrs_Fixing_Bugs", _kpi.TotalHrsFixingBugs);
+                    cmd.Parameters.AddWithValue("@Velocity", _kpi.Velocity);
+                    cmd.Parameters.AddWithValue("@Collaboration", _kpi.Collaboration);
+                    cmd.Parameters.AddWithValue("@Start_Date", _kpi.Start_Date);
+                    cmd.Parameters.AddWithValue("@End_Date", _kpi.End_Date);
 
                     SqlConnect.Connection.Open();
                     cmd.ExecuteNonQuery();

@@ -8,10 +8,13 @@
 <h2>KPI REPORTS</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateKPI")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.CreateDate)
         </th>
@@ -64,6 +67,18 @@
             @Html.DisplayNameFor(model => model.TotalHrsFixingBugs)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Velocity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Collaboration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Start_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.End_Date)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.AssignmentId)
         </th>
         <th>
@@ -83,6 +98,10 @@
 
         @Html.HiddenFor(modelItem => item.KPIID)
 
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
+            @Html.ActionLink("Employee", "ReadEmployeeByID", "Employee", new { id = item.AssignmentId })
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.CreateDate)
         </td>
@@ -135,6 +154,18 @@
             @Html.DisplayFor(modelItem => item.TotalHrsFixingBugs)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Velocity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Collaboration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Start_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.End_Date)
+        </td>
+        <td>
             @Html.ActionLink("Assignment", "ReadAssignmentByID", "Assignment" , new { id=item.AssignmentId })
         </td>
         <td>
@@ -147,8 +178,8 @@
             @Html.ActionLink("Story", "ReadStoryByID", "Story" , new { id=item.StoryId })
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "UpdateKPI", new { id=item.KPIID }) |
+            @Html.ActionLink("Delete", "DeleteKPI", new { id=item.KPIID })
         </td>
     </tr>
 }

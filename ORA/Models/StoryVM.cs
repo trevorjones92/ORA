@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -27,5 +28,11 @@ namespace ORA.Models
         public DateTime Created { get; set; }
 
         public DateTime Modified { get; set; }
+
+        public long ClientId { get; set; }
+
+        public ClientsVM Client { get; set; }
+
+        public List<ClientsVM> Clients { get; set; }
     }
 }

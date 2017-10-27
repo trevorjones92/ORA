@@ -18,7 +18,7 @@ namespace ORA.Models
 
         public string TDComments { get; set; }
 
-        public int CSRProffesionalismTeamwork { get; set; }
+        public int CSRProfesionalismTeamwork { get; set; }
 
         public int CSRVerbalSkills { get; set; }
 
@@ -85,5 +85,24 @@ namespace ORA.Models
             }
         }
 
+        public List<DescriptionVM> Descriptions { get; set; }
+
+    }
+    public class DescriptionVM
+    {
+        public DescriptionVM() { }
+
+        public DescriptionVM(string assessName, int num, string name, string desc)
+        {
+            AssessName = assessName;
+            Number = num;
+            Name = name;
+            Desc = desc;
+        }
+
+        public string AssessName { get; set; }
+        public int Number { get; set; }
+        public string Name { get; set; }
+        public string Desc { get; set; }
     }
 }

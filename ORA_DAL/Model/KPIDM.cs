@@ -40,6 +40,14 @@ namespace ORA_Data.Model
 
         public decimal TotalHrsFixingBugs { get; set; }
 
+        public long Velocity { get; set; }
+
+        public long Collaboration { get; set; }
+
+        public DateTime Start_Date { get; set; }
+
+        public DateTime End_Date { get; set; }
+
         public long AssignmentId { get; set; }
 
         public long ProjectId { get; set; }
@@ -47,6 +55,8 @@ namespace ORA_Data.Model
         public long SprintId { get; set; }
 
         public long StoryId { get; set; }
+
+        public long EmployeeId { get; set; }
 
         public DateTime Modified { get; set; }
 
@@ -57,5 +67,7 @@ namespace ORA_Data.Model
         public StoryDM Story { get; set; }
 
         public SprintDM Sprint { get; set; }
+
+        public EmployeeDM Employee { get; set; }
     }
 }

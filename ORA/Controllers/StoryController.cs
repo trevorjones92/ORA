@@ -21,7 +21,8 @@ namespace ORA.Controllers
             StoryVM story = new StoryVM();
             story.Created = DateTime.Now;
             story.Modified = DateTime.Now;
-            return View();
+            story.Clients = Mapper.Map<List<ClientsVM>>(ClientsDAL.ReadClients());
+            return View(story);
         }
 
         [HttpPost]
