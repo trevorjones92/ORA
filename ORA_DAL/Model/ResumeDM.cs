@@ -10,28 +10,17 @@ namespace ORA_Data.Model
     {
         public int ResumeID { get; set; }
 
-        public string ProfessionalSummary { get; set; }
-
-        public decimal SkillsID { get; set; }
-
-        public long WorkHistoryID { get; set; }
-
-        public long EducationID { get; set; }
-
         public long EmployeeID { get; set; }
 
         public EmployeeDM Employee { get; set; }
 
-        public SkillsDM Skills { get; set; }
+        public EducationDM Education { get; set; }
 
-        public List<SkillsDM> SkillList { get; set; }
+        public SkillsDM Skills { get; set; }
 
         public WorkHistoryDM WorkHistory { get; set; }
 
         public List<WorkHistoryDM> WorkHistoryList { get; set; }
 
-        public EducationDM Education { get; set; }
-
-        public List<EducationDM> EducationList { get; set; }
     }
 }

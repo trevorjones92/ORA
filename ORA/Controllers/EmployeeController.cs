@@ -40,7 +40,7 @@ namespace ORA.Controllers
             //    return RedirectToAction("", "", new { area = "" });
         }
 
-        #region ADMIN/MANAGER CREATE, READ, UPDATE, DELETE METHODS FOR SUPER USER
+        #region ADMIN/MANAGER CREATE, READ, UPDATE, DELETE METHODS
 
         public ActionResult EmployeeDetails(int id)
         {

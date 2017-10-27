@@ -1,0 +1,127 @@
+﻿@model ORA.Models.ResumeVM
+
+<div>
+    <h4>ResumeVM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+   
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkHistory.OrganizationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkHistory.OrganizationName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkHistory.WorkPlaceStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkHistory.WorkPlaceStartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkHistory.WorkPlaceEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkHistory.WorkPlaceEndDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkHistory.JobDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkHistory.JobDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkHistory.WorkPlaceLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkHistory.WorkPlaceLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Skills.Skill_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skills.Skill_1_Proficiency)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Skills.Skill_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skills.Skill_2_Proficiency)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Skills.Skill_3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skills.Skill_3_Proficiency)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Skills.Skill_4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skills.Skill_4_Proficiency)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Skills.Skill_5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skills.Skill_5_Proficiency)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Skills.Skill_6)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skills.Skill_6_Proficiency)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Education.InsitutionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Education.InsitutionName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Education.Attended_Start_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Education.Attended_End_Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Education.AreaOfStudy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Education.AreaOfStudy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Education.EducationEarned)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Education.EducationEarned)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Education.InstitutionLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Education.InstitutionLocation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit Resume", "UpdateResume", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

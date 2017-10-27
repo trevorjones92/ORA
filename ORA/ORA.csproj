@@ -415,10 +415,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Assessment\ReadMyAssessments.cshtml" />
     <Content Include="Views\KPI\ReadMyKPIs.cshtml" />
+    <Content Include="Views\Resume\CreateResume.cshtml" />
+    <Content Include="Views\Resume\ReadResumeById.cshtml" />
+    <Content Include="Views\Resume\UpdateResume.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Resume\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
