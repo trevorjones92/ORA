@@ -186,6 +186,40 @@ namespace ORA_Data.DAL
             }
         }
 
+        public static int ReadResumeId(long employeeNum)
+        {
+            try
+            {
+                ResumeDM _resume = new ResumeDM();
+                using (SqlCommand command = new SqlCommand("READ_RESUME_ID", SqlConnect.Connection))
+                {
+                    command.Connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Employee_ID", employeeNum);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                _resume.ResumeID = (int)reader["Resume_ID"];
+                            }
+                        }
+                    }
+                    command.Connection.Close();
+                }
+                return _resume.ResumeID;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                SqlConnect.Connection.Close();
+            }
+        }
+
         /// <summary>
         /// This gets the Education fields that has a unique resume key that is attached to a single employee
         /// Uses the VIEW_EDUCATION_BY_RESUME_ID stored procedure

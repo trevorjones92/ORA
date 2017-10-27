@@ -39,7 +39,7 @@ namespace ORA.Controllers
         [HttpPost]
         public ActionResult UpdateResume(ResumeVM resume)
         {
-            resume = Mapper.Map<ResumeVM>(ResumeDAL.GetResumeByID((long)Session["ID"]));
+            resume.ResumeID = ResumeDAL.ReadResumeId((long)Session["ID"]);
             ResumeDAL.UpdateEducation(Mapper.Map<EducationDM>(resume.Education), resume.ResumeID);
             ResumeDAL.UpdateSkills(Mapper.Map<SkillsDM>(resume.Skills), resume.ResumeID);
             ResumeDAL.UpdateWorkHistory(Mapper.Map<WorkHistoryDM>(resume.WorkHistory), resume.ResumeID);
