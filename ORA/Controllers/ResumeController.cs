@@ -25,7 +25,7 @@ namespace ORA.Controllers
             return View(resume);
         }
 
-        // GET: Resume
+        [HttpGet]
         public ActionResult UpdateResume()
         {
             ResumeVM resume = new ResumeVM();
@@ -39,11 +39,10 @@ namespace ORA.Controllers
         [HttpPost]
         public ActionResult UpdateResume(ResumeVM resume)
         {
-            long empID = (long)Session["ID"];
-            ResumeDAL.UpdateResume(Mapper.Map<ResumeDM>(resume), empID);
-            ResumeDAL.UpdateEducation(Mapper.Map<EducationDM>(resume), resume.ResumeID);
-            ResumeDAL.UpdateSkills(Mapper.Map<SkillsDM>(resume), resume.ResumeID);
-            ResumeDAL.UpdateWorkHistory(Mapper.Map<WorkHistoryDM>(resume), resume.ResumeID);
+            resume.ResumeID = ResumeDAL.ReadResumeId((long)Session["ID"]);
+            ResumeDAL.UpdateEducation(Mapper.Map<EducationDM>(resume.Education), resume.ResumeID);
+            ResumeDAL.UpdateSkills(Mapper.Map<SkillsDM>(resume.Skills), resume.ResumeID);
+            ResumeDAL.UpdateWorkHistory(Mapper.Map<WorkHistoryDM>(resume.WorkHistory), resume.ResumeID);
             return Redirect("ReadAccount");
         }
     }
