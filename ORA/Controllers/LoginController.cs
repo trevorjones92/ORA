@@ -102,6 +102,7 @@ namespace ORA.Controllers
         public ActionResult LogOut()
         {
             Session["LoggedIn"] = false;
+            FormsAuthentication.SignOut();
             return View();
         }
 
