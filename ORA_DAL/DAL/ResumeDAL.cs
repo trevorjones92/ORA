@@ -376,21 +376,39 @@ namespace ORA_Data.DAL
         /// Uses the UPDATE_EDUCATION stored procedure
         /// </summary>
         /// <param name="_education"></param>
-        public static void UpdateEducation(EducationDM _education, int resumeID)
+        public static void UpdateEducation(EducationDM _education, long resumeID)
         {
             try
             {
                 using (SqlCommand cmd = new SqlCommand("UPDATE_EDUCATION", SqlConnect.Connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Education_ID", _education.EducationID);
-                    cmd.Parameters.AddWithValue("@Resume_ID", -_education.ResumeID);
-                    cmd.Parameters.AddWithValue("@Insitution_Name", _education.InsitutionName);
+                    cmd.Parameters.AddWithValue("@Resume_ID", resumeID);
+
+                    if (_education.InsitutionName != null)
+                        cmd.Parameters.AddWithValue("@Institution_Name", _education.InsitutionName);
+                    else
+                        cmd.Parameters.AddWithValue("@Institution_Name", DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@Attended_Start_Date", _education.Attended_Start_Date);
                     cmd.Parameters.AddWithValue("@Attended_End_Date", _education.Attended_End_Date);
-                    cmd.Parameters.AddWithValue("@Institution_Location", _education.InstitutionLocation);
-                    cmd.Parameters.AddWithValue("@Education_Earned", _education.EducationEarned);
-                    cmd.Parameters.AddWithValue("@Area_Of_Study", _education.AreaOfStudy);
+
+
+                    if (_education.InstitutionLocation != null)
+                        cmd.Parameters.AddWithValue("@Institution_Location", _education.InstitutionLocation);
+                    else
+                        cmd.Parameters.AddWithValue("@Institution_Location", DBNull.Value);
+
+                    if (_education.EducationEarned != null)
+                        cmd.Parameters.AddWithValue("@Education_Earned", _education.EducationEarned);
+                    else
+                        cmd.Parameters.AddWithValue("@Education_Earned", DBNull.Value);
+
+                    if (_education.AreaOfStudy != null)
+                        cmd.Parameters.AddWithValue("@Area_Of_Study", _education.AreaOfStudy);
+                    else
+                        cmd.Parameters.AddWithValue("@Area_Of_Study", DBNull.Value);
+
                     SqlConnect.Connection.Open();
                     cmd.ExecuteNonQuery();
                     SqlConnect.Connection.Close();
@@ -408,34 +426,82 @@ namespace ORA_Data.DAL
         /// Uses the UPDATE_SKILLS stored procedure
         /// </summary>
         /// <param name="_skills"></param>
-        public static void UpdateSkills(SkillsDM _skills, int resumeID)
+        public static void UpdateSkills(SkillsDM _skills, long resumeID)
         {
             try
             {
                 using (SqlCommand cmd = new SqlCommand("UPDATE_SKILLS", SqlConnect.Connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Skills_ID", _skills.Skills_ID);
-                    cmd.Parameters.AddWithValue("@Resume_ID", _skills.ResumeID);
-                    cmd.Parameters.AddWithValue("@Skills_1", _skills.Skill_1);
+                    cmd.Parameters.AddWithValue("@Resume_ID", resumeID);
+                    if (_skills.Skill_1 != null)
+                        cmd.Parameters.AddWithValue("@Skill_1", _skills.Skill_1);
+                    else
+                        cmd.Parameters.AddWithValue("@Skill_1", DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@Skill_1_Proficiency", _skills.Skill_1_Proficiency);
-                    cmd.Parameters.AddWithValue("@Skills_2", _skills.Skill_2);
+
+                    if (_skills.Skill_2 != null)
+                        cmd.Parameters.AddWithValue("@Skill_2", _skills.Skill_2);
+                    else
+                        cmd.Parameters.AddWithValue("@Skill_2", DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@Skill_2_Proficiency", _skills.Skill_2_Proficiency);
-                    cmd.Parameters.AddWithValue("@Skills_3", _skills.Skill_3);
+
+                    if (_skills.Skill_3 != null)
+                        cmd.Parameters.AddWithValue("@Skill_3", _skills.Skill_3);
+                    else
+                        cmd.Parameters.AddWithValue("@Skill_3", DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@Skill_3_Proficiency", _skills.Skill_3_Proficiency);
-                    cmd.Parameters.AddWithValue("@Skills_4", _skills.Skill_4);
+
+                    if (_skills.Skill_4 != null)
+                        cmd.Parameters.AddWithValue("@Skill_4", _skills.Skill_4);
+                    else
+                        cmd.Parameters.AddWithValue("@Skill_4", DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@Skill_4_Proficiency", _skills.Skill_4_Proficiency);
-                    cmd.Parameters.AddWithValue("@Skills_5", _skills.Skill_5);
+
+                    if (_skills.Skill_5 != null)
+                        cmd.Parameters.AddWithValue("@Skill_5", _skills.Skill_5);
+                    else
+                        cmd.Parameters.AddWithValue("@Skill_5", DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@Skill_5_Proficiency", _skills.Skill_5_Proficiency);
-                    cmd.Parameters.AddWithValue("@Skills_6", _skills.Skill_6);
+
+                    if (_skills.Skill_6 != null)
+                        cmd.Parameters.AddWithValue("@Skill_6", _skills.Skill_6);
+                    else
+                        cmd.Parameters.AddWithValue("@Skill_6", DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@Skill_6_Proficiency", _skills.Skill_6_Proficiency);
-                    cmd.Parameters.AddWithValue("@Skills_7", _skills.Skill_7);
+
+                    if (_skills.Skill_7 != null)
+                        cmd.Parameters.AddWithValue("@Skill_7", _skills.Skill_7);
+                    else
+                        cmd.Parameters.AddWithValue("@Skill_7", DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@Skill_7_Proficiency", _skills.Skill_7_Proficiency);
-                    cmd.Parameters.AddWithValue("@Skills_8", _skills.Skill_8);
+
+                    if (_skills.Skill_8 != null)
+                        cmd.Parameters.AddWithValue("@Skill_8", _skills.Skill_8);
+                    else
+                        cmd.Parameters.AddWithValue("@Skill_8", DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@Skill_8_Proficiency", _skills.Skill_8_Proficiency);
-                    cmd.Parameters.AddWithValue("@Skills_9", _skills.Skill_9);
+
+                    if (_skills.Skill_9 != null)
+                        cmd.Parameters.AddWithValue("@Skill_9", _skills.Skill_9);
+                    else
+                        cmd.Parameters.AddWithValue("@Skill_9", DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@Skill_9_Proficiency", _skills.Skill_9_Proficiency);
-                    cmd.Parameters.AddWithValue("@Skills_10", _skills.Skill_10);
+
+                    if (_skills.Skill_10 != null)
+                        cmd.Parameters.AddWithValue("@Skill_10", _skills.Skill_10);
+                    else
+                        cmd.Parameters.AddWithValue("@Skill_10", DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@Skill_10_Proficiency", _skills.Skill_10_Proficiency);
                     SqlConnect.Connection.Open();
                     cmd.ExecuteNonQuery();
@@ -445,7 +511,7 @@ namespace ORA_Data.DAL
             catch (Exception e)
             {
                 SqlConnect.Connection.Close();
-                throw (e);
+               throw (e);
             }
         }
 
@@ -454,20 +520,33 @@ namespace ORA_Data.DAL
         /// Uses the UPDATE_WORK_HISTORY stored procedure
         /// </summary>
         /// <param name="_workHistory"></param>
-        public static void UpdateWorkHistory(WorkHistoryDM _workHistory, int resumeID)
+        public static void UpdateWorkHistory(WorkHistoryDM _workHistory, long resumeID)
         {
             try
             {
                 using (SqlCommand cmd = new SqlCommand("UPDATE_WORK_HISTORY", SqlConnect.Connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Education_ID", _workHistory.WorkHistoryID);
-                    cmd.Parameters.AddWithValue("@Resume_ID", _workHistory.ResumeID);
-                    cmd.Parameters.AddWithValue("@Insitution_Name", _workHistory.OrganizationName);
-                    cmd.Parameters.AddWithValue("@Attended_Start_Date", _workHistory.WorkPlaceStartDate);
-                    cmd.Parameters.AddWithValue("@Attended_End_Date", _workHistory.WorkPlaceEndDate);
-                    cmd.Parameters.AddWithValue("@Institution_Location", _workHistory.JobDescription);
-                    cmd.Parameters.AddWithValue("@Education_Earned", _workHistory.WorkPlaceLocation);
+                    cmd.Parameters.AddWithValue("@Resume_ID", resumeID);
+
+                    if (_workHistory.OrganizationName != null)
+                        cmd.Parameters.AddWithValue("@Organization_Name", _workHistory.OrganizationName);
+                    else
+                        cmd.Parameters.AddWithValue("@Organization_Name", DBNull.Value);        
+                    
+                    cmd.Parameters.AddWithValue("@Work_Place_Start_Date", _workHistory.WorkPlaceStartDate);
+                    cmd.Parameters.AddWithValue("@Work_Place_End_Date", _workHistory.WorkPlaceEndDate);
+
+                    if (_workHistory.JobDescription != null)
+                        cmd.Parameters.AddWithValue("@Job_Description", _workHistory.JobDescription);
+                    else
+                        cmd.Parameters.AddWithValue("@Job_Description", DBNull.Value);
+
+                    if (_workHistory.WorkPlaceLocation != null)
+                        cmd.Parameters.AddWithValue("@Work_Place_Location", _workHistory.WorkPlaceLocation);
+                    else
+                        cmd.Parameters.AddWithValue("@Work_Place_Location", DBNull.Value);
+
                     SqlConnect.Connection.Open();
                     cmd.ExecuteNonQuery();
                     SqlConnect.Connection.Close();
