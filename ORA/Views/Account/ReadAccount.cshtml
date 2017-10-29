@@ -62,8 +62,8 @@
 
                     }
                     <li>
-                            <i class="pe-7s-note2"></i>
-                            @Html.ActionLink("My Resume", "ReadResumeById", "Resume")
+                        <i class="pe-7s-note2"></i>
+                        @Html.ActionLink("My Resume", "ReadResumeById", "Resume")
                     </li>
                     <li>
                         <a href="#">
@@ -108,22 +108,22 @@
                                 </a>
                             </li>
                             @if ((string)Session["Role"] == "Manager" || (string)Session["Role"] == "Team Lead")
-                                {
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    @Session["Role"] Tools
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Create Assessment", "CreateAssessment", "Assessment")</li>
-                                    <li>@Html.ActionLink("Create KPI", "CreateKPI", "KPI")</li>
-                                    <li>@Html.ActionLink("View Employees", "ViewEmployees", "Employee")</li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </li>
+                            {
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        @Session["Role"] Tools
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Create Assessment", "CreateAssessment", "Assessment")</li>
+                                        <li>@Html.ActionLink("Create KPI", "CreateKPI", "KPI")</li>
+                                        <li>@Html.ActionLink("View Employees", "ViewEmployees", "Employee")</li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </li>
                             }
 
                             <li>
@@ -162,8 +162,9 @@
                                                     </div>*@
                                                 <div class="col-md-5">
                                                     <div class="form-group">
-                                                        <label for="exampleInputEmail1">Email address</label>
-                                                        <input type="email" class="form-control" placeholder="Email">
+                                                        @Html.LabelFor(model => model.Address.Email)
+                                                        <br />
+                                                        @Html.DisplayTextFor(model => model.Address.Email)
                                                     </div>
                                                 </div>
                                             </div>

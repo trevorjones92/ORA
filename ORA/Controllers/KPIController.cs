@@ -94,7 +94,7 @@ namespace ORA.Controllers
         public ActionResult UpdateKPI(KPIVM kpi)
         {
             KPI_DAL.UpdateKPI(Mapper.Map<KPIDM>(kpi));
-            return View();
+            return View(kpi);
         }
 
         public ActionResult DeleteKPI(string id)
@@ -108,7 +108,7 @@ namespace ORA.Controllers
         public ActionResult DeleteKPI(KPIVM kpi)
         {
             KPI_DAL.DeleteKPI(Mapper.Map<KPIDM>(kpi));
-            return View();
+            return View(kpi);
         }
     }
 }

@@ -14,16 +14,22 @@ namespace ORA.Models
         [DisplayName("Created Date")]
         public DateTime CreateDate { get; set; }
 
+        [DisplayName("Points")]
         public decimal Points { get; set; }
 
+        [DisplayName("Created")]
         public int TCCreated { get; set; }
 
+        [DisplayName("Executed")]
         public int TCExecuted { get; set; }
 
+        [DisplayName("Failed")]
         public int TCFailed { get; set; }
 
+        [DisplayName("Passed")]
         public int TCPassed { get; set; }
 
+        [DisplayName("Blocked")]
         public int TCBlocked { get; set; }
 
         [DisplayName("Defects Found")]
@@ -32,28 +38,38 @@ namespace ORA.Models
         [DisplayName("Defects Fixed")]
         public int DefectsFixed { get; set; }
 
+        [DisplayName("Defects Accepted")]
         public int DefectsAccepted { get; set; }
 
+        [DisplayName("Defects Rejected")]
         public int DefectsRejected { get; set; }
 
+        [DisplayName("Defects Deferred")]
         public int DefectsDeferred { get; set; }
 
+        [DisplayName("Critical Defects")]
         public int CriticalDefects { get; set; }
 
+        [DisplayName("Test Hours Planned")]
         public decimal TestHrsPlanned { get; set; }
 
+        [DisplayName("Test Hours Actual")]
         public decimal TestHrsActual { get; set; }
 
+        [DisplayName("Bugs Found Production")]
         public int BugsFoundProduction { get; set; }
 
+        [DisplayName("Total Hours Fixing Bugs")]
         public decimal TotalHrsFixingBugs { get; set; }
 
         public long Velocity { get; set; }
 
         public long Collaboration { get; set; }
 
+        [DisplayName("Start Date")]
         public DateTime Start_Date { get; set; }
 
+        [DisplayName("End Date")]
         public DateTime End_Date { get; set; }
 
         public int AssignmentId { get; set; }
@@ -66,6 +82,7 @@ namespace ORA.Models
 
         public EmployeeVM Employee { get; set; }
 
+        [DisplayName("Employees")]
         public List<EmployeeVM> EmployeeList { get; set; }
 
         public int ProjectId { get; set; }

@@ -33,8 +33,26 @@ namespace ORA.Controllers
                         SortedList = assessments.OrderBy(o => o.Employee.Team.TeamName).ToList();
                         return View(SortedList);
                     }
+                //case ("date"):
+                //    {
+                //        SortedList = assessments.OrderBy(o => o.Employee.Assignment.StartDate).ToList();
+                //        return View(SortedList);
+                //    }
             }
-            return View();
+            return View(assessments);
+        }
+
+        public ActionResult SortByDateRange(DateTime start, DateTime end, List<AssessmentVM> assessments)
+        {
+            List<AssessmentVM> list = new List<AssessmentVM>();
+            foreach(AssessmentVM assess in assessments)
+            {
+                if(start >= assess.Created && end <= assess.Created)
+                {
+                    list.Add(assess);
+                }
+            }
+            return View(list);
         }
 
         public ActionResult CreateAssessment()
@@ -99,28 +117,29 @@ namespace ORA.Controllers
             return View(list);
         }
 
-        public ActionResult UpdateAssessment()
+        public ActionResult UpdateAssessment(string id)
         {
-            return View();
+            return View(Mapper.Map<AssessmentVM>(AssessmentDAL.ReadAssessmentByID(id)));
         }
 
         [HttpPost]
         public ActionResult UpdateAssessment(AssessmentVM assessment)
         {
             AssessmentDAL.UpdateAssessment(Mapper.Map<AssessmentDM>(assessment));
-            return View();
+            return View(assessment);
         }
 
-        public ActionResult DeleteAssessment()
+        public ActionResult DeleteAssessment(string id)
         {
-            return View();
+            AssessmentVM assessment = Mapper.Map<AssessmentVM>(AssessmentDAL.ReadAssessmentByID(id));
+            return View(assessment);
         }
 
         [HttpPost]
         public ActionResult DeleteAssessment(AssessmentVM assessment)
         {
             AssessmentDAL.DeleteAssessment(Mapper.Map<AssessmentDM>(assessment));
-            return View();
+            return View(assessment);
         }
 
         //Get Assessments
