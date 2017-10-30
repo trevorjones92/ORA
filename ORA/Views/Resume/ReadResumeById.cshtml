@@ -7,6 +7,24 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 <style>
+    .sections {
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: 500;
+        color: #2d7788;
+        position: relative;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .backGround {
+        margin: auto 10px;
+        width: auto;
+        height: 2000px;
+        background-repeat: no-repeat;
+        background-image: linear-gradient(rgb(244,244,244),rgb(3,51,89));
+    }
+
     input.hidden {
         position: absolute;
         left: -9999px;
@@ -29,359 +47,404 @@
         margin: 5px 0 5px 0
     }
 </style>
+<html>
+<body class="backGround">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 ">
+                <div class="panel panel-default">
+                    <div class="panel-heading">  <h4>Your Resume</h4></div>
+                    <div class="panel-body">
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 ">
-            <div class="panel panel-default">
-                <div class="panel-heading">  <h4>Your Profile</h4></div>
-                <div class="panel-body">
+                        <div class="box box-info">
 
-                    <div class="box box-info">
+                            <div class="box-body">
+                                <div class="col-sm-6">
+                                    <div align="left">
+                                        <img alt="User Pic" src="https://static-cdn.jtvnw.net/jtv_user_pictures/panel-105458682-image-30bb3ea9145a9b30-320-320.jpeg?imenable=1&impolicy=panel-images&imwidth=320" id="profile-image1" class="img-circle img-responsive">
+                                    </div>
+                                    <br>
 
-                        <div class="box-body">
-                            <div class="col-sm-6">
-                                <div align="center">
-                                    <img alt="User Pic" src="https://static-cdn.jtvnw.net/jtv_user_pictures/panel-105458682-image-30bb3ea9145a9b30-320-320.jpeg?imenable=1&impolicy=panel-images&imwidth=320" id="profile-image1" class="img-circle img-responsive">
+                                    <!-- /input-group -->
                                 </div>
-                                <br>
+                                <div class="col-sm-6">
+                                    <div align="right">
+                                        <h4 style="color: #00b1b1;">
+                                            @Session["Email"]
+                                        </h4>
+                                        <span>
+                                            <p>
+                                                @Session["Role"]
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <hr style="margin:5px 0 5px 0;">
 
-                                <!-- /input-group -->
-                            </div>
-                            <div class="col-sm-6">
-                                <h4 style="color:#00b1b1;">User Name Will Be Here</h4>
-                                <span><p>Role Will be Here</p></span>
-                            </div>
-                            <div class="clearfix"></div>
-                            <hr style="margin:5px 0 5px 0;">
+                                <div class="sections">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    Basic Information
+                                </div>
+                                </br>
 
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("First Name: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Employee.EmployeeFirstName)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">First Name:</div><div class="col-sm-7 col-xs-6 ">Employee info</div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Middle Name: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Employee.EmployeeMiddle)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">Middle Name:</div><div class="col-sm-7"> Employee Middle</div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Last Name: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Employee.EmployeeLastName)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">Last Name:</div><div class="col-sm-7"> Employee Last</div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("DOB: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Employee.BirthDate)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">Date Of Joining:</div><div class="col-sm-7">Date Created</div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                </br>
+                                <div class="sections">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>
+                                    Work History
+                                </div>
+                                </br>
 
-                            <div class="col-sm-5 col-xs-6 tital ">Date Of Birth:</div><div class="col-sm-7">DOB</div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Organization: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.WorkHistory.OrganizationName)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.WorkHistory.OrganizationName)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.WorkHistory.OrganizationName)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Start Date : ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.WorkHistory.WorkPlaceStartDate)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.WorkHistory.WorkPlaceStartDate)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.WorkHistory.WorkPlaceStartDate)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("End Date : ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.WorkHistory.WorkPlaceEndDate)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.WorkHistory.WorkPlaceEndDate)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.WorkHistory.WorkPlaceEndDate)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Job Description : ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.WorkHistory.JobDescription)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.WorkHistory.JobDescription)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.WorkHistory.JobDescription)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Place of Work Location: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.WorkHistory.WorkPlaceLocation)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.WorkHistory.WorkPlaceLocation)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.WorkHistory.WorkPlaceLocation)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                </br>
+                                <div class="sections">
+                                    <i class="glyphicon glyphicon-certificate"></i>
+                                    Skills
+                                </div>
+                                </br>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_1)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_1)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_1)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_1)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_1)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill Proficiency: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_1_Proficiency)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_1_Proficiency)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_1_Proficiency)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_2)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_2)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_2)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill Proficiency: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_2_Proficiency)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_2_Proficiency)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_2_Proficiency)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_3)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_3)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_3)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill Proficiency: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_3_Proficiency)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_3_Proficiency)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_3_Proficiency)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_4)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_4)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_4)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill Proficiency: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_4_Proficiency)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_4_Proficiency)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_4_Proficiency)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_5)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_5)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_5)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill Proficiency: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_5_Proficiency)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_5_Proficiency)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_5_Proficiency)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_6)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_6)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_6)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill Proficiency: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_6_Proficiency)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_6_Proficiency)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_6_Proficiency)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_7)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_7)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_7)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill Proficiency: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_7_Proficiency)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_7_Proficiency)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_7_Proficiency)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_8)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_8)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_8)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill Proficiency: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_8_Proficiency)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_8_Proficiency)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_8_Proficiency)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_9)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_9)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_9)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill Proficiency: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_9_Proficiency)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_9_Proficiency)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_9_Proficiency)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_10)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_10)
-                            </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_10)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Skill Proficiency: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Skills.Skill_10_Proficiency)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
 
-                            <div class="col-sm-5 col-xs-6 tital ">
-                                @Html.DisplayNameFor(model => model.Skills.Skill_10_Proficiency)
+                                </br>
+                                <div class="sections">
+                                    <i class="glyphicon glyphicon-book"></i>
+                                    Education
+                                </div>
+                                </br>
+
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Institution: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Education.InsitutionName)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Start Date: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Education.Attended_Start_Date)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("End Date: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Education.Attended_End_Date)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Area of Study: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Education.AreaOfStudy)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Level of Education Earned: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Education.EducationEarned)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital ">
+                                    @Html.DisplayName("Institution Location: ")
+                                </div>
+                                <div class="col-sm-7">
+                                    @Html.DisplayFor(model => model.Education.InstitutionLocation)
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <!-- /.box-body -->
                             </div>
-                            <div class="col-sm-7">
-                                @Html.DisplayFor(model => model.Skills.Skill_10_Proficiency)
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
-                            
-                        <div class="col-sm-5 col-xs-6 tital ">
-                            @Html.DisplayNameFor(model => model.Education.InsitutionName)
+                            <!-- /.box -->
                         </div>
-                        <div class="col-sm-7">
-                            @Html.DisplayFor(model => model.Education.InsitutionName)
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="bot-border"></div>
-                            
-                        <div class="col-sm-5 col-xs-6 tital ">
-                            @Html.DisplayNameFor(model => model.Education.Attended_Start_Date)
-                        </div>
-                        <div class="col-sm-7">
-                            @Html.DisplayFor(model => model.Education.Attended_Start_Date)
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="bot-border"></div>
-                            
-                        <div class="col-sm-5 col-xs-6 tital ">
-                            @Html.DisplayNameFor(model => model.Education.Attended_End_Date)
-                        </div>
-                        <div class="col-sm-7">
-                            @Html.DisplayFor(model => model.Education.Attended_End_Date)
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="bot-border"></div>
-
-                        <div class="col-sm-5 col-xs-6 tital ">
-                            @Html.DisplayNameFor(model => model.Education.AreaOfStudy)
-                        </div>
-                        <div class="col-sm-7">
-                            @Html.DisplayFor(model => model.Education.AreaOfStudy)
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="bot-border"></div>
-                            
-                        <div class="col-sm-5 col-xs-6 tital ">
-                            @Html.DisplayNameFor(model => model.Education.EducationEarned)
-                        </div>
-                        <div class="col-sm-7">
-                            @Html.DisplayFor(model => model.Education.EducationEarned)
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="bot-border"></div>
-                            
-                        <div class="col-sm-5 col-xs-6 tital ">
-                            @Html.DisplayNameFor(model => model.Education.InstitutionLocation)
-                        </div>
-                        <div class="col-sm-7">
-                            @Html.DisplayFor(model => model.Education.InstitutionLocation)
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="bot-border"></div>
-
-                        <div class="clearfix"></div>
-                            <div class="bot-border"></div>
-
-                            <!-- /.box-body -->
-                        </div>
-                        <!-- /.box -->
                     </div>
-
-
                 </div>
             </div>
         </div>
-        <script>
-            $(function () {
-                $('#profile-image1').on('click', function () {
-                    $('#profile-image-upload').click();
-                });
-            });
-        </script>
+        <buttom style="btn btn-primary btn-lg btn-block">
+            @Html.ActionLink("Update Resume", "UpdateResume", "Resume");
+        </buttom>
     </div>
-</div>
+</body>
+</html>
+<script>
+    $(function () {
+        $('#profile-image1').on('click', function () {
+            $('#profile-image-upload').click();
+        });
+    });
+</script>

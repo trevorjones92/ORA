@@ -22,6 +22,7 @@ namespace ORA.Controllers
             resume.Education = Mapper.Map<EducationVM>(ResumeDAL.GetEducationByResumeID(resume.ResumeID));
             resume.Skills = Mapper.Map<SkillsVM>(ResumeDAL.GetSkillsByResumeID(resume.ResumeID));
             resume.WorkHistory = Mapper.Map<WorkHistoryVM>(ResumeDAL.GetWorkHistoryByResumeID(resume.ResumeID));
+            resume.Employee =  Mapper.Map<EmployeeVM>(EmployeeMap.GetEmployeeById((long)Session["ID"]));
             return View(resume);
         }
 
