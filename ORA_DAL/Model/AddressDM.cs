@@ -12,5 +12,6 @@ namespace ORA_Data.Model
         public int Zip_Code { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public long Employee_ID { get; set; }
     }
 }

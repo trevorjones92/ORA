@@ -31,5 +31,7 @@ namespace ORA.Models
         [DisplayName("Email")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        public Int64 Employee_ID { get; set; }
     }
 }

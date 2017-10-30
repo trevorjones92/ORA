@@ -103,6 +103,7 @@ namespace ORA_Data.DAL
                             address.Country = (string)reader["Country"];
                             address.Phone = (string)reader["Phone"];
                             address.Email = (string)reader["Email"];
+                            address.Employee_ID = (Int64)reader["Employee_ID"];
                         }
                     }
                     SqlConnect.Connection.Close();
@@ -125,12 +126,13 @@ namespace ORA_Data.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Address_ID", address.Address_ID);
                     cmd.Parameters.AddWithValue("@Address", address.Address);
-                    cmd.Parameters.AddWithValue("@FirstName", address.City);
-                    cmd.Parameters.AddWithValue("@LastName", address.State);
-                    cmd.Parameters.AddWithValue("@DoB", address.Zip_Code);
-                    cmd.Parameters.AddWithValue("@PhoneNumber", address.Country);
-                    cmd.Parameters.AddWithValue("@UserName", address.Phone);
-                    cmd.Parameters.AddWithValue("@Password", address.Email);
+                    cmd.Parameters.AddWithValue("@City", address.City);
+                    cmd.Parameters.AddWithValue("@State", address.State);
+                    cmd.Parameters.AddWithValue("@Zip_Code", address.Zip_Code);
+                    cmd.Parameters.AddWithValue("@Country", address.Country);
+                    cmd.Parameters.AddWithValue("@Phone", address.Phone);
+                    cmd.Parameters.AddWithValue("@Email", address.Email);
+                    cmd.Parameters.AddWithValue("@Employee_ID", address.Employee_ID);
                     SqlConnect.Connection.Open();
                     cmd.ExecuteNonQuery();
                     SqlConnect.Connection.Close();
