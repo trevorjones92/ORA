@@ -3,7 +3,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>ResumeVM</h4>
         <hr />
@@ -15,7 +15,7 @@
                 @Html.ValidationMessageFor(model => model.WorkHistory.OrganizationName, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.WorkHistory.WorkPlaceStartDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -23,7 +23,7 @@
                 @Html.ValidationMessageFor(model => model.WorkHistory.WorkPlaceStartDate, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.WorkHistory.WorkPlaceEndDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -31,7 +31,7 @@
                 @Html.ValidationMessageFor(model => model.WorkHistory.WorkPlaceEndDate, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.WorkHistory.JobDescription, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -39,7 +39,7 @@
                 @Html.ValidationMessageFor(model => model.WorkHistory.JobDescription, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.WorkHistory.WorkPlaceLocation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -47,7 +47,7 @@
                 @Html.ValidationMessageFor(model => model.WorkHistory.WorkPlaceLocation, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.WorkHistory.WorkPlaceLocation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -55,7 +55,7 @@
                 @Html.ValidationMessageFor(model => model.WorkHistory.WorkPlaceLocation, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Skills.Skill_1, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -63,7 +63,7 @@
                 @Html.ValidationMessageFor(model => model.Skills.Skill_1, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Skills.Skill_1_Proficiency, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -71,7 +71,7 @@
                 @Html.ValidationMessageFor(model => model.Skills.Skill_1_Proficiency, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Skills.Skill_2, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -79,7 +79,7 @@
                 @Html.ValidationMessageFor(model => model.Skills.Skill_2, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Skills.Skill_2_Proficiency, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -87,7 +87,7 @@
                 @Html.ValidationMessageFor(model => model.Skills.Skill_2_Proficiency, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Skills.Skill_3, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -95,7 +95,7 @@
                 @Html.ValidationMessageFor(model => model.Skills.Skill_3, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Skills.Skill_3_Proficiency, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -103,7 +103,119 @@
                 @Html.ValidationMessageFor(model => model.Skills.Skill_3_Proficiency, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Skills.Skill_4, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills.Skill_4, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills.Skill_4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Skills.Skill_4_Proficiency, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills.Skill_4_Proficiency, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills.Skill_4_Proficiency, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Skills.Skill_5, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills.Skill_5, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills.Skill_5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Skills.Skill_5_Proficiency, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills.Skill_5_Proficiency, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills.Skill_5_Proficiency, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Skills.Skill_6, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills.Skill_6, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills.Skill_6, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Skills.Skill_6_Proficiency, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills.Skill_6_Proficiency, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills.Skill_6_Proficiency, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Skills.Skill_7, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills.Skill_7, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills.Skill_7, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Skills.Skill_7_Proficiency, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills.Skill_7_Proficiency, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills.Skill_7_Proficiency, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Skills.Skill_8, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills.Skill_8, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills.Skill_8, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Skills.Skill_8_Proficiency, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills.Skill_8_Proficiency, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills.Skill_8_Proficiency, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Skills.Skill_9, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills.Skill_9, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills.Skill_9, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Skills.Skill_9_Proficiency, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills.Skill_9_Proficiency, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills.Skill_9_Proficiency, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Skills.Skill_10, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills.Skill_10, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills.Skill_10, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Skills.Skill_10_Proficiency, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills.Skill_10_Proficiency, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills.Skill_10_Proficiency, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.Education.InsitutionName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -111,7 +223,7 @@
                 @Html.ValidationMessageFor(model => model.Education.InsitutionName, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Education.Attended_Start_Date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -119,7 +231,7 @@
                 @Html.ValidationMessageFor(model => model.Education.Attended_Start_Date, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Education.Attended_End_Date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -127,7 +239,7 @@
                 @Html.ValidationMessageFor(model => model.Education.Attended_End_Date, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Education.InstitutionLocation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -135,7 +247,7 @@
                 @Html.ValidationMessageFor(model => model.Education.InstitutionLocation, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Education.EducationEarned, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -143,7 +255,7 @@
                 @Html.ValidationMessageFor(model => model.Education.EducationEarned, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Education.AreaOfStudy, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
