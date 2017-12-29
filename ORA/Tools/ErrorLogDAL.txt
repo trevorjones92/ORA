@@ -1,0 +1,70 @@
+
+Level: ReadAssessments   Time: 11/10/2017 1:32:39 PM   Error: Specified cast is not valid.
+Level: ReadAssessments   Time: 11/10/2017 1:33:51 PM   Error: Specified cast is not valid.
+Level: ReadAssessments   Time: 11/10/2017 1:34:12 PM   Error: Specified cast is not valid.
+Level: ReadAssessmentByID   Time: 11/10/2017 2:14:02 PM   Error: Procedure or function 'READ_ASSESSMENT_BY_ID' expects parameter '@Assessment_ID', which was not supplied.
+Level: ReadAssessmentByID   Time: 11/10/2017 2:26:29 PM   Error: Procedure or function 'READ_ASSESSMENT_BY_ID' expects parameter '@Assessment_ID', which was not supplied.
+Level: ReadMyKPIsByID   Time: 11/10/2017 2:26:33 PM   Error: The connection was not closed. The connection's current state is open.
+Level: ReadAssessmentByID   Time: 11/10/2017 2:52:37 PM   Error: Procedure or function 'READ_ASSESSMENT_BY_ID' expects parameter '@Assessment_ID', which was not supplied.
+Level: Login   Time: 11/10/2017 3:59:47 PM   Error: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+Level: CreateKPI   Time: 11/13/2017 1:12:04 PM   Error: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_KPI_Assignment". The conflict occurred in database "ORA_Test", table "dbo.Assignment", column 'Assignment_ID'.
+The statement has been terminated.
+Level: Login   Time: 11/13/2017 1:26:44 PM   Error: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+Level: CreateWorkHistory   Time: 11/13/2017 8:30:48 PM   Error: Object reference not set to an instance of an object.
+Level: CreateEducation   Time: 11/13/2017 8:35:08 PM   Error: Object reference not set to an instance of an object.
+Level: CreateEducation   Time: 11/13/2017 9:41:45 PM   Error: Object reference not set to an instance of an object.
+Level: CreateEducation   Time: 11/13/2017 9:42:42 PM   Error: Object reference not set to an instance of an object.
+Level: UpdateAssessment   Time: 11/14/2017 2:21:43 PM   Error: Procedure or function 'UPDATE_ASSESSMENT' expects parameter '@Created_By', which was not supplied.
+Level: ReadAssessments   Time: 11/20/2017 1:48:17 AM   Error: AssessmentScore
+Level: ReadAssessments   Time: 11/20/2017 1:50:14 AM   Error: AssessmentScore
+Level: ReadAssessments   Time: 11/20/2017 1:51:01 AM   Error: AssessmentScore
+Level: ReadAssessments   Time: 11/20/2017 1:57:28 AM   Error: AssessmentScore
+Level: ReadAssessments   Time: 11/20/2017 2:18:50 AM   Error: AssessmentScore
+Level: ReadAssessments   Time: 11/20/2017 2:18:58 AM   Error: AssessmentScore
+Level: ReadAssessments   Time: 11/20/2017 2:19:24 AM   Error: AssessmentScore
+Level: ReadAssessments   Time: 11/20/2017 2:20:20 AM   Error: AssessmentScore
+Level: ReadAssessments   Time: 11/20/2017 2:21:10 AM   Error: AssessmentScore
+Level: ReadAssessments   Time: 11/20/2017 2:21:15 AM   Error: AssessmentScore
+Level: ReadAssessments   Time: 11/20/2017 2:21:29 AM   Error: AssessmentScore
+Level: ReadAssessments   Time: 11/20/2017 2:21:54 AM   Error: AssessmentScore
+Level: ReadAssessments   Time: 11/20/2017 10:19:56 AM   Error: AssessmentScore
+Level: ReadKPIs   Time: 11/20/2017 7:01:05 PM   Error: Created_By
+Level: ReadKPIs   Time: 11/20/2017 11:04:45 PM   Error: Created_By
+Level: UpdateAssessment   Time: 11/23/2017 10:39:44 AM   Error: Procedure or function 'UPDATE_ASSESSMENT' expects parameter '@Created_By', which was not supplied.
+Level: UpdateAssessment   Time: 11/23/2017 10:43:35 AM   Error: Procedure or function UPDATE_ASSESSMENT has too many arguments specified.
+Level: UpdateAssessment   Time: 11/23/2017 10:45:16 AM   Error: Procedure or function UPDATE_ASSESSMENT has too many arguments specified.
+Level: UpdateAssessment   Time: 11/23/2017 10:45:45 AM   Error: Procedure or function UPDATE_ASSESSMENT has too many arguments specified.
+Level: UpdateAssessment   Time: 11/23/2017 10:48:47 AM   Error: Procedure or function UPDATE_ASSESSMENT has too many arguments specified.
+Level: Login   Time: 11/27/2017 5:39:15 PM   Error: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+Level: UpdateEducation   Time: 11/27/2017 7:18:59 PM   Error: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+Level: UpdateWorkHistory   Time: 11/27/2017 7:19:37 PM   Error: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+Level: UpdateEducation   Time: 11/27/2017 7:26:34 PM   Error: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+Level: UpdateEducation   Time: 11/27/2017 7:26:48 PM   Error: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+Level: UpdateWorkHistory   Time: 11/27/2017 7:29:15 PM   Error: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+Level: UpdateWorkHistory   Time: 11/27/2017 7:29:29 PM   Error: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+Level: UpdateEducation   Time: 11/27/2017 7:59:05 PM   Error: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+Level: GetListOfSkillsByResumeID   Time: 11/28/2017 10:06:28 AM   Error: Specified cast is not valid.
+Level: GetListOfSkillsByResumeID   Time: 11/28/2017 10:07:31 AM   Error: Specified cast is not valid.
+Level: GetListOfSkillsByResumeID   Time: 11/28/2017 10:10:55 AM   Error: Specified cast is not valid.
+Level: GetListOfSkillsByResumeID   Time: 11/28/2017 10:12:12 AM   Error: Invalid attempt to read when no data is present.
+Level: ReadSkillLibrary   Time: 11/28/2017 1:17:35 PM   Error: Resume_ID
+Level: Login   Time: 11/28/2017 9:29:39 PM   Error: Login failed for user '{tkjones92}'.
+Level: Login   Time: 11/28/2017 10:48:07 PM   Error: Database 'ORA-Data' on server 'ora' is not currently available.  Please retry the connection later.  If the problem persists, contact customer support, and provide them the session tracing ID of '6B74636F-553C-4585-B345-59C871A15F02'.
+Level: Login   Time: 11/29/2017 10:07:10 AM   Error: Cannot open server 'ora-data' requested by the login. Client with IP address '50.96.121.226' is not allowed to access the server.  To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+Level: ReadSkillLibrary   Time: 11/29/2017 10:08:27 AM   Error: Procedure or function 'READ_SKILL_LIBRARY_BY_ID' expects parameter '@Skill_Library_ID', which was not supplied.
+Level: CreateEducation   Time: 11/29/2017 4:50:09 PM   Error: Object reference not set to an instance of an object.
+Level: CreateEducation   Time: 11/29/2017 4:51:15 PM   Error: Object reference not set to an instance of an object.
+Level: CreateEducation   Time: 11/29/2017 4:52:09 PM   Error: Object reference not set to an instance of an object.
+Level: ReadBioByID   Time: 11/30/2017 3:35:44 PM   Error: 
+Level: ReadBioByID   Time: 11/30/2017 3:38:35 PM   Error: 
+Level: Login   Time: 11/30/2017 4:54:05 PM   Error: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+Level: Login   Time: 12/3/2017 2:50:51 PM   Error: Cannot open server 'ora-data' requested by the login. Client with IP address '174.218.8.85' is not allowed to access the server.  To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+Level: ReadBioByID   Time: 12/3/2017 2:53:00 PM   Error: SideMenuImage
+Level: Login   Time: 12/5/2017 2:06:15 PM   Error: Login failed for user 'DEV1'.
+Level: Login   Time: 12/7/2017 5:44:32 PM   Error: Login failed for user 'DEV1'.
+Level: Login   Time: 12/12/2017 8:14:17 AM   Error: Login failed for user 'DEV1'.
+Level: Login   Time: 12/12/2017 8:20:30 AM   Error: Login failed for user 'DEV1'.
+Level: CreateBio   Time: 12/12/2017 1:41:51 PM   Error: Procedure or function CREATE_BIO has too many arguments specified.
+Level: CreateWorkStatus   Time: 12/13/2017 8:45:13 AM   Error: Procedure or function 'CREATE_WORK_STATUS' expects parameter '@Service_Length', which was not supplied.
+Level: CreateBio   Time: 12/13/2017 8:46:51 AM   Error: Procedure or function CREATE_BIO has too many arguments specified.
+Level: CreateBio   Time: 12/13/2017 9:14:46 AM   Error: Procedure or function 'CREATE_BIO' expects parameter '@ProfileImg', which was not supplied.

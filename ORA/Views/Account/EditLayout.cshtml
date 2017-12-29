@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "EditLayout";
+}
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using ORA.Controllers
+@using SelectList = System.Web.Mvc.SelectList
+@model ORA.Models.AccountBioVM
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>
+                        <i class="glyphicon glyphicon-cog"></i>
+                        Edit Layout
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div class="box box-info">
+                        <div class="box-body">
+                            @Html.AntiForgeryToken()
+                            <div class="form-horizontal col-lg-12">
+                                <hr />
+                                @Html.DropDownListFor(m => m.SideMenuImage, new SelectList(Model.ImageOptions), "--Select--")
+                                @Html.DropDownListFor(m => m.SideMenuColor, new SelectList(Model.ColorOptions), "--Select--")
+                                <input type="submit" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+

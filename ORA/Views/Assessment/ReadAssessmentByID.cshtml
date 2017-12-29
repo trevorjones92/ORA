@@ -1,0 +1,212 @@
+﻿@using AutoMapper
+@using ORA.Models
+@using ORA_Logic
+@using ORA_Logic.Models
+@model ORA.Models.AssessmentVM
+
+@{
+    ViewBag.Title = "Assessment Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //ViewBag.About = false;
+    int score = AssessmentFunctions.CalculateTotalAssessmentScore(Mapper.Map<AssessmentBM>(Model));
+}
+
+<link href="~/Content/ReadAssessmentsbyID.css" rel="stylesheet" />
+<link href='//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet' />
+<link href="~/Content/Cards.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    function cardFunction(id) {
+        var x = document.getElementById(id);
+        if (x.className.indexOf("card-block show fadeIn") == -1) {
+            x.className += " card-block show fadeIn";
+        } else {
+            x.className = x.className.replace(" card-block show fadeIn", "");
+        }
+    }
+
+</script>
+
+@Html.HiddenFor(model => model.AssessmentId)
+<div class="panel">
+    <div class="panel-heading">
+        <h2>@Html.DisplayFor(model => model.Employee.EmployeeFirstName) @Html.DisplayFor(model => model.Employee.EmployeeLastName)</h2>
+    </div>
+    <div class="panel-body">
+        <h4 class="pull-left"><strong>Created by:</strong> @Html.DisplayFor(model => model.CreatedBy)</h4>
+        <h4 class="pull-right"><strong>Score:</strong>@score</h4>
+
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="animated card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title"><button class="btn-simple" onclick="cardFunction('TDCardDetails')"><strong>Technical Delivery</strong></button></h3>
+                        </div>
+                        <div class="animated card-block hide" id="TDCardDetails">
+                            <ul class="list-unstyled">
+                                <li>@Html.DisplayNameFor(model => model.TDProblemSolving) <span class="pull-right">@Html.DisplayFor(model => model.TDProblemSolving)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.TDQualityOfWork) <span class="pull-right">@Html.DisplayFor(model => model.TDQualityOfWork)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.TDProductKnowledge) <span class="pull-right">@Html.DisplayFor(model => model.TDProductKnowledge)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.TDProductivity) <span class="pull-right">@Html.DisplayFor(model => model.TDProductivity)</span></li>
+                            </ul>
+                            <p>
+                                <strong>Commments: </strong>@Html.DisplayFor(model => model.TDComments)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title"><button class="btn-simple" onclick="cardFunction('CSRCardDetails')"><strong>CSR</strong></button></h3>
+                        </div>
+                        <div class="animated card-block hide" id="CSRCardDetails">
+                            <ul class="list-unstyled">
+                                <li>@Html.DisplayNameFor(model => model.CSRWrittenSkills) <span class="pull-right">@Html.DisplayFor(model => model.CSRWrittenSkills)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.CSRVerbalSkills) <span class="pull-right">@Html.DisplayFor(model => model.CSRVerbalSkills)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.CSRListeningSkills) <span class="pull-right">@Html.DisplayFor(model => model.CSRListeningSkills)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.CSRProfesionalismTeamwork) <span class="pull-right">@Html.DisplayFor(model => model.CSRProfesionalismTeamwork)</span></li>
+                            </ul>
+                            <p>
+                                <strong>Commments: </strong>@Html.DisplayFor(model => model.CSRComments)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title"><button class="btn-simple" onclick="cardFunction('ADCardDetails')"><strong>AD</strong></button></h3>
+                        </div>
+                        <div class="animated card-block hide" id="ADCardDetails">
+                            <ul class="list-unstyled">
+                                <li>@Html.DisplayNameFor(model => model.ADAttendence) <span class="pull-right">@Html.DisplayFor(model => model.ADAttendence)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.ADEthicalBehavior) <span class="pull-right">@Html.DisplayFor(model => model.ADEthicalBehavior)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.ADOrganizeDetailedWork) <span class="pull-right">@Html.DisplayFor(model => model.ADOrganizeDetailedWork)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.ADMeetDeadlines) <span class="pull-right">@Html.DisplayFor(model => model.ADMeetDeadlines)</span></li>
+                            </ul>
+                            <p>
+                                <strong>Commments: </strong>@Html.DisplayFor(model => model.ADComments)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title"><button class="btn-simple" onclick="cardFunction('TMCardDetails')"><strong>TM</strong></button></h3>
+                        </div>
+                        <div class="animated card-block hide" id="TMCardDetails">
+                            <ul class="list-unstyled">
+                                <li>@Html.DisplayNameFor(model => model.TMResourceUse) <span class="pull-right">@Html.DisplayFor(model => model.TMResourceUse)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.TMTechnicalMonitoring) <span class="pull-right">@Html.DisplayFor(model => model.TMTechnicalMonitoring)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.TMFeedback) <span class="pull-right">@Html.DisplayFor(model => model.TMFeedback)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.TMAskingQuestions) <span class="pull-right">@Html.DisplayFor(model => model.TMAskingQuestions)</span></li>
+                            </ul>
+                            <p>
+                                <strong>Commments: </strong>@Html.DisplayFor(model => model.TMComments)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title"><button class="btn-simple" onclick="cardFunction('MICardDetails')"><strong>MI</strong></button></h3>
+                        </div>
+                        <div class="animated card-block hide" id="MICardDetails">
+                            <ul class="list-unstyled">
+                                <li>@Html.DisplayNameFor(model => model.MIAttitudeWork) <span class="pull-right">@Html.DisplayFor(model => model.MIAttitudeWork)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.MIGroomingAppearance) <span class="pull-right">@Html.DisplayFor(model => model.MIGroomingAppearance)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.MIPersonalGrowth) <span class="pull-right">@Html.DisplayFor(model => model.MIPersonalGrowth)</span></li>
+                                <li>@Html.DisplayNameFor(model => model.MIPotentialAdvancement) <span class="pull-right">@Html.DisplayFor(model => model.MIPotentialAdvancement)</span></li>
+                            </ul>
+                            <p>
+                                <strong>Commments: </strong>@Html.DisplayFor(model => model.MIComments)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-footer">
+        <p>
+            <strong>Last modified by:</strong> @Html.DisplayFor(model => model.ModifiedBy)
+            <br /><strong>On:</strong> @Html.DisplayFor(model => model.Modified)
+        </p>
+    </div>
+</div>
+
+
+<p>
+
+    @if ((string)Session["Role"] == "Team Lead" && Model.Employee.EmployeeId != (long)Session["ID"] || (string)Session["Role"] == "Manager" && Model.Employee.EmployeeId != (long)Session["ID"] || (string)Session["Role"] == "Director" && Model.EmployeeID != (long)Session["ID"])
+            {
+        @Html.ActionLink("Update", "UpdateAssessment", "Assessment", new { id = Model.AssessmentId }, htmlAttributes: new { @class = "btn btn-primary" })
+    }
+    else
+    {
+
+    }
+     @Html.ActionLink("Back to List","ReadAssessments","Assessment", new { id = Session["ID"]}, htmlAttributes: new { @class="btn btn-danger"})
+</p>
+
+<style>
+    .panel-heading {
+        border-color: #dddddd;
+        background-color: #f5f5f5;
+        color: #2d7788;
+        padding-bottom:0;
+    }
+    .list-unstyled li{
+        color: #2d7788;
+    }
+    h4{
+        color:black;
+    }
+
+    .panel {
+        border-color: lightgray;
+    }
+
+    .panel-footer {
+        border-color: lightgray;
+    }
+    .panel-footer p{
+        margin:0;
+    }
+    .container{
+        clear:both;
+        width: inherit;
+    }
+    .col-sm-6{
+        width:99.5%;
+    }
+    .btn-simple {
+        background-color: transparent;
+        border: none;
+        outline:none;
+    }
+    div .row{
+        position:center;
+    }
+</style>

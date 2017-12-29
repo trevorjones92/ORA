@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ORA.Models.AssessmentVM>
+@using System;
+@using System.Collections
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Text
+@using System.Web.Mvc;
+@using System.Web.Script.Serialization
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using ORA.Models;
+@using ORA_Data.DAL;
+@using ORA_Logic
+@using ORA_Logic.Models
+
+@{
+    ViewBag.Title = "AverageAssessmentCharts";
+    Layout = null;
+}
+@Scripts.Render("~/bundles/modernizr")
+@Styles.Render("~/Content/kendo/css")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/kendo")
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    @*<div id="example">
+        <div class="demo-section k-content wide">
+            <div class="container" style="padding-top:10px;">
+                @using (Html.BeginForm("FilterChartByDate", "Admin", FormMethod.Post))
+            {
+                    <label>From:</label><input class="form-control" type="date" name="fromDate" id="fromDate" required="required" />
+                    <label>To:</label><input class="form-control" type="date" name="toDate" id="toDate" required="required" />
+                    <button type="submit" value="FilterChartByDate">Filter</button>
+                }
+            </div>
+            <div id="chart" style="background: center no-repeat url('../content/shared/styles/world-map.png');"></div>
+        </div>
+    </div>*@
+</body>
+</html>
+<html>
+<head>
+    @{
+        double[] avg = AssessmentFunctions.CalculateMeanForAllAssessments(AutoMapper.Mapper.Map<List<AssessmentBM>>(Model)).ToArray();
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+                google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Average'],
+                        [@avg],
+                    ]);
+
+                    var options = {
+                        title: 'Company Performance',
+                        curveType: 'function',
+                        legend: { position: 'bottom' }
+                    };
+
+                    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+                    chart.draw(data, options);
+                }
+        </script>
+    }
+</head>
+<body>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+</body>
+</html>
+
